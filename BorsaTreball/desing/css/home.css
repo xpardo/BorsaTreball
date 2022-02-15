@@ -1,0 +1,73 @@
+body {
+    font-family: "Ubuntu", helvetica;
+}
+
+ :focus {
+    outline: none;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.text-footer {
+    display: block;
+    margin-top: 100px;
+    text-align: center;
+    font-weight: 300;
+    font-family: 'open sans';
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+    transition: 0.5s ease;
+}
+
+.contenedor {
+    background: rgba(19, 35, 47, 0.9);
+    padding: 50px;
+    max-width: 400px;
+    margin: 10px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+
+h1,
+h3,
+p {
+    text-align: center;
+    color: #fff;
+    font-weight: 300;
+    margin: 0 0 40px;
+}
+
+.button-block {
+    display: block;
+    width: 100%;
+}
+
+.inf {
+    color: white;
+}
+
+.service {
+    text-align: center;
+    color: #fff;
+    font-weight: 300;
+    margin: 0 0 40px;
+}
+
+.vcard {
+    margin: 0px 130px;
+    text-align: center;
+    color: #fff;
+}
+
+.ins {
+    margin: 0px 60px;
+    text-align: center;
+    color: #fff;
+}
