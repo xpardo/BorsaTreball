@@ -1,0 +1,57 @@
+body {
+    font-family: "Ubuntu", helvetica;
+    background-color: rgb(245, 239, 239);
+}
+
+ :focus {
+    outline: none;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.text-footer {
+    display: block;
+    margin-top: 100px;
+    text-align: center;
+    font-weight: 300;
+    font-family: 'open sans';
+    font-size: 20px;
+}
+
+h1,
+h3,
+p {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+    margin: 0 0 40px;
+}
+
+.inf {
+    color: white;
+}
+
+.ins {
+    margin: 0px 60px;
+    text-align: center;
+    color: #fff;
+}
+
+footer {
+    color: #fff;
+}
+
+aside {
+    width: 20%;
+    padding-left: 15px;
+    margin-left: 15px;
+    float: right;
+    background-color: rgb(255, 255, 255);
+}
+
+.container {
+    background-color: rgb(255, 255, 255);
+}
