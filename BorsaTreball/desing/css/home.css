@@ -1,5 +1,5 @@
 body {
-    font-family: "Ubuntu", helvetica;
+    background-color: rgb(245, 239, 239);
 }
 
  :focus {
@@ -136,4 +136,14 @@ p {
 .container-1 .icon {
     z-index: 1;
     color: #4f5b66;
+}
+
+.oferta .item {
+    background: #fff;
+    border: 1px solid transparent;
+}
+
+.oferta .item:hover {
+    background: #679bdf;
+    border: 1px solid #d0d0d0;
 }

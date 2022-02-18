@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
 
@@ -44,123 +44,153 @@
     </header>
     <!----------------------------------------------------------->
     <section>
-        <aside>
-            <label class="col-10">+ curriculum: </label><br><br>
-            <label class="col-10">+ Carta de presentacio: </label><br><br>
-            <label class="col-10">+ Carta de recomendació: </label><br><br>
-            <p class="col-10"><a href="empresa.html "><u>Les meves empresas</u></a>: </p><br><br>
-        </aside>
+
         <div class="container m-5">
 
             <div class="row sling-items-end">
-                <label for="desc" class="col-10">Les meves dades:</label>
+                <label for="desc" class="col-10"> Dades de l'empresa:</label>
 
             </div>
         </div>
 
+        <div class="container m-5">
+
+            <div class="row sling-items-end">
+
+                <div class="col-12 col-md-6">
+                    <label for="edit" class="col-10"><img src="img/edit.png" alt="edit" width="20" height="20">edit</label>
+
+                    <label for="edit" class="col-10">Nom de l'empresa:
+                    <a> name</a></label>
+
+                    <label for="edit" class="col-10">Correu electronic:
+                        <a> empresa@email.com</a></label>
+                    <label for="edit" class="col-10">Telefón | movil:
+                        <a> 000000000</a></label>
+                    <label for="edit" class="col-10">Població:
+                        <a> població</a></label>
+
+
+                </div>
+
+
+            </div>
+        </div>
 
         <div class="container m-5">
             <div class="row sling-items-end">
-
-
-
-
-
-
-
                 <label for="edit" class="col-10"><img src="img/edit.png" alt="edit" width="20" height="20">edit</label>
-
-                <label for="edit" class="col-10"><img src="img/user.jpg" alt="Alumne" width="150" height="150"></label>
-
+                <label for="Tipus" class="col-10">logo: </label><br><br>
 
 
+                <img src="img/logo-JM-blau-miniatura-1.jpg" alt="Empresa">
 
-                <label class="col-10">nom i cognom:
-                        <a> my name</a></label>
-
-                <label class="col-10">Data de naixement:
-                    <a>dd/mm/aaa </a> </label>
-
-                <label class="col-10">email:
-                    <a> email@mail.com</a></label>
-
-                <label class="col-10">poblacio :
-                    <a> poblacio </a></label>
-
-                <label class="col-10">cp :
-                    <a> cp  </a></label>
-
-                <label class="col-10">tel/movil:
-                    <a>000000000</a></label>
             </div>
 
-            <div class="contenedor-input">
-                <div class="from-group form-row">
-                    <label for="Cicles" class="col-10">Cicles que has estudiat o estas estudian </label><br><br>
-                    <select name="Cicles">
-                                    <option value="0"> </option>
-                                    <option value="1"> Grau Mitjà Sistemes Microinformàtics i Xarxes</option>
-                                    <option value="2"> Grau Mitjà Gestió Administratva</option>
-                                    <option value="3"> Grau Mitjà Gestió Administrativa de l’Àmbit Jurídic</option>
-                                    <option value="4"> Grau Mitjà Activitats Comercials</option>
-                
-                                    <option value="5"> Grau Superior Desenvolupament d’Aplicacions Web </option>
-                                    <option value="6"> Grau Superior Administració de Sistemes Informàtics en Xarxa </option>
-                                    <option value="7"> Grau Superior Administració i Finances </option>
-                                    <option value="8"> Grau Superior Comerç internacional </option>
-                
-                                </select>
-                </div>
+
+        </div>
+        <div class="container m-5">
+            <div class="row sling-items-end">
+                <form name="signup" action="registre-action.php" method="post" enctype="multipart/form-data">
+
+                    <div class="contenedor-input">
+                        <label for="edit" class="col-10"><img src="img/edit.png" alt="edit" width="20" height="20">edit</label>
+
+                        <div class="from-group form-row">
+                            <label for="Cicles" class="col-3">Cicles que busqes </label>
+                            <select class="select" name="Cicles">
+                                <option label="" value="" selected="selected"></option>
+                                <option value="1"> Grau Mitjà Sistemes Microinformàtics i Xarxes</option>
+                                <option value="2"> Grau Mitjà Gestió Administratva</option>
+                                <option value="3"> Grau Mitjà Gestió Administrativa de l’Àmbit Jurídic</option>
+                                <option value="4"> Grau Mitjà Activitats Comercials</option>
+
+                                <option value="5"> Grau Superior Desenvolupament d’Aplicacions Web </option>
+                                <option value="6"> Grau Superior Administració de Sistemes Informàtics en Xarxa </option>
+                                <option value="7"> Grau Superior Administració i Finances </option>
+                                <option value="8"> Grau Superior Comerç internacional </option>
+
+                            </select>
+
+
+                        </div>
+                        <br><br>
+                        <div class="from-group form-row">
+
+                            <label for="tipus" class="col-3">tipus </label>
+                            <select class="select" name="tipus">
+                                <option label="tot" value="" selected="selected"></option>
+                                <option value="gsm">Practiques</option>
+                                <option value="gss">Practiques amb opció de quedarse</option>
+                                <option value="gss">treballar</option>
+
+                            </select>
+                        </div>
+                        <br><br>
+
+                        <label class="col-10">Salari: </label>
+                        <input type="num" id="sala" name="sala"><br><br>
+                        <label class="col-10">Horari:</label>
+                        <input type="text" id="h" name="h">
+
+                        <div class="contenedor-input">
+                            <label for="desc" class="col-10">Descripció:</label>
+
+                            <textarea name="desc" rows="10" cols="50"></textarea><br><br>
+                        </div>
+
+
+                    </div>
+                </form>
             </div>
+
         </div>
 
 
 
-
         <div class="container m-5">
-            <div class="row sling-items-end">
-                <label for="edit" class="col-10"><img src="img/edit.png" alt="edit" width="20" height="20">edit</label>
 
-
-                <label class="col-10">curriculum: </label><br><br>
-                <div class="col-12 col-md-5">
-
-                    <img src="img/cv.png" alt="Alumne" width="500" height="500">
-
-                </div>
-            </div>
+            <input type="submit" value="Inscriurem en aquesta empresa "> <br>
         </div>
+
+    </section>
+
+    <section>
         <div class="container m-5">
             <div class="row sling-items-end">
-                <label for="edit" class="col-10"><img src="img/edit.png" alt="edit" width="20" height="20">edit</label>
+                <label for="privat" class="col-10"> Seció privada </label>
 
+                <table id="mytable" class="table table-bordered table-hover ">
+                    <tr>
 
-                <label class="col-10">Carta de recomendació: </label><br><br>
-                <div class="col-12 col-md-5">
+                        <th>Alumne</th>
 
-                    <img src="img/cv.png" alt="Alumne" width="500" height="500">
+                        <th>email</th>
 
-                </div>
+                        <th>telefón|movil</th>
+
+                        <th>Cicles que cursa o a cursat</th>
+
+                        <th>Estat</th>
+                    </tr>
+
+                </table>
             </div>
+
+
         </div>
-        <div class="container m-5">
-            <div class="row sling-items-end">
-                <label for="edit" class="col-10"><img src="img/edit.png" alt="edit" width="20" height="20">edit</label>
 
 
-                <label class="col-10">Carta de presentació: </label><br><br>
-                <div class="col-12 col-md-5">
-
-                    <img src="img/cv.png" alt="Alumne" width="500" height="500">
-
-                </div>
-            </div>
         </div>
     </section>
-    <!---------------------------------------------------------------------->
+    <!-------------------------------------------------------------------------------------------->
     <footer>
 
-        <nav class="navbar navbar-expand-lg  m-2 " style="background-color: #5da4e7; ">
+        <nav class="navbar navbar-expand-lg m-2 " style="background-color: #5da4e7; ">
+
+
+
+
 
             <div class="col-sm ">
                 <div class="ins ">
@@ -220,6 +250,12 @@
     </footer>
     <!--Script-->
     <script src="js/jquery.js "></script>
+
+</body>
+
+</html>ooter>
+<!--Script-->
+<script src="js/jquery.js "></script>
 
 </body>
 
