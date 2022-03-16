@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\MailController;
-use App\Http\Controllers\SeguretatsController;
+use App\Http\Controllers\RegEmpreController;
+use App\Http\Controllers\SessionEmpreController;
 
 
 /*
@@ -40,6 +40,23 @@ Route::get('mail/test', [MailController::class, 'test'])->middleware(['auth']);
 Auth::routes();
 
 
-Route::get('securitys', [SeguretatsController::class,'index'])->name("securitys"); ;
+/*------------------------------------ */
 
+Route::get('/registreEmpre',function(){
+    return view('registreEmpre');
+});
 
+Route::get('/registreEmpre',[RegEmpreController::class, 'form'])->middleware('auth');
+
+/*------------------------------------ */
+
+Route::get('/registreAlumne',function(){
+    return view('registreAlumne');
+});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

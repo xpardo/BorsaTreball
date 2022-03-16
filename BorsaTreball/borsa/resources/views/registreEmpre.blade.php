@@ -1,13 +1,286 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/estil.css" />
-    <title>Document</title>
-</head>
+<x-app-layout>
+
+    <x-slot name="header">
+
+    </x-slot>
+
 <body>
+@include('header')
+@if ($errors->any())
+<div class ="alert alert-danger">
+    <ul>
+     @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+         @endforeach
+    </ul>
+</div>
+
+ @endif
+
+
+ <link rel="stylesheet" type="text/css" href="css/estil.css" />
+
+<div class="contenedor-formularios">
+
+    <!-- Contenido de los Formularios -->
+    <div class="contenido-tab">
+
+        <!-- Registrarse -->
+        <div id="registrarse">
+            <h3><strong>Registrarse</strong></h3>
+
+            <form name="signup" action="registre-action.php" method="post" enctype="multipart/form-data">
+            @csrf <!--mirar-->
+                <p><strong>Dades d'acces personal</strong></p>
+                <div class="fila-arriba">
+                    <div class="contenedor-input">
+
+                        <label for="username">Nom</label><br><br>
+                        <input type="text" name="username" required>
+
+                    </div>
+                    <div class="contenedor-input">
+
+                        <label for="cognom">Cognom</label><br><br>
+                        <input type="text" name="cognom" required>
+
+                    </div>
+                </div>
+
+                <div class="contenedor-input">
+
+                    <div class="contenedor-input">
+                        <label>E-mail</label><br><br>
+                        <input type="email" name="email" required>
+
+                    </div>
+
+                    <div class="contenedor-input">
+                        <label>Password</label><br><br>
+                        <input type="password" name="password" required>
+                    </div>
+
+                    <div class="contenedor-input">
+                        <label>Repetir password</label><br><br>
+                        <input type="password" name="confirm_password" required>
+                    </div>
+
+
+                </div>
+
+                <p>Dades de l'empresa</p>
+
+                <div class="contenedor-input">
+
+                    <label for="empre">Nom de la empresa</label><br><br>
+                    <input type="text" name="empre" required>
+
+                </div>
+
+                <div class="contenedor-input">
+                    <label>Telèfon/Mòbil</label><br><br>
+                    <input type="text" name="telefon">
+                </div>
+
+
+                <div class="contenedor-input">
+
+                    <label for="identifi">Identificacio fiscal (C.I.F o N.I.F)</label><br><br>
+                    <input type="text" name="identifi" required>
+
+                </div>
+
+                <div class="contenedor-input">
+                    <label for="poblacio">Població</label><br><br>
+                    <input type="text" name="poblacio" required>
+                </div>
+
+                <input type="submit"  value="Registrarse "> <br>
+                <p>
+                <a  href="{{url('dashboard')}}"><u>home</u></a>
+                </p>
+                <p>
+                    <a href="#">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+@include('footer')
+
+
+    </x-app-layout>
+
+
+
+<style>
+           body {
+        background-color: rgb(245, 239, 239);
+    }
     
-</body>
-</html>
+     :focus {
+        outline: none;
+    }
+    
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+    
+    .text-footer {
+        display: block;
+        margin-top: 100px;
+        text-align: center;
+        font-weight: 300;
+        font-family: 'open sans';
+        font-size: 20px;
+    }
+    
+    input {
+        font-size: 22px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 5px 10px;
+        background: none;
+        background-image: none;
+        border: 1px solid #a0b3b0;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    
+        border-radius: 0;
+        transition: all 0.5s ease;
+        border-radius: 5px;
+    }
+    
+    input:focus {
+        outline: none;
+        border-color: #1ab188;
+    }
+    
+    .contenedor-input {
+        position: relative;
+        margin-bottom: 40px;
+    }
+    
+    .fila-arriba:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+    .fila-arriba div {
+        float: left;
+        width: 48%;
+        margin-right: 4%;
+    }
+    
+    .fila-arriba div:last-child {
+        margin: 0;
+    }
+    
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="checkbox"] {
+        width: 100%;
+        height: 30px;
+        margin-bottom: 16px;
+        border-radius: 4px;
+        font-family: 'open sans';
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+    
+    input[type=submit] {
+        background-color: #04AA6D;
+        color: white;
+        width: 100%;
+        height: 50px;
+        margin-top: 60px;
+        border: 0px;
+        background: linear-gradient(90deg, #7bd65f);
+        font-weight: 300;
+        cursor: pointer;
+        font-size: 18px;
+    }
+    
+    input[type="submit"]:hover {
+        background: linear-gradient(90deg, #7bd65f);
+    }
+    
+  
+    
+    .contenedor-formularios {
+        background: rgba(19, 35, 47, 0.9);
+        padding: 40px;
+        max-width: 600px;
+        margin: 20px auto;
+        border-radius: 4px;
+        box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+    }
+    
+    h1,
+    h3,
+    p {
+        text-align: center;
+        color: #fff;
+        font-weight: 300;
+        margin: 0 0 40px;
+    }
+    
+    label {
+        position: absolute;
+        transform: translateY(6px);
+        left: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        transition: all 0.25s ease;
+        pointer-events: none;
+        font-size: 22px;
+    }
+    
+    label .req {
+        margin: 2px;
+        color: #1ab188;
+    }
+    
+    label.active {
+        transform: translateY(50px);
+        left: 2px;
+        font-size: 14px;
+    }
+    
+    label.active .req {
+        opacity: 0;
+    }
+    
+  
+    
+    .button:hover,
+    .button:focus {
+        background: #179b77;
+    }
+    
+    .button-block {
+        display: block;
+        width: 100%;
+    }
+    
+  
+ 
+    .contenedor {
+        background: rgba(19, 35, 47, 0.9);
+        padding: 50px;
+        max-width: 400px;
+        margin: 40px auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+    }
+</style>

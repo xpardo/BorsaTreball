@@ -1,13 +1,7 @@
 <x-app-layout>
-
-    <x-slot name="header">
-        <nav class="navbar navbar-expand-lg navbar-light  m-2" style="background-color: #33BDFF;">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Institut Joaquim mir') }}
-            </h2>
-        </nav>
-    </x-slot>
-
+<x-slot name="header">
+</x-slot>
+@include('header')
     <!-- <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -27,7 +21,8 @@
                            <div class="col-sm">
                                 <div class=contenedor>
                                     <h3><strong>Empresa</strong><h3>
-                                    <a herf="#"><u>Registre</u></a>
+                                    <a href="{{url('registreEmpre')}}"><u>Registrarse</u></a>
+                                    <img src="{{ asset('img/empresas-img.jpg') }}" alt="mi foto">
                                 </div>    
                             </div> 
                         </div>
@@ -37,7 +32,8 @@
                            <div class="col-sm">
                                 <div class=contenedor>
                                     <h3><strong>Alumne</strong><h3>
-                                    <a herf="#"><u>Registre</u></a>
+                                    <a href="{{url('registreAlumne')}}"><u>Registrarse</u></a>
+                                    <img src="{{ asset('img/alumne.jpg') }}" alt="mi foto">
                                 </div>    
                             </div> 
                         </div>
@@ -46,16 +42,9 @@
             </div>
         </div>
     </div>
+    @include('footer')
+    </x-app-layout>
 
-    <x-slot name="footer">
-        
-    <nav class="navbar fixed-bottom  justify-content-center" style="background-color: #33BDFF;">
-    
-        <p><a class="nav-link disabled" href="https://agora.xtec.cat/iesjoaquimmir/"> {{ __('Institut Joaquim mir') }}</a></p>
-
-    </nav>
-    </x-slot>
-</x-app-layout>
 
 
 <!------------------------------------------------------------------------------------------------>
