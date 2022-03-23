@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\RegEmpreController;
-use App\Http\Controllers\SessionEmpreController;
+use App\Http\Controllers\RegAlumController;
 
 
 /*
@@ -37,7 +37,7 @@ require __DIR__.'/auth.php';
 Route::get('mail/test', [MailController::class, 'test'])->middleware(['auth']);
 // or
 // Route::get('mail/test', 'App\Http\Controllers\MailController@test');
-Auth::routes();
+
 
 
 /*------------------------------------ */
@@ -47,16 +47,22 @@ Route::get('/registreEmpre',function(){
 });
 
 Route::get('/registreEmpre',[RegEmpreController::class, 'form'])->middleware('auth');
-
+Route::get('/perfilEmpre', [RegEmpreController::class, 'perfilEmpre'])->middleware('auth');
 /*------------------------------------ */
 
 Route::get('/registreAlumne',function(){
     return view('registreAlumne');
 });
-Auth::routes();
+Route::get('/registreAlumne',[RegAlumController::class, 'form'])->middleware('auth');
+Route::get('/perfilAlum', [RegAlumController::class, 'perfilAlum'])->middleware('auth');
+
+/*------------------------------------ */
+Route::get('/login',function(){
+    return view('login');
+});
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
