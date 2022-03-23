@@ -14,7 +14,7 @@
 
 /** busqueda */
 
-    .container-1 {
+.container-1 {
     width: 300px;
     vertical-align: middle;
     white-space: nowrap;

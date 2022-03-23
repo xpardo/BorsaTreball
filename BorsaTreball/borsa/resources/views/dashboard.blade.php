@@ -35,15 +35,15 @@
                      
                     <div class=contenedor>
                         <h3><strong>Empresa</strong><h3>
-                        <a href="{{url('registreEmpre')}}"><u>Registra</u></a><br>
-                        <a href="{{url('login')}}"><u>Login</u></a><br><br>
+                        <a href="{{url('registreEmpre')}}"><u> <i class="bi bi-clipboard-plus-fill"></i> Registra</u></a><br>
+                        <a href="{{url('login')}}"><u><i class="bi bi-person"></i> Login</u></a><br><br>
                         <img src="{{ asset('img/empresas-img.jpg') }}" alt="mi foto">
                     </div>    
                 
                     <div class=contenedor>
                         <h3><strong>Alumne</strong><h3>
-                        <a href="{{url('registreAlumne')}}"><u>Registra</u></a><br>
-                        <a href="{{url('login')}}"><u>Login</u></a><br><br>
+                        <a href="{{url('registreAlumne')}}"><u> <i class="bi bi-clipboard-plus-fill"></i> Registra</u></a><br>
+                        <a href="{{url('login')}}"><u> <i class="bi bi-person"></i> Login</u></a><br><br>
                         <img src="{{ asset('img/alumne.jpg') }}" alt="mi foto">
                     </div>    
                 </div>
@@ -64,7 +64,7 @@
 
                             <form method="get" action="home.html" target="_blank">
                                 <fieldset>
-                                    <span class="icon"><i class="bi bi-search"></i></span>
+                                    <span class="icon"<i class="bi bi-person"></i>><i class="bi bi-search"></i></span>
                                     <input type="search" id="search" name="search" autofocus required>
                                     <br>
 
@@ -105,11 +105,11 @@
                                         <table style="width:100%">
                                             <thead class="thead-dark">
                                                 <tr>
-                                                    
-                                                    <th scope="col">Data</th>
-                                                    <th scope="col">Perfil</th>
-                                                    <th scope="col">Descripcio</th>
                                                     <th scope="col">Empresa</th>
+                                                    <th scope="col">Descripció</th>
+                                                    <th scope="col">Estudis als que va dirigida</th>
+                                                    <th scope="col">Població</th>
+                                                    <th scope="col">Termini presentació candidatures</th>
                                                 </tr>
                                             </thead>
                                             
