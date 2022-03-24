@@ -6,7 +6,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\RegEmpreController;
 use App\Http\Controllers\RegAlumController;
 
-
+use App\Http\Controllers\BorsaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,6 +55,8 @@ Route::get('/registreAlumne',function(){
 });
 Route::get('/registreAlumne',[RegAlumController::class, 'form'])->middleware('auth');
 Route::get('/perfilAlum', [RegAlumController::class, 'perfilAlum'])->middleware('auth');
+
+Route::get('/borsa', [BorsaController::class, 'borsa'])->middleware('auth');
 
 /*------------------------------------ */
 Route::get('/login',function(){

@@ -5,7 +5,7 @@
     </x-slot>
 
     
-    @include('header')
+    @include('borsa.header')
     @if ($errors->any())
         <div class ="alert alert-danger">
             <ul>
@@ -97,7 +97,7 @@
 
                     <input type="submit"  value="Registrarse "> <br>
                     <p>
-                    <a  href="{{url('dashboard')}}"><u>home</u></a>
+                    <a  href="{{url('borsa')}}"><u>home</u></a>
                     </p>
                     <p>
                     <a  href="{{url('login')}}"><u>Login</u></a>
@@ -107,7 +107,7 @@
             </div>
         </div>
     </div>
-    @include('footer')
+    @include('borsa.footer')
 
 
 </x-app-layout>

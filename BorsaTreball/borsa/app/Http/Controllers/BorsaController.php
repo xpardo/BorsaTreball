@@ -4,37 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RegAlumController extends Controller
+class BorsaController extends Controller
 {
 
-
-    public function form(){
-        return view('borsa.registreAlumne');
+    public function borsa(){
+       /*  return view('borsa'); */
+        return view('borsa.borsa');
      }
-
-
-     public function perfilAlum(Request $request){
-       
-        $validated = $request->validate([
-            'username' => 'required',
-            'cognom' => 'required',
-            'date' => 'required',
-            'cp' =>  'required',
-            'email' =>  'required|email',
-            'telefon' => 'required',
-            'poblacio' => 'required',
-            'password1' => 'required',
-            'password2' => 'required|same:password1', 
-            'estas' => 'required',
-            'fet' => 'required',
-            'treballat' => 'required',
-        
-           
-
-        ]); return view('borsa.perfilAlum', $validated);
-
-     }
- 
     /**
      * Display a listing of the resource.
      *

@@ -5,7 +5,7 @@
     </x-slot>
 
    
-    @include('header')
+    @include('borsa.header')
     @if ($errors->any())
     <div class ="alert alert-danger">
         <ul>
@@ -113,7 +113,7 @@
                                 <br><br>
 
                                 <label for="estasNo" class="form-check-label"> No </label>
-                                <input type="checkbox"  name="estas"  class="form-check-input @error('gender') is-invalid @enderror"
+                                <input type="checkbox"  name="estas"  class="form-check-input @error('estas') is-invalid @enderror"
                                 id="estasNo" value="No" {{ old('estas')== 'No' ? 'checked' : '' }}>
 
                             </div>
@@ -125,13 +125,13 @@
                                 <label>Has fet practiques abans ?</label><br><br>
 
                                 <label for="fetSi" class="form-check-label"> Si </label>
-                                <input type="checkbox"  name="fet"  class="form-check-input @error('gender') is-invalid @enderror"
+                                <input type="checkbox"  name="fet"  class="form-check-input @error('fet') is-invalid @enderror"
                                 id="fetSi" value="Si" {{ old('fet')== 'Si' ? 'checked' : '' }}>
 
                                 <br><br>
 
                                 <label for="fetNo" class="form-check-label"> No </label>
-                                <input type="checkbox"  name="fet"  class="form-check-input @error('gender') is-invalid @enderror"
+                                <input type="checkbox"  name="fet"  class="form-check-input @error('fet') is-invalid @enderror"
                                 id="fetNo" value="No" {{ old('fet')== 'No' ? 'checked' : '' }}>
 
                             </div>
@@ -143,13 +143,13 @@
                                 <label>Estas o has treballat ?</label><br><br>
 
                                 <label for="treballatSi" class="form-check-label"> Si </label>
-                                <input type="checkbox"  name="treballat"  class="form-check-input @error('gender') is-invalid @enderror"
+                                <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
                                 id="treballatSi" value="Si" {{ old('treballat')== 'Si' ? 'checked' : '' }}>
 
                                 <br><br>
 
                                 <label for="treballatNo" class="form-check-label"> No </label>
-                                <input type="checkbox"  name="treballat"  class="form-check-input @error('gender') is-invalid @enderror"
+                                <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
                                 id="treballatNo" value="No" {{ old('treballat')== 'No' ? 'checked' : '' }}>
 
                             </div>
@@ -162,7 +162,7 @@
                                 <a class="inf ">Pots especificar als cicles i posar  curriculums,cartas de presentacio i carrtas de recomendació en el perfil</a>
                             </p>
                             <p>
-                                <a  href="{{url('dashboard')}}"><u>home</u></a>
+                                <a  href="{{url('borsa')}}"><u>home</u></a>
                             </p>
                             <p>
                                 <a  href="{{url('login')}}"><u>Login</u></a>
@@ -175,7 +175,7 @@
     </div>
 
 
-    @include('footer')
+    @include('borsa.footer')
 
 
 </x-app-layout>

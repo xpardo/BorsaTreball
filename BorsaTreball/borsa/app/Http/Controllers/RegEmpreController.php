@@ -14,7 +14,7 @@ class RegEmpreController extends Controller
 {
 
     public function form(){
-        return view('registreEmpre');
+        return view('borsa.registreEmpre');
      }
 
      public function perfilEmpre(Request $request){
@@ -30,7 +30,7 @@ class RegEmpreController extends Controller
             'identifi' => 'required',
             'poblacio' => 'required',
 
-        ]); return view('perfilEmpre', $validated);
+        ]); return view('borsa.perfilEmpre', $validated);
 
      }
  

@@ -145,7 +145,66 @@
 
 
 
+<!------------------------------------------------------------------------------>
 
+
+
+
+<fieldset>
+    <div class="col-sm ">
+        <div class="input-group rounded">
+            <input type="search" class="form-control rounded" id="search" name="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+            <span class="input-group-text border-0" id="search-addon">
+                <span class="icon"><i class="bi bi-search"></i></span>
+            </span>
+        
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" 
+            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Cilce
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#">Grau Mitjà Sistemes Microinformàtics i Xarxes</a></li>
+                <li><a class="dropdown-item" href="#">Grau Mitjà Gestió Administratva</a></li>
+                <li><a class="dropdown-item" href="#">Grau Mitjà Gestió Administrativa de l’Àmbit Jurídic</a></li>
+                <li><a class="dropdown-item" href="#">Grau Mitjà Activitats Comercials</a></li>
+                <li><a class="dropdown-item" href="#">Grau Superior Desenvolupament d’Aplicacions Web</a></li>
+                <li><a class="dropdown-item" href="#">Grau Superior Administració de Sistemes Informàtics en Xarxa </a></li>
+                <li><a class="dropdown-item" href="#">Grau Superior Administració i Finances</a></li>
+                <li><a class="dropdown-item" href="#">Grau Superior Comerç internacional</a></li>
+            </div>
+    
+
+        <!--checkbox---->
+
+            <div  class="btn btn-info ">
+                <label>tipus:</label>
+
+                <label for="tipusPr" class="form-check-label "> Practiques </label>
+                <input type="checkbox" name="tipus"   class="form-check-input @error('tipus') is-invalid @enderror"
+                    id="tipusPr" value="Pr" {{ old('tipus')== 'Pr' ? 'checked' : '' }}>
+
+
+
+                <label for="tipusOp" class="form-check-label"> Practiques amb opció de quedarse</label>
+                <input type="checkbox"  name="tipus"  class="form-check-input @error('gender') is-invalid @enderror"
+                id="tipusOp" value="Op" {{ old('tipus')== 'Op' ? 'checked' : '' }}>
+
+                
+
+                <label for="tipusTr" class="form-check-label"> treballar</label>
+                <input type="checkbox"  name="tipus"  class="form-check-input @error('gender') is-invalid @enderror"
+                id="tipusTr" value="Tr" {{ old('tipus')== 'Tr' ? 'checked' : '' }}>
+            </div>
+
+            </div>
+    
+        </div>
+
+        </div>
+    <input type="hidden" name="num" value="50">
+    <input class="botb" type="submit" value="Buscar">
+</fieldset>
 
     <!---------------------------------------------------------------->
     <footer>

@@ -6,6 +6,7 @@
         font-weight: 300;
         font-family: 'open sans';
         font-size: 20px;
+        color: #fff;
     }
 
     .pie{
@@ -37,6 +38,7 @@
         font-size: 1em;
         border: 2px solid #3892dd;
         width: 260px;
+        color: #fff;
     }
 
     .botb {
