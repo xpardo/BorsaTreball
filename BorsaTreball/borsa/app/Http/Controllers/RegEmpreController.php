@@ -35,6 +35,7 @@ class RegEmpreController extends Controller
      }
  
 
+    
 
    
     public function index()

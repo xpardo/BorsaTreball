@@ -86,13 +86,7 @@
 
     <section>
 
-        <div class="container m-5">
-
-            <div class="row sling-items-end">
-                <label for="desc" class="col-10"> Dades de l'empresa:</label>
-
-            </div>
-        </div>
+        
 
 
 
@@ -105,20 +99,23 @@
                     <div class="contenedor-input">
 
                         <div class="from-group form-row">
-                            <label for="Cicles" class="col-3">Cicles que busqes </label>
-                            <select class="select" name="Cicles">
-                                <option label="" value="" selected="selected"></option>
-                                <option value="1"> Grau Mitjà Sistemes Microinformàtics i Xarxes</option>
-                                <option value="2"> Grau Mitjà Gestió Administratva</option>
-                                <option value="3"> Grau Mitjà Gestió Administrativa de l’Àmbit Jurídic</option>
-                                <option value="4"> Grau Mitjà Activitats Comercials</option>
-
-                                <option value="5"> Grau Superior Desenvolupament d’Aplicacions Web </option>
-                                <option value="6"> Grau Superior Administració de Sistemes Informàtics en Xarxa </option>
-                                <option value="7"> Grau Superior Administració i Finances </option>
-                                <option value="8"> Grau Superior Comerç internacional </option>
-
-                            </select>
+                            
+<br><br><br><br>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Cicle
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Grau Mitjà Sistemes Microinformàtics i Xarxes</a>
+                                    <a class="dropdown-item" href="#">Grau Mitjà Gestió Administratva</a>
+                                    <a class="dropdown-item" href="#">Grau Mitjà Gestió Administrativa de l’Àmbit Jurídic</a>
+                                    <a class="dropdown-item" href="#">Grau Mitjà Activitats Comercials</a>
+                                    <a class="dropdown-item" href="#"> Grau Superior Desenvolupament d’Aplicacions Web </a>
+                                    <a class="dropdown-item" href="#"> Grau Superior Administració de Sistemes Informàtics en Xarxa </a>
+                                    <a class="dropdown-item" href="#"> Grau Superior Administració i Finances </a>
+                                    <a class="dropdown-item" href="#"> Grau Superior Comerç internacional </a>
+                                </div>
+                              </div>
 
 
                         </div>
@@ -145,6 +142,11 @@
                             <label for="desc" class="col-10">Descripció:</label>
 
                             <textarea name="desc" rows="10" cols="50"></textarea><br><br>
+                        </div>
+                        <br><br>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" for="flexSwitchCheckDefault">privat</label>
                         </div>
                         <input type="submit" value="aceptar "> <br>
 

@@ -7,6 +7,8 @@ use App\Http\Controllers\RegEmpreController;
 use App\Http\Controllers\RegAlumController;
 
 use App\Http\Controllers\BorsaController;
+
+use App\Http\Controllers\OfEmpreController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,6 +50,10 @@ Route::get('/registreEmpre',function(){
 
 Route::get('/registreEmpre',[RegEmpreController::class, 'form'])->middleware('auth');
 Route::get('/perfilEmpre', [RegEmpreController::class, 'perfilEmpre'])->middleware('auth');
+/**-------------------------------------------------- */
+Route::resource('/MyOferta', OfEmpreController::class);
+Route::get('CreateOfert', [OfEmpreController::class,'create']);
+
 /*------------------------------------ */
 
 Route::get('/registreAlumne',function(){

@@ -42,6 +42,8 @@ td {
     border-radius: 4px;
 }
 
+
+
 .fila-arriba:after {
     content: "";
     display: table;
@@ -139,6 +141,7 @@ input[type=submit] {
     border: 0;
     color: #fff;
 }
+
 
 
 /**/
