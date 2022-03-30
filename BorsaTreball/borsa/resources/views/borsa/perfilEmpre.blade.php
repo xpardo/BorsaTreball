@@ -28,7 +28,7 @@
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">  <i class="fa fa-duotone fa-user">Perfil</i></a>
+                    <a class="nav-link" href="{{url('perfilEmpre')}}">  <i class="fa fa-duotone fa-user">Perfil</i></a>
                     </li>
     
              

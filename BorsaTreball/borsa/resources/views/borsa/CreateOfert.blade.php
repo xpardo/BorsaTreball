@@ -33,13 +33,13 @@
                                         <!-- Registrarse -->
                                         <div id="registrarse">
                                             <h3><strong>Registrarse</strong></h3>
-                                                    <form nmethod="post"  action="perfilEmpre" >
+                                            <form method="post" action="{{ url('borsa.MyOferta') }}" enctype="multipart/form-data">
                                                         @csrf 
                                                         <div class="dropdown">
                                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                             Cicle
                                                             </button>
-                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                            <div class="dropdown-menu" name="cicle" aria-labelledby="dropdownMenuButton">
                                                                 <a class="dropdown-item" href="#">Grau Mitjà Sistemes Microinformàtics i Xarxes</a>
                                                                 <a class="dropdown-item" href="#">Grau Mitjà Gestió Administratva</a>
                                                                 <a class="dropdown-item" href="#">Grau Mitjà Gestió Administrativa de l’Àmbit Jurídic</a>
@@ -89,10 +89,11 @@
 
                                                             <br><br>
                                                             <div class="form-check form-switch">
-                                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                                                <label class="form-check-label" for="flexSwitchCheckDefault">privat</label>
+                                                                <input class="form-check-input" type="checkbox" id="flexT" value="T" {{ old('flex')== 'F' ? 'checked' : '' }}>
+                                                                <label class="form-check-label" for="flexT">privat</label>
                                                             </div>
-                                                            <input type="submit"  value="añadir"> 
+                                                                <button type="submit" class="btn btn-primary">Create</button>
+                                                                <button type="reset" class="btn btn-secondary">Reset</button>
 
                                                         </div>
                                                     </form>

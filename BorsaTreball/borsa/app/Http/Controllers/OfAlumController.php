@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Oferta;
 use Illuminate\Http\Request;
 
-class OfEmpreController extends Controller
+class OfAlumController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,9 @@ class OfEmpreController extends Controller
      */
     public function index()
     {
-        return view("borsa.MyOferta", [
+        return view("borsa.MySolicitud", [
             "ofertes" => Oferta::all()
         ]);
-
-       
     }
 
     /**
@@ -28,8 +26,7 @@ class OfEmpreController extends Controller
      */
     public function create()
     {
-        return view('borsa.CreateOfert');
-       
+        //
     }
 
     /**
@@ -40,10 +37,7 @@ class OfEmpreController extends Controller
      */
     public function store(Request $request)
     {
-        $ofertes = Oferta::create($request->all());
-
-        return redirect('borsa.MyOferta');
-     
+        //
     }
 
     /**
@@ -86,9 +80,8 @@ class OfEmpreController extends Controller
      * @param  \App\Models\Oferta  $oferta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Oferta $oferta, $id)
+    public function destroy(Oferta $oferta)
     {
-        Oferta::destroy($id);
-        return redirect('borsa.MyOferta');
+        //
     }
 }

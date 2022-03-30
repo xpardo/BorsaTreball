@@ -9,6 +9,8 @@ use App\Http\Controllers\RegAlumController;
 use App\Http\Controllers\BorsaController;
 
 use App\Http\Controllers\OfEmpreController;
+
+use App\Http\Controllers\OfAlumController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,9 +52,15 @@ Route::get('/registreEmpre',function(){
 
 Route::get('/registreEmpre',[RegEmpreController::class, 'form'])->middleware('auth');
 Route::get('/perfilEmpre', [RegEmpreController::class, 'perfilEmpre'])->middleware('auth');
-/**-------------------------------------------------- */
-Route::resource('/MyOferta', OfEmpreController::class);
+/*-------------------------------------------------- */
+
+Route::resource('MyOferta', OfEmpreController::class);
+
 Route::get('CreateOfert', [OfEmpreController::class,'create']);
+Route::post('store', [OfEmpreController::class,'store']);
+Route::get('delete/{id}', [OfEmpreController::class,'delete']);
+Route::get('edit/{id}', [OfEmpreController::class,'edit']);
+Route::post('update', [OfEmpreController::class,'update']);
 
 /*------------------------------------ */
 
@@ -61,6 +69,15 @@ Route::get('/registreAlumne',function(){
 });
 Route::get('/registreAlumne',[RegAlumController::class, 'form'])->middleware('auth');
 Route::get('/perfilAlum', [RegAlumController::class, 'perfilAlum'])->middleware('auth');
+/*-------------------------------------------------- */
+
+Route::resource('MySolicitud', OfAlumController::class);
+
+
+
+
+
+/*-------------------------------------------------- */
 
 Route::get('/borsa', [BorsaController::class, 'borsa'])->middleware('auth');
 

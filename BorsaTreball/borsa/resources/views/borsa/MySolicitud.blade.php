@@ -21,21 +21,22 @@
 <!--Menu-->
     <div class="lletres">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        
+      
             <ul class="navbar-nav mr-auto">
 
-                    <li class="nav-item active">
-                        <a class="nav-link"  href="{{url('borsa')}}">  <i class="fa fa-duotone fa-user">Home</i></a>
-                    </li>
-
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{url('perfilEmpre')}}">  <i class="fa fa-duotone fa-user">Perfil</i></a>
-                    </li>
-    
-             
                 <li class="nav-item active">
-                    <a class="nav-link"  href="{{url('MyOferta')}}">  <i class="fa fa-duotone fa-user">Oferta</i></a>
+                    <a class="nav-link"  href="{{url('borsa')}}">  <i class="fa fa-duotone fa-user">Home</i></a>
                 </li>
+
+
+
+
+                <li class="nav-item active">
+                <a class="nav-link"  href="{{url('MySolicitud')}}">  <i class="fa fa-duotone fa-user">Les meves solicituds</i></a>
+                </li>
+                
+
+            
                        
                 
             </ul>
@@ -63,22 +64,22 @@
                                                             
                                             <label class="col-md-1"> tipus: </label>
                                                 <div class="form-check form-check-inline ">
-                                                    <label for="tipusP" class="form-check-label"> pública </label>
+                                                    <label for="tipusA" class="form-check-label"> Arxivades </label>
                                                     <input type="checkbox" name="tipus"   class="form-check-input @error('gender') is-invalid @enderror"
-                                                        id="tipusP" value="Pr" {{ old('tipus')== 'P' ? 'checked' : '' }}>
+                                                        id="tipusA" value="A" {{ old('tipus')== 'A' ? 'checked' : '' }}>
                                                 </div>
                                                 <div class="form-check form-check-inline">
 
-                                                    <label for="tipusI" class="form-check-label"> Interna</label>
+                                                    <label for="tipusC" class="form-check-label"> Curs</label>
                                                     <input type="checkbox"  name="tipus"  class="form-check-input @error('gender') is-invalid @enderror"
-                                                    id="tipusI" value="I" {{ old('tipus')== 'I' ? 'checked' : '' }}>
+                                                    id="tipusC" value="C" {{ old('tipus')== 'C' ? 'checked' : '' }}>
                                                 </div>
 
                                                 
 
                                         </div>
-                                    <br>
-                                    <a class="btn btn-primary" href="{{ url('CreateOfert') }}" role="button">Nova Oferta</a>
+                                   
+                                    
                                     <br>
                                         <div class="card-header">{{ __('Ofertes Actuals') }}</div>
                                             <div class="card-body">
@@ -87,7 +88,7 @@
                                                         <tr>
                                                         
                                                             <td scope="col">Oferta</td><!------la meva oferta------->
-                                                            <td scope="col">candidatures</td>
+                                                    
                                                         
                                                         </tr>
                                                     </thead>
@@ -96,7 +97,7 @@
                                                         <tr>
                                                     
                                                             <td>{{ $ofertes->miOfe }}</td>
-                                                            <td>{{ $ofertes->candidatures }}</td>
+                                                          
                                                         
                                                         </tr>
                                                         @endforeach
