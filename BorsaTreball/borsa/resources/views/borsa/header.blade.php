@@ -19,6 +19,8 @@
                                 <div class="col-12 col-md-8 ">
                                     <a  style="color: #ffff;" href="{{url('login')}}" ><i class="bi bi-person"></i> <b><strong>Login</strong></b></a><br><br>
                                 </div>
+
+                              
                             
                         </div>
                     </div>

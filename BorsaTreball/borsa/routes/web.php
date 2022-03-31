@@ -51,6 +51,14 @@ Route::get('/registreEmpre',function(){
 });
 
 Route::get('/registreEmpre',[RegEmpreController::class, 'form'])->middleware('auth');
+Route::post('registreEmpre', [RegEmpreController::class,'store']);
+
+
+
+
+
+
+
 Route::get('/perfilEmpre', [RegEmpreController::class, 'perfilEmpre'])->middleware('auth');
 /*-------------------------------------------------- */
 
@@ -82,6 +90,16 @@ Route::resource('MySolicitud', OfAlumController::class);
 Route::get('/borsa', [BorsaController::class, 'borsa'])->middleware('auth');
 
 /*------------------------------------ */
+
+
+Route::get('/login', [SessionsController::class,'create']);
+Route::post('/login', [SessionsController::class,'store']);
+Route::get('/logout', [SessionsController::class,'destroy']);
+/**----------------------------------------- */
+
+
+
+
 Route::get('/login',function(){
     return view('login');
 });
