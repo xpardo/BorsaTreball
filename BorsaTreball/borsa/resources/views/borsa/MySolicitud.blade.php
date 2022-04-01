@@ -75,8 +75,6 @@
                                                     id="tipusC" value="C" {{ old('tipus')== 'C' ? 'checked' : '' }}>
                                                 </div>
 
-                                                
-
                                         </div>
                                    
                                     

@@ -155,8 +155,7 @@
                                             </div>
                                         
                                         
-                                            
-
+                                    
                                             <!--checkbox---->
 
                                             <div  class="btn btn-info ">

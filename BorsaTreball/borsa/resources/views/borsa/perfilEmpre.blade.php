@@ -35,7 +35,8 @@
                 <li class="nav-item active">
                     <a class="nav-link"  href="{{url('MyOferta')}}">  <i class="fa fa-duotone fa-user">Oferta</i></a>
                 </li>
-                       
+                
+
                 
             </ul>
 
