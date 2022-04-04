@@ -20,7 +20,34 @@
                                     <a  style="color: #ffff;" href="{{url('login')}}" ><i class="bi bi-person"></i> <b><strong>Login</strong></b></a><br><br>
                                 </div>
 
-                              
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav mr-auto">
+                                    <!-- @if( auth()->check() )
+                                        <li class="nav-item">
+                                            <a  style="color: #ffff;" class="nav-link font-weight-bold" href="#">Hi {{ auth()->user()->name }}</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a  style="color: #ffff;" class="nav-link" href="/logout">Log Out</a>
+                                        </li>
+                                    @else
+                                        <li class="nav-item">
+                                            <a   style="color: #ffff;" class="nav-link" href="/login">Log In</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a  style="color: #ffff;" class="nav-link" href="/register">Register</a>
+                                        </li>
+                                    @endif
+ -->
+                    
+                        
+                    
+                                    </ul>
+                
+                    
+                
+                                </div>
+                                
+                       
                             
                         </div>
                     </div>

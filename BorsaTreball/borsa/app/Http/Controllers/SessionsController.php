@@ -23,7 +23,7 @@ class SessionsController extends Controller
      */
     public function create()
     {
-        return view('sessions.create');
+        return view('borsa.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class SessionsController extends Controller
                 'message' => 'The email or password is incorrect, please try again'
             ]);
         }
-        return redirect()->to('/borsa');
+        return redirect()->to('borsa.borsa');
     }
 
     /**
@@ -82,10 +82,10 @@ class SessionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
         auth()->logout();
         
-        return redirect()->to('/borsa');
+        return redirect('borsa.borsa');
     }
 }

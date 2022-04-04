@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Rules\Uppercase;
+use App\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -32,8 +33,7 @@ class RegAlumController extends Controller
             'email' =>  'required|email',
             'telefon' => 'required',
             'poblacio' => 'required',
-            'password1' => 'required',
-            'password2' => 'required|same:password1', 
+            'password' => 'required|confirmed',
             'estas' => 'required',
             'fet' => 'required',
             'treballat' => 'required',
@@ -62,6 +62,7 @@ class RegAlumController extends Controller
     public function create()
     {
         //
+        return view('registreAlumne.create');
     }
 
     /**
@@ -72,7 +73,25 @@ class RegAlumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'username' => 'required',
+            'cognom' => 'required',
+            'date' => 'required',
+            'cp' =>  'required',
+            'email' =>  'required|email',
+            'telefon' => 'required',
+            'poblacio' => 'required',
+            'password' => 'required|confirmed',
+            'estas' => 'required',
+            'fet' => 'required',
+            'treballat' => 'required',
+        ]);
+        
+        $al = User::create(request(['username', 'cognom','date','cp','email','telefon' ,'poblacio','password','estas','fet','treballat']));
+        
+        auth()->login($al);
+        
+        return redirect()->to('borsa.borsa'); 
     }
 
     /**

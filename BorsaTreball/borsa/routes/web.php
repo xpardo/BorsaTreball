@@ -11,6 +11,7 @@ use App\Http\Controllers\BorsaController;
 use App\Http\Controllers\OfEmpreController;
 
 use App\Http\Controllers\OfAlumController;
+use App\Http\Controllers\SessionsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,7 +52,10 @@ Route::get('/registreEmpre',function(){
 });
 
 Route::get('/registreEmpre',[RegEmpreController::class, 'form'])->middleware('auth');
-Route::post('registreEmpre', [RegEmpreController::class,'store']);
+/* 
+Route::get('/registreEmpre',[RegEmpreController::class, 'create']);
+Route::post('registreEmpre', [RegEmpreController::class,'store']); 
+*/
 
 
 
@@ -60,6 +64,8 @@ Route::post('registreEmpre', [RegEmpreController::class,'store']);
 
 
 Route::get('/perfilEmpre', [RegEmpreController::class, 'perfilEmpre'])->middleware('auth');
+
+
 /*-------------------------------------------------- */
 
 Route::resource('MyOferta', OfEmpreController::class);
@@ -76,6 +82,8 @@ Route::get('/registreAlumne',function(){
     return view('registreAlumne');
 });
 Route::get('/registreAlumne',[RegAlumController::class, 'form'])->middleware('auth');
+/* Route::get('/registreAlumne',[RegAlumController::class, 'create']);
+Route::post('registreAlumne', [RegAlumController::class,'store']); */
 Route::get('/perfilAlum', [RegAlumController::class, 'perfilAlum'])->middleware('auth');
 /*-------------------------------------------------- */
 

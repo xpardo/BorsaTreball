@@ -36,13 +36,13 @@
                         <div class="contenedor-input">
 
                             <label for="username">Nom</label><br><br>
-                            <input type="text" name="username" required>
+                            <input type="text" name="username"  class="form-control" id="name" required>
 
                         </div>
                         <div class="contenedor-input">
 
                             <label for="cognom">Cognom</label><br><br>
-                            <input type="text" name="cognom" required>
+                            <input type="text" name="cognom" class="form-control" id="cognom" required>
 
                         </div>
                     </div>
@@ -51,18 +51,18 @@
 
                         <div class="contenedor-input">
                             <label>E-mail</label><br><br>
-                            <input type="email" name="email" required>
+                            <input type="email" name="email" rclass="form-control" id="email" equired>
 
                         </div>
 
                         <div class="contenedor-input">
-                            <label>Password</label><br><br>
-                            <input type="password" name="password1" required>
+                            <label  for="password">Password</label><br><br>
+                            <input type="password" class="form-control" id="password" name="password">
                         </div>
 
                         <div class="contenedor-input">
-                            <label>Repetir password</label><br><br>
-                            <input type="password" name="password2" required>
+                            <label for="password_confirmation">Repetir password</label><br><br>
+                            <input type="password" class="form-control" id="password_confirmation"  name="password_confirmation">
                         </div>
 
 
@@ -73,26 +73,26 @@
                     <div class="contenedor-input">
 
                         <label for="empre">Nom de la empresa</label><br><br>
-                        <input type="text" name="empre" required>
+                        <input type="text" name="empre" class="form-control" id="empre" required>
 
                     </div>
 
                     <div class="contenedor-input">
                     <label>telefón/movil<i class="bi bi-telephone"></i></label><br><br>
-                        <input type="text" name="telefon">
+                        <input type="text" name="telefon" class="form-control" id="telefon">
                     </div>
 
 
                     <div class="contenedor-input">
 
                         <label for="identifi">Identificacio fiscal (C.I.F o N.I.F)</label><br><br>
-                        <input type="text" name="identifi" required>
+                        <input type="text" name="identifi" class="form-control" id="identifi" required>
 
                     </div>
 
                     <div class="contenedor-input">
                         <label for="poblacio">Població</label><br><br>
-                        <input type="text" name="poblacio" required>
+                        <input type="text" name="poblacio"  class="form-control" id="poblacio" required>
                     </div>
 
                     <input type="submit"  value="Registrarse "> <br>

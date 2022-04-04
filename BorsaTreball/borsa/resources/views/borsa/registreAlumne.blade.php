@@ -38,20 +38,20 @@
                         <div class="contenedor-input">
 
                             <label for="username">Nom</label><br><br>
-                            <input type="text" name="username" required>
+                            <input type="text" name="username"  class="form-control" id="username" required>
 
                             <label for="date">Data de naixement</label><br><br>
-                            <input type="date" name="date" required>
+                            <input type="date" name="date" class="form-control" id="date" required>
 
                         </div>
                         <div class="contenedor-input">
 
                             <label for="cognom">Cognom</label><br><br>
-                            <input type="text" name="cognom" required>
+                            <input type="text" name="cognom" class="form-control" id="cognom" required>
 
 
                             <label for="cp">Codi Postal</label><br><br>
-                            <input type="text" id="cp" name="cp" required>
+                            <input type="text" id="cp" name="cp" class="form-control" id="cp" required>
 
 
                         </div>
@@ -61,7 +61,7 @@
 
                         <div class="from-group form-row">
                             <label for="Genere" class="col-3">Genere </label><br><br>
-                            <select name="Genere">
+                            <select name="Genere" class="form-control" id="Genere">
                                 <option value="0"> </option>
                                 <option value="1"> Home  </option>
                                 <option value="2"> Dona  </option>
@@ -74,27 +74,27 @@
                     </div>
                     <div class="contenedor-input">
                         <label>telefón/movil<i class="bi bi-telephone"></i></label><br><br>
-                        <input type="text" name="telefon" required>
+                        <input type="text" name="telefon" class="form-control" id="telefon" required>
                     </div>
 
                     <div class="contenedor-input">
                         <label>Població</label><br><br>
-                        <input type="text" name="poblacio" required>
+                        <input type="text" name="poblacio" class="form-control" id="poblacio" required>
                     </div>
 
                     <div class="contenedor-input">
                         <label>E-mail</label><br><br>
-                        <input type="email" name="email" required>
+                        <input type="email" name="email" class="form-control" id="email" required>
 
                     </div>
                     <div class="contenedor-input">
-                        <label>Password</label><br><br>
-                        <input type="password"   class="form-control" placeholder="password" name="password1" required>
+                        <label  for="password">Password</label><br><br>
+                        <input type="password" class="form-control" id="password" name="password">
                     </div>
 
                     <div class="contenedor-input">
-                        <label>Repetir password</label><br><br>
-                        <input type="password"   class="form-control" placeholder="confirm_password" name="password2" required>
+                        <label for="password_confirmation">Repetir password</label><br><br>
+                        <input type="password" class="form-control" id="password_confirmation"  name="password_confirmation">
                     </div>
 
 
