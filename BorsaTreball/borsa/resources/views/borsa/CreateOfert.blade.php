@@ -89,7 +89,7 @@
 
                                                             <br><br>
                                                             <div class="form-check form-switch">
-                                                                <input class="form-check-input" type="checkbox" id="flexT" value="T" {{ old('flex')== 'F' ? 'checked' : '' }}>
+                                                                <input class="form-check-input" type="checkbox" name="flexT" id="flexT" value="T" {{ old('flex')== 'F' ? 'checked' : '' }}>
                                                                 <label class="form-check-label" for="flexT">privat</label>
                                                             </div>
                                                                 <button type="submit" class="btn btn-primary">Create</button>

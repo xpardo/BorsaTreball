@@ -52,14 +52,12 @@ Route::get('/registreEmpre',function(){
 });
 
 Route::get('/registreEmpre',[RegEmpreController::class, 'form'])->middleware('auth');
+Route::get('editempresa/{id}', [FileController::class,'edit']);
+Route::post('update', [FileController::class,'update']);
 /* 
 Route::get('/registreEmpre',[RegEmpreController::class, 'create']);
 Route::post('registreEmpre', [RegEmpreController::class,'store']); 
 */
-
-
-
-
 
 
 
@@ -85,6 +83,7 @@ Route::get('/registreAlumne',[RegAlumController::class, 'form'])->middleware('au
 /* Route::get('/registreAlumne',[RegAlumController::class, 'create']);
 Route::post('registreAlumne', [RegAlumController::class,'store']); */
 Route::get('/perfilAlum', [RegAlumController::class, 'perfilAlum'])->middleware('auth');
+
 /*-------------------------------------------------- */
 
 Route::resource('MySolicitud', OfAlumController::class);

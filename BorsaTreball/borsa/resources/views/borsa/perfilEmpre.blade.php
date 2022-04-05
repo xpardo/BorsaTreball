@@ -6,59 +6,72 @@
 
 
 
-    <!---logo--->
 
     <nav class="navbar navbar-expand-lg navbar-light m-2"  style="background-color: #bcdefd;">
-    
-         
-                           
-        <div class="col-12 col-md-3">
 
+        <div class="col-sm ">
+            <div class="ins ">
+                <div id="logo_centre_widget-3 ">
+                    <div class="targeta_id_centre row ">
+                        <div class="large-6 small-12 columns logo_inline hide-for-small ">
+                            <div class="overflow-hidden  sm:rounded-lg">
+                            
+                              
 
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav mr-auto">
+                                    
+                                        <li class="nav-item active">
+                                            <a class="nav-link"  href="{{url('borsa')}}">  <i class="fa fa-duotone fa-user">Home</i></a>
+                                        </li>
 
-    </div>
-<!--Menu-->
-    <div class="lletres">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        
-            <ul class="navbar-nav mr-auto">
-
-                    <li class="nav-item active">
-                        <a class="nav-link"  href="{{url('borsa')}}">  <i class="fa fa-duotone fa-user">Home</i></a>
-                    </li>
-
-                    <li class="nav-item active">
-                    <a class="nav-link" href="{{url('perfilEmpre')}}">  <i class="fa fa-duotone fa-user">Perfil</i></a>
-                    </li>
-    
-             
-                <li class="nav-item active">
-                    <a class="nav-link"  href="{{url('MyOferta')}}">  <i class="fa fa-duotone fa-user">Oferta</i></a>
-                </li>
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="{{url('perfilEmpre')}}">  <i class="fa fa-duotone fa-user">Perfil</i></a>
+                                        </li>
+                        
+                                
+                                        <li class="nav-item active">
+                                            <a class="nav-link"  href="{{url('MyOferta')}}">  <i class="fa fa-duotone fa-user">Oferta</i></a>
+                                        </li>
+                        
+                    
+                                    </ul>
                 
-
+                    
                 
-            </ul>
-
+                                </div>
+                                
+                       
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</nav>
 
-    </button>
 
-    </nav>
+
+
+
 
  
 
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 bg-white border-b border-gray-200">
+                        <a class="btn btn-secondary " style="color: #ffff;" href="{{url('editempresa')}}"><u>edit</u></a>
+                        </div>
+                    </div>
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
 
                         @csrf
 
                                     <label for="edit" class="col-10">Nom :
-                                    <a>{{ $username }}</a></label>
+                                    <a>{{ $name }}</a></label>
 
                                     <label for="edit" class="col-10">cognom :
                                     <a>{{ $cognom }}</a></label>
@@ -86,7 +99,7 @@
 
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
-                            <label for="Tipus" class="col-10">logo: </label><br><br>
+                            <label for="logotip" class="col-10">logo: </label><br><br>
                         </div>
                     </div>
         

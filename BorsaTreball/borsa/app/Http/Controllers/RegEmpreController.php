@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use App\Models\Empresa;
 
 
 class RegEmpreController extends Controller
@@ -22,7 +23,7 @@ class RegEmpreController extends Controller
      public function perfilEmpre(Request $request){
        
         $validated = $request->validate([
-            'username' => 'required',
+            'name' => 'required',
             'cognom' => 'required',
             'email' =>  'required|email',
             'password' => 'required|confirmed',
@@ -53,7 +54,7 @@ class RegEmpreController extends Controller
     public function store(Request $request)
     {
      $this->validate(request(), [
-            'username' => 'required',
+            'name' => 'required',
             'cognom' => 'required',
             'email' =>  'required|email',
             'password' => 'required|confirmed',
@@ -63,7 +64,7 @@ class RegEmpreController extends Controller
             'poblacio' => 'required',
         ]);
         
-        $empr = User::create(request(['username', 'cognom','email', 'password','empre','telefon','telefon','identifi','poblacio']));
+        $empr = User::create(request(['name', 'cognom','email', 'password','empre','telefon','telefon','identifi','poblacio']));
         
         auth()->login($empr);
         
@@ -79,12 +80,26 @@ class RegEmpreController extends Controller
   
     public function edit($id)
     {
-        //
+        $empresa = Empresa::findOrFail($id);
+
+        return view('borsa.editempresa', compact('empresa')); 
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'cognom' => 'required',
+            'email' =>  'required|email',
+            'empre' => 'required',
+            'telefon' => 'required',
+            'identifi' => 'required',
+            'poblacio' => 'required',
+            'logo' => 'required',
+        ]);
+        Game::whereId($id)->update($validatedData);
+
+        return redirect('borsa.perfilEmpre')->with('success', 'Game Data is successfully updated'); 
     }
 
    

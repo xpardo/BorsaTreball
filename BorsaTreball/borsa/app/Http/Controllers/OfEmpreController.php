@@ -28,7 +28,11 @@ class OfEmpreController extends Controller
      */
     public function create()
     {
+       
+
+
         return view('borsa.CreateOfert');
+        return redirect('MyOferta');
        
     }
 
@@ -40,9 +44,22 @@ class OfEmpreController extends Controller
      */
     public function store(Request $request)
     {
-        $ofertes = Oferta::create($request->all());
+        
 
-        return redirect('borsa.MyOferta');
+
+        $validatedData = $request->validate([
+
+            'cicle' => 'required',
+            'tipus' => 'required',
+            'sala' => 'required',
+            'h' => 'required',
+            'desc' => 'required',
+            'flexT' => 'required',
+            
+        ]);
+        $ofertes = Oferta::create($validatedData);
+   
+        return redirect('MyOferta')->with('success', 'Game is successfully saved');
      
     }
 
@@ -54,7 +71,7 @@ class OfEmpreController extends Controller
      */
     public function show(Oferta $oferta)
     {
-        //
+        return view('borsa.show',compact('oferta'));
     }
 
     /**

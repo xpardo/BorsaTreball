@@ -35,8 +35,8 @@
                     <div class="fila-arriba">
                         <div class="contenedor-input">
 
-                            <label for="username">Nom</label><br><br>
-                            <input type="text" name="username"  class="form-control" id="name" required>
+                            <label for="name">Nom</label><br><br>
+                            <input type="text" name="name"  class="form-control" id="name" required>
 
                         </div>
                         <div class="contenedor-input">
