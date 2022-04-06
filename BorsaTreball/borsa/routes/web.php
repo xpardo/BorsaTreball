@@ -70,9 +70,9 @@ Route::resource('MyOferta', OfEmpreController::class);
 
 Route::get('CreateOfert', [OfEmpreController::class,'create']);
 Route::post('store', [OfEmpreController::class,'store']);
-Route::get('delete/{id}', [OfEmpreController::class,'delete']);
 Route::get('edit/{id}', [OfEmpreController::class,'edit']);
 Route::post('update', [OfEmpreController::class,'update']);
+Route::get('delete/{id}', [OfEmpreController::class,'delete']);
 
 /*------------------------------------ */
 
@@ -112,7 +112,8 @@ Route::get('/login',function(){
 });
 
 
+Auth::routes();
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Auth::routes();

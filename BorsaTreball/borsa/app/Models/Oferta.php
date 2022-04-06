@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Oferta extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'cicle' ,
+        'tipus' ,
+        'sala' ,
+        'h' ,
+        'desc' ,
+        'flexT' ,
+    ];
 }

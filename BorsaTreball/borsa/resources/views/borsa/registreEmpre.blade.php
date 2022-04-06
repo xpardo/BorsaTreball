@@ -1,8 +1,8 @@
-<x-app-layout>
+@extends('layouts.app')
+ 
+ @section('content')
 
-    <x-slot name="header">
 
-    </x-slot>
 
     
     @include('borsa.header')
@@ -110,6 +110,7 @@
     @include('borsa.footer')
 
 
-</x-app-layout>
+
 
 @include('estil/regi')
+@endsection

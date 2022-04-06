@@ -1,6 +1,9 @@
-<x-app-layout>
-    <x-slot name="header">
-    </x-slot>
+
+  
+
+@extends('layouts.app')
+ 
+ @section('content')
     @include('borsa.header')
 
 
@@ -271,10 +274,47 @@
                
             </div>
         </div>
+
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
         
    @include('borsa.footer')
-</x-app-layout>
+
  
 
-@include('estil/home')
+@include('estil/home')    
+
+
+@endsection

@@ -22,7 +22,9 @@
 
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav mr-auto">
+
                                     <!-- @if( auth()->check() )
+
                                         <li class="nav-item">
                                             <a  style="color: #ffff;" class="nav-link font-weight-bold" href="#">Hi {{ auth()->user()->name }}</a>
                                         </li>
@@ -37,7 +39,7 @@
                                             <a  style="color: #ffff;" class="nav-link" href="/register">Register</a>
                                         </li>
                                     @endif
- -->
+                                    -->
                     
                         
                     

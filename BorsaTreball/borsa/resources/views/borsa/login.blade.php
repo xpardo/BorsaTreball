@@ -1,21 +1,9 @@
-<x-app-layout>
+@extends('layouts.app')
+ 
+ @section('content')
 
-    <x-slot >
-
-    </x-slot>
-
-    <body>
-    @include('header')
-    @if ($errors->any())
-    <div class ="alert alert-danger">
-        <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-        </ul>
-    </div>
-
-    @endif
+    
+   
 
 
 
@@ -30,9 +18,7 @@
             <div id="Login">
                 <h1>Login</h1>
 
-                @extends('layouts.master')
-
-                    @section('content')
+             
 
                         <h2>Log In</h2>
                         
@@ -54,7 +40,7 @@
                             @include('partials.formerrors')
                         </form>
 
-                    @endsection
+                   
                 <p>
                 <a href="{{url('borsa')}}"><u>home</u></a>
                 </p>
@@ -87,8 +73,6 @@
 
     @include('footer')
 
-
-    </x-app-layout>
 
 
 
@@ -248,3 +232,6 @@
         box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
     }
 </style>
+
+
+@endsection

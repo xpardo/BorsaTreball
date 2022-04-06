@@ -15,7 +15,7 @@ class OfEmpreController extends Controller
     public function index()
     {
         return view("borsa.MyOferta", [
-            "ofertes" => Oferta::all()
+            "ofertas" => Oferta::all()
         ]);
 
        
@@ -46,20 +46,60 @@ class OfEmpreController extends Controller
     {
         
 
-
-        $validatedData = $request->validate([
-
+         // Validar fitxer
+       $validatedData = $request->validate([
             'cicle' => 'required',
             'tipus' => 'required',
             'sala' => 'required',
             'h' => 'required',
             'desc' => 'required',
             'flexT' => 'required',
-            
         ]);
-        $ofertes = Oferta::create($validatedData);
    
-        return redirect('MyOferta')->with('success', 'Game is successfully saved');
+        // Obtenir dades del fitxer
+        $upload = $request->oferta('cicle','tipus','sala','h' ,'desc','flexT' );
+        $fileName = $upload->getClientOriginalName();
+        $fileSize = $upload->getSize();
+        \Log::debug("Storing oferta '{$fileName}' ($fileSize)...");
+
+        // Pujar fitxer al disc dur
+        $uploadName = time() . '_' . $fileName;
+        $filePath = $upload->storeAs(
+            'cicle' ,
+            'tipus' ,
+            'sala' ,
+            'h' ,
+            'desc' ,
+            'flexT' ,   // Path
+            $uploadName ,   // Filename
+            'public'        // Disk
+        );
+    
+        if (\Storage::disk('public')->exists($filePath)) {
+            \Log::debug("Local storage OK");
+            $fullPath = \Storage::disk('public')->path($filePath);
+            \Log::debug("Oferta saved at {$fullPath}");
+            // Desar dades a BD
+            $oferta = Oferta::create([
+                
+                'cicle' =>$cicle,
+                'tipus' => $tipus ,
+                'sala' => $sala,
+                'h' => $h,
+                'desc' => $desc,
+                'flexT' => $flexT,
+            ]);
+            \Log::debug("DB storage OK");
+            // Patró PRG amb missatge d'èxit
+            return redirect()->route('borsa.show', $oferta)
+                ->with('success', 'Oferta successfully saved');
+        } else {
+            \Log::debug("Local storage FAILS");
+            // Patró PRG amb missatge d'error
+            return redirect()->route("borsa.CreateOfert")
+                ->with('error', 'ERROR uploading oferta');
+        } 
+
      
     }
 

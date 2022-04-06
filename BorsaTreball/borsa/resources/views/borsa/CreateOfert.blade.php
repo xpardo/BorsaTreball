@@ -1,21 +1,10 @@
-<x-app-layout>
-
-    <x-slot name="header">
-
-    </x-slot>
+@extends('layouts.app')
+ 
+ @section('content')
 
     
     @include('borsa.header')
-    @if ($errors->any())
-        <div class ="alert alert-danger">
-            <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        </div>
-
-    @endif
+    
 
 
  
@@ -25,7 +14,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                 
                       
-                           
+          
 
                                 <!-- Contenido de los Formularios -->
                                     <div class="contenido-tab">
@@ -33,7 +22,8 @@
                                         <!-- Registrarse -->
                                         <div id="registrarse">
                                             <h3><strong>Registrarse</strong></h3>
-                                            <form method="post" action="{{ url('borsa.MyOferta') }}" enctype="multipart/form-data">
+                                            <form action="{{ url('borsa.store') }}"   method="POST" enctype="multipart/form-data">
+                            
                                                         @csrf 
                                                         <div class="dropdown">
                                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -113,6 +103,15 @@
     @include('borsa.footer')
 
 
-</x-app-layout>
+
 
 @include('estil/perfil')
+
+
+
+
+
+@endsection
+
+
+

@@ -1,8 +1,7 @@
-<x-app-layout>
+@extends('layouts.app')
+ 
+ @section('content')
 
-    <x-slot >
-
-    </x-slot>
 
     <body>
     @include('header')
@@ -88,7 +87,6 @@
     @include('footer')
 
 
-    </x-app-layout>
 
 
 
@@ -248,3 +246,8 @@
         box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
     }
 </style>
+
+
+
+
+@endsection

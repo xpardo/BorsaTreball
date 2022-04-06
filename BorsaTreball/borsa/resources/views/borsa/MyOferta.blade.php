@@ -1,7 +1,6 @@
-<x-app-layout>
-    <x-slot name="header">
-    @section('content')
-    </x-slot>
+@extends('layouts.app')
+ 
+ @section('content')
    
 @include('borsa.header')
 
@@ -48,6 +47,7 @@
     </nav>
 
  
+  
 
   
     <div class="py-12">
@@ -78,12 +78,14 @@
 
                                         </div>
                                     <br>
-                                    <a class="btn btn-primary" href="{{ url('CreateOfert') }}" role="button">Nova Oferta</a>
+                                    <td><a  class="btn btn-primary" href="{{url("CreateOfert")}}">Crear file </a></td>
                                     <br>
-                                        <div class="card-header">{{ __('Ofertes Actuals') }}</div>
+                                        <div class="card-header">{{ __('oferta Actuals') }}</div>
+                                        
                                             <div class="card-body">
                                                 <table class="table">
                                                     <thead>
+                                               
                                                         <tr>
                                                         
                                                             <td scope="col">Oferta</td><!------la meva oferta------->
@@ -92,11 +94,11 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($ofertes as $ofertes)
+                                                        @foreach ($ofertas as $oferta)
                                                         <tr>
                                                     
-                                                            <td>{{ $ofertes->miOfe }}</td>
-                                                            <td>{{ $ofertes->candidatures }}</td>
+                                                            <td>{{ $oferta->miOfe }}</td>
+                                                            <td>{{ $oferta->candidatures }}</td>
                                                         
                                                         </tr>
                                                         @endforeach
@@ -113,10 +115,13 @@
             </div> 
         </div>
     </div>            
+  
         <br><br>
 
-        
+     
                     @include('borsa.footer')
-</x-app-layout>
 
 @include('estil/perfil')
+
+
+@endsection
