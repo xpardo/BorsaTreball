@@ -28,8 +28,6 @@ class OfEmpreController extends Controller
      */
     public function create()
     {
-       
-
 
         return view('borsa.CreateOfert');
         return redirect('MyOferta');
