@@ -88,7 +88,8 @@
                                                
                                                         <tr>
                                                         
-                                                            <td scope="col">Oferta</td><!------la meva oferta------->
+                                                            <td scope="col">nom</td><!------la meva oferta------->
+                                                            <td scope="col">cicle</td>
                                                             <td scope="col">candidatures</td>
                                                         
                                                         </tr>
@@ -97,7 +98,8 @@
                                                         @foreach ($ofertas as $oferta)
                                                         <tr>
                                                     
-                                                            <td>{{ $oferta->miOfe }}</td>
+                                                            <td>{{ $oferta->name }}</td>
+                                                            <td>{{ $oferta->cicle }}</td>
                                                             <td>{{ $oferta->candidatures }}</td>
                                                         
                                                         </tr>

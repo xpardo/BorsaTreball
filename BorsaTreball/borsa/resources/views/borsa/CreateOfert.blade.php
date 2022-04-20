@@ -22,10 +22,14 @@
                                         <!-- Registrarse -->
                                         <div id="registrarse">
                                             <h3><strong>Registrarse</strong></h3>
-                                            <form action="{{ url('borsa.store') }}"   method="POST" enctype="multipart/form-data">
+                                            <form action="{{ url('MyOferta') }}"   method="POST" enctype="multipart/form-data">
                             
                                                         @csrf 
                                                         <div class="dropdown">
+
+                                                     
+
+
                                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                             Cicle
                                                             </button>
@@ -44,27 +48,22 @@
                                                         <div  class="btn btn-info ">
                                                             
                                                             <label>tipus: </label>
-                                                                <div class="form-check form-check-inline">
-                                                                    <label for="tipusPr" class="form-check-label "> Practiques </label>
-                                                                    <input type="checkbox" name="tipus"   class="form-check-input @error('gender') is-invalid @enderror"
-                                                                        id="tipusPr" value="Pr" {{ old('tipus')== 'Pr' ? 'checked' : '' }}>
-                                                                </div>
-                                                                <div class="form-check form-check-inline">
-
-                                                                    <label for="tipusOp" class="form-check-label"> Practiques amb opció de quedarse</label>
-                                                                    <input type="checkbox"  name="tipus"  class="form-check-input @error('gender') is-invalid @enderror"
-                                                                    id="tipusOp" value="Op" {{ old('tipus')== 'Op' ? 'checked' : '' }}>
-                                                                </div>
-
-                                                                <div class="form-check form-check-inline">
-                                                                    <label for="tipusTr" class="form-check-label"> treballar</label>
-                                                                    <input type="checkbox"  name="tipus"  class="form-check-input @error('gender') is-invalid @enderror"
-                                                                    id="tipusTr" value="Tr" {{ old('tipus')== 'Tr' ? 'checked' : '' }}>
-                                                                </div>
+                                                                
+                                                            <div class="checkbox">
+                                                                <label><input type="checkbox" value="coindesk" name="tipus[]">Practiques</label>
+                                                            
+                                                                <label><input type="checkbox" value="coinbase" name="tipus[]">Practiques amb opció de quedarse</label>
+                                                            
+                                                                <label><input type="checkbox" value="zebpay" name="tipus[]">treballar</label>
+                                                            </div>
+                                                                
 
                                                         </div>
                                                             <br><br>
-
+                                                            
+                                                            <label class="col-10">nom: </label>
+                                                            <input type="text" id="name" name="name">
+                                                            <br><br>
                                                             <label class="col-10">Salari: </label>
                                                             <input type="num" id="sala" name="sala">
                                                             <br><br>
@@ -79,9 +78,17 @@
 
                                                             <br><br>
                                                             <div class="form-check form-switch">
-                                                                <input class="form-check-input" type="checkbox" name="flexT" id="flexT" value="T" {{ old('flex')== 'F' ? 'checked' : '' }}>
+                                                                <input class="form-check-input" type="checkbox" name="flexT[]" id="flexT">
                                                                 <label class="form-check-label" for="flexT">privat</label>
                                                             </div>
+
+
+                                                        
+
+
+
+
+
                                                                 <button type="submit" class="btn btn-primary">Create</button>
                                                                 <button type="reset" class="btn btn-secondary">Reset</button>
 
