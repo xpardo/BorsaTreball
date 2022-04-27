@@ -21,6 +21,8 @@ class OfEmpreController extends Controller
        
     }
 
+    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,7 +60,7 @@ class OfEmpreController extends Controller
         $oferta->checkbox = $checkbox; 
         $oferta = Oferta::create($validatedData);
    
-        return redirect('borsa.borsa')->with('success', 'Oferta is successfully saved');
+        return redirect('borsa.MyOferta')->with('success', 'Oferta is successfully saved');
 
      
     }
@@ -82,7 +84,7 @@ class OfEmpreController extends Controller
      */
     public function edit(Oferta $oferta)
     {
-        //
+        return view('borsa.edit',compact('file'));
     }
 
     /**
@@ -94,7 +96,21 @@ class OfEmpreController extends Controller
      */
     public function update(Request $request, Oferta $oferta)
     {
-        //
+        $request->validate([
+            
+            'nom' => 'required',
+            'cicle' => 'required',
+            'sala' => 'required',
+            'h' => 'required',
+            'desc' => 'required',
+        ]);
+
+        
+        $oferta->update($request->all());
+
+        return redirect()->route('borsa.MyOferta')
+            ->with('success','oferta updated successfully');
+
     }
 
     /**
@@ -105,7 +121,9 @@ class OfEmpreController extends Controller
      */
     public function destroy(Oferta $oferta, $id)
     {
-        Oferta::destroy($id);
-        return redirect('borsa.MyOferta');
+        $oferta->delete();
+    
+        return redirect()->route('borsa.MyOferta')
+        ->with('success','file delete successfully');
     }
 }

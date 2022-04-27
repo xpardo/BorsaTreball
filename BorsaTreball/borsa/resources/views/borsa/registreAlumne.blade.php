@@ -26,32 +26,52 @@
         <!-- Contenido de los Formularios -->
         <div class="contenido-tab">
 
-            <!-- Registrarse -->
+            <!-- Registrar-se -->
             <div id="registrarse">
-                <h1>Registrarse</h1>
+                <h1>Registrar-se</h1>
 
                
-                <form nmethod="post"  action="perfilAlum" >
-                @csrf 
+                <form action="{{ route('register.custom') }}" method="POST" enctype="multipart/form-data"> 
+               
+                    @csrf 
                     <div class="fila-arriba">
                         <div class="contenedor-input">
 
-                            <label for="username">Nom</label><br><br>
-                            <input type="text" name="username"  class="form-control" id="username" required>
+                            <label for="name" >{{__('Nom')}}</label><br><br>
+                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}" required autocomplete="name" autofocus> 
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
 
-                            <label for="date">Data de naixement</label><br><br>
-                            <input type="date" name="date" class="form-control" id="date" required>
 
+
+                            <label for="neixement" >{{__('Data de naixement')}}</label><br><br>
+                            <input type="date" name="neixement" class="form-control @error('neixement') is-invalid @enderror" id="neixement"  value="{{old('neixement')}}" required autocomplete="neixement" autofocus>
+                            @error('neixement')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="contenedor-input">
 
-                            <label for="cognom">Cognom</label><br><br>
-                            <input type="text" name="cognom" class="form-control" id="cognom" required>
+                            <label for="cognom">{{__('Cognom')}}</label><br><br>
+                            <input type="text" name="cognom" class="form-control @error('cognom') is-invalid @enderror"  id="cognom" value="{{old('cognom')}}" required autocomplete="cognom" autofocus>
+                            @error('Cognom')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
 
-
-                            <label for="cp">Codi Postal</label><br><br>
-                            <input type="text" id="cp" name="cp" class="form-control" id="cp" required>
-
+                            <label for="cp">{{__('Codi Postal')}}</label><br><br>
+                            <input type="text" id="cp" name="cp" class="form-control @error('cp') is-invalid @enderror" id="cp" value="{{old('cp')}}" required autocomplete="cp" autofocus>
+                            @error('cp')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
 
                         </div>
                     </div>
@@ -59,8 +79,8 @@
                     <div class="contenedor-input">
 
                         <div class="from-group form-row">
-                            <label for="Genere" class="col-3">Genere </label><br><br>
-                            <select name="Genere" class="form-control" id="Genere">
+                            <label for="genere" class="col-3">{{__('Genere')}} </label><br><br>
+                            <select name="genere" class="form-control @error('genere') is-invalid @enderror" id="genere" autofocus>
                                 <option value="0"> </option>
                                 <option value="1"> Home  </option>
                                 <option value="2"> Dona  </option>
@@ -72,28 +92,48 @@
 
                     </div>
                     <div class="contenedor-input">
-                        <label>telefón/movil<i class="bi bi-telephone"></i></label><br><br>
-                        <input type="text" name="telefon" class="form-control" id="telefon" required>
+                        <label for="telefon">{{__('telefón/movil')}}<i class="bi bi-telephone"></i></label><br><br>
+                        <input type="text" name="telefon" class="form-control @error('telefon') is-invalid @enderror"  id="telefon"  value="{{old('telefon')}}"  autocomplete="telefon" autofocus>
+                        @error('telefon')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="contenedor-input">
-                        <label>Població</label><br><br>
-                        <input type="text" name="poblacio" class="form-control" id="poblacio" required>
+                        <label  for="poblacio">{{__('Població')}}</label><br><br>
+                        <input type="text" name="poblacio" class="form-control @error('poblacio') os-invalid @enderror" id="poblacio" value="{{old('poblacio')}}" required autocomplete="poblacio" autofocus>
+                        @error('poblacio')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="contenedor-input">
-                        <label>E-mail</label><br><br>
-                        <input type="email" name="email" class="form-control" id="email" required>
-
+                        <label>{{__('Email')}}</label><br><br>
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="contenedor-input">
-                        <label  for="password">Password</label><br><br>
-                        <input type="password" class="form-control" id="password" name="password">
+                        <label  for="password">{{__('Password') }}</label><br><br>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror"  id="password" name="password" require autocomplete="new-password">
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="contenedor-input">
-                        <label for="password_confirmation">Repetir password</label><br><br>
-                        <input type="password" class="form-control" id="password_confirmation"  name="password_confirmation">
+                        <label for="password_confirmation">{{__('Repetir password')}}</label><br><br>
+                        <input type="password" class="form-control" id="password_confirmation"  name="password_confirmation" require autocomplete="new-password">
                     </div>
 
 
@@ -103,15 +143,15 @@
 
                             <div class="from-group form-row offset-9 col-3">
 
-                                <label>Estas en practiques ?</label><br><br>
+                                <label>{{__('Estas en practiques ?')}}</label><br><br>
 
-                                <label for="estasSi" class="form-check-label"> Si </label>
-                                <input type="checkbox" name="estas"   class="form-check-input @error('estas') is-invalid @enderror"
-                                 id="estasSi" value="Si" {{ old('estas')== 'Si' ? 'checked' : '' }}>
+                                <label for="estasSi" class="form-check-label"> {{__('Si')}} </label>
+                                <input type="checkbox" name="estat"   class="form-check-input @error('estas') is-invalid @enderror"
+                                 id="estasSi" value="Si" {{ old('estat')== 'Si' ? 'checked' : '' }}>
 
                                 <br><br>
 
-                                <label for="estasNo" class="form-check-label"> No </label>
+                                <label for="estasNo" class="form-check-label"> {{__('No')}} </label>
                                 <input type="checkbox"  name="estas"  class="form-check-input @error('estas') is-invalid @enderror"
                                 id="estasNo" value="No" {{ old('estas')== 'No' ? 'checked' : '' }}>
 
@@ -121,15 +161,15 @@
                             
                             <div class="from-group form-row offset-9 col-3">
 
-                                <label>Has fet practiques abans ?</label><br><br>
+                                <label>{{__('Has fet practiques abans ?')}}</label><br><br>
 
-                                <label for="fetSi" class="form-check-label"> Si </label>
+                                <label for="fetSi" class="form-check-label"> {{__('Si')}} </label>
                                 <input type="checkbox"  name="fet"  class="form-check-input @error('fet') is-invalid @enderror"
                                 id="fetSi" value="Si" {{ old('fet')== 'Si' ? 'checked' : '' }}>
 
                                 <br><br>
 
-                                <label for="fetNo" class="form-check-label"> No </label>
+                                <label for="fetNo" class="form-check-label"> {{__('No')}} </label>
                                 <input type="checkbox"  name="fet"  class="form-check-input @error('fet') is-invalid @enderror"
                                 id="fetNo" value="No" {{ old('fet')== 'No' ? 'checked' : '' }}>
 
@@ -139,15 +179,15 @@
                           
                             <div class="from-group form-row offset-9 col-3">
 
-                                <label>Estas o has treballat ?</label><br><br>
+                                <label>{{__('Estas o has treballat ?')}}</label><br><br>
 
-                                <label for="treballatSi" class="form-check-label"> Si </label>
+                                <label for="treballatSi" class="form-check-label">{{__('Si')}} </label>
                                 <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
                                 id="treballatSi" value="Si" {{ old('treballat')== 'Si' ? 'checked' : '' }}>
 
                                 <br><br>
 
-                                <label for="treballatNo" class="form-check-label"> No </label>
+                                <label for="treballatNo" class="form-check-label"> {{__('No')}} </label>
                                 <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
                                 id="treballatNo" value="No" {{ old('treballat')== 'No' ? 'checked' : '' }}>
 
@@ -156,9 +196,15 @@
 
                         </div>
 
-                            <input type="submit" value="Registrarse "> <br>
+                        
+                        <div class="d-grid mx-auto">
+                            <button type="submit" class="btn btn-success btn-block">{{__('Registrar-se')}}</button>
+                        </div>
                             <p>
-                                <a class="inf ">Pots especificar als cicles i posar  curriculums,cartas de presentacio i carrtas de recomendació en el perfil</a>
+                                <a class="inf ">
+                                    Pots especificar als cicles i posar  curriculums,
+                                    cartas de presentacio i carrtas de recomendació en el perfil
+                                </a>
                             </p>
                             <p>
                                 <a  href="{{url('borsa')}}"><u>home</u></a>

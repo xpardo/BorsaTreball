@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Rules\Uppercase;
 use App\User;
+use Hash;
+use Session;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Alumne;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -13,40 +17,126 @@ use Illuminate\Routing\Controller as BaseController;
 
 
 
-
 class RegAlumController extends Controller
 {
+    
+    public function index()
+    {
+        //
+        return view('borsa.log');
+    }
 
+
+
+
+    public function customLog(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+    
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('borsa')
+                        ->withSuccess('Signed in');
+        }
+   
+        return redirect("borsa.log")->withSuccess('Log details are not valid');
+    }
 
     public function form(){
+   /*      return view('borsa.registreAlumne'); */
         return view('borsa.registreAlumne');
      }
 
 
-     public function perfilAlum(Request $request){
-       
-        $validated = $request->validate([
-            'username' => 'required',
+
+
+
+
+
+    public function registration()
+    {
+        return view('borsa.registreAlumne');
+    }
+
+    public function customRegistration(Request $request)
+    {  
+        $request->validate([
+            'name' => 'required',
             'cognom' => 'required',
-            'date' => 'required',
+            'neixement' => 'required',
+            'genere' => 'required',
             'cp' =>  'required',
             'email' =>  'required|email',
             'telefon' => 'required',
             'poblacio' => 'required',
-            'password' => 'required|confirmed',
-            'estas' => 'required',
+            'password' => 'required',
+            'password_confirmation' => 'required|same:password',  
+            'estat' => 'required',
             'fet' => 'required',
             'treballat' => 'required',
+        ]);
+            
+        $data = $request->all();
+        $check = $this->create($data);
+          
+        return redirect("borsa")->withSuccess('You have signed-in');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(array $data)
+    {
         
+        return Alumne::create([
+            'name' => $data['name'],
+            'cognom' => $data['cognom'],
+            'neixement' => $data['neixement'],
+            'genere' => $data['genere'],
+            'cp' => $data['cp'],
+            'email' => $data['email'],
+            'telefon' => $data['telefon'],
+            'poblacio' => $data['poblacio'],
+            'password' => Hash::make($data['password']),
+            'estat' => $data['estat'],
+            'fet' => $data['fet'],
+            'treballat' => $data['treballat'],
            
-
-        ]); return view('borsa.perfilAlum', $validated);
-
-     }
-
+          ]);
+    
+    }
 
 
-     public function update_avatar(Request $request){
+    public function dashboard()
+    {
+        if(Auth::check()){
+            return view('borsa.borsa');
+        }
+   
+        return redirect("borsa.borsa")->withSuccess('You are not allowed to access');
+    }
+     
+ 
+    public function signOut() {
+        Session::flush();
+        Auth::logout();
+   
+        return Redirect('borsa.borsa');
+    }
+
+
+
+
+     
+
+
+
+    public function update_avatar(Request $request){
 
     	// Handle the user upload of avatar
     	if($request->hasFile('avatar')){
@@ -63,26 +153,31 @@ class RegAlumController extends Controller
 
     }
  
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+   
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-        return view('registreAlumne.create');
-    }
+    public function perfilAlum(Request $request){
+       
+        $validated = $request->validate([
+            'name' => 'required',
+            'cognom' => 'required',
+            'neixement' => 'required',
+            'genere' => 'required',
+            'cp' =>  'required',
+            'email' =>  'required|email',
+            'telefon' => 'required',
+            'poblacio' => 'required',
+            'password' => 'required|confirmed',
+            'estat' => 'required',
+            'fet' => 'required',
+            'treballat' => 'required',
+            
+
+           
+
+        ]); return view('borsa.perfilAlum', $validated);
+
+     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -93,22 +188,23 @@ class RegAlumController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [
-            'username' => 'required',
+            'name' => 'required',
             'cognom' => 'required',
-            'date' => 'required',
+            'neixement' => 'required',
+            'genere' => 'required',
             'cp' =>  'required',
             'email' =>  'required|email',
             'telefon' => 'required',
             'poblacio' => 'required',
             'password' => 'required|confirmed',
-            'estas' => 'required',
+            'estat' => 'required',
             'fet' => 'required',
             'treballat' => 'required',
         ]);
         
-        $al = User::create(request(['username', 'cognom','date','cp','email','telefon' ,'poblacio','password','estas','fet','treballat']));
+        $al = User::create(request(['name', 'cognom','neixement','genere','cp','email','telefon' ,'poblacio','password','estat','fet','treballat']));
         
-        auth()->login($al);
+        auth()->log($al);
         
         return redirect()->to('borsa.borsa'); 
     }

@@ -14,32 +14,17 @@
                 <div class="targeta_id_centre row ">
                     <div class="large-6 small-12 columns logo_inline hide-for-small ">
                         <div class="overflow-hidden  sm:rounded-lg">
-                         
+                            <!--login al header--->
                                 <img alt="Logotip entitat " id="logo_entity " src="{{ asset('img/logo-JM-blau-miniatura-1.jpg') }}" width="120 " height="90 " alt=" ">
                                 <div class="col-12 col-md-8 ">
-                                    <a  style="color: #ffff;" href="{{url('login')}}" ><i class="bi bi-person"></i> <b><strong>Login</strong></b></a><br><br>
+
+                                
                                 </div>
 
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav mr-auto">
 
-                                    <!-- @if( auth()->check() )
-
-                                        <li class="nav-item">
-                                            <a  style="color: #ffff;" class="nav-link font-weight-bold" href="#">Hi {{ auth()->user()->name }}</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a  style="color: #ffff;" class="nav-link" href="/logout">Log Out</a>
-                                        </li>
-                                    @else
-                                        <li class="nav-item">
-                                            <a   style="color: #ffff;" class="nav-link" href="/login">Log In</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a  style="color: #ffff;" class="nav-link" href="/register">Register</a>
-                                        </li>
-                                    @endif
-                                    -->
+                                   
                     
                         
                     
@@ -59,6 +44,44 @@
     </div>
 </nav>
 
+
+<title>Custom Auth in Laravel</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-light navbar-expand-lg mb-5" style="background-color: #e3f2fd;">
+    <div class="container">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item">
+                     <a href="{{url('log')}}"  ><i class="bi bi-person"></i> <b><strong>Login</strong></b></a><br><br> 
+                </li>
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('borsa.log') }}">Login</a>
+                    </li>
+                   
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('signout') }}">Logout</a>
+                    </li>
+                @endguest
+                
+
+                
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+@yield('content')
 
 
 

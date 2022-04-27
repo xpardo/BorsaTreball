@@ -78,7 +78,7 @@
 
                                         </div>
                                     <br>
-                                    <td><a  class="btn btn-primary" href="{{url("CreateOfert")}}">Crear file </a></td>
+                                    <td><a  class="btn btn-primary" href="{{url("CreateOfert")}}">➕ Crear file </a></td>
                                     <br>
                                         <div class="card-header">{{ __('oferta Actuals') }}</div>
                                         

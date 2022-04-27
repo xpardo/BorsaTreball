@@ -12,6 +12,7 @@ use App\Http\Controllers\OfEmpreController;
 
 use App\Http\Controllers\OfAlumController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\editEmpreController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,7 +53,7 @@ Route::get('/registreEmpre',function(){
 });
 
 Route::get('/registreEmpre',[RegEmpreController::class, 'form'])->middleware('auth');
-Route::get('editempresa/{id}', [FileController::class,'edit']);
+/* Route::get('editempresa/{id}', [FileController::class,'edit']); */
 Route::post('update', [FileController::class,'update']);
 /* 
 Route::get('/registreEmpre',[RegEmpreController::class, 'create']);
@@ -62,7 +63,6 @@ Route::post('registreEmpre', [RegEmpreController::class,'store']);
 
 
 Route::get('/perfilEmpre', [RegEmpreController::class, 'perfilEmpre'])->middleware('auth');
-
 
 /*-------------------------------------------------- */
 
@@ -77,12 +77,33 @@ Route::get('delete/{id}', [OfEmpreController::class,'delete']);
 /*------------------------------------ */
 
 Route::get('/registreAlumne',function(){
-    return view('registreAlumne');
+    return view('borsa.registreAlumne');
 });
-Route::get('/registreAlumne',[RegAlumController::class, 'form'])->middleware('auth');
+/* Route::get('/registreAlumne',[RegAlumController::class, 'form'])->middleware('auth'); */
+
+ Route::get('/RegAlumController ', [RegAlumController::class, 'registration'])->name('/registreAlumne'); 
+
+
+
+/* Route::post('log', [RegAlumController::class, 'index'])->name('log');
+Route::post('custom-log', [RegAlumController::class, 'customLog'])->name('log'); 
+ */
 /* Route::get('/registreAlumne',[RegAlumController::class, 'create']);
+
 Route::post('registreAlumne', [RegAlumController::class,'store']); */
+
+Route::put('custom-registration', [RegAlumController::class, 'customRegistration'])->name('register.custom'); 
+Route::get('signout', [RegAlumController::class, 'signOut'])->name('signout');
+
+
+
 Route::get('/perfilAlum', [RegAlumController::class, 'perfilAlum'])->middleware('auth');
+
+
+Route::group(['middleware' => ['role:alumne']], function () {
+    //rutas accesibles solo para clientes
+});
+
 
 /*-------------------------------------------------- */
 
@@ -96,20 +117,37 @@ Route::resource('MySolicitud', OfAlumController::class);
 
 Route::get('/borsa', [BorsaController::class, 'borsa'])->middleware('auth');
 
+/* Route::get('/borsa', function (Request $request) {
+    $message = 'Loading welcome page';
+    Log::info($message);
+    $request->session()->flash('info', $message);
+    return view('welcome');
+ });
+ Route::get('/borsa', [App\Http\Controllers\BorsaController::class, 'borsa'])->name('borsa'); */
+
 /*------------------------------------ */
 
 
-Route::get('/login', [SessionsController::class,'create']);
-Route::post('/login', [SessionsController::class,'store']);
 Route::get('/logout', [SessionsController::class,'destroy']);
 /**----------------------------------------- */
 
 
 
 
-Route::get('/login',function(){
-    return view('login');
+
+
+
+Route::get('/editempresa',function(){
+    return view('editempresa');
 });
+
+Route::get('/editempresa',[editEmpreController::class, 'index'])->middleware('auth');
+
+
+
+
+
+/**---------------------------------------------- */
 
 
 Auth::routes();

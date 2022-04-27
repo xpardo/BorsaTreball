@@ -193,4 +193,19 @@
         border-radius: 10px;
         box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
     }
+
+    button{
+        background-color: #04AA6D;
+        color: white;
+        width: 100%;
+        height: 50px;
+        margin-top: 60px;
+        border: 0px;
+        background: linear-gradient(90deg, #7bd65f);
+        font-weight: 300;
+        cursor: pointer;
+        font-size: 18px;
+    }
 </style>
+
+

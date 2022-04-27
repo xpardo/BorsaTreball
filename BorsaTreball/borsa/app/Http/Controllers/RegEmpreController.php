@@ -20,6 +20,9 @@ class RegEmpreController extends Controller
         return view('borsa.registreEmpre');
      }
 
+
+
+
      public function perfilEmpre(Request $request){
        
         $validated = $request->validate([
@@ -45,10 +48,27 @@ class RegEmpreController extends Controller
         return view('registreEmpre.create');
     }
 
+
+
     public function create()
     {
-        
+        $user = User::create([
+            'name' => $request->name,
+            'cognom' => $request->cognom,
+            'email' =>  $request -> email,
+            'empre' => $request -> empre,
+            'password' =>  bcrypt($request->password),
+            'telefon' => $request-> telefon,
+            'identifi' => $request -> identifi,
+            'poblacio' => $request -> poblacio,
+            
+            
+        ]);
+
+        $user -> assignRole('empresa');
     }
+
+    
 
    
     public function store(Request $request)
@@ -83,6 +103,7 @@ class RegEmpreController extends Controller
         $empresa = Empresa::findOrFail($id);
 
         return view('borsa.editempresa', compact('empresa')); 
+        
     }
 
     public function update(Request $request, $id)

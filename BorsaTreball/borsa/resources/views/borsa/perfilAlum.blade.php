@@ -1,6 +1,9 @@
 @extends('layouts.app')
+
+
  
  @section('content')
+@section('title', 'Perfil')
 
 @include('borsa.header')
 
