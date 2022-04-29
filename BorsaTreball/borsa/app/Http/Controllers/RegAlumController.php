@@ -1,19 +1,27 @@
 <?php
-
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\VerifiesEmails;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Storage;
 use App\Rules\Uppercase;
-use App\User;
-use Hash;
-use Session;
+use App\Models\User;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Alumne;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use App\Models\Alumne;
+
 
 
 
@@ -46,14 +54,9 @@ class RegAlumController extends Controller
     }
 
     public function form(){
-   /*      return view('borsa.registreAlumne'); */
+
         return view('borsa.registreAlumne');
      }
-
-
-
-
-
 
 
     public function registration()
@@ -200,13 +203,32 @@ class RegAlumController extends Controller
             'estat' => 'required',
             'fet' => 'required',
             'treballat' => 'required',
+            
         ]);
         
-        $al = User::create(request(['name', 'cognom','neixement','genere','cp','email','telefon' ,'poblacio','password','estat','fet','treballat']));
+        $user = Alumne::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role_id' => Role::alumne,
+        ]);
+
+     /*    return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role_id' => Role::alumne
+        ]); */
+
+        event(new Registered($alumne));
+
+        Auth::login($alumne);
+
+        return redirect(RouteServiceProvider::HOME);
         
-        auth()->log($al);
-        
-        return redirect()->to('borsa.borsa'); 
+       
+
+       
     }
 
     /**

@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 class CreateAlumnesTable extends Migration
 {
     /**
@@ -23,10 +24,11 @@ class CreateAlumnesTable extends Migration
             $table->string('genere');
             $table->char('telefon');
             $table->string('poblacio');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('estat');
             $table->string('fet');
             $table->string('treballat');
+            $table->rememberToken(2);
             $table->timestamps();
         });
     }

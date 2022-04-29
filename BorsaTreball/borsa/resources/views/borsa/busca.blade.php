@@ -172,14 +172,14 @@
                                                 </div>
 
                                             </div>
-
+                                            <input type="hidden" name="num" value="50">
+                                            <input class="botb" type="submit" value="Buscar">
                                         </div>
                                     
                                     </div>
 
                                  </div>
-                                <input type="hidden" name="num" value="50">
-                                <input class="botb" type="submit" value="Buscar">
+                              
                             </fieldset>
 
                         

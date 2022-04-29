@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Empresa extends Model
+class Oferta extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'name' ,
-        'cognom' ,
-        'email' ,
-        'empresa' ,
-        'telefon' ,
-        'identificador',
-        'poblacio',
+        'cicle' ,
+        'tipus' ,
+        'sala' ,
+        'h' ,
+        'desc' ,
+        'flexT' ,
     ];
 }

@@ -83,8 +83,6 @@
                                     <label for="edit" class="col-10">Nom de l'empresa:
                                     <a>{{ $empre }}</a></label>
 
-                                    <label for="edit" class="col-10">Identificació:
-                                    <a>{{ $identifi }}</a></label>
 
                                     <label for="edit" class="col-10">Correu electronic:
                                         <a> {{ $email }}</a></label>

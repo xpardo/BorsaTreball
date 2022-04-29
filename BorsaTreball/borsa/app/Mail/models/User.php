@@ -16,10 +16,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'cognom','email', 'password1','password2','empre','telefon','telefon','identifi','poblacio',
+        'username', 'cognom','email', 'password1','password2','empre','telefon','poblacio','role_id'
     ].[
 
-        'username', 'cognom','date','cp','email','telefon' ,'poblacio','password','estas','fet','treballat'
+        'username', 'cognom','date','cp','email','telefon' ,'poblacio','password','estas','fet','treballat','role_id'
     ]
     
     

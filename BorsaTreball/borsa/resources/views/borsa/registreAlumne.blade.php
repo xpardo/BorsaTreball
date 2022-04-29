@@ -207,7 +207,7 @@
                                 </a>
                             </p>
                             <p>
-                                <a  href="{{url('borsa')}}"><u>home</u></a>
+                                <a  href="{{url('/')}}"><u>home</u></a>
                             </p>
                             <p>
                                 <a  href="{{url('login')}}"><u>Login</u></a>

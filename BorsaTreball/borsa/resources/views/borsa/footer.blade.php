@@ -43,10 +43,9 @@
             <div class="col-sm ">
                 <div class="ins ">
                     <div id="text-32 " class="widget top-bar-widget large-4 columns widget_text ">
-                        <div class="textwidget"><b><strong>Departament informàtica:</strong></b>
-                            <a href="http://agora.xtec.cat/iesjoaquimmir/coordinacio-informatica/ ">
-                                <u>Coordinació informàtica</u></a>
-                            <br><a href="http://agora.xtec.cat/iesjoaquimmir/avis-legal/ "><u>Avís legal i política de Cookies</a></u><br>
+                        <div class="textwidget"><b><strong>Informació Important:</strong></b>
+                        <br><a href="{{url('condi')}}"><u>Tèrmit i condicions</a></u><br>
+                            <br><a href="{{url('politic')}}"><u>Política de privacitat</a></u><br>
                         </div>
                     </div>
                 </div>

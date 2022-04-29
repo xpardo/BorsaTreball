@@ -1,24 +1,142 @@
 <?php
-
 namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
+use App\Providers\RouteServiceProvider;
+
+use Illuminate\Foundation\Auth\RegistersUsers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Storage;
 use App\Rules\Uppercase;
-use App\User;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
-use App\Models\Empresa;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules;
 
+use App\Models\Role;
+use App\Models\User;
+use App\Models\Empresa;
 
 class RegEmpreController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
 
+   
+    public function index()
+    {
+        return view('/.log');
+    }
+
+
+    public function customLog(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+    
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('/')
+                        ->withSuccess('Signed in');
+        }
+   
+        return redirect("/.log")->withSuccess('Log details are not valid');
+    }
+
+    
     public function form(){
+
         return view('borsa.registreEmpre');
      }
+
+     public function registration()
+    {
+        return view('borsa.registreEmpre');
+    }
+
+
+
+    public function customRegistrationemp(Request $request)
+    {  
+        $request->validate([
+            'name' => 'required',
+            'cognom' => 'required',
+            'email' =>  'required|email',
+            'password' => 'required',
+            'password_confirmation' => 'required|same:password',  
+            'empre' => 'required',
+            'telefon' => 'required',
+            'poblacio' => 'required',
+        ]);
+            
+        $data = $request->all();
+        $check = $this->create($data);
+          
+        return redirect("/")->withSuccess('You have signed-in');
+    }
+
+
+
+  /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required'],
+            'cognom' => ['required'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'empre' => ['required'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'telefon' => ['required'],
+            'poblacio' => ['required'],
+        ]);
+    }
+
+
+
+    public function create(array $data)
+    {
+     
+
+        return Empresa::create([
+            'name' => $data['name'],
+            'cognom' => $data['cognom'],
+            'email' => $data['email'],
+            'empre' => $data['empre'],
+            'password' => Hash::make($data['password']),
+            'telefon' => $data['telefon'],
+            'poblacio' => $data['poblacio'],
+
+        ]);    
+    }
+
+    public function dashboard()
+    {
+        if(Auth::check()){
+            return view('/');
+        }
+   
+        return redirect("/")->withSuccess('You are not allowed to access');
+    }
+     
+ 
+    public function signOut() {
+        Session::flush();
+        Auth::logout();
+   
+        return Redirect('/');
+    }
 
 
 
@@ -32,7 +150,6 @@ class RegEmpreController extends Controller
             'password' => 'required|confirmed',
             'empre' => 'required',
             'telefon' => 'required',
-            'identifi' => 'required',
             'poblacio' => 'required',
 
         ]); return view('borsa.perfilEmpre', $validated);
@@ -43,52 +160,41 @@ class RegEmpreController extends Controller
     
 
    
-    public function index()
-    {
-        return view('registreEmpre.create');
-    }
 
 
 
-    public function create()
-    {
-        $user = User::create([
-            'name' => $request->name,
-            'cognom' => $request->cognom,
-            'email' =>  $request -> email,
-            'empre' => $request -> empre,
-            'password' =>  bcrypt($request->password),
-            'telefon' => $request-> telefon,
-            'identifi' => $request -> identifi,
-            'poblacio' => $request -> poblacio,
-            
-            
-        ]);
-
-        $user -> assignRole('empresa');
-    }
-
-    
 
    
     public function store(Request $request)
     {
-     $this->validate(request(), [
+     
+
+        $request->validate([
+           
             'name' => 'required',
             'cognom' => 'required',
-            'email' =>  'required|email',
+            'email' => 'required',
             'password' => 'required|confirmed',
             'empre' => 'required',
             'telefon' => 'required',
-            'identifi' => 'required',
             'poblacio' => 'required',
         ]);
-        
-        $empr = User::create(request(['name', 'cognom','email', 'password','empre','telefon','telefon','identifi','poblacio']));
-        
-        auth()->login($empr);
-        
-        return redirect()->to('borsa.borsa'); 
+
+        $empresa = Empresa::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+      
+        ]);
+
+        event(new Registered($empresa));
+
+        Auth::login($empresa);
+
+        return redirect(RouteServiceProvider::HOME);
+
+
+       
     }
 
    
@@ -114,7 +220,6 @@ class RegEmpreController extends Controller
             'email' =>  'required|email',
             'empre' => 'required',
             'telefon' => 'required',
-            'identifi' => 'required',
             'poblacio' => 'required',
             'logo' => 'required',
         ]);
@@ -127,5 +232,13 @@ class RegEmpreController extends Controller
     public function destroy($id)
     {
         //
+
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/borsa');
     }
 }
