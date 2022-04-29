@@ -9,7 +9,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            @include('borsa.busca')
+                @include('borsa.busca')
 
           
               
@@ -38,7 +38,7 @@
                  
                        <!-------container----->
 
-                <div class="p-6 bg-white border-b border-gray-200">
+                    <div class="p-6 bg-white border-b border-gray-200">
                         
                         <div class="container m-5 ">
                             <div class="row sling-items-end ">
@@ -48,8 +48,7 @@
 
                                             <h3><strong>Empresa</strong></h3>
                                             <div class="service ">
-                                                <a class="btn btn-secondary " style="color: #ffff;" href="{{url('registreEmpre')}}"><u>Registrar-se</u></a>
-                                            
+                                                <a class="btn btn-secondary " style="color: #ffff;" href="{{url('registreEmpre')}}"><u>{{__('Registrar-se')}}</u></a>
                                             
                                             </div><br>
                                             <img src="{{ asset('img/empresas-img.jpg') }}" alt="registreEmpre">
@@ -63,20 +62,20 @@
                                             <div class="service ">
                                         
                                             
-                                         <a class="btn btn-secondary " style="color: #ffff;" href="{{url('registreAlumne')}}"><u>Registrar-se</u></a>
+                                         <a class="btn btn-secondary " style="color: #ffff;" href="{{url('registreAlumne')}}"><u>{{__('Registrar-se')}}</u></a>
                                             </div><br>
                                             <img src="{{ asset('img/alumne.jpg') }}" alt="registreAlumne">
                                         </div>
                                     </div>
                                 
+                                </div>
                             </div>
                         </div>
-                </div>
                
-            </div>
-        </div>
+                    </div>
+                </div>
 
-    </div>
+            </div>
 
 
 

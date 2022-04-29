@@ -27,13 +27,13 @@ use App\Models\Alumne;
 
 class RegAlumController extends Controller
 {
-    
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+  
     public function index()
     {
-        //
-        return view('borsa.log');
+        return view('auth.log');
     }
-
 
 
 
@@ -46,11 +46,11 @@ class RegAlumController extends Controller
     
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('borsa')
+            return redirect()->intended('/')
                         ->withSuccess('Signed in');
         }
    
-        return redirect("borsa.log")->withSuccess('Log details are not valid');
+        return redirect("/.log")->withSuccess('Log details are not valid');
     }
 
     public function form(){
@@ -81,12 +81,33 @@ class RegAlumController extends Controller
             'fet' => 'required',
             'treballat' => 'required',
         ]);
+
+        
             
         $data = $request->all();
         $check = $this->create($data);
           
         return redirect("borsa")->withSuccess('You have signed-in');
     }
+
+
+      /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'confirmed'],
+        ]);
+    }
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -109,8 +130,16 @@ class RegAlumController extends Controller
             'estat' => $data['estat'],
             'fet' => $data['fet'],
             'treballat' => $data['treballat'],
+            'role_id' => 2
            
           ]);
+
+          return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role_id' => 2
+        ]);
     
     }
 
@@ -118,10 +147,10 @@ class RegAlumController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-            return view('borsa.borsa');
+            return view('/');
         }
    
-        return redirect("borsa.borsa")->withSuccess('You are not allowed to access');
+        return redirect("/")->withSuccess('You are not allowed to access');
     }
      
  
@@ -129,57 +158,10 @@ class RegAlumController extends Controller
         Session::flush();
         Auth::logout();
    
-        return Redirect('borsa.borsa');
+        return Redirect('/');
     }
 
 
-
-
-     
-
-
-
-    public function update_avatar(Request $request){
-
-    	// Handle the user upload of avatar
-    	if($request->hasFile('avatar')){
-    		$avatar = $request->file('avatar');
-    		$filename = time() . '.' . $avatar->getClientOriginalExtension();
-    		Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
-
-    		$user = Auth::user();
-    		$user->avatar = $filename;
-    		$user->save();
-    	}
-
-    	return view('perfilAlum', array('user' => Auth::user()) );
-
-    }
- 
-   
-
-    public function perfilAlum(Request $request){
-       
-        $validated = $request->validate([
-            'name' => 'required',
-            'cognom' => 'required',
-            'neixement' => 'required',
-            'genere' => 'required',
-            'cp' =>  'required',
-            'email' =>  'required|email',
-            'telefon' => 'required',
-            'poblacio' => 'required',
-            'password' => 'required|confirmed',
-            'estat' => 'required',
-            'fet' => 'required',
-            'treballat' => 'required',
-            
-
-           
-
-        ]); return view('borsa.perfilAlum', $validated);
-
-     }
 
 
     /**
@@ -206,23 +188,18 @@ class RegAlumController extends Controller
             
         ]);
         
-        $user = Alumne::create([
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role_id' => Role::alumne,
+            'role_id' => 2
         ]);
 
-     /*    return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'role_id' => Role::alumne
-        ]); */
+    
 
-        event(new Registered($alumne));
+        event(new Registered($user));
 
-        Auth::login($alumne);
+        Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
         
@@ -231,6 +208,13 @@ class RegAlumController extends Controller
        
     }
 
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
+
+  
     /**
      * Display the specified resource.
      *
@@ -273,6 +257,41 @@ class RegAlumController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
+
+
+
+
+ 
+   
+
+    public function perfilAlum(Request $request){
+       
+        $validated = $request->validate([
+            'name' => 'required',
+            'cognom' => 'required',
+            'neixement' => 'required',
+            'genere' => 'required',
+            'cp' =>  'required',
+            'email' =>  'required|email',
+            'telefon' => 'required',
+            'poblacio' => 'required',
+            'password' => 'required|confirmed',
+            'estat' => 'required',
+            'fet' => 'required',
+            'treballat' => 'required',
+            
+
+           
+
+        ]); return view('borsa.perfilAlum', $validated);
+
+     }
 }

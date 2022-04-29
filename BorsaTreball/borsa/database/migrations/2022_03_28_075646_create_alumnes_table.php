@@ -25,11 +25,13 @@ class CreateAlumnesTable extends Migration
             $table->char('telefon');
             $table->string('poblacio');
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('estat');
             $table->string('fet');
             $table->string('treballat');
-            $table->rememberToken(2);
+            $table->rememberToken();
             $table->timestamps();
+            $table->role_id(2);
         });
     }
 

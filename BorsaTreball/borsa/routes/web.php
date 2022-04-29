@@ -1,6 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\VerifyEmailController;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\RegEmpreController;
@@ -46,7 +55,7 @@ Route::get('mail/test', [MailController::class, 'test'])->middleware(['auth']);
 
 
 
-/*------------------------------------ */
+/*_________________________________________________________________________________________________________________*/
 
 
 
@@ -54,18 +63,34 @@ Route::get('/registreEmpre',function(){
     return view('borsa.registreEmpre');
 });
 
-Route::get('/registreEmpre',[RegEmpreController::class, 'registration'])->name('/registreEmpre'); 
 
-Route::put('custom-registrations', [RegEmpreController::class, 'customRegistrationemp'])->name('register.customs'); 
+    Route::middleware('guest')->group(function () {
+
+        Route::get('/registreEmpre',[RegEmpreController::class, 'registration'])->name('/registreEmpre'); 
+
+        Route::put('custom-registrations', [RegEmpreController::class, 'customRegistrationemp'])->name('register.customs');
+
+        Route::post('registreEmpre', [RegEmpreController::class, 'store']);
+
+        Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+
+        Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
+        Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
+
+        Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+
+        Route::get('reset-password/{token}', [NewPasswordController::class, 'create']) ->name('password.reset');
+
+        Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.update');
+
+    });
+
+
+ 
+
+
 Route::get('signout', [RegEmpreController::class, 'signOut'])->name('signout');
-
-
-
-
-
-
-
-
 Route::get('/perfilEmpre', [RegEmpreController::class, 'perfilEmpre'])->middleware('auth');
 
 
@@ -87,13 +112,37 @@ Route::get('/registreAlumne',function(){
 });
 
 
- Route::get('/registreAlumne ', [RegAlumController::class, 'registration'])->name('/registreAlumne'); 
- Route::put('custom-registration', [RegAlumController::class, 'customRegistration'])->name('register.custom'); 
- Route::get('signout', [RegAlumController::class, 'signOut'])->name('signout');
+
+
+
+Route::middleware('guest')->group(function () {
+
+    Route::get('/registreAlumne ', [RegAlumController::class, 'registration'])->name('/registreAlumne');
+
+    Route::put('custom-registration', [RegAlumController::class, 'customRegistration'])->name('register.custom'); 
+
+    Route::post('registreAlumne', [RegAlumController::class, 'store']);
+
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+
+    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
+    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
+
+    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+
+    Route::get('reset-password/{token}', [NewPasswordController::class, 'create']) ->name('password.reset');
+
+    Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.update');
+
+    Route::get('signout', [RegAlumController::class, 'signOut'])->name('signout');
+
+});
+
  
  
  
- Route::get('/perfilAlum', [RegAlumController::class, 'perfilAlum'])->middleware('auth');
+Route::get('/perfilAlum', [RegAlumController::class, 'perfilAlum'])->middleware('auth');
 
 
 /* Route::post('log', [RegAlumController::class, 'index'])->name('log');
@@ -102,8 +151,6 @@ Route::post('custom-log', [RegAlumController::class, 'customLog'])->name('log');
 /* Route::get('/registreAlumne',[RegAlumController::class, 'create']);
 
 Route::post('registreAlumne', [RegAlumController::class,'store']); */
-
-
 
 
 

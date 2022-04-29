@@ -52,14 +52,15 @@
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }} "  style="color: #fff; ">{{ __('Register') }}</a>
+ 
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: #fff; ">
                                     {{ Auth::user()->name }}
-                                    {{ borsa::alumne()->name }}
-                                    {{ borsa::empresa()->name }}
+                                    {{ Auth::alumne()->name }}
+                                    {{ Auth::empresa()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -84,6 +85,11 @@
             @include('flash')
             @yield('content')
         </main>
+
+        
     </div>
+
+
+
 </body>
 </html>

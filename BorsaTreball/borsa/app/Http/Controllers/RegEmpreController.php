@@ -3,9 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
-
 use Illuminate\Foundation\Auth\RegistersUsers;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Storage;
@@ -13,24 +11,26 @@ use App\Rules\Uppercase;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules;
-
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Empresa;
 
+
 class RegEmpreController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
+
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+
 
    
     public function index()
     {
-        return view('/.log');
+        return view('auth.log');
     }
 
 
@@ -90,19 +90,14 @@ class RegEmpreController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required'],
-            'cognom' => ['required'],
+            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'empre' => ['required'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'telefon' => ['required'],
-            'poblacio' => ['required'],
+            'password' => ['required', 'string', 'confirmed'],
         ]);
     }
-
 
 
     public function create(array $data)
@@ -117,8 +112,15 @@ class RegEmpreController extends Controller
             'password' => Hash::make($data['password']),
             'telefon' => $data['telefon'],
             'poblacio' => $data['poblacio'],
+            'role_id' => 3
 
         ]);    
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role_id' => 3
+        ]);
     }
 
     public function dashboard()
@@ -141,7 +143,71 @@ class RegEmpreController extends Controller
 
 
 
-     public function perfilEmpre(Request $request){
+   
+    public function store(Request $request)
+    {
+     
+
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role_id' => 3
+        ]);
+
+        event(new Registered($user));
+
+        Auth::login($user);
+
+        return redirect(RouteServiceProvider::HOME);
+
+
+       
+    }
+
+   
+    public function show($id)
+    {
+        //
+    }
+
+  
+    public function edit($id)
+    {
+      
+        
+    }
+
+    public function update(Request $request, $id)
+    {
+
+    }
+
+   
+    public function destroy($id)
+    {
+        //
+
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
+
+
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
+
+
+
+    public function perfilEmpre(Request $request){
        
         $validated = $request->validate([
             'name' => 'required',
@@ -159,86 +225,6 @@ class RegEmpreController extends Controller
 
     
 
-   
 
-
-
-
-   
-    public function store(Request $request)
-    {
-     
-
-        $request->validate([
-           
-            'name' => 'required',
-            'cognom' => 'required',
-            'email' => 'required',
-            'password' => 'required|confirmed',
-            'empre' => 'required',
-            'telefon' => 'required',
-            'poblacio' => 'required',
-        ]);
-
-        $empresa = Empresa::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-      
-        ]);
-
-        event(new Registered($empresa));
-
-        Auth::login($empresa);
-
-        return redirect(RouteServiceProvider::HOME);
-
-
-       
-    }
-
-   
-    public function show($id)
-    {
-        //
-    }
-
-  
-    public function edit($id)
-    {
-        $empresa = Empresa::findOrFail($id);
-
-        return view('borsa.editempresa', compact('empresa')); 
-        
-    }
-
-    public function update(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'cognom' => 'required',
-            'email' =>  'required|email',
-            'empre' => 'required',
-            'telefon' => 'required',
-            'poblacio' => 'required',
-            'logo' => 'required',
-        ]);
-        Game::whereId($id)->update($validatedData);
-
-        return redirect('borsa.perfilEmpre')->with('success', 'Game Data is successfully updated'); 
-    }
-
-   
-    public function destroy($id)
-    {
-        //
-
-        Auth::guard('web')->logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect('/borsa');
-    }
+     use SendsPasswordResetEmails;
 }

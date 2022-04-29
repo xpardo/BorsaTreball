@@ -18,11 +18,12 @@ class CreateEmpresasTable extends Migration
             $table->string('name');
             $table->string('cognom');
             $table->string('email')->unique();
-
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->string('empre');
             $table->string('telefon');
             $table->string('poblacio');
-            $table->rememberToken(3);
+            $table->rememberToken();
             $table->timestamps();
         });
     }
