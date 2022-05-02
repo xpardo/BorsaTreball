@@ -51,16 +51,19 @@
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
+                                       <!-- 
                                     <a class="nav-link" href="{{ route('register') }} "  style="color: #fff; ">{{ __('Register') }}</a>
- 
+                                  
+                                 
+                                       <a class="nav-link" href="{{ route('registreEmpre') }} "  style="color: #fff; ">{{ __('Register_empre') }}</a>
+                                    <a class="nav-link" href="{{ route('registreAlumne') }} "  style="color: #fff; ">{{ __('Register_Alumne') }}</a>
+                                    -->
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: #fff; ">
                                     {{ Auth::user()->name }}
-                                    {{ Auth::alumne()->name }}
-                                    {{ Auth::empresa()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -74,6 +77,13 @@
                                         @csrf
                                     </form>
                                 </div>
+                            </li>
+
+                            <li>
+                            <a class="nav-link" tile="Profile" href="{{ route('empresa.profile') }} "  style="color: #fff; ">{{ __('Perfil') }}</a>
+
+
+
                             </li>
                         @endguest
                     </ul>

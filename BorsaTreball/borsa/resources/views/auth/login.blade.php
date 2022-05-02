@@ -3,19 +3,18 @@
 @section('content')
 @include('borsa.header')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
+    <div class="contenedor-formularios">
+        <div class="contenido-tab">
+            <!-- Login -->
+            <div id="Login">
+                <h1>Login</h1>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
+                        <div class="contenedor-input">
+                            <label for="email" >{{ __('Email Address') }}</label></br></br>
+                            
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -23,54 +22,108 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
+                            </div>
+
+                        <div class="contenedor-input">
+                            <label for="password" >{{ __('Password') }}</label></br></br>
+
+                        
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        
+                        </div>
+
+                        
+
+
+                        <div class="contenedor-input">
+                            <div class="form-check">
+                                <label class="form-check-label offset-1 col-7 " for="remember">
+                                    {{ __('Remember Me') }}
+                                </label>
+
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                    
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                        <div class="contenedor-input">
+                        
+                            <button type="submit" class="btn btn-success">
+                                {{ __('Login') }}
+                            </button>
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            @if (Route::has('password.request'))
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{ __('Has oblidat la teva contrasenya?') }}
+                                </a>
+                            @endif
+                        
                         </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
+                        <p>
+                           
+                            <h3> <a  href="{{url('/')}}">{{__('home')}}</a></h3>
+                        </p>
                     </form>
                 </div>
-            </div>
+            </div>      
         </div>
     </div>
 </div>
+
+<div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            
+
+  
+                        <div class="container m-5 ">
+                            <div class="row sling-items-end ">
+                        
+                                    <div class="col-sm ">
+                                        <div class="contenedor ">
+
+                                            <h3><strong>Empresa</strong></h3>
+                                            <div class="service ">
+                                                <a class="nav-link btn btn-success" href="{{ route('registreEmpre') }} "  style="color: #fff; ">{{ __("Registra't") }}</a>
+                                            
+                                            </div><br>
+                                            <img src="{{ asset('img/empresas-img.jpg') }}" alt="registreEmpre">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm ">
+                                        <div class="contenedor ">
+
+                                            <h3><strong>Alumne</strong></h3>
+                                            <div class="service ">
+                                        
+                                            
+                                                <a class="nav-link btn btn-success" href="{{ route('registreAlumne') }} "  style="color: #fff; ">{{ __("Registra't") }}</a>
+                                            </div><br>
+                                            <img src="{{ asset('img/alumne.jpg') }}" alt="registreAlumne">
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+               
+                    </div>
+                </div>
+
+            </div>
+
+
+@include('estil/login')
 @include('borsa.footer')
 
 @endsection

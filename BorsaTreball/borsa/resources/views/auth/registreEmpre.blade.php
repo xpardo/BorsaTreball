@@ -5,17 +5,7 @@
     
     @include('borsa.header')
     
-    @if ($errors->any())
-        <div class ="alert alert-danger">
-            <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        </div>
-
-    @endif
-
+   
 
     <div class="contenedor-formularios">
 
@@ -26,9 +16,9 @@
             <div id="registrarse">
                 <h3><strong>Registrarse</strong></h3>
 
-             <!--    <form nmethod="post"  action="perfilEmpre" > -->
-            <form action="{{ route('register.customs') }}" method="POST" enctype="multipart/form-data"> 
-                @csrf 
+       
+                <form method="POST" action="{{ route('registreEmpre') }} "  enctype="multipart/form-data">
+                    @csrf 
                     <p>Dades d'acces personal <i class="bi bi-person"></i></p>
                     <div class="fila-arriba">
                         <div class="contenedor-input">
@@ -94,19 +84,33 @@
 
                         <label for="empre">{{__('Nom de la empresa')}}</label><br><br>
                         <input type="text" name="empre" class="form-control @error('empre') is-invalid @enderror" id="empre" value="{{old('empre')}}" required autocomplete="empre" autofocus>
-
+                        @error('empre')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }} </strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <div class="contenedor-input">
                     <label for="telefon">telefón/movil<i class="bi bi-telephone"></i></label><br><br>
                         <input type="text" name="telefon" class="form-control @error('telefon') is-invalid @enderror" id="telefon" value="{{old('telefon')}}" autocomplete="telefon" autofocus>
+                        @error('telefon')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }} </strong>
+                            </span>
+                        @enderror
                     </div>
 
 
 
                     <div class="contenedor-input">
                         <label for="poblacio">{{__('Població')}}</label><br><br>
-                        <input type="text" name="poblacio"  class="form-control" id="poblacio" required>
+                        <input type="text" name="poblacio"  class="form-control @error('poblacio') is-invalid @enderror" id="poblacio" value="{{old('poblacio')}}" required autocomplete="poblacio"  autofocus>
+                        @error('poblacio')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
 
@@ -121,7 +125,7 @@
                     <p>
                     <a  href="{{url('login')}}"><u>Login</u></a>
                     </p>
-                    @method('PUT')
+                    
                 </form>
             </div>
         </div>
@@ -134,3 +138,17 @@
 @include('estil/regi')
 @include('borsa.footer')
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+

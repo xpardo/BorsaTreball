@@ -8,10 +8,12 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Empresa;
 
-class RegisterController extends Controller
+
+class EmpreController extends Controller
 {
-    /*
+     /*
     |--------------------------------------------------------------------------
     | Register Controller
     |--------------------------------------------------------------------------

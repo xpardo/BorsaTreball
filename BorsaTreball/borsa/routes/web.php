@@ -22,6 +22,7 @@ use App\Http\Controllers\OfEmpreController;
 use App\Http\Controllers\OfAlumController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\editEmpreController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,7 +45,7 @@ Route::get('/', function (Request $request) {
  
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('welcome');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
@@ -59,7 +60,7 @@ Route::get('mail/test', [MailController::class, 'test'])->middleware(['auth']);
 
 
 
-Route::get('/registreEmpre',function(){
+/* Route::get('/registreEmpre',function(){
     return view('borsa.registreEmpre');
 });
 
@@ -72,9 +73,9 @@ Route::get('/registreEmpre',function(){
 
         Route::post('registreEmpre', [RegEmpreController::class, 'store']);
 
-        Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+        Route::get('login', [LoginEmpreController::class, 'create'])->name('login');
 
-        Route::post('login', [AuthenticatedSessionController::class, 'store']);
+        Route::post('login', [LoginEmpreController::class, 'store']);
 
         Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
 
@@ -85,7 +86,7 @@ Route::get('/registreEmpre',function(){
         Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.update');
 
     });
-
+ */
 
  
 
@@ -107,7 +108,7 @@ Route::get('delete/{id}', [OfEmpreController::class,'delete']);
 
 /*------------------------------------ */
 
-Route::get('/registreAlumne',function(){
+/* Route::get('/registreAlumne',function(){
     return view('borsa.registreAlumne');
 });
 
@@ -140,7 +141,7 @@ Route::middleware('guest')->group(function () {
 });
 
  
- 
+  */
  
 Route::get('/perfilAlum', [RegAlumController::class, 'perfilAlum'])->middleware('auth');
 

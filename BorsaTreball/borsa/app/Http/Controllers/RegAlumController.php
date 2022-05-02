@@ -271,27 +271,4 @@ class RegAlumController extends Controller
 
  
    
-
-    public function perfilAlum(Request $request){
-       
-        $validated = $request->validate([
-            'name' => 'required',
-            'cognom' => 'required',
-            'neixement' => 'required',
-            'genere' => 'required',
-            'cp' =>  'required',
-            'email' =>  'required|email',
-            'telefon' => 'required',
-            'poblacio' => 'required',
-            'password' => 'required|confirmed',
-            'estat' => 'required',
-            'fet' => 'required',
-            'treballat' => 'required',
-            
-
-           
-
-        ]); return view('borsa.perfilAlum', $validated);
-
-     }
 }

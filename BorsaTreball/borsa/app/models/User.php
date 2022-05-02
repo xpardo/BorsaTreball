@@ -1,46 +1,46 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    
+    use HasApiTokens, HasFactory, Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
-        'username', 'cognom','email', 'password1','password2','empre','telefon','poblacio','role_id'
-    ].[
+        'name',
+        'email',
+        'password',
+        'tipo_usuario',
+        'role_id',
+    ];
 
-        'username', 'cognom','date','cp','email','telefon' ,'poblacio','password','estas','fet','treballat','role_id'
-    ]
-    
-    
-    ;
-    
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
-    
-    /**
-     * Add a mutator to ensure hashed passwords
-     */
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = bcrypt($password);
-    }
 
-    use HasRoles;
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

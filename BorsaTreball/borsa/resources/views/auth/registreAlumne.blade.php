@@ -212,7 +212,7 @@
                             <p>
                                 <a  href="{{url('login')}}"><u>Login</u></a>
                             </p>
-                            @method('PUT')
+                 
                 </form>
         
             </div>

@@ -4,6 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use laravel\Fortify\TwoFactorAuthenticatable;
+use laravel\Jetstream\HasProfilePhoto;
+use Laravel\Sanctum\HasApiTokens;
+
 
 class Empresa extends Model
 {
@@ -28,7 +35,7 @@ class Empresa extends Model
      */
 
 
-     protected $hidden = [
+    protected $hidden = [
         'password',
         'remember_token',
     ];
@@ -42,9 +49,17 @@ class Empresa extends Model
      */
 
 
- protected $casts = [
+    protected $casts = [
         'email_verified_at' => 'datetime',
     ]; 
 
+    protected $appends = [
+        'logo_foto_url',
+    ];
+
+    public function profile()
+    {
+        return $this->hasOne(profile::class,'eempresa_id');
+    }
 
 }

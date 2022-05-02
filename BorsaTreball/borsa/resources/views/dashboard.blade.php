@@ -11,7 +11,7 @@
            
 
                     <ul>
-                        <li>🗂️ <a title="Borsa" href="{{url('borsa')}}">{{ __('Home') }}</a></li>
+                        <li>🗂️ <a title="Borsa" href="{{url('/')}}">{{ __('Home') }}</a></li>
                     </ul>
                 </div>
             </div>
