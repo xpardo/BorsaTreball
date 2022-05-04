@@ -1,13 +1,21 @@
+
+
+
+
 <x-guest-layout>
+@extends('layouts.app')
+
+@section('content')
+@include('borsa.header')
+
+
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+            
         </x-slot>
-
+     
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+            {{ __('Has oblidat la teva contrasenya? Cap problema. Només heu de fer-nos saber la vostra adreça de correu electrònic i us enviarem per correu electrònic un enllaç de restabliment de la contrasenya que us permetrà triar-ne una de nova.') }}
         </div>
 
         <!-- Session Status -->
@@ -28,9 +36,19 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-button>
-                    {{ __('Email Password Reset Link') }}
+                    {{ __('Enllaç de restabliment de la contrasenya del correu electrònic') }}
                 </x-button>
             </div>
+
+
         </form>
     </x-auth-card>
 </x-guest-layout>
+
+
+
+@include('borsa.footer')
+
+@endsection
+
+

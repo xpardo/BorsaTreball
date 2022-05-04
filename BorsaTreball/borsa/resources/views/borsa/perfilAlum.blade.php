@@ -1,11 +1,7 @@
 @extends('layouts.app')
-
-
- 
  @section('content')
-@section('title', 'Perfil')
+    @include('borsa.header')
 
-@include('borsa.header')
 
 
  
@@ -53,41 +49,20 @@
                         <div class="p-6 bg-white border-b border-gray-200">
 
                       
+                        @csrf
 
-
-                            @csrf
-
-                            <label for="edit" class="col-10">Nom :
-                            <a>{{ $username }}</a></label>
-
-                            <label for="edit" class="col-10">cognom :
-                            <a>{{ $cognom }}</a></label>
-
-                            <label for="edit" class="col-10">data de naixement:
-                            <a>{{ $date }}</a></label>
-
-                     
-
-                            <label for="edit" class="col-10">Correu electronic:
-                                <a> {{ $email }}</a></label>
-
-                            <label for="edit" class="col-10">Telefón | movil:
-                                <a> {{ $telefon }}</a></label>
-
-                            <label for="edit" class="col-10">Població:
-                                <a> {{ $poblacio }}</a></label>
-
-                            <label for="edit" class="col-10">Codi postal:
-                            <a> {{ $cp }}</a></label>
                             
-                            <label for="edit" class="col-10">Estat de practiques:
-                            <a> {{ $estas }}</a></label>
 
-                            <label for="edit" class="col-10">Practiques abans:
-                            <a> {{ $fet }}</a></label>
-
-                            <label for="edit" class="col-10">Estat o  treballat :
-                            <a> {{ $treballat }}</a></label>
+                            <p><b>Nom:</b>   {{ $name }}</p>
+                            <p><b>Cognom:</b>   {{ $cognom }}</p>
+                            <p><b>Data neixement:</b>   {{ $neixement }}</p>
+                            <p><b>Email:</b> {{ $email }}</p>
+                            <p><b>Telefon:</b> {{ $telefon }}</p>
+                            <p><b>Poblacio:</b> {{ $poblacio }}</p>
+                            <p><b>Codi Postal:</b> {{ $cp }}</p>
+                            <p><b>Estat de practiques:</b> {{ $estas }}</p>
+                            <p><b>Practiques abans:</b> {{ $fet }}</p>
+                            <p><b> >Estat o  treballat:</b> {{ $treballat }}</p>
 
 
                                

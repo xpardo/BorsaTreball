@@ -18,18 +18,18 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                    
                         <!---camp editable---->
-                        <!-- <a style="color: #ff0000;"> hi ha de ser editable</a>
+                        <a style="color: #ff0000;"> hi ha de ser editable</a>
                         <h1>Borsa de treball </h1>
-                    </div> -->
+  
                     <!---camp editable---->
-                    <!-- <div class="p-6 bg-white border-b border-gray-200">
+                    <div class="p-6 bg-white border-b border-gray-200">
                     <a style="color: #ff0000;">hi ha de ser editable</a>
                         <label>La Borsa de Treball és un servei que ofereix 
                         l’Institut Joaquim mir  als seus alumnes i exalumnes per facilitar la inserció laboral i 
                         potenciar les relacions de l’institut amb les institucions i empreses de l’entorn.</label>
                        <br>
                     
-                    </div> -->
+                    </div> 
               
 
 

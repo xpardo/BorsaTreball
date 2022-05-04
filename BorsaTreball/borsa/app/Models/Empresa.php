@@ -14,7 +14,12 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Empresa extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens; 
+    use HasFactory;
+    use HasProfilePhoto;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
+
     protected $fillable = [
         'name' ,
         'cognom' ,
@@ -53,13 +58,5 @@ class Empresa extends Model
         'email_verified_at' => 'datetime',
     ]; 
 
-    protected $appends = [
-        'logo_foto_url',
-    ];
-
-    public function profile()
-    {
-        return $this->hasOne(profile::class,'eempresa_id');
-    }
-
+ 
 }

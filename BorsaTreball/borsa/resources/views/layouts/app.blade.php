@@ -29,6 +29,7 @@
                 <img alt="Logotip entitat " id="logo_entity " src="{{ asset('img/logo-JM-blau-miniatura-1.jpg') }}" width="120 " height="90 " alt=" ">
 
                 </a>
+                <a aria-haspopup="true" aria-expanded="false" v-pre style="color: #fff; "  href="{{url('/')}}">{{__('home')}}</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -51,19 +52,14 @@
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                       <!-- 
-                                    <a class="nav-link" href="{{ route('register') }} "  style="color: #fff; ">{{ __('Register') }}</a>
-                                  
-                                 
-                                       <a class="nav-link" href="{{ route('registreEmpre') }} "  style="color: #fff; ">{{ __('Register_empre') }}</a>
-                                    <a class="nav-link" href="{{ route('registreAlumne') }} "  style="color: #fff; ">{{ __('Register_Alumne') }}</a>
-                                    -->
+                                      
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: #fff; ">
                                     {{ Auth::user()->name }}
+                                    
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -76,16 +72,20 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                
+                           
+                                    <a class="dropdown-item" href="{{ url('profile') }} " >{{ __('perfil') }}</a>
+                                    <a class="dropdown-item" href="{{ url('perfilAlum') }} " >{{ __('perfil alumne') }}</a>
                                 </div>
-                            </li>
 
-                            <li>
-                            <a class="nav-link" tile="Profile" href="{{ route('empresa.profile') }} "  style="color: #fff; ">{{ __('Perfil') }}</a>
-
-
+                               
 
                             </li>
+
+                          
                         @endguest
+
+                        
                     </ul>
                 </div>
             </div>
