@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Empresa;
-
+use Illuminate\Auth\SessionGuard;
 
 class EmpreController extends Controller
 {
@@ -55,8 +55,12 @@ class EmpreController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'cognom' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'empre' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'telefon' => ['required',  'max:255'],
+            'poblacio' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -70,8 +74,13 @@ class EmpreController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'cognom' => $data['cognom'],
             'email' => $data['email'],
+            'empre' => $data['empre'],
             'password' => Hash::make($data['password']),
+            'telefon' => $data['telefon'],
+            'poblacio' => $data['poblacio'],
+     
         ]);
     }
 }

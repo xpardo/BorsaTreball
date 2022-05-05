@@ -147,4 +147,10 @@ class AuthController extends Controller
         //Retorno
         return redirect('acceder')->with('success','La contraseña se ha cambiado correctamente.');
     }
+
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+
+    }
 }

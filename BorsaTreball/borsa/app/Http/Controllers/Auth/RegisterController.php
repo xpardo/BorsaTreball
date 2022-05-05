@@ -8,7 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use App\Models\Alumne;
+use Illuminate\Auth\SessionGuard;
 class RegisterController extends Controller
 {
     /*
@@ -67,9 +68,19 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
+           
             'name' => $data['name'],
+            'cognom' => $data['cognom'],
+            'neixement' => $data['neixement'],
+            'genere' => $data['genere'],
+            'cp' => $data['cp'],
             'email' => $data['email'],
+            'telefon' => $data['telefon'],
+            'poblacio' => $data['poblacio'],
             'password' => Hash::make($data['password']),
+            'estat' => $data['estat'],
+            'fet' => $data['fet'],
+            'treballat' => $data['treballat'],
         ]);
     }
 }

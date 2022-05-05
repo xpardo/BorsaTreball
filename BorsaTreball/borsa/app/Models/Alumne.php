@@ -20,6 +20,7 @@ class Alumne extends Model
         'genere',
         'cp' ,
         'email' ,
+        'password', 
         'telefon',
         'poblacio',
         'estat',

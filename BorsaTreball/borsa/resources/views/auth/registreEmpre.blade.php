@@ -2,9 +2,9 @@
  
  @section('content')
 
-    
+
+   
     @include('borsa.header')
-    
    
 
     <div class="contenedor-formularios">
@@ -14,7 +14,7 @@
 
             <!-- Registrarse -->
             <div id="registrarse">
-                <h3><strong>Registrarse</strong></h3>
+                <h3><strong>registrar-se</strong></h3>
 
        
                 <form method="POST" action="{{ route('registreEmpre') }} "  enctype="multipart/form-data">
@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="contenedor-input">
-                    <label for="telefon">telefón/movil<i class="bi bi-telephone"></i></label><br><br>
+                    <label for="telefon">telefón/mòbil<i class="bi bi-telephone"></i></label><br><br>
                         <input type="text" name="telefon" class="form-control @error('telefon') is-invalid @enderror" id="telefon" value="{{old('telefon')}}" autocomplete="telefon" autofocus>
                         @error('telefon')
                             <span class="invalid-feedback" role="alert">
@@ -115,16 +115,16 @@
 
 
                     <div class="d-grid mx-auto">
-                            <button type="submit" class="btn btn-success btn-block">{{__('Registrar-se')}}</button>
-                        </div>
+                        <button type="submit" class="btn btn-success btn-block">{{__('Registrar-se')}}</button>
+                    </div>
 
-                   
-                    <p>
-                    <a  href="{{url('/')}}"><u>home</u></a>
-                    </p>
-                    <p>
-                    <a  href="{{url('login')}}"><u>Login</u></a>
-                    </p>
+                    <br>
+                 
+                        <b>
+                            <center>
+                                <a  href="{{url('login')}}"><u>Login</u></a>
+                            </center>
+                        </b>
                     
                 </form>
             </div>

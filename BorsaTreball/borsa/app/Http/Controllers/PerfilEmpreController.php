@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Alumne;
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 use Illuminate\Auth\SessionGuard;
 
-class PerfilAlumController extends Controller
+class PerfilEmpreController extends Controller
 {
    /**
      * Display a listing of the resource.
@@ -18,36 +18,32 @@ class PerfilAlumController extends Controller
      */
     public function index()
     {
-        return view("borsa.perfilAlum",[
-            "alumne" => Alumne::all()
+        return view("borsa.perfilEmpre",[
+            "empresa" => Empresa::all()
         ]);
     }
 
 
-    public function perfilAlumne(){
-        return view('perfilAlum');
+    public function perfilEmpresa(){
+        return view('perfilEmpre');
      }
  
  
 
 
-    public function perfilAlum(Request $request){
+    public function perfilEmpre(Request $request){
        
         $validated = $request->validate([
             'name' => 'required',
             'cognom' => 'required',
-            'neixement' => 'required',
+            'empre' => 'required',
             'email' =>  'required|email',
             'telefon' => 'required',
             'password' => 'required|confirmed',
             'poblacio' => 'required',
-            'cp' => 'required',
-            'estas' => 'required',
-            'fet' => 'required',
-            'treballat' => 'required',
-           
+        
        
-        ]); return view('perfilAlum', $var);
+        ]); return view('perfilEmpre', $var);
      }
 
     /**
@@ -77,11 +73,11 @@ class PerfilAlumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Alumne $alumne)
+    public function show(Empresa $empresa)
     {
         //
 
-        return view('perfilAlum',compact('alumne'));
+        return view('perfilEmpre',compact('empresa'));
     }
 
     /**

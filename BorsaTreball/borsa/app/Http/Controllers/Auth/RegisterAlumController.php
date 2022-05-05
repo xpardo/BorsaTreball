@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use App\Models\Alumne;
-
+use Illuminate\Auth\SessionGuard;
 class RegisterAlumController extends Controller
 {
     /**
@@ -35,9 +35,19 @@ class RegisterAlumController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+           
             'name' => ['required', 'string', 'max:255'],
+            'cognom' => ['required', 'string', 'max:255'],
+            'neixement' => ['required', 'string', 'max:255'],
+            'genere' => ['required', 'string', 'max:255'],
+            'cp' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'telefon' => ['required', 'max:255'],
+            'poblacio' => ['required',  'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'estat' => ['required',  'max:255'],
+            'fet' => ['required',  'max:255'],
+            'treballat' => ['required',  'max:255'],
         ]);
 
         $alumne = Alumne::create([

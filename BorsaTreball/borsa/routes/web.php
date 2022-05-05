@@ -26,8 +26,10 @@ use App\Http\Controllers\PerfilController;
 
 use App\Http\Controllers\PerfilAlumController;
 
+use App\Http\Controllers\PerfilEmpreController;
 
 use App\Http\Controllers\AuthController;
+
 
 
 /*
@@ -78,8 +80,8 @@ Route::get('mail/test', [MailController::class, 'test'])->middleware(['auth']);
  
 
 
-Route::get('signout', [RegEmpreController::class, 'signOut'])->name('signout');
-Route::get('/perfilEmpre', [RegEmpreController::class, 'perfilEmpre'])->middleware('auth');
+/* Route::get('signout', [RegEmpreController::class, 'signOut'])->name('signout');
+Route::get('/perfilEmpre', [RegEmpreController::class, 'perfilEmpre'])->middleware('auth'); */
 
 
 
@@ -97,7 +99,6 @@ Route::get('delete/{id}', [OfEmpreController::class,'delete']);
 
 
  
-Route::get('/perfilAlum', [RegAlumController::class, 'perfilAlum'])->middleware('auth');
 
 
 
@@ -126,15 +127,6 @@ Route::get('/logout', [SessionsController::class,'destroy']);
 
 
 
-
-
-
-
-Route::get('/editempresa',function(){
-    return view('editempresa');
-});
-
-Route::get('/editempresa',[editEmpreController::class, 'index'])->middleware('auth');
 
 
 
@@ -168,6 +160,12 @@ Route::resource('perfilAlum', PerfilAlumController::class);
 Route::get('/perfilAlumne',[PerfilAlumController::class, 'perfilAlumne'])->middleware('auth');
 Route::post('/perfilAlum', [PerfilAlumController::class, 'perfilAlum'])->middleware('auth');
 
+
+Route::resource('perfilEmpre', PerfilEmpreController::class);
+
+
+Route::get('/perfilEmpresa',[PerfilEmpreController::class, 'perfilEmpresa'])->middleware('auth');
+Route::post('/perfilEmpre', [PerfilEmpreController::class, 'perfilEmpre'])->middleware('auth');
 
 Route::get('email', [AuthController::class, 'email'])->name('email');
 Route::post('enlace', [AuthController::class, 'enlace'])->name('enlace');

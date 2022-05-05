@@ -4,8 +4,7 @@
 
 
    
- 
-    
+    @include('borsa.header')
 
 
     <div class="contenedor-formularios">
@@ -17,7 +16,7 @@
 
             <!-- Registrar-se -->
             <div id="registrarse">
-                <h1>Registrar-se</h1>
+                <h1>registrar-se</h1>
 
                
                 <form action="{{ route('registreAlumne') }}" method="POST" enctype="multipart/form-data"> 
@@ -81,7 +80,7 @@
 
                     </div>
                     <div class="contenedor-input">
-                        <label for="telefon">{{__('telefón/movil')}}<i class="bi bi-telephone"></i></label><br><br>
+                        <label for="telefon">{{__('telefón/móbil')}}<i class="bi bi-telephone"></i></label><br><br>
                         <input type="text" name="telefon" class="form-control @error('telefon') is-invalid @enderror"  id="telefon"  value="{{old('telefon')}}"  autocomplete="telefon" autofocus>
                         @error('telefon')
                             <span class="invalid-feedback" role="alert">
@@ -189,18 +188,19 @@
                         <div class="d-grid mx-auto">
                             <button type="submit" class="btn btn-success btn-block">{{__('Registrar-se')}}</button>
                         </div>
-                            <p>
+                        <br>
+                            <b>
                                 <a class="inf ">
                                     Pots especificar als cicles i posar  curriculums,
                                     cartas de presentacio i carrtas de recomendació en el perfil
                                 </a>
-                            </p>
-                            <p>
-                                <a  href="{{url('/')}}"><u>home</u></a>
-                            </p>
-                            <p>
-                                <a  href="{{url('login')}}"><u>Login</u></a>
-                            </p>
+                            </b>
+                         
+                            <b>
+                                <center>
+                                    <a  href="{{url('login')}}"><u>Login</u></a>
+                                </center>
+                            </b>
                  
                 </form>
         

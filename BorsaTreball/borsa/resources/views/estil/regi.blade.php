@@ -120,7 +120,10 @@
         color: #fff;
         font-weight: 300;
         margin: 0 0 40px;
-        font-size: 40px;
+        font-size: 50px;
+    }
+    b{
+        font-size: 22px;
     }
     
     label {

@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Auth\SessionGuard;
 namespace App\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;

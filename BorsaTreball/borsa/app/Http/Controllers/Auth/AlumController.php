@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Auth\SessionGuard;
 use App\Models\Alumne;
 
 class AlumController extends Controller
@@ -55,8 +55,17 @@ class AlumController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'cognom' => ['required', 'string', 'max:255'],
+            'neixement' => ['required', 'string', 'max:255'],
+            'genere' => ['required', 'string', 'max:255'],
+            'cp' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'telefon' => ['required', 'max:255'],
+            'poblacio' => ['required',  'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'estat' => ['required',  'max:255'],
+            'fet' => ['required',  'max:255'],
+            'treballat' => ['required',  'max:255'],
         ]);
     }
 
@@ -70,8 +79,18 @@ class AlumController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'cognom' => $data['cognom'],
+            'neixement' => $data['neixement'],
+            'genere' => $data['genere'],
+            'cp' => $data['cp'],
             'email' => $data['email'],
+            'telefon' => $data['telefon'],
+            'poblacio' => $data['poblacio'],
             'password' => Hash::make($data['password']),
+            'estat' => $data['estat'],
+            'fet' => $data['fet'],
+            'treballat' => $data['treballat'],
         ]);
     }
 }
+

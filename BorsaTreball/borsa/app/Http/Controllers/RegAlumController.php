@@ -172,7 +172,7 @@ class RegAlumController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request(), [
+     /*    $this->validate(request(), [
             'name' => 'required',
             'cognom' => 'required',
             'neixement' => 'required',
@@ -201,7 +201,7 @@ class RegAlumController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME); */
         
        
 

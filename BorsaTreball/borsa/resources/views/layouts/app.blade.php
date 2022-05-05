@@ -76,6 +76,7 @@
                            
                                     <a class="dropdown-item" href="{{ url('profile') }} " >{{ __('perfil') }}</a>
                                     <a class="dropdown-item" href="{{ url('perfilAlum') }} " >{{ __('perfil alumne') }}</a>
+                                    <a class="dropdown-item" href="{{ url('perfilEmpre') }} " >{{ __('perfil empresa') }}</a>
                                 </div>
 
                                
