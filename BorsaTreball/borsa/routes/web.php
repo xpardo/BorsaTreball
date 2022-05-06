@@ -73,15 +73,35 @@ Route::get('mail/test', [MailController::class, 'test'])->middleware(['auth']);
 
 
 
-/*_________________________________________________________________________________________________________________*/
+/*_____________________________________________Empresa____________________________________________________________________*/
+
+
+Route::resource('perfilEmpre', PerfilEmpreController::class);
+
+
+Route::get('/perfilEmpresa',[PerfilEmpreController::class, 'perfilEmpresa'])->middleware('auth');
+Route::post('/perfilEmpre', [PerfilEmpreController::class, 'perfilEmpre'])->middleware('auth');
 
 
 
- 
+/**____________________________________________Alumne_______________________________________________________________________*/
 
 
-/* Route::get('signout', [RegEmpreController::class, 'signOut'])->name('signout');
-Route::get('/perfilEmpre', [RegEmpreController::class, 'perfilEmpre'])->middleware('auth'); */
+
+
+Route::resource('perfilAlum', PerfilAlumController::class);
+
+
+
+Route::get('/perfilAlumne',[PerfilAlumController::class, 'perfilAlumne'])->middleware('auth');
+Route::post('/perfilAlum', [PerfilAlumController::class, 'perfilAlum'])->middleware('auth');
+
+Route::get('/form',[PerfilAlumController::class, 'mform'])->name('form');
+Route::post('/guardar',[PerfilAlumController::class, 'mguardar'])->name('guardar');
+
+
+
+
 
 
 
@@ -153,19 +173,8 @@ Route::get('/politic',function(){
 Route::resource('profile', PerfilController::class);
 
 
-Route::resource('perfilAlum', PerfilAlumController::class);
 
 
-
-Route::get('/perfilAlumne',[PerfilAlumController::class, 'perfilAlumne'])->middleware('auth');
-Route::post('/perfilAlum', [PerfilAlumController::class, 'perfilAlum'])->middleware('auth');
-
-
-Route::resource('perfilEmpre', PerfilEmpreController::class);
-
-
-Route::get('/perfilEmpresa',[PerfilEmpreController::class, 'perfilEmpresa'])->middleware('auth');
-Route::post('/perfilEmpre', [PerfilEmpreController::class, 'perfilEmpre'])->middleware('auth');
 
 Route::get('email', [AuthController::class, 'email'])->name('email');
 Route::post('enlace', [AuthController::class, 'enlace'])->name('enlace');
