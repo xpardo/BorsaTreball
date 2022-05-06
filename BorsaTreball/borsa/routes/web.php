@@ -1,20 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\VerifyEmailController;
+
 use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\RegEmpreController;
 use App\Http\Controllers\RegAlumController;
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BorsaController;
 
 use App\Http\Controllers\OfEmpreController;
@@ -28,7 +22,15 @@ use App\Http\Controllers\PerfilAlumController;
 
 use App\Http\Controllers\PerfilEmpreController;
 
-use App\Http\Controllers\AuthController;
+use App\Models\Curriculum;
+use App\Models\Presentacio;
+use App\Http\Controllers\curriculumController;
+use App\Http\Controllers\PresentacioController;
+
+
+use Illuminate\Support\Facades\Input;
+
+use App\User;
 
 
 
@@ -93,16 +95,44 @@ Route::resource('perfilAlum', PerfilAlumController::class);
 
 
 
-Route::get('/perfilAlumne',[PerfilAlumController::class, 'perfilAlumne'])->middleware('auth');
-Route::post('/perfilAlum', [PerfilAlumController::class, 'perfilAlum'])->middleware('auth');
-
-Route::get('/form',[PerfilAlumController::class, 'mform'])->name('form');
-Route::post('/guardar',[PerfilAlumController::class, 'mguardar'])->name('guardar');
+Route::get('/perfilAlumne',[curriculumController::class, 'perfilAlumne'])->middleware('auth');
+Route::post('/perfilAlum', [curriculumController::class, 'perfilAlum'])->middleware('auth');
 
 
 
 
+/**_____________________________________*/
+ 
 
+
+
+Route::get('/curriculums', function () {
+    $curri = Curriculum::all();
+    return view('borsa.curriculums')->with('curri',$curri);
+});
+
+
+
+Route::post('/curriculums/register', [curriculumController::class, 'store'])->name('curri_register');
+Route::get('/curriculums/file/{id}', [curriculumController::class, 'urlfile'])->name('curri_file');
+Route::post('/curriculums/update', [curriculumController::class, 'update'])->name('curri_update');
+Route::get('/curriculums/delete/{id}', [curriculumController::class, 'destroy'])->name('curri_delete');
+
+
+/**_____________________________________*/
+
+
+Route::get('/presentacio', function () {
+    $pre = Presentacio::all();
+    return view('borsa.presentacio')->with('pre',$pre);
+});
+
+
+
+Route::post('/presentacio/register', [PresentacioController::class, 'store'])->name('pre_register');
+Route::get('/presentacio/file/{id}', [PresentacioController::class, 'urlfile'])->name('pre_file');
+Route::post('/presentacio/update', [PresentacioController::class, 'update'])->name('pre_update');
+Route::get('/presentacio/delete/{id}', [PresentacioController::class, 'destroy'])->name('pre_delete');
 
 
 /*-------------------------------------------------- */
@@ -180,3 +210,5 @@ Route::get('email', [AuthController::class, 'email'])->name('email');
 Route::post('enlace', [AuthController::class, 'enlace'])->name('enlace');
 Route::get('clave/{token}', [AuthController::class, 'clave'])->name('clave');
 Route::post('cambiar', [AuthController::class, 'cambiar'])->name('cambiar');
+
+

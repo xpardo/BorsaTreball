@@ -27,6 +27,10 @@ class Alumne extends Model
         'fet',
         'treballat',
         'role_id',
+        
+        
+
+        
     ];
 
         /**

@@ -134,14 +134,14 @@
                                 <label>{{__('Estas en practiques ?')}}</label><br><br>
 
                                 <label for="estasSi" class="form-check-label"> {{__('Si')}} </label>
-                                <input type="checkbox" name="estat"   class="form-check-input @error('estas') is-invalid @enderror"
+                                <input type="checkbox" name="estat"  class="form-check-input @error('estat') is-invalid @enderror"
                                  id="estasSi" value="Si" {{ old('estat')== 'Si' ? 'checked' : '' }}>
 
                                 <br><br>
 
                                 <label for="estasNo" class="form-check-label"> {{__('No')}} </label>
-                                <input type="checkbox"  name="estas"  class="form-check-input @error('estas') is-invalid @enderror"
-                                id="estasNo" value="No" {{ old('estas')== 'No' ? 'checked' : '' }}>
+                                <input type="checkbox"  name="estas"  class="form-check-input @error('estat') is-invalid @enderror"
+                                id="estasNo" value="No" {{ old('estat')== 'No' ? 'checked' : '' }}>
 
                             </div>
 

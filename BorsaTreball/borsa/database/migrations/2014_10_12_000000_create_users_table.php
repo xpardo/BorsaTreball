@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('fet');
             $table->string('treballat');
             $table->boolean('tipo_usuario')->default(1); // 1 = administrador && 2 = alumne && 3 = empresa
+            $table->string('image')->default('user.png');
             $table->rememberToken();
             $table->timestamps();
         });

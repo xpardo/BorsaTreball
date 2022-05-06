@@ -79,11 +79,11 @@
 
 
         
-   @include('borsa.footer')
+   
 
  
 
 @include('estil/home')    
 
-
+@include('borsa.footer')
 @endsection

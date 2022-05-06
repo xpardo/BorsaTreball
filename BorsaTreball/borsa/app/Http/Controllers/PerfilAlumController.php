@@ -47,8 +47,22 @@ class PerfilAlumController extends Controller
             'treballat' => 'required',
            
        
-        ]); return view('perfilAlum', $var);
-     }
+        ]); return view('perfilAlum', $validated);
+    }
+
+
+  /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Alumne $alumne)
+    {
+        //
+
+        return view('perfilAlum',compact('alumne'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -71,18 +85,7 @@ class PerfilAlumController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Alumne $alumne)
-    {
-        //
-
-        return view('perfilAlum',compact('alumne'));
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
