@@ -24,13 +24,24 @@ use App\Http\Controllers\PerfilEmpreController;
 
 use App\Models\Curriculum;
 use App\Models\Presentacio;
-use App\Http\Controllers\curriculumController;
-use App\Http\Controllers\PresentacioController;
+
+
 
 
 use Illuminate\Support\Facades\Input;
 
 use App\User;
+use App\Http\Controllers\UsersController;
+
+
+use App\Http\Controllers\curriculumController;
+use App\Http\Controllers\LlistaCurriController;
+
+use App\Http\Controllers\PresentacioController;
+use App\Http\Controllers\LlistaPresenController;
+
+
+
 
 
 
@@ -111,12 +122,22 @@ Route::get('/curriculums', function () {
     return view('borsa.curriculums')->with('curri',$curri);
 });
 
+    Route::post('curriculums',[curriculumController::class,'insertar']);
+    Route::get('curriculums',[LlistaCurriController::class,'index']);
+
+  
+    Route::post('newCurri', [curriculumController::class, 'store'])->name('newCurri');
 
 
-Route::post('/curriculums/register', [curriculumController::class, 'store'])->name('curri_register');
-Route::get('/curriculums/file/{id}', [curriculumController::class, 'urlfile'])->name('curri_file');
-Route::post('/curriculums/update', [curriculumController::class, 'update'])->name('curri_update');
-Route::get('/curriculums/delete/{id}', [curriculumController::class, 'destroy'])->name('curri_delete');
+    Route::get('/newCurri', function () {
+        $curri = Curriculum::all();
+        return view('borsa.newCurri')->with('curri',$curri);
+    });
+    
+
+
+
+
 
 
 /**_____________________________________*/
@@ -129,10 +150,11 @@ Route::get('/presentacio', function () {
 
 
 
-Route::post('/presentacio/register', [PresentacioController::class, 'store'])->name('pre_register');
-Route::get('/presentacio/file/{id}', [PresentacioController::class, 'urlfile'])->name('pre_file');
-Route::post('/presentacio/update', [PresentacioController::class, 'update'])->name('pre_update');
-Route::get('/presentacio/delete/{id}', [PresentacioController::class, 'destroy'])->name('pre_delete');
+    Route::post('presentacio',[PresentacioController::class,'insertar']);
+    Route::get('presentacio',[LlistaPresenController::class,'index']);
+
+
+
 
 
 /*-------------------------------------------------- */
@@ -212,3 +234,6 @@ Route::get('clave/{token}', [AuthController::class, 'clave'])->name('clave');
 Route::post('cambiar', [AuthController::class, 'cambiar'])->name('cambiar');
 
 
+Route::get('borsa/{user}/perfilAlumn',[UsersController::class,'editAvatar'])->middleware('auth')->name('borsa.perfilAlumn');
+
+Route::post('users/{user}/update_avatar',[UsersController::class,'updateAvatar'])->middleware('auth')->name('users.update_avatar');

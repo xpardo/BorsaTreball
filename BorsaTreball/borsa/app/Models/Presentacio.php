@@ -7,12 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Presentacio extends Model
 {
-    use HasFactory;
-    protected $fillable = [
-        'pre_code',
-        'title',
-        'state',
-        'id_alumn',
+    //use HasFactory;
+
+    protected $table = 'presentacions';
+    protected $primaryKey= 'id_doc';
+
+    public $timestamps=false;
+    protected $fillable= [
+        'name',
+        'pdf',
+        'id_alumne',
     ];
 
 }
