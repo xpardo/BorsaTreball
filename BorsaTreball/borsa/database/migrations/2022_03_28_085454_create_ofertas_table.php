@@ -19,10 +19,12 @@ class CreateOfertasTable extends Migration
 
             $table->string('cicle');
             $table->string('tipus');
+            $table->string('name');
             $table->char('sala');
             $table->time('h');
             $table->string('desc');
-            $table->string('flexT');
+            $table->string('privat');
+            $table->text('user');
             $table->timestamps();
        
         });

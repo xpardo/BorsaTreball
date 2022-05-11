@@ -66,7 +66,13 @@ class AlumController extends Controller
             'estat' => ['required',  'max:255'],
             'fet' => ['required',  'max:255'],
             'treballat' => ['required',  'max:255'],
+            'captcha' => ['required','captcha'],
         ]);
+    }
+
+    public function reloadCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img()]);
     }
 
     /**

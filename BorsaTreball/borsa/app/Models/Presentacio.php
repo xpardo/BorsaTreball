@@ -16,7 +16,7 @@ class Presentacio extends Model
     protected $fillable= [
         'name',
         'pdf',
-        'id_alumne',
+        'user',
     ];
 
 }

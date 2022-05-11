@@ -113,7 +113,6 @@
         <br><br>
 
         
-                    @include('borsa.footer')
 
 
 @include('estil/perfil')

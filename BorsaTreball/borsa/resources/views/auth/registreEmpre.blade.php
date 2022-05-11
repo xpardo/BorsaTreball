@@ -114,6 +114,32 @@
                     </div>
 
 
+                    <div class="form-group row">
+                        <label for="captcha" class="col-md-4 col-form-label text-md-right">Captcha</label>
+                        <div class="col-md-6 captcha">
+                            <span>{!! captcha_img() !!}</span>
+                            <button type="button" class="btn btn-danger" class="reload" id="reload">
+                            &#x21bb;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="captcha" class="col-md-4 col-form-label text-md-right">Enter Captcha</label>
+                        <div class="col-md-6">
+                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
                     <div class="d-grid mx-auto">
                         <button type="submit" class="btn btn-success btn-block">{{__('Registrar-se')}}</button>
                     </div>
@@ -130,13 +156,28 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $('#reload').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: 'reload-captcha',
+            success: function (data) {
+                $(".captcha span").html(data.captcha);
+            }
+        });
+    });
+</script>
+@endpush
   
 
 
 
 
 @include('estil/regi')
-@include('borsa.footer')
+
 @endsection
 
 

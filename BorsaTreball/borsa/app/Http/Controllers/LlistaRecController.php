@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Curriculum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Recomanacio;
 use DB;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -12,11 +12,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-
-
-class LlistaCurriController extends Controller
+class LlistaRecController extends Controller
 {
-    //
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -26,14 +24,12 @@ class LlistaCurriController extends Controller
 
         $usuarioEmail = auth()->user()->email;
 
-        $curri = Curriculum::where('user', $usuarioEmail)->paginate(5);
+        $rec = Recomanacio::where('user', $usuarioEmail)->paginate(5);
 
-        return view('borsa.curriculums',[
-            "curri" => $curri,
+        return view('borsa.recomenacio',[
+            "rec" => $rec,
 
         ]);
         
     }
-
-    
 }

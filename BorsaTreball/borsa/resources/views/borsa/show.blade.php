@@ -10,41 +10,49 @@
               </div>
           </div>
       </div>
-     
-      <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12">
-              <div class="form-group">
-              <strong>cicle:</strong>
-                  {{ $oferta->cicle }}
-              </div>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-12">
-              <div class="form-group">
-                  <strong>tipus:</strong>
-                  {{ $oferta->tipus }}
-              </div>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-12">
-              <div class="form-group">
-                  <strong>salari:</strong>
-                  {{ $oferta->sala }}
-              </div>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-12">
-              <div class="form-group">
-                  <strong>horari:</strong>
-                  {{ $oferta->h }}
-              </div>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-12">
-              <div class="form-group">
-                  <strong>privat:</strong>
-                  {{ $oferta->flexT }}
-              </div>
-          </div>
-  
-          <td><a class="btn btn-warning"  href="{{ route("oferta.edit", $file) }}">edit </a></td>
-          <td><a class="btn btn-danger" href="{{ route("oferta.destroy", $file->id) }}">delete </a></td>
-          
-      </div>
+   
+
+
+
+      <div class="card">
+                <div class="card-header">{{ __('Oferta') . " " . $oferta->id }}</div>
+                <div class="card-body">
+                    <table class="table">
+                            
+                            <tr>
+                                <td><strong>cicle</strong></td>
+                                <td>{{ $oferta->cicle }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>tipus</strong></td>
+                                <td> {{ $oferta->tipus }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>nom</strong></td>
+                                <td> {{ $oferta->name }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>salari:</strong></td>
+                                <td>{{ $oferta->sala }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>h:</strong></td>
+                                <td>{{ $oferta->h }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>descripcio:</strong></td>
+                                <td>{{ $oferta->desc }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>privat:</strong></td>
+                                <td>{{ $oferta->privat }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+
+<!--           <td><a class="btn btn-warning"  href="{{ route("oferta.edit", $file) }}">edit </a></td>
+          <td><a class="btn btn-danger" href="{{ route("oferta.destroy", $file->id) }}">delete </a></td> -->
   @endsection

@@ -129,33 +129,33 @@
 
                 
 
-                            <div class="from-group form-row offset-9 col-3">
+                            <div class="from-group form-row offset-1 col-10">
 
-                                <label>{{__('Estas en practiques ?')}}</label><br><br>
+                            <p><b><label>{{__('Estas en practiques ?')}}</label></b><p><br>
 
-                                <label for="estasSi" class="form-check-label"> {{__('Si')}} </label>
+                                <label for="estatSi" class="form-check-label"> {{__('Si')}} </label>
                                 <input type="checkbox" name="estat"  class="form-check-input @error('estat') is-invalid @enderror"
-                                 id="estasSi" value="Si" {{ old('estat')== 'Si' ? 'checked' : '' }}>
+                                 id="estatSi" value="Si" {{ old('estat')== 'Si' ? 'checked' : '' }}>
 
-                                <br><br>
+                                <br>
 
-                                <label for="estasNo" class="form-check-label"> {{__('No')}} </label>
-                                <input type="checkbox"  name="estas"  class="form-check-input @error('estat') is-invalid @enderror"
-                                id="estasNo" value="No" {{ old('estat')== 'No' ? 'checked' : '' }}>
+                                <label for="estatNo" class="form-check-label"> {{__('No')}} </label>
+                                <input type="checkbox"  name="estat"  class="form-check-input @error('estat') is-invalid @enderror"
+                                id="estatNo" value="No" {{ old('estat')== 'No' ? 'checked' : '' }}>
 
                             </div>
 
                             <br>
                             
-                            <div class="from-group form-row offset-9 col-3">
+                            <div class="from-group form-row offset-1 col-10">
 
-                                <label>{{__('Has fet practiques abans ?')}}</label><br><br>
+                            <p><b><label>{{__('Has fet practiques abans ?')}}</label></b><p><br>
 
                                 <label for="fetSi" class="form-check-label"> {{__('Si')}} </label>
                                 <input type="checkbox"  name="fet"  class="form-check-input @error('fet') is-invalid @enderror"
                                 id="fetSi" value="Si" {{ old('fet')== 'Si' ? 'checked' : '' }}>
 
-                                <br><br>
+                                <br>
 
                                 <label for="fetNo" class="form-check-label"> {{__('No')}} </label>
                                 <input type="checkbox"  name="fet"  class="form-check-input @error('fet') is-invalid @enderror"
@@ -165,24 +165,47 @@
 
                             <br>
                           
-                            <div class="from-group form-row offset-9 col-3">
+                            <div class="from-group form-row offset-1 col-10">
 
-                                <label>{{__('Estas o has treballat ?')}}</label><br><br>
-
-                                <label for="treballatSi" class="form-check-label">{{__('Si')}} </label>
-                                <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
-                                id="treballatSi" value="Si" {{ old('treballat')== 'Si' ? 'checked' : '' }}>
-
-                                <br><br>
-
-                                <label for="treballatNo" class="form-check-label"> {{__('No')}} </label>
-                                <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
-                                id="treballatNo" value="No" {{ old('treballat')== 'No' ? 'checked' : '' }}>
+                                <p><b><label>{{__('Estas o has treballat ?')}}</label></b><p>
+                                    <br>
+                                
+                                    <label for="treballatSi" class="form-check-label">{{__('Si')}} </label>
+                                    <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
+                                    id="treballatSi" value="Si" {{ old('treballat')== 'Si' ? 'checked' : '' }}>
+                      
+                                    <br>
+                                    <label for="treballatNo" class="form-check-label"> {{__('No')}} </label>
+                                    <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
+                                    id="treballatNo" value="No" {{ old('treballat')== 'No' ? 'checked' : '' }}>
+                                
 
                             </div>
                    
 
                         </div>
+
+                        <div class="form-group row">
+                        <label for="captcha" class="col-md-4 col-form-label text-md-right">Captcha</label>
+                        <div class="col-md-6 captcha">
+                            <span>{!! captcha_img() !!}</span>
+                            <button type="button" class="btn btn-danger" class="reload" id="reload">
+                            &#x21bb;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="captcha" class="col-md-4 col-form-label text-md-right">Enter Captcha</label>
+                        <div class="col-md-6">
+                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                        </div>
+                    </div>
+
+
+
+
+
+
 
                         
                         <div class="d-grid mx-auto">
@@ -208,8 +231,25 @@
         </div>
     </div>
 
+    @push('scripts')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $('#reload').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: 'reload-captcha',
+            success: function (data) {
+                $(".captcha span").html(data.captcha);
+            }
+        });
+    });
+</script>
+@endpush
+  
 
-    @include('borsa.footer')
+
+
+
 
 
 

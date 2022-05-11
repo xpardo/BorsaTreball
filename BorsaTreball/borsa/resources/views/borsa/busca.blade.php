@@ -185,23 +185,7 @@
                         
                         </div>
 
-                        <div class="p-6 bg-white border-b border-gray-200">
-                
-                                <table  class="table">
-                                    
-                                        <thead class="thead-dark">
-                                            <tr>
-                                                <th scope="col">Empresa</th>
-                                                <th scope="col">Descripció</th>
-                                                <th scope="col">Estudis als que va dirigida</th>
-                                                <th scope="col">Població</th>
-                                                <th scope="col">Termini presentació candidatures</th>
-                                            </tr>
-                                        </thead>
-                           
-                                 </table>
-                          
-                        </div>
+                       
 
                     </div>
                 </div>

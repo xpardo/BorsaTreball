@@ -2,7 +2,7 @@
 
 
 namespace App\Http\Controllers;
-use App\Models\Presentacio;
+use App\Models\Recomanacio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use DB;
@@ -12,33 +12,33 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Oferta;
 
 
 
-
-class PresentacioController extends Controller
+class RecController extends Controller
 {
+   
+
     public function insertar(Request $request){
         //dd($request);
         
         try {
             DB::beginTransaction();
 
-            $pre = new Presentacio;
-            $pre -> name = $request -> get('name'); 
+            $rec = new Recomanacio;
+            $rec -> name = $request -> get('name'); 
 
-            $pre->user = auth()->user()->email;
+            $rec->user = auth()->user()->email; 
             
             if($request->hasFile('pdf')){
 
 
                 $archivo  = $request -> file('pdf'); 
-                $archivo -> move(public_path().'/pre/',$archivo->getClientOriginalName());
-                $pre -> pdf = $archivo ->getClientOriginalName();
+                $archivo -> move(public_path().'/rec/',$archivo->getClientOriginalName());
+                $rec -> pdf = $archivo ->getClientOriginalName();
             }
     
-            $pre -> Save();
+            $rec -> Save();
 
 
 
@@ -52,31 +52,34 @@ class PresentacioController extends Controller
     } 
 
 
+
+
+
+
+
     public function store(Request $request){
         $request->validate([
     
             'pdf' => 'required|mimes:pdf'
         ]);
 
-        $pre = new Presentacio;
-        $pre->user = auth()->user()->email;
+        $rec = new Recomanacio;
+        $rec->user = auth()->user()->email;
 
         if($request->hasFile('pdf')){
             $archivo  = $request -> file('pdf'); 
-            $archivo -> move(public_path().'/pre/',$archivo->getClientOriginalName());
-            $pre -> pdf = $archivo ->getClientOriginalName();
-            $pre -> Save();
+            $archivo -> move(public_path().'/rec/',$archivo->getClientOriginalName());
+            $rec -> pdf = $archivo ->getClientOriginalName();
+            $rec -> Save();
+            
+            
 
-
-           
         }
+
         return back()
         ->with('success','File has uploaded to the database.')
-        ->with('presentacio', 'Presentacio Agregada!')
-        ->with('pdf', $pre);
-        return redirect('presentacio');
+        ->with('recomenacio', 'recomenacio Agregada!')
+        ->with('pdf', $rec);
+        return redirect('recomenacio');
      }
-
-
-
 }

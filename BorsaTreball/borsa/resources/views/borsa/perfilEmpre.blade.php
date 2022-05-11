@@ -1,26 +1,11 @@
 @extends('layouts.app')
- @section('content')
-    @include('borsa.header')
+    @section('content')
+        @include('borsa.header')
+            @include('borsa.menuEmpre') 
 
 
 
- 
-<!---logo--->
 
-<nav class="navbar navbar-expand-lg navbar-light m-2"  style="background-color: #bcdefd;">
-    
-         
-                           
-    <div class="col-12 col-md-3">
-
-
-
-</div>
-
-
-</button>
-
-</nav>
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     
@@ -30,7 +15,7 @@
                       
                    
 
-                        <p><b>Nom:</b>   {{ Auth::user()->name }}</p>
+                                    <p><b>Nom:</b>   {{ Auth::user()->name }}</p>
                                     <p><b>Cognom:</b>   {{ Auth::user()->cognom }}</p>
                                     <p><b>nom de la empresa:</b>   {{ Auth::user()->empre }}</p>
                                     <p><b>Email:</b> {{ Auth::user()->email }}</p>
@@ -49,7 +34,7 @@
         <br><br>
 
         
-                    @include('borsa.footer')
+
 
 
 @include('estil/perfil')

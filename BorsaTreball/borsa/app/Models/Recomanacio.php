@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Curriculum extends Model
+class Recomanacio extends Model
 {
-    //use HasFactory;
+   //use HasFactory;
 
-   protected $table = 'curriculums';
+   protected $table = 'recomenacio';
    protected $primaryKey= 'id_doc';
 
    public $timestamps=false;
    protected $fillable= [
        'name',
        'pdf',
-       'id_alumne',
-       'user'
+       'user',
    ];
 }

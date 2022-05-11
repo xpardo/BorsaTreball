@@ -11,6 +11,10 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterEmpreController;
 use App\Http\Controllers\Auth\RegisterAlumController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\AlumController;
+
+use App\Http\Controllers\Auth\EmpreController;
 
 
 
@@ -32,6 +36,8 @@ Route::middleware('guest')->group(function () {
     Route::get('reset-password/{token}', [NewPasswordController::class, 'create']) ->name('password.reset');
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.update');
+
+    Route::get('/reload-captcha', [App\Http\Controllers\Auth\RegisterController::class, 'reloadCaptcha']);
 
     
    
@@ -55,6 +61,7 @@ Route::middleware('guest')->group(function () {
     Route::get('reset-password/{token}', [NewPasswordController::class, 'create']) ->name('password.reset');
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.update');
+    Route::get('/reload-captcha', [App\Http\Controllers\Auth\EmpreController::class, 'reloadCaptcha']);
 
 
 });
@@ -78,7 +85,7 @@ Route::middleware('guest')->group(function () {
     Route::get('reset-password/{token}', [NewPasswordController::class, 'create']) ->name('password.reset');
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.update');
-
+    Route::get('/reload-captcha', [App\Http\Controllers\Auth\AlumController::class, 'reloadCaptcha']);
      
 });
 

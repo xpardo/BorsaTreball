@@ -43,7 +43,6 @@
 
             </div>
 
-            @include('borsa.footer')
 
  
 

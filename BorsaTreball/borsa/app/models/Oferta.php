@@ -11,10 +11,11 @@ class Oferta extends Model
 
     protected $fillable = [
         'cicle' ,
+        'name' ,
         'tipus' ,
         'sala' ,
         'h' ,
         'desc' ,
-        'flexT' ,
+        'privat' ,
     ];
 }

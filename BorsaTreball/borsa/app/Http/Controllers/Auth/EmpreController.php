@@ -61,7 +61,13 @@ class EmpreController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'telefon' => ['required',  'max:255'],
             'poblacio' => ['required', 'string', 'max:255'],
+            'captcha' => ['required','captcha'],    
         ]);
+    }
+
+    public function reloadCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img()]);
     }
 
     /**

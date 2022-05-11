@@ -11,22 +11,22 @@
                 
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-                    <a class="btn btn-primary" href="{{ route('newPre') }}" role="button">➕ </a>
+                    <a class="btn btn-primary" href="{{ route('newrec') }}" role="button">➕ </a> 
                     <br><br>
                         <table class="table">
                             <thead>
                                 <th>ID_DOC</th>
                               
                                 <th>NOM</th>
-                                <th>VISUALITZAR CARTA DE PRESENTACIÓ</th>
+                                <th>VISUALITZAR CARTA DE RECOMENDACIÓ</th>
                             </thead>
                             <tbody>
-                                @foreach($pre as $d)
+                                @foreach($rec as $d)
                                     <tr>
                                         <td>{{$d->id_doc}}</td>
                                        
                                         <td>{{$d->name}}</td>
-                                        <td><a href="pre/{{$d->pdf}}" target="blank_">👁️</a></td>
+                                        <td><a href="rec/{{$d->pdf}}" target="blank_">👁️</a></td>
                                 
                                     </tr>
                                 @endforeach

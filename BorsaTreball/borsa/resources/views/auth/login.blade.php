@@ -47,15 +47,17 @@
                                 <label class="form-check-label offset-1 col-7 " for="remember">
                                     {{ __('Remember Me') }}
                                 </label>
-
+                                <br>  <br>
+                               
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                             </div>
                         </div>
 
-                    
+                  
 
                         <div class="contenedor-input">
+                        
                         
                             <button type="submit" class="btn btn-success">
                                 {{ __('Login') }}

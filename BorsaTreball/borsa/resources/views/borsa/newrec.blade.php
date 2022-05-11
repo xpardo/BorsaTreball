@@ -9,7 +9,7 @@
                 
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">       
-                        <form action="curriculums"  method="POST" enctype="multipart/form-data">
+                        <form action="recomenacio"  method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="name">nom</label>
@@ -17,7 +17,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleFormControlFile1">Adjuntar CV</label>
+                                <label for="exampleFormControlFile1">Adjuntar carta de recomanació</label>
                                 <input class="form-control" type="file" name="pdf" class="form-control-file">
                             </div>
 
