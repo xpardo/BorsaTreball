@@ -25,13 +25,15 @@ use App\Http\Controllers\PerfilEmpreController;
 use App\Models\Curriculum;
 use App\Models\Presentacio;
 use App\Models\Recomanacio;
-
+use App\Models\Oferta;
 
 
 use Illuminate\Support\Facades\Input;
 
 use App\User;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ShowController;
+
 
 
 use App\Http\Controllers\curriculumController;
@@ -47,6 +49,7 @@ use App\Http\Controllers\LlistaRecController;
 use App\Http\Controllers\WelcomeController;
 
 use App\Http\Controllers\WatchController;
+
 
 
 
@@ -114,6 +117,17 @@ Route::post('update', [OfEmpreController::class,'update']);
 Route::get('delete/{id}', [OfEmpreController::class,'delete']);
 
 
+
+/**______________________________________ */
+
+
+Route::get('show', function () {
+    $oferta = Oferta::all();
+    return view('show')->with('oferta',$oferta);
+});
+
+
+
 /**______________________________________ */
 
 Route::resource('/', WelcomeController::class);
@@ -127,6 +141,10 @@ Route::get('watch', function () {
 
 Route::resource('watch', WatchController::class);
 
+/* Route::resource('candi', CandiController::class); */
+Route::get('candi', [WatchController::class,'create']);
+
+Route::post('store', [WatchController::class,'store']);
 
 /**____________________________________________Alumne_______________________________________________________________________*/
 

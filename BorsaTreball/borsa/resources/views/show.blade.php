@@ -2,6 +2,7 @@
 @extends('layouts.app')
     @section('content')
         @include('borsa.header')
+            @include('borsa.menuEmpre')
  
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -29,19 +30,8 @@
                                               
                                           
                                         @endforeach
-                                        <br>  <br>  <br>  <br>
                                         
-                                        <td>
-                                                        <center>
-                                                            <b>
-                                                                <a   title="View" href="{{ url('/candi') }}">
-                                                                    <h1 class="btn btn-dark">
-                                                                    Inscriurem
-                                                                    </h1>
-                                                                </a>
-                                                            </b>
-                                                        </center>
-                                                    </td>
+                                      
                                 </div>
                             </div>
                         </div>

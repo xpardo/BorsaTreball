@@ -17,7 +17,7 @@
 
                                         <!-- Registrarse -->
                                         <div id="registrarse">
-                                            <h3><strong>Oferta</strong></h3>
+                                            <h3><strong>Nova Oferta</strong></h3>
                              
                                             <form action="{{ url('store') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
@@ -83,14 +83,14 @@
 
                                                             <br><br>
                                                             
-                                                            <label  for="name" class="col-10">nom: </label>
+                                                            <label  for="name" class="col-10">Titol: </label>
                                                             <input type="text" id="name" name="name">
                                                             <br><br>
-                                                            <label  for="sala" class="col-10">Salari: </label>€
-                                                            <input type="num" id="sala" name="sala">
+                                                            <label  for="sala" class="col-10">Salari: </label>
+                                                            <input type="num" id="sala" name="sala" value="€">
                                                             <br><br>
                                                             <label for="h"  class="col-10">Horari:</label>
-                                                            <input type="text" id="h" name="h">
+                                                            <input type="text" id="h" name="h" value="00:00-00:00 00:00-00:00">
                                                             <br><br>
                                                             <div class="contenedor-input">
                                                                 <label for="desc" class="col-10">Descripció:</label>
@@ -121,7 +121,7 @@
 
 
 
-                                                        <input type="submit"  class="btn btn-primary" value="Create"> 
+                                                                <input type="submit"  class="btn btn-primary" value="Create"> 
 
                                                               
                                                                 <button type="reset" class="btn btn-secondary">Reset</button>

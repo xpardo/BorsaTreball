@@ -21,10 +21,7 @@ class CreateRolesTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('role_id')                  
                   ->nullable();
-            $table->foreign('role_id')
-                  ->references('id')->on('roles')
-                  ->onUpdate('cascade')
-                  ->onDelete('set null');
+            $table->foreign('role_id')>references('id')->on('roles')->onUpdate('cascade')->onDelete('set null');
         });
 
         // Call seeder

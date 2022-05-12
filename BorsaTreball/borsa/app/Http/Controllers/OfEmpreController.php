@@ -25,7 +25,7 @@ class OfEmpreController extends Controller
     public function index()
     {
         $usuarioEmail = auth()->user()->email;
-        $ofertas = Oferta::where('user', $usuarioEmail)->paginate(5);
+        $ofertas = Oferta::where('user', $usuarioEmail)->paginate(10);
 
         return view('borsa.MyOferta',[
             "ofertas" => $ofertas
@@ -126,7 +126,7 @@ class OfEmpreController extends Controller
         
         $oferta->update($request->all());
 
-        return redirect()->route('borsa.MyOferta')
+        return redirect()->route('MyOferta')
             ->with('success','oferta updated successfully');
 
     }
@@ -137,12 +137,24 @@ class OfEmpreController extends Controller
      * @param  \App\Models\Oferta  $oferta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Oferta $oferta, $id)
+    public function destroy(Oferta $oferta)
     {
-        $oferta->delete();
+        /* $oferta->delete();
     
-        return redirect()->route('borsa.MyOferta')
+        return redirect()->route('MyOferta')
         ->with('success','file delete successfully');
+ */
+
+        $id = $oferta->id;
+        // Eliminar fitxer del disc 
+        \Storage::disk('public')->delete($oferta);
+        \Log::debug("Local storage OK");
+        // Eliminar registre de BD
+        $oferta->delete();
+        \Log::debug("DB storage OK");
+        // Patró PRG amb missatge d'èxit
+        return redirect()->route("MyOferta")
+            ->with('success', "oferta {$id} succesfully deleted.");
     }
 
 

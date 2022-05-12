@@ -9,11 +9,9 @@ use App\Models\Empresa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Oferta;
-use App\Models\Candidat;
 use App\Models\Alumne;
 use Illuminate\Http\Request;
-
-class WatchController extends Controller
+class ShowController extends Controller
 {
     public function __construct()
     {
@@ -27,8 +25,7 @@ class WatchController extends Controller
     public function index()
     {
         //
-
-        return view("watch",[
+        return view("show",[
             "oferta" => Oferta::all()
         ]);
     }
@@ -41,9 +38,6 @@ class WatchController extends Controller
     public function create()
     {
         //
-        return view('candi');
-        return redirect('warch');
-        
     }
 
     /**
@@ -53,21 +47,10 @@ class WatchController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-
-        $candi = new Candidat;
-       
-        $candi->inscriurem = $request->inscriurem;
-        $candi->user = auth()->user()->name;
-        $candi->save();
-
-        return back()->with('warch', 'candidatura Agregada!');
-
-        $candi = Candidat::create($request->all());
-
-        return redirect('warch');
-      
+    {
+        //
     }
+
     /**
      * Display the specified resource.
      *
@@ -85,9 +68,9 @@ class WatchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Oferta $oferta)
+    public function edit($id)
     {
-       
+        //
     }
 
     /**
@@ -99,7 +82,7 @@ class WatchController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        //
     }
 
     /**

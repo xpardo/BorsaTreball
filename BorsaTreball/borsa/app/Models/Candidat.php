@@ -5,20 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Oferta extends Model
+class Candidat extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'cicle' ,
+        
+        'inscriurem',
         'name' ,
-        'tipus' ,
-        'sala' ,
-        'h' ,
-        'desc' ,
-        'privat' ,
-        'user',
-        'empre',
-        'inscri'
+
+        
     ];
+
 }
