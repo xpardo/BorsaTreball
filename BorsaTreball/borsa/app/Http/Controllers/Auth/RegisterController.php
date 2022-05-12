@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Alumne;
+use App\Models\Oferta;
+
 use Illuminate\Auth\SessionGuard;
 class RegisterController extends Controller
 {

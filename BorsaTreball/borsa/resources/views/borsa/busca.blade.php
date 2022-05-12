@@ -4,16 +4,20 @@
                         <div class="box">
 
                             <form method="get" action="home.html" target="_blank">
-                            <fieldset>
+                            <fieldset>    <center>
+                              
                                 <div class="col-sm ">
+                            
                                     <div class="dropdown">
-                                        <div class="input-group rounded">
-                                            <input type="search" class="form-control rounded" id="search" name="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                                            <div class="input-group-text border-0" id="search-addon">
-                                                <div class="icon"><i class="bi bi-search"></i></div>
+                                        <center>
+                                            <div class="input-group rounded">
+                                            <center>
+                                                <input type="search" class="form-control rounded" id="search" name="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                                <h2><i class="bi bi-search"></i></h2>
+                                            </center>
                                             </div>
-                                        </div>
-                                    
+                                        </center>
+                                      
                                         <div class="dropdown">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" 
                                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -175,12 +179,13 @@
                                             <input type="hidden" name="num" value="50">
                                             <input class="botb" type="submit" value="Buscar">
                                         </div>
-                                    
-                                    </div>
 
+                                    </div>
+                                    
+                                      
                                  </div>
                               
-                            </fieldset>
+                            </fieldset></center>
 
                         
                         </div>
@@ -189,3 +194,4 @@
 
                     </div>
                 </div>
+                

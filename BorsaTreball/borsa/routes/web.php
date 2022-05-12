@@ -44,8 +44,9 @@ use App\Http\Controllers\RecController;
 use App\Http\Controllers\LlistaRecController;
 
 
+use App\Http\Controllers\WelcomeController;
 
-
+use App\Http\Controllers\WatchController;
 
 
 
@@ -76,6 +77,7 @@ Route::get('/', function (Request $request) {
     $request->session()->flash('info', $message);
     return view('welcome');
  });
+
  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
  
@@ -112,6 +114,18 @@ Route::post('update', [OfEmpreController::class,'update']);
 Route::get('delete/{id}', [OfEmpreController::class,'delete']);
 
 
+/**______________________________________ */
+
+Route::resource('/', WelcomeController::class);
+
+
+
+Route::get('watch', function () {
+    $oferta = Oferta::all();
+    return view('watch')->with('oferta',$oferta);
+});
+
+Route::resource('watch', WatchController::class);
 
 
 /**____________________________________________Alumne_______________________________________________________________________*/

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Auth\SessionGuard;
+use App\Models\Oferta;
 
 class VerificationController extends Controller
 {

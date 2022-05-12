@@ -68,6 +68,7 @@ class OfEmpreController extends Controller
         $oferta->h = $request->h;
         $oferta->desc = $request->desc;
         $oferta->privat = $request->privat;
+        $oferta->user = auth()->user()->empre;
         $oferta->user = auth()->user()->email;
         $oferta->save();
 

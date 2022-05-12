@@ -44,12 +44,13 @@
 
                         <div class="contenedor-input">
                             <div class="form-check">
-                                <label class="form-check-label offset-1 col-7 " for="remember">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                <label class="form-check-label  col-5 " for="remember">
                                     {{ __('Remember Me') }}
                                 </label>
-                                <br>  <br>
+                                
                                
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                             </div>
                         </div>
@@ -126,7 +127,7 @@
 
 
 @include('estil/login')
-@include('borsa.footer')
+
 
 @endsection
 

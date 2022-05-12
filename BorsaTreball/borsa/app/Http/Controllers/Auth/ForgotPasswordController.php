@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Auth\SessionGuard;
+use App\Models\Oferta;
 
 class ForgotPasswordController extends Controller
 {

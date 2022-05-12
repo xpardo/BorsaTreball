@@ -11,12 +11,11 @@
                 
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-                    <a class="btn btn-primary" href="{{ route('newrec') }}" role="button">➕ </a> 
-                    <br><br>
+                        <p><b><a class="btn btn-primary" href="{{ route('newrec') }}" role="button">➕</a></b> </p>
+                       
                         <table class="table">
                             <thead>
                                 <th>ID_DOC</th>
-                              
                                 <th>NOM</th>
                                 <th>VISUALITZAR CARTA DE RECOMENDACIÓ</th>
                             </thead>
@@ -26,7 +25,7 @@
                                         <td>{{$d->id_doc}}</td>
                                        
                                         <td>{{$d->name}}</td>
-                                        <td><a href="rec/{{$d->pdf}}" target="blank_">👁️</a></td>
+                                        <td><a class="offset-1 col-5" href="rec/{{$d->pdf}}" target="blank_">👁️</a></td>
                                 
                                     </tr>
                                 @endforeach
@@ -40,7 +39,7 @@
     
 
 
-@include('estil/perfil')
+    @include('estil/perfil')
 
 
 @endsection

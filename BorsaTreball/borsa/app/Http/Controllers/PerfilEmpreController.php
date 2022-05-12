@@ -6,6 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Empresa;
+use App\Models\Oferta;
 use Illuminate\Http\Request;
 use Illuminate\Auth\SessionGuard;
 

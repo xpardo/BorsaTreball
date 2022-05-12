@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Auth\SessionGuard;
+use App\Models\Oferta;
 class EmailVerificationNotificationController extends Controller
 {
     /**

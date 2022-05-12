@@ -29,14 +29,14 @@
                                                             <label for="cicle" class="col-3">{{__('Cicle')}} </label><br><br>
                                                             <select name="cicle" class="form-control @error('cicle') is-invalid @enderror" id="cicle" autofocus>
                                                                 <option value="0"> </option>
-                                                                <option value="smx"> Grau Mitjà Sistemes Microinformàtics i Xarxes  </option>
-                                                                <option value="gma"> Grau Mitjà Gestió Administratva  </option>
-                                                                <option value="gmaj"> Grau Mitjà Gestió Administrativa de l’Àmbit Jurídic </option>
-                                                                <option value="amc"> Grau Mitjà Activitats Comercials </option>
-                                                                <option value="daw"> Grau Superior Desenvolupament d’Aplicacions Web </option>
-                                                                <option value="asi">  Grau Superior Administració de Sistemes Informàtics en Xarxa </option>
-                                                                <option value="af">Grau Superior Administració i Finances </option>
-                                                                <option value="ci"> Grau Superior Comerç internacional </option>
+                                                                <option value=" Grau Mitjà Sistemes Microinformàtics i Xarxes "> Grau Mitjà Sistemes Microinformàtics i Xarxes  </option>
+                                                                <option value="Grau Mitjà Gestió Administratva"> Grau Mitjà Gestió Administratva  </option>
+                                                                <option value="Grau Mitjà Gestió Administrativa de l’Àmbit Jurídic"> Grau Mitjà Gestió Administrativa de l’Àmbit Jurídic </option>
+                                                                <option value="Grau Mitjà Activitats Comercials "> Grau Mitjà Activitats Comercials </option>
+                                                                <option value="Grau Superior Desenvolupament d’Aplicacions Web "> Grau Superior Desenvolupament d’Aplicacions Web </option>
+                                                                <option value=" Grau Superior Administració de Sistemes Informàtics en Xarxa ">  Grau Superior Administració de Sistemes Informàtics en Xarxa </option>
+                                                                <option value="Grau Superior Administració i Finances">Grau Superior Administració i Finances </option>
+                                                                <option value="Grau Superior Comerç internacional"> Grau Superior Comerç internacional </option>
                                                         
 
                                                             </select>
@@ -57,21 +57,21 @@
                                                             
                                                             <b class="col-md-1"> Tipus: </b>
                                                                 <div class="form-check form-check-inline ">
-                                                                    <label for="tipusP" class="form-check-label"> {{__('Practiques')}} </label>
+                                                                    <label for="tipusPractiques" class="form-check-label"> {{__('Practiques')}} </label>
                                                                     <input type="checkbox" name="tipus"   class="form-check-input @error('gender') is-invalid @enderror"
-                                                                        id="tipusP" value="P" {{ old('tipus')== 'P' ? 'checked' : '' }}>
+                                                                        id="tipusPractiques" value="Practiques" {{ old('tipus')== 'Practiques' ? 'checked' : '' }}>
                                                                 </div>
                                                                 <div class="form-check form-check-inline">
                 
-                                                                    <label for="tipusQ" class="form-check-label"> {{__('Practiques amb opció de quedarse')}}</label>
+                                                                    <label for="tipusQuedarse" class="form-check-label"> {{__('Practiques amb opció de quedarse')}}</label>
                                                                     <input type="checkbox"  name="tipus"  class="form-check-input @error('gender') is-invalid @enderror"
-                                                                    id="tipusQ" value="Q" {{ old('tipus')== 'Q' ? 'checked' : '' }}>
+                                                                    id="tipusQuedarse" value="Quedarse" {{ old('tipus')== 'Quedarse' ? 'checked' : '' }}>
                                                                 </div>
                                                                 <div class="form-check form-check-inline">
                 
-                                                                    <label for="tipusT" class="form-check-label"> {{__('treballar')}}</label>
+                                                                    <label for="tipusTreballar" class="form-check-label"> {{__('Treballar')}}</label>
                                                                     <input type="checkbox"  name="tipus"  class="form-check-input @error('gender') is-invalid @enderror"
-                                                                    id="tipusT" value="T" {{ old('tipus')== 'T' ? 'checked' : '' }}>
+                                                                    id="tipusTreballar" value="T" {{ old('tipus')== 'Treballar' ? 'checked' : '' }}>
                                                                 </div>
 
                                                         </div>
@@ -86,7 +86,7 @@
                                                             <label  for="name" class="col-10">nom: </label>
                                                             <input type="text" id="name" name="name">
                                                             <br><br>
-                                                            <label  for="sala" class="col-10">Salari: </label>
+                                                            <label  for="sala" class="col-10">Salari: </label>€
                                                             <input type="num" id="sala" name="sala">
                                                             <br><br>
                                                             <label for="h"  class="col-10">Horari:</label>

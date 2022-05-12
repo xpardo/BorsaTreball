@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use App\Models\Alumne;
+use App\Models\Oferta;
+
 use Illuminate\Auth\SessionGuard;
 class RegisterAlumController extends Controller
 {

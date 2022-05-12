@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Empresa;
 use Illuminate\Auth\SessionGuard;
+use App\Models\Oferta;
 
 class EmpreController extends Controller
 {

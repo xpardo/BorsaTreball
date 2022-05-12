@@ -1,10 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use App\Models\User;
+use App\Models\Empresa;
+use App\Models\Alumne;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Oferta;
 use Illuminate\Http\Request;
 
-class SessionsController extends Controller
+class WelcomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +21,14 @@ class SessionsController extends Controller
      */
     public function index()
     {
-        //
+      
+
+
+        return view("/welcome",[
+            "oferta" => Oferta::all()
+        ]);
+
+
     }
 
     /**
@@ -23,7 +38,7 @@ class SessionsController extends Controller
      */
     public function create()
     {
-        return view('borsa.create');
+        //
     }
 
     /**
@@ -34,12 +49,8 @@ class SessionsController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->attempt(request(['email', 'password'])) == false) {
-            return back()->withErrors([
-                'message' => 'The email or password is incorrect, please try again'
-            ]);
-        }
-        return redirect()->to('borsa.borsa');
+        //
+
     }
 
     /**
@@ -82,10 +93,8 @@ class SessionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        auth()->logout();
-        
-        return redirect('borsa.borsa');
+        //
     }
 }

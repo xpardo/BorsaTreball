@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Handlers\ImageUploadHandler;
 use App\Models\User;
+use App\Models\Oferta;
 use App\Notifications\EmailVerificationNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
