@@ -78,5 +78,12 @@ input[type=submit] {
     background: #888;
     border: 1px solid black;
 }
-    
+
+/** */
+.card-header{
+
+background: #cce6ff;
+}
+
+
 </style>

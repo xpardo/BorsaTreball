@@ -16,32 +16,39 @@
                                     <div class="contenedor ">
                                     
                                  
-
-                                        @foreach ($oferta as $oferta)
-                                            
-                                        <b>Tipus:</b><p> {{ $oferta->tipus }}</p>
-                                        <b>Empresa:</b> <p>{{ $oferta->empre }}</p>
-                                        <b>Titol:</b><p> {{ $oferta->name }}</p>
-                                        <b>Horari:</b><p>{{ $oferta->h }}</p>
-                                        <b>Salari:</b><p> {{ $oferta->sala }}</p>
-                                        <b>Estudis als que va dirigida:</b><p> {{ $oferta->cicle }}</p>
-                                        <b>Descripció:</b><p>{{ $oferta->desc }}</p>
-                                              
+                                        <div class="card-body">
                                           
-                                        @endforeach
-                                        <br>  <br>  <br>  <br>
+                                                        <b><strong>Tipus:</strong></b>
+                                                        <p> {{ $ofertas -> tipus }} </p>
+                                                        <b><strong>Cicle formatiu</strong></b>
+                                                        <p> {{ $ofertas -> cicle }} </p>
+                                                        <b><strong>Name</strong></b>
+                                                        <p> {{ $ofertas -> name }} </p>
+                                                        <b><strong>Empre</strong></b>
+                                                        <p> {{ $ofertas -> empre }} </p>
+                                                        <b><strong>Horari</strong></b>
+                                                        <p> {{ $ofertas -> h }} </p>
+                                                        <b><strong>Salari</strong></b>
+                                                        <p> {{ $ofertas -> sala }} </p>
+                                                        <b><strong>Descripció</strong></b>
+                                                        <p> {{ $ofertas -> desc }} </p>
                                         
-                                        <td>
-                                                        <center>
-                                                            <b>
-                                                                <a   title="View" href="{{ url('/candi') }}">
-                                                                    <h1 class="btn btn-dark">
-                                                                    Inscriurem
-                                                                    </h1>
-                                                                </a>
-                                                            </b>
-                                                        </center>
-                                                    </td>
+                                        </div>
+
+
+
+                                        <br>  
+                                        
+                                        <center>
+                                            <b>
+                                                <a   title="View" href="{{ url('/candi') }}">
+                                                    <h1 class="btn btn-dark">
+                                                    Inscriurem
+                                                    </h1>
+                                                </a>
+                                            </b>
+                                        </center>
+                                    
                                 </div>
                             </div>
                         </div>

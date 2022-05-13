@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 use App\Http\Controllers\HomeController;
-use Illuminate\Http\Request;
+
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\RegEmpreController;
 use App\Http\Controllers\RegAlumController;
@@ -32,7 +33,7 @@ use Illuminate\Support\Facades\Input;
 
 use App\User;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\ShowController;
+
 
 
 
@@ -111,20 +112,31 @@ Route::post('/perfilEmpre', [PerfilEmpreController::class, 'perfilEmpre'])->midd
 Route::resource('MyOferta', OfEmpreController::class)->middleware(['auth', 'role:3']);
 
 Route::get('CreateOfert', [OfEmpreController::class,'create']);
-Route::post('store', [OfEmpreController::class,'store']);
-Route::get('edit/{id}', [OfEmpreController::class,'edit']);
+Route::post('borsa/store', [OfEmpreController::class,'store']);
+
+Route::get('/editOfert/{id}', [OfEmpreController::class,'edit'])->name('editOfert'); 
 Route::post('update', [OfEmpreController::class,'update']);
+Route::get('/showOfert/{id}',[OfEmpreController::class,'show'])->name('showOfert');
+
 Route::get('delete/{id}', [OfEmpreController::class,'delete']);
+
+
+
+
+
+
+
+/**____________________________________________________________ */
+
+
+
+
 
 
 
 /**______________________________________ */
 
 
-Route::get('show', function () {
-    $oferta = Oferta::all();
-    return view('show')->with('oferta',$oferta);
-});
 
 
 
@@ -134,14 +146,13 @@ Route::resource('/', WelcomeController::class);
 
 
 
-Route::get('watch', function () {
-    $oferta = Oferta::all();
-    return view('watch')->with('oferta',$oferta);
-});
+
 
 Route::resource('watch', WatchController::class);
 
-/* Route::resource('candi', CandiController::class); */
+
+Route::get('watch/{id}',[WatchController::class,'show'])->name('watch');
+
 Route::get('candi', [WatchController::class,'create']);
 
 Route::post('store', [WatchController::class,'store']);
@@ -181,6 +192,7 @@ Route::post('/perfilAlum', [PerfilAlumController::class, 'perfilAlum'])->middlew
     Route::post('curriculums',[curriculumController::class,'insertar']);
     Route::get('curriculums',[LlistaCurriController::class,'index']);
     Route::post('newCurri', [curriculumController::class,'store'])->name('newCurri');
+    Route::post('store', [curriculumController::class,'store']);
   
   
 
@@ -208,6 +220,7 @@ Route::post('/perfilAlum', [PerfilAlumController::class, 'perfilAlum'])->middlew
     Route::post('presentacio',[PresentacioController::class,'insertar']);
     Route::get('presentacio',[LlistaPresenController::class,'index']);
     Route::post('newPre', [PresentacioController::class,'store'])->name('newPre');
+    Route::post('store', [PresentacioController::class,'store']);
 
 /**_____________________________________*/
 
@@ -230,6 +243,7 @@ Route::get('/newrec', function () {
 Route::post('recomenacio',[RecController::class,'insertar']);
 Route::get('recomenacio',[LlistaRecController::class,'index']);
 Route::post('newrec', [RecController::class,'store'])->name('newrec');
+Route::post('store', [RecController::class,'store']);
 
 
 

@@ -29,7 +29,7 @@ class WatchController extends Controller
         //
 
         return view("watch",[
-            "oferta" => Oferta::all()
+            "ofertas" => Oferta::all()
         ]);
     }
 
@@ -42,7 +42,7 @@ class WatchController extends Controller
     {
         //
         return view('candi');
-        return redirect('warch');
+        return redirect('watch');
         
     }
 
@@ -56,7 +56,7 @@ class WatchController extends Controller
     {   
 
         $candi = new Candidat;
-       
+    
         $candi->inscriurem = $request->inscriurem;
         $candi->user = auth()->user()->name;
         $candi->save();
@@ -65,7 +65,7 @@ class WatchController extends Controller
 
         $candi = Candidat::create($request->all());
 
-        return redirect('warch');
+        return redirect('watch');
       
     }
     /**
@@ -74,9 +74,14 @@ class WatchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Oferta $ofertas, $id)
     {
-        //
+
+        return view('watch', [
+            'ofertas' => Oferta::findOrFail($id)
+        ]);
+     
+ 
     }
 
     /**
@@ -85,7 +90,7 @@ class WatchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Oferta $oferta)
+    public function edit(Oferta $ofertas)
     {
        
     }

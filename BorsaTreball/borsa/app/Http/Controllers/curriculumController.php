@@ -62,7 +62,7 @@ class curriculumController extends Controller
         if($request->hasFile('pdf')){
 
             $curri = new Curriculum;
-            $curri->privat = $request->privat;
+            $curri->name = $request->name;
             $curri->user = auth()->user()->email;
             $archivo  = $request -> file('pdf'); 
             $archivo -> move(public_path().'/curri/',$archivo->getClientOriginalName());
@@ -70,18 +70,14 @@ class curriculumController extends Controller
             $curri -> pdf = $archivo ->getClientOriginalName();
             $curri -> Save();
 
-   
-            $curri = Curriculum::create($request->all());
-    
+            return back()
+                    ->with('success','File has uploaded to the database.')
+                    ->with('curriculums', 'cursiculum Agregada!')
+                    ->with('pdf', $curri);
+                
            
         }
 
-       
-
-        return back()
-        ->with('success','File has uploaded to the database.')
-        ->with('curriculums', 'cursiculum Agregada!')
-        ->with('pdf', $curri);
         return redirect('curriculums');
      }
 

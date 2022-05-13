@@ -24,7 +24,7 @@ class WelcomeController extends Controller
       
 
 
-        return view("/welcome",[
+        return view("welcome",[
             "oferta" => Oferta::all()
         ]);
 

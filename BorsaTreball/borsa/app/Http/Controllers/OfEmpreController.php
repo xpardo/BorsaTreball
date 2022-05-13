@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Oferta;
 use Illuminate\Http\Request;
 
+
 class OfEmpreController extends Controller
 {
 
@@ -61,22 +62,25 @@ class OfEmpreController extends Controller
      */
     public function store(Request $request)
     {   
-        $oferta = new Oferta();
-        $oferta->nom = $request->nom;
-        $oferta->cicle = $request->cicle;
-        $oferta->sala = $request->sala;
-        $oferta->h = $request->h;
-        $oferta->desc = $request->desc;
-        $oferta->privat = $request->privat;
-        $oferta->user = auth()->user()->empre;
-        $oferta->user = auth()->user()->email;
-        $oferta->save();
+      
 
-        return back()->with('MyOferta', 'Oferta Agregada!');
+        $ofertas = new Oferta();
+        $ofertas->name = $request->name;
+        $ofertas->cicle = $request->cicle;
+        $ofertas->tipus = $request->tipus;
+        $ofertas->sala = $request->sala;
+        $ofertas->h = $request->h;
+        $ofertas->desc = $request->desc;
+        $ofertas->privat = $request->privat;
+        $ofertas->empre = auth()->user()->empre;
+        $ofertas->user = auth()->user()->email;
+        $ofertas->save();
 
         $ofertas = Oferta::create($request->all());
 
-        return redirect('MyOferta');
+        return redirect('MyOferta'); 
+         
+        
     }
 
     /**
@@ -85,10 +89,15 @@ class OfEmpreController extends Controller
      * @param  \App\Models\Oferta  $oferta
      * @return \Illuminate\Http\Response
      */
-    public function show(Oferta $ofertas)
+    public function show(Oferta $ofertas,$id)
     {
-       
-        return view('show',compact('ofertas'));
+
+
+
+        return view('borsa.showOfert', [
+            'ofertas' => Oferta::findOrFail($id)
+        ]);
+     
  
 
     }
@@ -99,9 +108,13 @@ class OfEmpreController extends Controller
      * @param  \App\Models\Oferta  $oferta
      * @return \Illuminate\Http\Response
      */
-    public function edit(Oferta $oferta)
+    public function edit(Oferta $ofertas, $id)
     {
-        return view('borsa.edit',compact('file'));
+       
+
+        return view('borsa.editOfert', [
+            'ofertas' => Oferta::findOrFail($id)
+        ]);
     }
 
     /**
@@ -111,25 +124,39 @@ class OfEmpreController extends Controller
      * @param  \App\Models\Oferta  $oferta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Oferta $oferta)
+    public function update(Request $request, Oferta $ofertas ,$id)
     {
+  
         $request->validate([
-            
-            'nom' => 'required',
+            'name' => 'required',
             'cicle' => 'required',
+            'tipus' => 'required',
             'sala' => 'required',
             'h' => 'required',
             'desc' => 'required',
             'privat' => 'privat',
         ]);
+        
+        $ofertas = Oferta::find($id);
+        $ofertas->name = $request->name;
+        $ofertas->cicle = $request->cicle;
+        $ofertas->tipus = $request->tipus;
+        $ofertas->sala = $request->sala;
+        $ofertas->h = $request->h;
+        $ofertas->desc = $request->desc;
+        $ofertas->privat = $request->privat;
+        $ofertas->empre = auth()->user()->empre;
+        $ofertas->user = auth()->user()->email;
+        $ofertas->save();
+        return redirect()->route('MyOferta')
+        ->with('success','Company Has Been updated successfully');
+    }
+
+
 
         
-        $oferta->update($request->all());
 
-        return redirect()->route('MyOferta')
-            ->with('success','oferta updated successfully');
-
-    }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -137,24 +164,18 @@ class OfEmpreController extends Controller
      * @param  \App\Models\Oferta  $oferta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Oferta $oferta)
+    public function destroy(Oferta $ofertas , $id)
     {
-        /* $oferta->delete();
-    
-        return redirect()->route('MyOferta')
-        ->with('success','file delete successfully');
- */
+        
 
-        $id = $oferta->id;
-        // Eliminar fitxer del disc 
-        \Storage::disk('public')->delete($oferta);
-        \Log::debug("Local storage OK");
-        // Eliminar registre de BD
-        $oferta->delete();
-        \Log::debug("DB storage OK");
-        // Patró PRG amb missatge d'èxit
-        return redirect()->route("MyOferta")
-            ->with('success', "oferta {$id} succesfully deleted.");
+
+        $ofertas->delete();
+        return redirect()->route('MyOferta')
+        ->with('success','Company has been deleted successfully');
+
+
+ 
+
     }
 
 

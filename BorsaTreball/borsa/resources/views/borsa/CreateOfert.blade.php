@@ -19,7 +19,7 @@
                                         <div id="registrarse">
                                             <h3><strong>Nova Oferta</strong></h3>
                              
-                                            <form action="{{ url('store') }}" method="POST" enctype="multipart/form-data">
+                                            <form action="{{ url('MyOferta') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
                             
                                                         
@@ -71,7 +71,7 @@
                 
                                                                     <label for="tipusTreballar" class="form-check-label"> {{__('Treballar')}}</label>
                                                                     <input type="checkbox"  name="tipus"  class="form-check-input @error('gender') is-invalid @enderror"
-                                                                    id="tipusTreballar" value="T" {{ old('tipus')== 'Treballar' ? 'checked' : '' }}>
+                                                                    id="tipusTreballar" value="Treballar" {{ old('tipus')== 'Treballar' ? 'checked' : '' }}>
                                                                 </div>
 
                                                         </div>
@@ -121,7 +121,7 @@
 
 
 
-                                                                <input type="submit"  class="btn btn-primary" value="Create"> 
+                                                                <button class="btn btn-success" type="submit">ENVIAR</button>
 
                                                               
                                                                 <button type="reset" class="btn btn-secondary">Reset</button>

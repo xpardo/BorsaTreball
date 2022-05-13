@@ -64,10 +64,12 @@ class RecController extends Controller
             'pdf' => 'required|mimes:pdf'
         ]);
 
-        $rec = new Recomanacio;
-        $rec->user = auth()->user()->email;
+  
 
         if($request->hasFile('pdf')){
+            $rec = new Recomanacio;
+            $rec->name = $request->name;
+            $rec->user = auth()->user()->email;
             $archivo  = $request -> file('pdf'); 
             $archivo -> move(public_path().'/rec/',$archivo->getClientOriginalName());
             $rec -> pdf = $archivo ->getClientOriginalName();

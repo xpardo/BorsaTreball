@@ -10,10 +10,11 @@
                     <div class="container-1 m-12">
                         <div class="container">
                             <div class="row justify-content-center">
-                      
+                            
                                     <div class="card">
+                                    <br>
                                         <div  class="btn btn-info ">
-                                      
+                                     
                                             <b class="col-md-1"> Tipus: </b>
                                                 <div class="form-check form-check-inline ">
                                                     <label for="tipusP" class="form-check-label"> {{__('pública')}} </label>
@@ -42,39 +43,49 @@
                                                
                                                         <tr>
                                                         <td scope="col"><center>ID</center></td>
-                                                            <td scope="col"><center>nom</center></td><!------la meva oferta------->
+                                                            <td scope="col"><center>titol</center></td><!------la meva oferta------->
                                                             <td scope="col"><center>cicle</center></td>
+                                                            <td scope="col"><center>tipus</center></td>
                                                             <td scope="col"><center>Creat</center></td>
-
                                                             <td scope="col"><center>candidatures</center></td>
-                                                            <td scope="col"><center>_______</center></td>
+                                                            <td scope="col"><center>___________________</center></td>
+                                           
                                                         
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($ofertas as $oferta)
+                                                        
                                                         <tr>
                                                             <td><center>{{ $oferta->id }}</center></td>
                                                             <td><center>{{ $oferta->name }}</center></td>
                                                             <td><center>{{ $oferta->cicle }}</center></td>
+                                                            <td><center>{{ $oferta->tipus }}</center></td>
                                                             <td><center>{{ $oferta->created_at }}</center></td>
-                                                           <td><center>{{ $oferta->candidatures }}</center></td> 
+                                                            <td><center>{{ $oferta ->candidatures }}</center></td> 
                                                        
                                                             
                                                             <td>
-                                                            
-                                                                    <form id="form" method="POST" action="{{ route('destroy',[$oferta, 'delete' => 1]) }}">
-                                                                        @csrf
-                                                                        @method("DELETE")
-                                                                            <a   title="View" href="{{ url('show') }}">
-                                                                                <div class="btn btn-dark">
-                                                                                    <i class="bi bi-eye-fill"></i>
-                                                                                </div>
-                                                                            </a>
-                                                                        <button id="destroy" type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">🗑️ </button>
-                                                                   
-                                                                    </form>
-                                                 
+                                                                 
+                                                           
+
+
+                                                                <form action="{{ route('destroy',$oferta ) }}" method="POST">   
+                                                        
+                                                                    <a title="View" href="{{ route('showOfert', $oferta) }}" class="btn btn-dark">
+                                                                        <i class="bi bi-eye-fill"></i>
+                                                                    </a>
+
+                                                                    <a class="btn btn-warning"  href="{{ route('editOfert', $oferta ) }}">📝 </a>
+
+
+                                                                    @method('DELETE')      
+                                                                    @csrf
+                                                                
+                                                                    <button type="submit" class="btn btn-danger">Del</button>
+                                                                
+                                                                </form>
+                                                  
                                                             </td>
                                                     
                                                         </tr>
@@ -82,41 +93,8 @@
                                                     </tbody>
                                                 </table>
                                             
-                                                                                                   <!-- Modal -->
-                                            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            This action cannot be undone
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button id="confirm" type="button" class="btn btn-primary">Confirm</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Submit confirm -->
-                                            <script type="text/javascript">                
-                                                const submit = document.getElementById('destroy')
-                                                const  confirm = document.getElementById('confirm')
-
-                                                // Disable form submit button
-                                                submit.addEventListener("click", function( event ) {
-                                                    event.preventDefault()
-                                                    return false
-                                                })
-
-                                                // Enable submit via modal confirmation
-                                                confirm.addEventListener("click", function( event ) {
-                                                    document.getElementById("form").submit(); 
-                                                })
-                                            </script>
+                                                {!! $ofertas->links() !!}
+                               
                                  
                                     </div>
                                 </div>

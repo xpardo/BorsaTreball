@@ -20,12 +20,12 @@
                                 <th>VISUALITZAR CARTA DE RECOMENDACIÓ</th>
                             </thead>
                             <tbody>
-                                @foreach($rec as $d)
+                                @foreach($rec as $c)
                                     <tr>
-                                        <td>{{$d->id_doc}}</td>
+                                        <td>{{$c->id_doc}}</td>
                                        
-                                        <td>{{$d->name}}</td>
-                                        <td><a class="offset-1 col-5" href="rec/{{$d->pdf}}" target="blank_">👁️</a></td>
+                                        <td>{{$c->name}}</td>
+                                        <td><a class="offset-1 col-5" href="rec/{{$c->pdf}}" target="blank_">👁️</a></td>
                                 
                                     </tr>
                                 @endforeach

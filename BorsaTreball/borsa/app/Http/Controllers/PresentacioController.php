@@ -58,23 +58,25 @@ class PresentacioController extends Controller
             'pdf' => 'required|mimes:pdf'
         ]);
 
-        $pre = new Presentacio;
-        $pre->user = auth()->user()->email;
+       
 
         if($request->hasFile('pdf')){
+            $pre = new Presentacio;
+            $pre->name = $request->name;
+            $pre->user = auth()->user()->email;
             $archivo  = $request -> file('pdf'); 
             $archivo -> move(public_path().'/pre/',$archivo->getClientOriginalName());
             $pre -> pdf = $archivo ->getClientOriginalName();
             $pre -> Save();
-
+            return back()
+            ->with('success','File has uploaded to the database.')
+            ->with('presentacio', 'Presentacio Agregada!')
+            ->with('pdf', $pre);
+            return redirect('presentacio');
 
            
         }
-        return back()
-        ->with('success','File has uploaded to the database.')
-        ->with('presentacio', 'Presentacio Agregada!')
-        ->with('pdf', $pre);
-        return redirect('presentacio');
+    
      }
 
 

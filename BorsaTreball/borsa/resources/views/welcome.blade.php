@@ -40,7 +40,7 @@
                                                     <td>
                                                         <center>
                                                             <b>
-                                                                <a   title="View" href="{{ url('/watch') }}">
+                                                                <a   title="View" href="{{ route('watch', $oferta) }}">
                                                                     <h1 class="btn btn-dark">
                                                                         <i class="bi bi-eye-fill"></i>
                                                                     </h1>
