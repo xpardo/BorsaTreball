@@ -12,7 +12,7 @@
                                         <center>
                                             <div class="input-group rounded">
                                             <center>
-                                                <input type="search" class="form-control rounded" id="search" name="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                                <input type="search" class="form-control rounded" id="search" name="buscarpor" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                                                 <h2><i class="bi bi-search"></i></h2>
                                             </center>
                                             </div>

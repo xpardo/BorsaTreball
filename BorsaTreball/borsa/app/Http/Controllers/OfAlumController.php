@@ -10,6 +10,7 @@ use App\Models\Empresa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Oferta;
+use App\Models\Candidat;
 use Illuminate\Http\Request;
 
 class OfAlumController extends Controller
@@ -19,12 +20,32 @@ class OfAlumController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+   
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view("borsa.MySolicitud", [
-            "ofertes" => Oferta::all()
+        
+   
+        $usuario = auth()->user()->name;
+        $candi = Candidat::where('user', $usuario)->paginate(10);
+
+        return view('borsa.MySolicitud',[
+            "candi" => $candi
         ]);
+
+       
     }
+
 
     /**
      * Show the form for creating a new resource.

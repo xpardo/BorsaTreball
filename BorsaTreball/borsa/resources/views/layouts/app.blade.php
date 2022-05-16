@@ -11,11 +11,30 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script defer src="/your-path-to-fontawesome/js/brands.js"></script>
+    <script defer src="/your-path-to-fontawesome/js/solid.js"></script>
+    <script defer src="/your-path-to-fontawesome/js/fontawesome.js"></script>
+    <script defer src="/your-path-to-fontawesome/js/all.js"></script>
+    <script defer src="/your-path-to-fontawesome/js/v4-shims.js"></script>
+    <script defer src="/your_path_to_version_6_files/js/all.js"></script>
+    <script src="https://kit.fontawesome.com/eb9a087832.js" crossorigin="anonymous"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/v4-shim.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/v5-font-face.css" rel="stylesheet">
+    <link href="/your_path_to_version_6_files/css/fontawesome.css" rel="stylesheet">
+    <link href="/your_path_to_version_6_files/css/brands.css" rel="stylesheet">
+    <link href="/your_path_to_version_6_files/css/solid.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/v5-font-face.css" rel="stylesheet" />
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 

@@ -42,7 +42,7 @@
                                         <center>
                                             <b>
                                                 <a   title="View" href="{{ url('/candi') }}">
-                                                    <h1 class="btn btn-dark">
+                                                    <h1 class="btn btn-success">
                                                     Inscriurem
                                                     </h1>
                                                 </a>

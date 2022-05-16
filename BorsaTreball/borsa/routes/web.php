@@ -52,7 +52,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\WatchController;
 
 
-
+use App\Http\Controllers\SearchController;
 
 
 
@@ -155,7 +155,11 @@ Route::get('watch/{id}',[WatchController::class,'show'])->name('watch');
 
 Route::get('candi', [WatchController::class,'create']);
 
-Route::post('store', [WatchController::class,'store']);
+Route::post('store', [WatchController::class,'store'])->name('watch');
+
+Route::get('/search', [WelcomeController::class,'search'])->name('search');
+
+
 
 /**____________________________________________Alumne_______________________________________________________________________*/
 
@@ -247,9 +251,14 @@ Route::post('store', [RecController::class,'store']);
 
 
 
+/*____________________________________* */
 
 
 
+Route::get('/MySolicitud', function () {
+    $oferta = Oferta::all();
+    return view('borsa.MySolicitud')->with('of',$oferta);
+});
 
 /*-------------------------------------------------- */
 

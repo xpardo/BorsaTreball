@@ -15,10 +15,7 @@ use Illuminate\Http\Request;
 
 class WatchController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
     /**
      * Display a listing of the resource.
      *
@@ -56,10 +53,20 @@ class WatchController extends Controller
     {   
 
         $candi = new Candidat;
-    
+ 
+        
+
         $candi->inscriurem = $request->inscriurem;
         $candi->user = auth()->user()->name;
+
+
+        $oferta = new Oferta();
+        $oferta -> id = $request -> id;
+        $oferta -> name = $request -> name;
+        $candi -> id_ofert = $request -> $oferta;
+        $candi -> name = $request -> $oferta;
         $candi->save();
+
 
         return back()->with('warch', 'candidatura Agregada!');
 

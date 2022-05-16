@@ -34,7 +34,7 @@
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('mofertes') }} "  ><i class="fas fa-address-book">Les meves ofertes</i></a>
+                    <a class="nav-link" href="{{ url('MySolicitud') }} "  ><i class="fas fa-address-book">Les meves ofertes</i></a>
                 </li>
                        
                 

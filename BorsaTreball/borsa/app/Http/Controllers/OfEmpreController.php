@@ -25,6 +25,8 @@ class OfEmpreController extends Controller
      */
     public function index()
     {
+        
+   
         $usuarioEmail = auth()->user()->email;
         $ofertas = Oferta::where('user', $usuarioEmail)->paginate(10);
 
@@ -127,16 +129,8 @@ class OfEmpreController extends Controller
     public function update(Request $request, Oferta $ofertas ,$id)
     {
   
-        $request->validate([
-            'name' => 'required',
-            'cicle' => 'required',
-            'tipus' => 'required',
-            'sala' => 'required',
-            'h' => 'required',
-            'desc' => 'required',
-            'privat' => 'privat',
-        ]);
-        
+      
+
         $ofertas = Oferta::find($id);
         $ofertas->name = $request->name;
         $ofertas->cicle = $request->cicle;
@@ -150,7 +144,16 @@ class OfEmpreController extends Controller
         $ofertas->save();
         return redirect()->route('MyOferta')
         ->with('success','Company Has Been updated successfully');
+ 
+
     }
+
+
+
+
+
+
+
 
 
 

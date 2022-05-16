@@ -62,27 +62,40 @@
                                                             <td><center>{{ $oferta->cicle }}</center></td>
                                                             <td><center>{{ $oferta->tipus }}</center></td>
                                                             <td><center>{{ $oferta->created_at }}</center></td>
-                                                            <td><center>{{ $oferta ->candidatures }}</center></td> 
+                                              
                                                        
-                                                            
                                                             <td>
-                                                                 
+                                                                <center>
+                                                                    <a title="View" href="{{ url('candidatures', $oferta) }}" class="btn btn-dark">
+                                                              
+                                                                    <i class="fas fa-users"></i>
                                                            
-
+                                                                    </a>
+                                                                </center>
+                                                            <td>
+                                                 
+                                                           
+                                                            
 
                                                                 <form action="{{ route('destroy',$oferta ) }}" method="POST">   
                                                         
                                                                     <a title="View" href="{{ route('showOfert', $oferta) }}" class="btn btn-dark">
-                                                                        <i class="bi bi-eye-fill"></i>
+                                                                    <i class="fas fad fa-eye"></i>
+                                                                        
                                                                     </a>
 
-                                                                    <a class="btn btn-warning"  href="{{ route('editOfert', $oferta ) }}">📝 </a>
+                                                                    <a class="btn btn-warning"  href="{{ route('editOfert', $oferta ) }}">
+                                                                    <i class="fas fa-edit"></i>
+                                                                    </a>
 
 
                                                                     @method('DELETE')      
                                                                     @csrf
                                                                 
-                                                                    <button type="submit" class="btn btn-danger">Del</button>
+                                                                    <button type="submit" class="btn btn-danger">
+                                                                      
+                                                                        <i class="fas fad fa-trash"></i>
+                                                                    </button>
                                                                 
                                                                 </form>
                                                   

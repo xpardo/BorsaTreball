@@ -11,25 +11,35 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Oferta;
 use Illuminate\Http\Request;
-
+use Spatie\Searchable\Search;
 class WelcomeController extends Controller
 {
+
+  
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      
-
-
+        
         return view("welcome",[
             "oferta" => Oferta::all()
         ]);
 
+        
 
     }
+
+
+    public function search(Request $request)
+    {
+        $oferta = Oferta::where('name', 'LIKE', '%'.$request->search.'%')->get();
+        return \response()->json($oferta);
+    }
+
 
     /**
      * Show the form for creating a new resource.

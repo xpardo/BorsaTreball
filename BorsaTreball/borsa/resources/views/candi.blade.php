@@ -21,7 +21,8 @@
         
         
             
-                                <form action="{{ url('store') }}" method="POST" enctype="multipart/form-data">
+                   
+                                <form action="{{ url('watch') }}" method="POST" enctype="multipart/form-data">
 
                                         @csrf
                             
@@ -39,7 +40,8 @@
 
                                 
                                         <br><br>
-                                        <input type="submit"  class="btn btn-primary" value="Create"> 
+                                        <button class="btn btn-success" type="submit">ENVIAR</button>
+                                        
                                                                         
                                  </from>
 

@@ -10,7 +10,8 @@
                                 <div class="card-header">{{ __('OFerta') . " " . $ofertas->id }}</div>
                                 <div class="card-body">
                                 
-                                    <form method="POST" action="{{route('update', $ofertas) }}" enctype="multipart/form-data">
+                 
+                                    <form method="POST" action="{{ route('update', $ofertas) }}" enctype="multipart/form-data">
                                         @csrf
                                         @method("PUT")
                                     
@@ -105,6 +106,7 @@
 
                                             </div>
                                         <br><br>
+                            
                                         <button type="submit" class="btn btn-primary">Update</button>
                                         <button type="reset" class="btn btn-secondary">Reset</button>
                                     </form>
