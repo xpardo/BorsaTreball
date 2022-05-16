@@ -1,7 +1,7 @@
 <?php
  
  namespace App\Http\Controllers;
- 
+ use App\Models\Oferta;
  use Illuminate\Http\Request;
  use App\Mail\TestMail;
   

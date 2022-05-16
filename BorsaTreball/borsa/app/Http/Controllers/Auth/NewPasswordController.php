@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
-
+use App\Models\Oferta;
+use Illuminate\Auth\SessionGuard;
 class NewPasswordController extends Controller
 {
     /**

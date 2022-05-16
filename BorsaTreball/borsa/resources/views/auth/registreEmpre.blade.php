@@ -2,9 +2,9 @@
  
  @section('content')
 
-    
+
+   
     @include('borsa.header')
-    
    
 
     <div class="contenedor-formularios">
@@ -14,7 +14,7 @@
 
             <!-- Registrarse -->
             <div id="registrarse">
-                <h3><strong>Registrarse</strong></h3>
+                <h3><strong>registrar-se</strong></h3>
 
        
                 <form method="POST" action="{{ route('registreEmpre') }} "  enctype="multipart/form-data">
@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="contenedor-input">
-                    <label for="telefon">telefón/movil<i class="bi bi-telephone"></i></label><br><br>
+                    <label for="telefon">telefón/mòbil<i class="bi bi-telephone"></i></label><br><br>
                         <input type="text" name="telefon" class="form-control @error('telefon') is-invalid @enderror" id="telefon" value="{{old('telefon')}}" autocomplete="telefon" autofocus>
                         @error('telefon')
                             <span class="invalid-feedback" role="alert">
@@ -114,29 +114,70 @@
                     </div>
 
 
-                    <div class="d-grid mx-auto">
-                            <button type="submit" class="btn btn-success btn-block">{{__('Registrar-se')}}</button>
+                    <div class="form-group row">
+                        <label for="captcha" class="col-md-4 col-form-label text-md-right">Captcha</label>
+                        <div class="col-md-6 captcha">
+                            <span>{!! captcha_img() !!}</span>
+                            <button type="button" class="btn btn-danger" class="reload" id="reload">
+                            &#x21bb;
+                            </button>
                         </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="captcha" class="col-md-4 col-form-label text-md-right">Enter Captcha</label>
+                        <div class="col-md-6">
+                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                        </div>
+                    </div>
 
-                   
-                    <p>
-                    <a  href="{{url('/')}}"><u>home</u></a>
-                    </p>
-                    <p>
-                    <a  href="{{url('login')}}"><u>Login</u></a>
-                    </p>
+
+
+
+
+
+
+
+
+
+
+                    <div class="d-grid mx-auto">
+                        <button type="submit" class="btn btn-success btn-block">{{__('Registrar-se')}}</button>
+                    </div>
+
+                    <br>
+                 
+                        <b>
+                            <center>
+                                <a  href="{{url('login')}}"><u>Login</u></a>
+                            </center>
+                        </b>
                     
                 </form>
             </div>
         </div>
     </div>
+
+    @push('scripts')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $('#reload').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: 'reload-captcha',
+            success: function (data) {
+                $(".captcha span").html(data.captcha);
+            }
+        });
+    });
+</script>
+@endpush
   
 
 
 
 
 @include('estil/regi')
-@include('borsa.footer')
+
 @endsection
 
 

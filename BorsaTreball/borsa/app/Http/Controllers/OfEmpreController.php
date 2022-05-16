@@ -1,12 +1,23 @@
 <?php
-
 namespace App\Http\Controllers;
-
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use App\Models\User;
+use App\Models\Empresa;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Oferta;
 use Illuminate\Http\Request;
 
+
 class OfEmpreController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +25,13 @@ class OfEmpreController extends Controller
      */
     public function index()
     {
-        return view("borsa.MyOferta", [
-            "ofertas" => Oferta::all()
+        
+   
+        $usuarioEmail = auth()->user()->email;
+        $ofertas = Oferta::where('user', $usuarioEmail)->paginate(10);
+
+        return view('borsa.MyOferta',[
+            "ofertas" => $ofertas
         ]);
 
        
@@ -32,9 +48,13 @@ class OfEmpreController extends Controller
     {
 
         return view('borsa.CreateOfert');
-        return redirect('MyOferta');
+        return redirect('borsa.MyOferta');
+
+      
        
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -43,26 +63,26 @@ class OfEmpreController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        
+    {   
+      
 
-        $validatedData = $request->validate([
-            'nom' => 'required',
-            'cicle' => 'required',
-            'sala' => 'required',
-            'h' => 'required',
-            'desc' => 'required',
+        $ofertas = new Oferta();
+        $ofertas->name = $request->name;
+        $ofertas->cicle = $request->cicle;
+        $ofertas->tipus = $request->tipus;
+        $ofertas->sala = $request->sala;
+        $ofertas->h = $request->h;
+        $ofertas->desc = $request->desc;
+        $ofertas->privat = $request->privat;
+        $ofertas->empre = auth()->user()->empre;
+        $ofertas->user = auth()->user()->email;
+        $ofertas->save();
+
+        $ofertas = Oferta::create($request->all());
+
+        return redirect('MyOferta'); 
          
-        ]);
-
-        $oferta= new Oferta();
-        $checkbox = implode(",", $request->get('tipus','flexT'));
-        $oferta->checkbox = $checkbox; 
-        $oferta = Oferta::create($validatedData);
-   
-        return redirect('borsa.MyOferta')->with('success', 'Oferta is successfully saved');
-
-     
+        
     }
 
     /**
@@ -71,9 +91,17 @@ class OfEmpreController extends Controller
      * @param  \App\Models\Oferta  $oferta
      * @return \Illuminate\Http\Response
      */
-    public function show(Oferta $oferta)
+    public function show(Oferta $ofertas,$id)
     {
-        return view('borsa.show',compact('oferta'));
+
+
+
+        return view('borsa.showOfert', [
+            'ofertas' => Oferta::findOrFail($id)
+        ]);
+     
+ 
+
     }
 
     /**
@@ -82,9 +110,13 @@ class OfEmpreController extends Controller
      * @param  \App\Models\Oferta  $oferta
      * @return \Illuminate\Http\Response
      */
-    public function edit(Oferta $oferta)
+    public function edit(Oferta $ofertas, $id)
     {
-        return view('borsa.edit',compact('file'));
+       
+
+        return view('borsa.editOfert', [
+            'ofertas' => Oferta::findOrFail($id)
+        ]);
     }
 
     /**
@@ -94,24 +126,40 @@ class OfEmpreController extends Controller
      * @param  \App\Models\Oferta  $oferta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Oferta $oferta)
+    public function update(Request $request, Oferta $ofertas ,$id)
     {
-        $request->validate([
-            
-            'nom' => 'required',
-            'cicle' => 'required',
-            'sala' => 'required',
-            'h' => 'required',
-            'desc' => 'required',
-        ]);
+  
+      
 
-        
-        $oferta->update($request->all());
-
-        return redirect()->route('borsa.MyOferta')
-            ->with('success','oferta updated successfully');
+        $ofertas = Oferta::find($id);
+        $ofertas->name = $request->name;
+        $ofertas->cicle = $request->cicle;
+        $ofertas->tipus = $request->tipus;
+        $ofertas->sala = $request->sala;
+        $ofertas->h = $request->h;
+        $ofertas->desc = $request->desc;
+        $ofertas->privat = $request->privat;
+        $ofertas->empre = auth()->user()->empre;
+        $ofertas->user = auth()->user()->email;
+        $ofertas->save();
+        return redirect()->route('MyOferta')
+        ->with('success','Company Has Been updated successfully');
+ 
 
     }
+
+
+
+
+
+
+
+
+
+
+        
+
+    
 
     /**
      * Remove the specified resource from storage.
@@ -119,11 +167,19 @@ class OfEmpreController extends Controller
      * @param  \App\Models\Oferta  $oferta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Oferta $oferta, $id)
+    public function destroy(Oferta $ofertas , $id)
     {
-        $oferta->delete();
-    
-        return redirect()->route('borsa.MyOferta')
-        ->with('success','file delete successfully');
+        
+
+
+        $ofertas->delete();
+        return redirect()->route('MyOferta')
+        ->with('success','Company has been deleted successfully');
+
+
+ 
+
     }
+
+
 }

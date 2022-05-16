@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Alumne;
+use App\Models\Oferta;
 use Illuminate\Http\Request;
+use Illuminate\Auth\SessionGuard;
+
 class PerfilAlumController extends Controller
 {
    /**
@@ -18,6 +22,47 @@ class PerfilAlumController extends Controller
         return view("borsa.perfilAlum",[
             "alumne" => Alumne::all()
         ]);
+    }
+
+
+    public function perfilAlumne(){
+        return view('perfilAlum');
+     }
+ 
+ 
+
+
+    public function perfilAlum(Request $request){
+       
+        $validated = $request->validate([
+            'name' => 'required',
+            'cognom' => 'required',
+            'neixement' => 'required',
+            'email' =>  'required|email',
+            'telefon' => 'required',
+            'password' => 'required|confirmed',
+            'poblacio' => 'required',
+            'cp' => 'required',
+            'estas' => 'required',
+            'fet' => 'required',
+            'treballat' => 'required',
+           
+       
+        ]); return view('perfilAlum', $validated);
+    }
+
+
+  /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Alumne $alumne)
+    {
+        //
+
+        return view('perfilAlum',compact('alumne'));
     }
 
     /**
@@ -41,18 +86,7 @@ class PerfilAlumController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Alumne $alumne)
-    {
-        //
-
-        return view('perfilAlum',compact('alumne'));
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -89,30 +123,6 @@ class PerfilAlumController extends Controller
     }
 
 
-    public function perfilAlumne(){
-        return view('perfilAlum');
-     }
  
- 
-
-
-    public function perfilAlum(Request $request){
-       
-        $validated = $request->validate([
-            'name' => 'required',
-            'cognom' => 'required',
-            'neixement' => 'required',
-            'email' =>  'required|email',
-            'telefon' => 'required',
-            'password' => 'required|confirmed',
-            'poblacio' => 'required',
-            'cp' => 'required',
-            'estas' => 'required',
-            'fet' => 'required',
-            'treballat' => 'required',
-           
-       
-        ]); return view('perfilAlum', $var);
-     }
  
 }
