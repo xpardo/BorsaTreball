@@ -6,39 +6,39 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header" >{{ __('Oferta') . " " . $ofertas -> id}}</div>
+                    <div class="card-header" >{{ __('Oferta') . " " . $oferta -> id}}</div>
                         <div class="card-body">
               
                                 <table class="table table-striped table-info">
                                     <tbody >
                                         <tr>
                                             <td><b><strong>id</strong></b></td>
-                                            <td><a>{{ $ofertas->id }}</a></td>
+                                            <td><a>{{ $oferta->id }}</a></td>
                                         </tr> <tr>
                                             <td><strong>Tipos</strong></td>
-                                            <td>{{ $ofertas->tipus }}</td>
+                                            <td>{{ $oferta->tipus }}</td>
                                         </tr>
                                         <tr>
                                             <td><strong>Cicle</strong></td>
-                                            <td>{{ $ofertas->cicle }}</td>
+                                            <td>{{ $oferta->cicle }}</td>
                                         </tr>
                                         <tr>
                                             <td><strong>Titól</strong></td>
-                                            <td>{{ $ofertas->name }}</td>
+                                            <td>{{ $oferta->name }}</td>
                                         </tr>
                                         <tr>
                                             <td><strong>horari</strong></td>
-                                            <td>{{ $ofertas->h }}</td>
+                                            <td>{{ $oferta->h }}</td>
                                         </tr>
                                     
                                         <tr>
                                             <td><strong>Salari</strong></td>
-                                            <td>{{ $ofertas->sala }}</td>
+                                            <td>{{ $oferta->sala }}</td>
                                         </tr>
                                         
                                         <tr>
                                             <td><strong>Descripció</strong></td>
-                                            <td>{{ $ofertas->desc }}</td>
+                                            <td>{{ $oferta->desc }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -47,7 +47,7 @@
                     </div>
 
                 
-                    <form id="form" method="POST" action="{{ route('destroy', $ofertas) }}">
+                    <form id="form" method="POST" action="{{ route('ofempresa.destroy', $oferta) }}">
                         @csrf
                         @method("DELETE")
                         <button id="destroy" type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">🗑️ Delete</button>

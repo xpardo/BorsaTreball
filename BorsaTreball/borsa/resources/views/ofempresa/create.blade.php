@@ -19,7 +19,7 @@
                                         <div id="registrarse">
                                             <h3><strong>Nova Oferta</strong></h3>
                              
-                                            <form action="{{ url('MyOferta') }}" method="POST" enctype="multipart/form-data">
+                                            <form action="{{ route('ofempresa.store') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
                             
                                                         
@@ -101,18 +101,7 @@
 
                                                             <div>
                                                             
-                                                            <b class="col-md-1"> Privat: </b>
-                                                                <div class="form-check form-check-inline ">
-                                                                    <label for="privatS" class="form-check-label"> {{__('Si')}} </label>
-                                                                    <input type="checkbox" name="privat"   class="form-check-input @error('privat') is-invalid @enderror"
-                                                                        id="privatS" value="S" {{ old('privat')== 'S' ? 'checked' : '' }}>
-                                                                </div>
-                                                                <div class="form-check form-check-inline ">
-                                                                    <label for="privatN" class="form-check-label"> {{__('No')}} </label>
-                                                                    <input type="checkbox" name="privat"   class="form-check-input @error('privat') is-invalid @enderror"
-                                                                        id="privatN" value="N" {{ old('privat')== 'N' ? 'checked' : '' }}>
-                                                                </div>
-                                                  
+                                                            
 
                                                         </div>
 

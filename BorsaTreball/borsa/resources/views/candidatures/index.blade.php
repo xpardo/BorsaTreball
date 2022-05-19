@@ -4,8 +4,6 @@
 @include('borsa.header')
 
 @include('borsa.menuAlumn')
-
-
 <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -32,7 +30,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($candi as $candi)
+                                                        @foreach ($candis as $candi)
                                                         
                                                         <tr>
                                                             <td><center>{{ $candi->id }}</center></td>

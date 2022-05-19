@@ -7,14 +7,33 @@ use Illuminate\Database\Eloquent\Model;
 
 class Candidat extends Model
 {
+
+    public  $table = 'candidats';
+
     use HasFactory;
 
     protected $fillable = [
-        
-        'inscriurem',
+        'id_ofert',
+        'user',
+
         'name' ,
+        'empre' ,
+        'neixement' , 
+        'genere' ,
+        'email' ,
+        'telefon' ,
+        
+
 
         
     ];
+
+
+
+
+    public function candidats(){
+
+        return $this->hasMany(candidats::class,'id_ofert','id');
+    }
 
 }

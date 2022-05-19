@@ -1,32 +1,12 @@
 <?php
 
-
 namespace App\Http\Controllers;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-use App\Models\User;
-use App\Models\Empresa;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+
 use App\Models\Oferta;
-use App\Models\Candidat;
 use Illuminate\Http\Request;
 
-class OfAlumController extends Controller
+class OfertasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-   
-
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -34,18 +14,10 @@ class OfAlumController extends Controller
      */
     public function index()
     {
-        
-   
-        $usuario = auth()->user()->name;
-        $candi = Candidat::where('user', $usuario)->paginate(10);
-
-        return view('candidatures.index',[
-            "candis" => $candi
+        return view("ofertas.index",[
+            "ofertas" => Oferta::all()
         ]);
-
-       
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -76,7 +48,9 @@ class OfAlumController extends Controller
      */
     public function show(Oferta $oferta)
     {
-        //
+        return view('ofertas.show', [
+            'oferta' => $oferta
+        ]);
     }
 
     /**

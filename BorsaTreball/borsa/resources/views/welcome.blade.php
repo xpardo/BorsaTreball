@@ -24,17 +24,30 @@
                                     <div class="dropdown">
                                         <nav class="navar naver-dark float-left">
                                         
-                                            <form class="form-linie">
-                                       
+                                            <form class="form-linie" action="">
+                                                <div>
+                                                    <div>
 
-                                                <input  name="buscarpor"  class="form-control mr-sm-2" type="search" id="search" 
-                                                placeholder="Search" aria-label="Search"/>
-                                                @include('js.busc')
 
-                                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                                                    <h2><center><i class="fas fad fa-search"></i></h2></center></button>
+                                                        <input  name="buscarpor" class="form-control mr-sm-2" type="text" id="search" 
+                                                        placeholder="Search" aria-label="Search"/>
+                                                        <div class="input-group-append">
+
+                                                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                                            <h2><center><i class="fas fad fa-search"></i></h2></center></button></span></div>
+
+                                                    </div> 
+                                                    @include('js.busc')
+
+                                             
+
+
+                                                 
+
                                             </form>
-                                            
+
+
+     
                                         </nav>
                                         <br> <br> <br> <br>
                                       
@@ -219,10 +232,21 @@
 <!------------------------------------------------------------------------------------------------------>
 
                             <div class="p-6 bg-white border-b border-gray-200">
-                   
+                             <!--    <form action="{{route('home')}}" method="get">
+                                    <div class="form-row">
+                                        <div class="col-sm-4 my-1">
+                                            <input type="text" class="form-control" name="texto">
+                                        </div>
+                                        <div class="col-auto my-1">
+                                            <input type="submit" class="btn btn-primary" value="Buscar">
+                                        </div>
+
+                                    </div>
+
+                                </form> -->
 
                                 <div class="p-6 bg-white border-b border-gray-200">
-                
+
                                     <table  class="table">
                                     
                                         <thead class="table-primary">
@@ -237,7 +261,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($oferta as $oferta)
+                                            @foreach ($ofertas as $oferta)
                                                 <tr>
                                                     <td><center>{{ $oferta->tipus }}</center></td>
                                                     <td><center>{{ $oferta->empre }}</center></td>
@@ -247,7 +271,7 @@
                                                     <td>
                                                         <center>
                                                             <b>
-                                                                <a   title="View" href="{{ route('watch', $oferta) }}">
+                                                                <a   title="View" href="{{ route('ofertas.show', $oferta) }}">
                                                                     <h1 class="btn btn-dark">
                                                                         <i class="bi bi-eye-fill"></i>
                                                                     </h1>

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -9,13 +8,11 @@ use App\Models\Empresa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Oferta;
-use App\Models\Candidat;
-use App\Models\Alumne;
 use Illuminate\Http\Request;
+use App\Models\Candidat;
 
-class WatchController extends Controller
+class CandiOfertController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -25,9 +22,13 @@ class WatchController extends Controller
     {
         //
 
-        return view("watch",[
-            "ofertas" => Oferta::all()
+        $usuarioEmail = auth()->user()->email;
+        $candis = Candidat::where('user', $usuarioEmail)->paginate(10);
+
+        return view('ofempresa.index',[
+            "candis" => $candis
         ]);
+
     }
 
     /**
@@ -38,9 +39,8 @@ class WatchController extends Controller
     public function create()
     {
         //
-        return view('candi');
-        return redirect('watch');
-        
+        return view('candidatures.create');
+
     }
 
     /**
@@ -50,46 +50,46 @@ class WatchController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-
-        $candi = new Candidat;
+    {
+        $candi = new Candidat();
  
-        
-
-        $candi->inscriurem = $request->inscriurem;
+  
         $candi->user = auth()->user()->name;
+        $candi->email = auth()->user()->email;
+        $candi->genere = auth()->user()->genere;
+        $candi->telefon = auth()->user()->telefon;
+        $candi->neixement = auth()->user()->neixement;
 
-
-        $oferta = new Oferta();
-        $oferta -> id = $request -> id;
-        $oferta -> name = $request -> name;
-        $candi -> id_ofert = $request -> $oferta;
-        $candi -> name = $request -> $oferta;
+        $candi->id_ofert = $request->oferta_id;
+        
         $candi->save();
 
-
-        return back()->with('warch', 'candidatura Agregada!');
-
-        $candi = Candidat::create($request->all());
-
-        return redirect('watch');
-      
+        if ($ok) {
+            return redirect('candidatures.index')
+                ->succcess("T'has inscrit correctament");
+        } else {
+            return redirect('ofertas.show', $request->oferta_id)
+                ->succcess("T'has inscrit correctament");
+        }
     }
+
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Oferta $ofertas, $id)
+    public function show(Candidat $candi )
     {
+       
 
-        return view('watch', [
-            'ofertas' => Oferta::findOrFail($id)
+        return view('candidatures.show', [
+            'candis' => $candi
         ]);
+
      
- 
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -97,9 +97,9 @@ class WatchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Oferta $ofertas)
+    public function edit($id)
     {
-       
+        //
     }
 
     /**
@@ -111,7 +111,7 @@ class WatchController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        //
     }
 
     /**

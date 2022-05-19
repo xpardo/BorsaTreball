@@ -12,28 +12,9 @@
                             <div class="row justify-content-center">
                             
                                     <div class="card">
-                                    <br>
-                                        <div  class="btn btn-info ">
-                                     
-                                            <b class="col-md-1"> Tipus: </b>
-                                                <div class="form-check form-check-inline ">
-                                                    <label for="tipusP" class="form-check-label"> {{__('pública')}} </label>
-                                                    <input type="checkbox" name="tipus"   class="form-check-input @error('gender') is-invalid @enderror"
-                                                        id="tipusP" value="Pr" {{ old('tipus')== 'P' ? 'checked' : '' }}>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-
-                                                    <label for="tipusI" class="form-check-label"> {{__('Privada')}}</label>
-                                                    <input type="checkbox"  name="tipus"  class="form-check-input @error('gender') is-invalid @enderror"
-                                                    id="tipusI" value="I" {{ old('tipus')== 'I' ? 'checked' : '' }}>
-                                                </div>
-
-                        
-                                                
-
-                                        </div>
-                                    <br>
-                                    <td><a  class="btn btn-primary" href="{{url("CreateOfert")}}">➕ Crear oferta </a></td>
+                                 
+                                    <td><a  class="btn btn-primary" href="{{ route('ofempresa.create')}}">➕ Crear oferta </a></td>
+                                 
                                     <br>
                                         <div class="card-header">{{ __('oferta Actuals') }}</div>
                                       
@@ -66,39 +47,24 @@
                                                        
                                                             <td>
                                                                 <center>
-                                                                    <a title="View" href="{{ url('candidatures', $oferta) }}" class="btn btn-dark">
+                                                                    <a title="View" href="{{ route('candidatures', $oferta) }}" class="btn btn-dark">
                                                               
                                                                     <i class="fas fa-users"></i>
                                                            
                                                                     </a>
                                                                 </center>
-                                                            <td>
-                                                 
-                                                           
-                                                            
-
-                                                                <form action="{{ route('destroy',$oferta ) }}" method="POST">   
+                                                            </td>
                                                         
-                                                                    <a title="View" href="{{ route('showOfert', $oferta) }}" class="btn btn-dark">
+                                                            <td>
+                                                            <a title="View" href="{{ route('ofempresa.show', $oferta) }}" class="btn btn-dark">
                                                                     <i class="fas fad fa-eye"></i>
                                                                         
                                                                     </a>
 
-                                                                    <a class="btn btn-warning"  href="{{ route('editOfert', $oferta ) }}">
+                                                                    <a class="btn btn-warning"  href="{{ route('ofempresa.edit', $oferta ) }}">
                                                                     <i class="fas fa-edit"></i>
                                                                     </a>
 
-
-                                                                    @method('DELETE')      
-                                                                    @csrf
-                                                                
-                                                                    <button type="submit" class="btn btn-danger">
-                                                                      
-                                                                        <i class="fas fad fa-trash"></i>
-                                                                    </button>
-                                                                
-                                                                </form>
-                                                  
                                                             </td>
                                                     
                                                         </tr>

@@ -70,9 +70,9 @@
                             <label for="genere" class="col-3">{{__('Genere')}} </label><br><br>
                             <select name="genere" class="form-control @error('genere') is-invalid @enderror" id="genere" autofocus>
                                 <option value="0"> </option>
-                                <option value="1"> Home  </option>
-                                <option value="2"> Dona  </option>
-                                <option value="3"> Altre </option>
+                                <option value="Home"> Home  </option>
+                                <option value="Dona"> Dona  </option>
+                                <option value="Altre"> Altre </option>
                             </select>
                         </div>
 
