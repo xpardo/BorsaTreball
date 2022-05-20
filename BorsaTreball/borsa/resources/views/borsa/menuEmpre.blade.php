@@ -22,7 +22,7 @@
                 </li>
               
                 <li class="nav-item active">
-                    <a class="nav-link"  href="{{url('MyOferta')}}">  <i class="fas fa-solid fa-pager"></i>Oferta</a>
+                    <a class="nav-link"  href="{{url('ofempresa')}}">  <i class="fas fa-solid fa-pager"></i>Oferta</a>
                 </li>
 
                        

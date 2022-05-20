@@ -1,76 +1,35 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Pagination\Paginator;
 use App\Models\User;
 use App\Models\Empresa;
-use App\Models\Alumne;
-use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Oferta;
 use Illuminate\Http\Request;
-use Spatie\Searchable\Search;
-class WelcomeController extends Controller
-{
+use App\Models\Candidat;
 
-  
-    
+class CandiController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        //.............................................
-        //Busqueda
-        //.............................................
+        //
 
-        $texto=trim($request->get('texto'));
-        $oferta=DB::table('ofertas') 
-        
-            -> select('id', 'name', 'cicle', 'sala', 'h', 'desc', 'tipus', 'user', 'empre')
-            ->where('name','LIKE', '%'.$texto.'%')
-            ->orWhere('cicle','LIKE', '%'.$texto.'%')
-            ->paginate(10);
-        //.............................................
-        return view("welcome",[
-            "ofertas" => Oferta::all(),
-            "texto"
-        ] );
+        $usuarioEmail = auth()->user()->email;
+        $candis = Candidat::where('user', $usuarioEmail)->paginate(10);
 
-    
-
-        
+        return view('candidatures.index',[
+            "candis" => $candis
+        ]);
 
     }
-
-       
-    public function selectSearch(Request $request){
-    
-        $oferta = [];
-
-        if($request->has('q'))
-            $search = $request->q;
-            $oferta =Oferta::select("id", "name")
-                    ->where('name', 'LIKE', "%$search%")
-                    ->get();
-        
-        return response()->json($oferta);
-}
-
-
-
-    public function search(Request $request)
-    {
-        $oferta = Oferta::where('name', 'LIKE', '%'.$request->search.'%')->get();
-        return \response()->json($oferta);
-    }
-
 
     /**
      * Show the form for creating a new resource.
@@ -80,6 +39,8 @@ class WelcomeController extends Controller
     public function create()
     {
         //
+        return view('candidatures.create');
+
     }
 
     /**
@@ -90,8 +51,27 @@ class WelcomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $candi = new Candidat();
+ 
+  
+        $candi->user = auth()->user()->name;
+        $candi->email = auth()->user()->email;
+        $candi->genere = auth()->user()->genere;
+        $candi->telefon = auth()->user()->telefon;
+        $candi->neixement = auth()->user()->neixement;
+        $candi->empre = $request->empre;
+        $candi->id_ofert = $request->oferta_id;
+ 
+        
+        $candi->save();
 
+        if ($ok) {
+            return redirect('candidatures.index')
+                ->with("T'has inscrit correctament");
+        } else {
+            return redirect('ofertas.show', $request->oferta_id)
+                ->with("ha agut algun problema");
+        }
     }
 
     /**
@@ -100,10 +80,15 @@ class WelcomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Candidat $candi ,$id_ofert)
     {
-        //
+        return view('candidatures.show', [
+            'candi' => Candidat::findOrFail($id_ofert)
+        ]); 
+
+     
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -137,10 +122,5 @@ class WelcomeController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function boot()
-    {
-        Paginator::useBootstrap();
     }
 }

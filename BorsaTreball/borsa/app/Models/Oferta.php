@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Oferta extends Model
 {
-
     use HasFactory;
+
+    protected $table = 'ofertas';
 
     protected $fillable = [
         'cicle' ,
@@ -23,7 +24,7 @@ class Oferta extends Model
         'inscri'
     ];
     
-    public function scopeBuscarpor($query, $name){
+  /*   public function scopeBuscarpor($query, $name){
         if ($name){
             return $query->where('$name', 'like', "%$name%");
         }
@@ -37,8 +38,15 @@ class Oferta extends Model
         if (($tipus) && ($buscar) ) {
             return $query->where('$tipus', 'like', "%$tipus%");
         }
-    }
-   
+    } */
 
-   
+    public function scopeBuscarpor($query, $tipo, $buscar) {
+    	if ( ($tipo) && ($buscar) ) {
+    		return $query->where($tipo,'like',"%$buscar%");
+    	}
+    }
+
+
+    
+
 }

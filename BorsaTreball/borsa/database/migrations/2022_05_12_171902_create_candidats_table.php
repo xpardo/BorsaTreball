@@ -32,6 +32,10 @@ class CreateCandidatsTable extends Migration
      */
     public function down()
     {
+        Schema::table('ofertas', function (Blueprint $table) {
+            $table->dropForeign(['id_ofert']);
+           
+        });
         Schema::dropIfExists('candidats');
     }
 }
