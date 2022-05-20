@@ -109,8 +109,8 @@
                         @enderror
                     </div>
                     <div class="contenedor-input">
-                        <label  for="password">{{__('Password') }} (primera lletra en gran i numeros)</label><br><br>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror"  id="password" name="password" require autocomplete="new-password">
+                        <label  for="password">{{__('Password') }} (8 charater primera lletra en gran i numeros)</label><br><br>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Example1234" id="password" name="password" require autocomplete="new-password">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -132,14 +132,14 @@
                             <div class="from-group form-row offset-1 col-10">
 
                             <p><b><label>{{__('Estas en practiques ?')}}</label></b><p><br>
-
-                                <label for="estatSi" class="form-check-label"> {{__('Si')}} </label>
+                       
+                                <label for="estatSi" class="form-check-label m-2"> {{__('Si')}} </label>
                                 <input type="checkbox" name="estat"  class="form-check-input @error('estat') is-invalid @enderror"
                                  id="estatSi" value="Si" {{ old('estat')== 'Si' ? 'checked' : '' }}>
 
                                 <br>
 
-                                <label for="estatNo" class="form-check-label"> {{__('No')}} </label>
+                                <label for="estatNo" class="form-check-label m-2"> {{__('No')}} </label>
                                 <input type="checkbox"  name="estat"  class="form-check-input @error('estat') is-invalid @enderror"
                                 id="estatNo" value="No" {{ old('estat')== 'No' ? 'checked' : '' }}>
 
@@ -151,13 +151,13 @@
 
                             <p><b><label>{{__('Has fet practiques abans ?')}}</label></b><p><br>
 
-                                <label for="fetSi" class="form-check-label"> {{__('Si')}} </label>
+                                <label for="fetSi" class="form-check-label m-2"> {{__('Si')}} </label>
                                 <input type="checkbox"  name="fet"  class="form-check-input @error('fet') is-invalid @enderror"
                                 id="fetSi" value="Si" {{ old('fet')== 'Si' ? 'checked' : '' }}>
 
                                 <br>
 
-                                <label for="fetNo" class="form-check-label"> {{__('No')}} </label>
+                                <label for="fetNo" class="form-check-label m-2"> {{__('No')}} </label>
                                 <input type="checkbox"  name="fet"  class="form-check-input @error('fet') is-invalid @enderror"
                                 id="fetNo" value="No" {{ old('fet')== 'No' ? 'checked' : '' }}>
 
@@ -170,12 +170,12 @@
                                 <p><b><label>{{__('Estas o has treballat ?')}}</label></b><p>
                                     <br>
                                 
-                                    <label for="treballatSi" class="form-check-label">{{__('Si')}} </label>
+                                    <label for="treballatSi" class="form-check-label m-2">{{__('Si')}} </label>
                                     <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
                                     id="treballatSi" value="Si" {{ old('treballat')== 'Si' ? 'checked' : '' }}>
                       
                                     <br>
-                                    <label for="treballatNo" class="form-check-label"> {{__('No')}} </label>
+                                    <label for="treballatNo" class="form-check-label m-2 "> {{__('No')}} </label>
                                     <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
                                     id="treballatNo" value="No" {{ old('treballat')== 'No' ? 'checked' : '' }}>
                                 
@@ -231,7 +231,7 @@
         </div>
     </div>
 
-    @push('scripts')
+@push('scripts')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
     $('#reload').click(function () {

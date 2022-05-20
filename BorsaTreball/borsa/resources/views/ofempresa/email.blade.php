@@ -6,9 +6,9 @@
         <div class="py-12">
      
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class=" bg-white border-b border-gray-200">
+                <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container ">
-
+                  
                             <div class="row ">
                             
                                 <div class="container box" style="width: 970px;">
@@ -32,7 +32,7 @@
                                     </div>
                                     @endif
                                     
-
+      
                     <!---------------------------------------------------------------------------------->
    
                                     <form action="{{ Route('ofempresa.send') }}" method="POST" enctype="multipart/form-data">
@@ -40,14 +40,13 @@
                                         {{ csrf_field() }}
 
                                         <div class="form-group">
-                                        
-                                            <label>candidatura</label>        
-                    {{  $candis -> id}}
+                                        <div class="card-header" >{{ __('Candidatura Nº') . " " . $candis -> id}}</div>
+                    
                                       
                                         </div>
                                         <div class="form-group">
                                         
-                                            <label>Nombre</label>
+                                            <label>Nom</label>
                                             <input type="text" name="name" class="form-control" value="{{ $candis->user }}" />
                                         </div>
                                             <div class="form-group">
@@ -55,19 +54,21 @@
                                             <input type="text" name="email" class="form-control" value="{{ $candis->email }}" />
                                         </div>
                                         <div class="form-group">
-                                            <label>missatgea</label>
-                                            <textarea name="message" class="form-control" >                          Has sigut seleccionat per la nostra empresa: ( {{ Auth::user()->empre }} )
-                          Posat amb contacte amb nosaltres ( {{ Auth::user()->email }} )
+                                            <label>Missatgea</label>
+                                            <textarea name="message" class="form-control" cols="20" rows="4"v >                          
+                                                Has sigut seleccionat/da per la nostra empresa: ( {{ Auth::user()->empre }} )
+                                                Posat amb contacte amb nosaltres ( {{ Auth::user()->email }} )
                                             </textarea>
                                         </div>
                                         <div class="form-group">
-                                            <input type="submit" name="send" class="btn btn-info" value="Enviar" />
+                                            <input type="submit" name="send" class="btn btn-info" value="Enviar Notificació" />
                                         </div>
+                                        <br> <br> 
                                     </form>
-
+                                   
                                 </div>
                                                
-                                 
+                            </div>
                                 
                             
                         </div>

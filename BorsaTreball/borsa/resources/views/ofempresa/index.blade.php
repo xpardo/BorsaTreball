@@ -4,7 +4,7 @@
             @include('borsa.menuEmpre') 
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container-1 m-12">
@@ -12,14 +12,14 @@
                             <div class="row justify-content-center">
                             
                                     <div class="card">
-                                 
+                                 <br>
                                     <td><a  class="btn btn-primary" href="{{ route('ofempresa.create')}}">➕ Crear oferta </a></td>
                                  
                                     <br>
                                         <div class="card-header">{{ __('oferta Actuals') }}</div>
                                       
                                             <div class="card-body">
-                                                <table class="table">
+                                                <table class="table table-striped">
                                                     <thead>
                                                
                                                         <tr>
@@ -47,7 +47,7 @@
                                                        
                                                             <td>
                                                                 <center>
-                                                                    <a title="View" href="{{ route('ofempresa.candidatures', $oferta) }}" class="btn btn-dark">
+                                                                    <a title="Veure candidats" href="{{ route('ofempresa.candidatures', $oferta) }}" class="btn btn-dark">
                                                               
                                                                     <i class="fas fa-users"></i>
                                                            
@@ -56,15 +56,16 @@
                                                             </td>
                                                         
                                                             <td>
-                                                            <a title="View" href="{{ route('ofempresa.show', $oferta) }}" class="btn btn-dark">
-                                                                    <i class="fas fad fa-eye"></i>
+                                                                <center>
+                                                                    <a title="Veure" href="{{ route('ofempresa.show', $oferta) }}" class="btn btn-dark">
+                                                                        <i class="fas fad fa-eye"></i>
                                                                         
                                                                     </a>
 
-                                                                    <a class="btn btn-warning"  href="{{ route('ofempresa.edit', $oferta ) }}">
-                                                                    <i class="fas fa-edit"></i>
+                                                                    <a  title="Editar" class="btn btn-warning"  href="{{ route('ofempresa.edit', $oferta ) }}">
+                                                                        <i class="fas fa-edit"></i>
                                                                     </a>
-
+                                                                </center>
                                                             </td>
                                                     
                                                         </tr>

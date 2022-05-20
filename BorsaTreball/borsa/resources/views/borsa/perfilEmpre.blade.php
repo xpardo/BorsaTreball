@@ -12,15 +12,37 @@
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
 
-                      
-                   
-
-                                    <p><b>Nom:</b>   {{ Auth::user()->name }}</p>
-                                    <p><b>Cognom:</b>   {{ Auth::user()->cognom }}</p>
-                                    <p><b>nom de la empresa:</b>   {{ Auth::user()->empre }}</p>
-                                    <p><b>Email:</b> {{ Auth::user()->email }}</p>
-                                    <p><b>Telefon:</b> {{ Auth::user()->telefon }}</p>
-                                    <p><b>Poblacio:</b> {{ Auth::user()->poblacio }}</p>
+      
+                                    <table class="table table-striped table-info">
+                                    <tbody >
+                                        <tr>
+                                            <td><b><strong>Nom</strong></b></td>
+                                            <td><a>{{ Auth::user()->name }}</a></td>
+                                        </tr> <tr>
+                                            <td><strong>Cognom</strong></td>
+                                            <td>{{ Auth::user()->cognom }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Nom de l'empresa</strong></td>
+                                            <td>{{ Auth::user()->empre }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Email</strong></td>
+                                            <td>{{ Auth::user()->email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Telefon</strong></td>
+                                            <td>{{ Auth::user()->telefon }}</td>
+                                        </tr>
+                                    
+                                        <tr>
+                                            <td><strong>Poblacio</strong></td>
+                                            <td> {{ Auth::user()->poblacio }}</td>
+                                        </tr>
+                                        
+                                        
+                                    </tbody>
+                                </table>
                             
 
 

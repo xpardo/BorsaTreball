@@ -57,8 +57,8 @@
                         </div>
 
                         <div class="contenedor-input">
-                            <label  for="password">{{__('Password') }} (primera lletra en gran i numeros)</label><br><br>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror"  id="password" name="password" value="{{old('password')}}" require autocomplete="new-password" autofocus>
+                            <label  for="password">{{__('Password') }} (8 charater primera lletra en gran i numeros)</label><br><br>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Example1234"  id="password" name="password" value="{{old('password')}}" require autocomplete="new-password" autofocus>
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -129,13 +129,6 @@
                             <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
                         </div>
                     </div>
-
-
-
-
-
-
-
 
 
 
