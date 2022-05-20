@@ -109,7 +109,7 @@
                         @enderror
                     </div>
                     <div class="contenedor-input">
-                        <label  for="password">{{__('Password') }}</label><br><br>
+                        <label  for="password">{{__('Password') }} (primera lletra en gran i numeros)</label><br><br>
                         <input type="password" class="form-control @error('password') is-invalid @enderror"  id="password" name="password" require autocomplete="new-password">
                         @error('password')
                             <span class="invalid-feedback" role="alert">

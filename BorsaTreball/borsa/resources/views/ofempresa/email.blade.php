@@ -11,15 +11,13 @@
 
                             <div class="row ">
                             
-
-
                                 <div class="container box" style="width: 970px;">
                                     <h1 style="text-align:center;"> <tutofox/> </h1>
-
+                                  
                                     <br/>
                                     @if (count($errors) > 0)
                                         <div class="alert alert-danger">
-                                        <button type="button" class="close" data-dismiss="alert"></button>
+                                        <button type="button" class="close" data-dismiss="alert">×</button>
                                         <ul>
                                         @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
@@ -33,12 +31,20 @@
                                         <strong>{{ $message }}</strong>
                                     </div>
                                     @endif
+                                    
 
-
-
+                    <!---------------------------------------------------------------------------------->
+   
                                     <form action="{{ Route('ofempresa.send') }}" method="POST" enctype="multipart/form-data">
                     
                                         {{ csrf_field() }}
+
+                                        <div class="form-group">
+                                        
+                                            <label>candidatura</label>        
+                    {{  $candis -> id}}
+                                      
+                                        </div>
                                         <div class="form-group">
                                         
                                             <label>Nombre</label>

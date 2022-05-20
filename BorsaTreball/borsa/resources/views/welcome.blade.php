@@ -22,25 +22,26 @@
                                 <div class="col-sm ">
                             
                                     <div class="dropdown">
-                                        <nav class="navar naver-dark float-left">
                                         
-                                            <form class="form-linie" action="{{route('home')}}" method="get">
-                                               
+                                             
+                                                    <form class="form-linie" action="{{route('home')}}" method="get">
+                                                
 
-                                                        <div class="form-row">
-                                                            <div class="col-sm-4 ">
-                                                                <input  name="texto" class="form-control mr-sm-2" type="text" id="search" 
-                                                                                placeholder="Search" aria-label="Search"/>
-                                                                
-                                                                <input type="submit" class="btn btn-primary" value="Buscar">
+                                                            <div class="form-row">
+                                                                <div class="col-sm-4 ">
+                                                                    <input  name="texto" class="form-control mr-sm-2" type="text" id="search" 
+                                                                                    placeholder="Search" aria-label="Search"/>
+                                                                    
+                                                                    <input type="submit" class="btn btn-primary" value="Buscar">
+                                                                </div>
+
                                                             </div>
 
-                                                        </div>
-
-                                                 </form> 
-     
-                                        </nav>
-                                        <br> <br> <br> <br>
+                                                    </form> 
+                                               
+                                          
+                                        
+                                        <!-- <br> <br> <br> <br>
                                       
                                         <div class="dropdown">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" 
@@ -171,13 +172,13 @@
                                                         </li>
                                                     
                                                
-                                            </div>
+                                            </div> -->
                                         
                                         
                                     
                                             <!--checkbox---->
 
-                                            <div  class="btn btn-info ">
+                                            <!-- <div  class="btn btn-info ">
                                                 
                                                     <label>tipus:</label>
                                
@@ -204,12 +205,12 @@
                                             <input class="botb" type="submit" value="Buscar">
                                         </div>
 
-                                    </div>
+                                    </div> -->
                                     
                                       
                                  </div>
                               
-                            </fieldset></center>
+                            </fieldset>
 
                         
                         </div>

@@ -11,7 +11,6 @@
                         
                             <div class="row ">
                             
-                            
                                     <br>
                                         <div class="card-header">{{ __('Candidats' ) }}</div>
                                    
@@ -53,7 +52,6 @@
                                                             <td>
                                                                 <center>
                                                                     <a title="View" href="{{ route('ofempresa.curri', $candi) }}" class="btn btn-dark">
-                                                              
                                                                     <i class="fas fa-sticky-note"></i>
                                                            
                                                                     </a>

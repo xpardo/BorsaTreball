@@ -9,6 +9,7 @@ use App\Models\Presentacio;
 use App\Models\Curriculum;
 use DB;
 use App\Mail\SendMail;
+use App\Models\Alumne;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -173,13 +174,16 @@ class OfEmpreController extends Controller
 
    
     
-    public function sendDemoMail( Candidat $candis , Oferta   $ofempresa){
+    public function sendDemoMail( Candidat $candis , $id){
        
 
-        return view('ofempresa.email',[
-            "candis" => $candis
-        ]);
-       
+       /*  return view('ofempresa.email',[
+            "candis" => $ofempresa
+        ]); */
+        return view('ofempresa.email', [
+            'candis' => Candidat::findOrFail($id)
+        ]); 
+
 
     }
 

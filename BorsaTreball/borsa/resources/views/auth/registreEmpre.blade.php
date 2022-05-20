@@ -16,7 +16,6 @@
             <div id="registrarse">
                 <h3><strong>registrar-se</strong></h3>
 
-       
                 <form method="POST" action="{{ route('registreEmpre') }} "  enctype="multipart/form-data">
                     @csrf 
                     <p>Dades d'acces personal <i class="bi bi-person"></i></p>
@@ -44,6 +43,7 @@
                         </div>
                     </div>
 
+
                     <div class="contenedor-input">
 
                         <div class="contenedor-input">
@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="contenedor-input">
-                            <label  for="password">{{__('Password') }}</label><br><br>
+                            <label  for="password">{{__('Password') }} (primera lletra en gran i numeros)</label><br><br>
                             <input type="password" class="form-control @error('password') is-invalid @enderror"  id="password" name="password" value="{{old('password')}}" require autocomplete="new-password" autofocus>
                             @error('password')
                                 <span class="invalid-feedback" role="alert">

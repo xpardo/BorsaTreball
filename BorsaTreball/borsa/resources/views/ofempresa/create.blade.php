@@ -87,10 +87,10 @@
                                                             <input type="text" id="name" name="name">
                                                             <br><br>
                                                             <label  for="sala" class="col-10">Salari: </label>
-                                                            <input type="num" id="sala" name="sala" value="€">
+                                                            <input type="num" id="sala" name="sala" placeholder="€">
                                                             <br><br>
                                                             <label for="h"  class="col-10">Horari:</label>
-                                                            <input type="text" id="h" name="h" value="00:00-00:00 00:00-00:00">
+                                                            <input type="text" id="h" name="h" placeholder="00:00-00:00 00:00-00:0">
                                                             <br><br>
                                                             <div class="contenedor-input">
                                                                 <label for="desc" class="col-10">Descripció:</label>
