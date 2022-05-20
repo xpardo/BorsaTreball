@@ -28,14 +28,10 @@ use App\Models\Presentacio;
 use App\Models\Recomanacio;
 use App\Models\Oferta;
 
-
 use Illuminate\Support\Facades\Input;
 
 use App\User;
 use App\Http\Controllers\UsersController;
-
-
-
 
 use App\Http\Controllers\curriculumController;
 use App\Http\Controllers\LlistaCurriController;
@@ -46,16 +42,14 @@ use App\Http\Controllers\LlistaPresenController;
 use App\Http\Controllers\RecController;
 use App\Http\Controllers\LlistaRecController;
 
-
 use App\Http\Controllers\WelcomeController;
 
 use App\Http\Controllers\OfertasController;
 
-
 use App\Http\Controllers\SearchController;
 
 use App\Http\Controllers\CandiController;
-use App\Http\Controllers\CandiOfertController;
+
 
 
 
@@ -78,7 +72,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
  
 
 Route::get('/dashboard', function () {
-    return view('welcome');
+    return view('/welcome');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
@@ -105,20 +99,37 @@ Route::resource('perfilEmpre', PerfilEmpreController::class)->middleware(['auth'
 /**____________________________________________________________ */
 
 
-/**______________________________________ */
+//--------------------------------------------
+// Revisades amb Pep
+//--------------------------------------------
+
 
 Route::get('/', [WelcomeController::class, 'index']);
-
 Route::get('/welcome', [WelcomeController::class, 'index']);
 
 Route::resource('ofertas', OfertasController::class);
-
 Route::resource('ofempresa', OfEmpreController::class)->middleware(['auth', 'role:3']);
+Route::get('ofempresa/{ofempresa}/candidatures', [OfEmpreController::class, 'candidatures'])->name('ofempresa.candidatures')->middleware(['auth', 'role:3']);
+
+
+
 
 Route::resource('candi', CandiController::class)->middleware(['auth', 'role:2']);
 
+
 Route::get('/search', [WelcomeController::class,'search'])->name('search');
 
+
+
+
+//...........................
+
+Route::get('ofempresa/{ofempresa}/curri', [OfEmpreController::class, 'curri'])->name('ofempresa.curri')->middleware(['auth', 'role:3']);
+Route::get('ofempresa/{ofempresa}/presen', [OfEmpreController::class, 'presentacio'])->name('ofempresa.presen')->middleware(['auth', 'role:3']);
+
+Route::get('ofempresa/{ofempresa}/email', [OfEmpreController::class, 'sendDemoMail'])->name('ofempresa.email')->middleware(['auth', 'role:3']);
+
+Route::post('send', [OfEmpreController::class, 'send'])->name('ofempresa.send')->middleware(['auth', 'role:3']);
 
 
 /**____________________________________________Alumne_______________________________________________________________________*/
@@ -179,8 +190,7 @@ Route::resource('perfilAlum', PerfilAlumController::class)->middleware(['auth', 
     Route::post('presentacio',[PresentacioController::class,'insertar']);
     Route::get('presentacio',[LlistaPresenController::class,'index']);
     Route::post('newPre', [PresentacioController::class,'store'])->name('newPre');
-    Route::post('store', [PresentacioController::class,'store']);
-
+ 
 /**_____________________________________*/
 
 
@@ -279,7 +289,7 @@ Route::get('email', [AuthController::class, 'email'])->name('email');
 Route::post('enlace', [AuthController::class, 'enlace'])->name('enlace');
 Route::get('clave/{token}', [AuthController::class, 'clave'])->name('clave');
 Route::post('cambiar', [AuthController::class, 'cambiar'])->name('cambiar');
-Route::resource('candi', CandiOfertController::class);
+
 
 Route::get('borsa/{user}/perfilAlumn',[UsersController::class,'editAvatar'])->middleware('auth')->name('borsa.perfilAlumn');
 

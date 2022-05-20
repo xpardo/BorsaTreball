@@ -80,7 +80,7 @@ class RecController extends Controller
         }
 
         return back()
-        ->with('success','File has uploaded to the database.')
+        ->with('success','recomenacio has uploaded to the database.')
         ->with('recomenacio', 'recomenacio Agregada!')
         ->with('pdf', $rec);
         return redirect('recomenacio');

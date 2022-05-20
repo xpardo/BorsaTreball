@@ -47,7 +47,7 @@
                                                        
                                                             <td>
                                                                 <center>
-                                                                    <a title="View" href="{{ route('candidatures', $oferta) }}" class="btn btn-dark">
+                                                                    <a title="View" href="{{ route('ofempresa.candidatures', $oferta) }}" class="btn btn-dark">
                                                               
                                                                     <i class="fas fa-users"></i>
                                                            
@@ -83,7 +83,7 @@
                 </div> 
             </div> 
  
-
+            <br><br><br><br> <br><br> <br>
           
 
 @include('estil/perfil')

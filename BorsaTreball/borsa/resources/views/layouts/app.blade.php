@@ -70,7 +70,7 @@
     <nav class="navbar navbar-expand-lg m-2 " style="background-color: #5da4e7; ">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                <img alt="Logotip entitat " id="logo_entity " src="{{ asset('img/logo-JM-blau-miniatura-1.jpg') }}" width="65 " height="90 " alt=" ">
+                <img alt="Logotip entitat " id="logo_entity " src="{{ asset('img/logo-JM-blau-miniatura-1.jpg') }}" width="75" height="90" alt=" ">
 
                 </a>
                 <a aria-haspopup="true" aria-expanded="false" v-pre style="color: #fff; "  href="{{url('/')}}">{{__('home')}}</a>

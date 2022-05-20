@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Pagination\Paginator;
 use App\Models\User;
 use App\Models\Empresa;
 use App\Models\Alumne;
@@ -25,6 +26,9 @@ class WelcomeController extends Controller
      */
     public function index(Request $request)
     {
+        //.............................................
+        //Busqueda
+        //.............................................
 
         $texto=trim($request->get('texto'));
         $oferta=DB::table('ofertas') 
@@ -33,9 +37,10 @@ class WelcomeController extends Controller
             ->where('name','LIKE', '%'.$texto.'%')
             ->orWhere('cicle','LIKE', '%'.$texto.'%')
             ->paginate(10);
-           
-         return view("welcome",[
-            "ofertas" => Oferta::all()
+        //.............................................
+        return view("welcome",[
+            "ofertas" => Oferta::all(),
+            "texto"
         ] );
 
     
@@ -132,5 +137,10 @@ class WelcomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function boot()
+    {
+        Paginator::useBootstrap();
     }
 }

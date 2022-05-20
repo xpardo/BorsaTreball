@@ -22,7 +22,7 @@ class curriculumController extends Controller
 
 
     public function insertar(Request $request){
-        //dd($request);
+      
         
         try {
             DB::beginTransaction();
@@ -71,7 +71,7 @@ class curriculumController extends Controller
             $curri -> Save();
 
             return back()
-                    ->with('success','File has uploaded to the database.')
+                    ->with('success','curriculum has uploaded to the database.')
                     ->with('curriculums', 'cursiculum Agregada!')
                     ->with('pdf', $curri);
                 

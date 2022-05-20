@@ -59,17 +59,18 @@ class CandiController extends Controller
         $candi->genere = auth()->user()->genere;
         $candi->telefon = auth()->user()->telefon;
         $candi->neixement = auth()->user()->neixement;
-
+        $candi->empre = $request->empre;
         $candi->id_ofert = $request->oferta_id;
+ 
         
         $candi->save();
 
         if ($ok) {
             return redirect('candidatures.index')
-                ->succcess("T'has inscrit correctament");
+                ->with("T'has inscrit correctament");
         } else {
             return redirect('ofertas.show', $request->oferta_id)
-                ->succcess("T'has inscrit correctament");
+                ->with("ha agut algun problema");
         }
     }
 

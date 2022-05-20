@@ -5,6 +5,11 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\User;
 use App\Models\Empresa;
+use App\Models\Presentacio;
+use App\Models\Curriculum;
+use DB;
+use App\Mail\SendMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Oferta;
@@ -81,7 +86,7 @@ class OfEmpreController extends Controller
 
         return view('ofempresa.show', [
             'oferta' => $ofempresa
-        ]);
+        ])->with("Has creat correctament l'oferta");
         
     }
 
@@ -130,7 +135,7 @@ class OfEmpreController extends Controller
         $ofempresa->user = auth()->user()->email;
         $ofempresa->save();
         return redirect()->route('ofempresa.show',$ofempresa)
-        ->with('success','Company Has Been updated successfully');
+            ->with('success',"sa editat correctament");
  
 
     }
@@ -144,7 +149,91 @@ class OfEmpreController extends Controller
     public function destroy(Oferta $ofempresa)
     {
         $ofempresa->delete();
-        return redirect()->with('ofempresa.index')->with('oferta ','Seleccionada sa eliminat');;
+        return redirect()->with('ofempresa.index')
+            ->with('success', "oferta {$id} sa elminatat correctament.");
+    }
+
+
+    //.........................
+    ///candidatures
+    //.........................
+
+    public function candidatures(Oferta $ofempresa) 
+    {
+        $candis = Candidat::where('id_ofert', $ofempresa->id)->paginate(10);
+
+        return view('ofempresa.candidatures',[
+            "candis" => $candis
+        ]);
+    }
+
+     //.........................
+    ///curriculums 
+    //.........................
+
+   
+    
+    public function sendDemoMail( Candidat $candis , Oferta   $ofempresa){
+       
+
+        return view('ofempresa.email',[
+            "candis" => $candis
+        ]);
+       
+
+    }
+
+   
+
+    
+
+    public function send(Request $request, Oferta $ofempresa)
+    {
+        $this->validate($request, [
+            'name'     =>  'required',
+            'email'  =>  'required|email',
+            'message' =>  'required'
+            ]);
+            
+        $data = array(
+                'name'      =>  $request->input('name'),
+                'message'   =>   $request->input('message')
+            );
+
+            $email = $request->input('email');
+
+        Mail::to($email)->send(new SendMail($data));
+
+        return back()->with('success', "s'ha enviat exitosament !");
+
+    }
+
+    
+
+    public function curri(Curriculum $curri) 
+    {
+
+
+        $curri = Curriculum::where('user', $curri)->paginate(5);
+
+        return view('ofempresa.curri',[
+            "curri" => $curri,
+
+        ]);
+        
+    }
+
+    public function presentacio(Presentacio $pre) 
+    {
+
+
+        $pre = Presentacio::where('user', $pre)->paginate(5);
+
+        return view('ofempresa.presen',[
+            "pre" => $pre,
+
+        ]);
+        
     }
 
 
