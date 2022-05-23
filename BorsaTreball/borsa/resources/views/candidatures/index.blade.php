@@ -23,7 +23,7 @@
                                                     <thead>
                                                
                                                         <tr>
-                                                        <td scope="col"><center>ID</center></td>
+                                                      
                                                         <td scope="col"><center>Id_ofert</center></td>
                                                         <td scope="col"><center>Empresa</center></td>   
                                                         <td scope="col"><center></center></td>  
@@ -33,7 +33,7 @@
                                                         @foreach ($candis as $candi)
                                                         
                                                         <tr>
-                                                            <td><center>{{ $candi->id }}</center></td>
+                                                            
                                                             <td><center>{{ $candi->id_ofert }}</center></td>
                                                             <td><center>{{ $candi->empre }}</center></td>
 

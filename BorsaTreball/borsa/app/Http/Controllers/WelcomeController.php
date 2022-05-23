@@ -38,6 +38,7 @@ class WelcomeController extends Controller
             ->orWhere('cicle','LIKE', '%'.$texto.'%')
             ->paginate(10);
         //.............................................
+        
         return view("welcome",[
             "ofertas" => Oferta::all(),
             "texto"
