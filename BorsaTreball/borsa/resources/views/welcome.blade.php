@@ -22,21 +22,26 @@
                                 <div class="col-sm ">
                             
                                     <div class="dropdown">
-                                        <nav class="navar naver-dark float-left">
                                         
-                                            <form class="form-linie">
-                                       
+                                             <!-- 
+                                                    <form class="form-linie" action="{{route('home')}}" method="get">
+                                                
 
-                                                <input  name="buscarpor"  class="form-control mr-sm-2" type="search" id="search" 
-                                                placeholder="Search" aria-label="Search"/>
-                                                @include('js.busc')
+                                                            <div class="form-row">
+                                                                <div class="col-sm-4 ">
+                                                                    <input  name="texto" class="form-control mr-sm-2" type="text" id="search" 
+                                                                                    placeholder="Search" aria-label="Search"/>
+                                                                    
+                                                                    <input type="submit" class="btn btn-primary" value="Buscar">
+                                                                </div>
 
-                                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                                                    <h2><center><i class="fas fad fa-search"></i></h2></center></button>
-                                            </form>
-                                            
-                                        </nav>
-                                        <br> <br> <br> <br>
+                                                            </div>
+
+                                                    </form>  -->
+                                               
+                                          
+                                        
+                                        <!-- <br> <br> <br> <br>
                                       
                                         <div class="dropdown">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" 
@@ -167,13 +172,13 @@
                                                         </li>
                                                     
                                                
-                                            </div>
+                                            </div> -->
                                         
                                         
                                     
                                             <!--checkbox---->
 
-                                            <div  class="btn btn-info ">
+                                            <!-- <div  class="btn btn-info ">
                                                 
                                                     <label>tipus:</label>
                                
@@ -200,12 +205,12 @@
                                             <input class="botb" type="submit" value="Buscar">
                                         </div>
 
-                                    </div>
+                                    </div> -->
                                     
                                       
                                  </div>
                               
-                            </fieldset></center>
+                            </fieldset>
 
                         
                         </div>
@@ -219,10 +224,10 @@
 <!------------------------------------------------------------------------------------------------------>
 
                             <div class="p-6 bg-white border-b border-gray-200">
-                   
+                                 
 
                                 <div class="p-6 bg-white border-b border-gray-200">
-                
+
                                     <table  class="table">
                                     
                                         <thead class="table-primary">
@@ -237,7 +242,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($oferta as $oferta)
+                                            @foreach ($ofertas as $oferta)
                                                 <tr>
                                                     <td><center>{{ $oferta->tipus }}</center></td>
                                                     <td><center>{{ $oferta->empre }}</center></td>
@@ -247,7 +252,7 @@
                                                     <td>
                                                         <center>
                                                             <b>
-                                                                <a   title="View" href="{{ route('watch', $oferta) }}">
+                                                                <a   title="View" href="{{ route('ofertas.show', $oferta) }}">
                                                                     <h1 class="btn btn-dark">
                                                                         <i class="bi bi-eye-fill"></i>
                                                                     </h1>
@@ -275,12 +280,12 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                    
                         <!---camp editable---->
-                        <a style="color: #ff0000;"> hi ha de ser editable</a>
-                        <h1>Borsa de treball </h1>
+                        
+                       <center><h1>Borsa de treball </h1></center>
   
                     <!---camp editable---->
                     <div class="p-6 bg-white border-b border-gray-200">
-                    <a style="color: #ff0000;">hi ha de ser editable</a>
+
                         <label>La Borsa de Treball és un servei que ofereix 
                         l’Institut Joaquim mir  als seus alumnes i exalumnes per facilitar la inserció laboral i 
                         potenciar les relacions de l’institut amb les institucions i empreses de l’entorn.</label>

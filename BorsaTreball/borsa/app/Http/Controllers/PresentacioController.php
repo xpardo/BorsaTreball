@@ -17,68 +17,56 @@ use App\Models\Oferta;
 
 
 
+
 class PresentacioController extends Controller
 {
-    public function insertar(Request $request){
-        //dd($request);
-        
-        try {
-            DB::beginTransaction();
+    public function index(Request $request)
+    {
+        $id = auth()->user()->id;
+        $pres = Presentacio::where('user_id', $id);
 
-            $pre = new Presentacio;
-            $pre -> name = $request -> get('name'); 
-
-            $pre->user = auth()->user()->email;
-            
-            if($request->hasFile('pdf')){
-
-
-                $archivo  = $request -> file('pdf'); 
-                $archivo -> move(public_path().'/pre/',$archivo->getClientOriginalName());
-                $pre -> pdf = $archivo ->getClientOriginalName();
-            }
-    
-            $pre -> Save();
-
-
-
-            DB::commit();
-        } catch ( Exception $e){
-            DB::rollback();
-        }
-
-
+        return view('pre.index',[
+            "pres" => $pres,
+        ]);
        
-    } 
+    }
 
-
-    public function store(Request $request){
+    public function create(Request $request)
+    {
+        return view('pre.create');
+    }
+    
+    public function store(Request $request)
+    {
         $request->validate([
     
             'pdf' => 'required|mimes:pdf'
         ]);
 
-       
 
         if($request->hasFile('pdf')){
-            $pre = new Presentacio;
-            $pre->name = $request->name;
-            $pre->user = auth()->user()->email;
-            $archivo  = $request -> file('pdf'); 
-            $archivo -> move(public_path().'/pre/',$archivo->getClientOriginalName());
-            $pre -> pdf = $archivo ->getClientOriginalName();
-            $pre -> Save();
-            return back()
-            ->with('success','File has uploaded to the database.')
-            ->with('presentacio', 'Presentacio Agregada!')
-            ->with('pdf', $pre);
-            return redirect('presentacio');
 
+            $pre = new  Presentacio;
+            
+            $pre->name = $request->name;
+            $pre->user_id = auth()->user()->id;
+            $archivo  = $request -> file('pdf'); 
+            $archivo -> move(public_path().'/storage/pre/',$archivo->getClientOriginalName());
+           
+            $pre -> filepath = $archivo ->getClientOriginalName();
+            $pre -> save();
+
+            return back()
+                    ->with('success','pre has uploaded to the database.')
+                    ->with('pre', 'cursiculum Agregada!')
+                    ->with('pdf', $pre);
+                
            
         }
-    
+
+        return redirect('pre.index');
      }
 
-
+     
 
 }

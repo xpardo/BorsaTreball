@@ -22,15 +22,15 @@
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('curriculums') }} "><i class="fas fa-address-book">currículums</i></a>
+                    <a class="nav-link" href="{{ url('curri.index') }} "><i class="fas fa-address-book">currículums</i></a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('presentacio') }} " ><i class="fas fa-address-book">carta de presentació</i></a>
+                    <a class="nav-link" href="{{ url('pre.index') }} " ><i class="fas fa-address-book">carta de presentació</i></a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('recomenacio') }} " ><i class="fas fa-address-book">carta de recomanació</i></a>
+                    <a class="nav-link" href="{{ url('rec.index') }} " ><i class="fas fa-address-book">carta de recomanació</i></a>
                 </li>
 
                 <li class="nav-item active">
@@ -56,5 +56,6 @@
 
 
 @include('estil/perfil')
+
 
 

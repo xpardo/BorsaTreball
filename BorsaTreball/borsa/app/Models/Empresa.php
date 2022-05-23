@@ -16,9 +16,9 @@ class Empresa extends Model
 {
     use HasApiTokens; 
     use HasFactory;
-    use HasProfilePhoto;
+
     use Notifiable;
-    use TwoFactorAuthenticatable;
+    
 
     protected $fillable = [
         'name' ,

@@ -28,16 +28,12 @@ use App\Models\Presentacio;
 use App\Models\Recomanacio;
 use App\Models\Oferta;
 
-
 use Illuminate\Support\Facades\Input;
 
 use App\User;
 use App\Http\Controllers\UsersController;
 
-
-
-
-use App\Http\Controllers\curriculumController;
+use App\Http\Controllers\CurriculumController;
 use App\Http\Controllers\LlistaCurriController;
 
 use App\Http\Controllers\PresentacioController;
@@ -46,13 +42,14 @@ use App\Http\Controllers\LlistaPresenController;
 use App\Http\Controllers\RecController;
 use App\Http\Controllers\LlistaRecController;
 
-
 use App\Http\Controllers\WelcomeController;
 
-use App\Http\Controllers\WatchController;
-
+use App\Http\Controllers\OfertasController;
 
 use App\Http\Controllers\SearchController;
+
+use App\Http\Controllers\CandiController;
+
 
 
 
@@ -72,23 +69,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-
-
-Route::get('/', function (Request $request) {
-    $message = 'Loading welcome page';
-    Log::info($message);
-    $request->session()->flash('info', $message);
-    return view('welcome');
- });
-
- Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
  
 
-Route::get('/dashboard', function () {
-    return view('welcome');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [WelcomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 // ...
@@ -104,61 +87,49 @@ Route::get('mail/test', [MailController::class, 'test'])->middleware(['auth']);
 Route::resource('perfilEmpre', PerfilEmpreController::class)->middleware(['auth', 'role:3']);;
 
 
-Route::get('/perfilEmpresa',[PerfilEmpreController::class, 'perfilEmpresa'])->middleware(['auth', 'role:3']);
-Route::post('/perfilEmpre', [PerfilEmpreController::class, 'perfilEmpre'])->middleware(['auth', 'role:3']);
+
 
 /**_____________________________________*/
  
-Route::resource('MyOferta', OfEmpreController::class)->middleware(['auth', 'role:3']);
 
-Route::get('CreateOfert', [OfEmpreController::class,'create']);
-Route::post('borsa/store', [OfEmpreController::class,'store']);
-
-Route::get('/editOfert/{id}', [OfEmpreController::class,'edit'])->name('editOfert'); 
-Route::post('update', [OfEmpreController::class,'update']);
-Route::get('/showOfert/{id}',[OfEmpreController::class,'show'])->name('showOfert');
-
-Route::get('delete/{id}', [OfEmpreController::class,'delete']);
-
-
-
-
-
-
+ Route::get('/candidatures/{id}',[CandiController::class,'show'])->name('candidatures'); 
 
 /**____________________________________________________________ */
 
 
+//--------------------------------------------
+// Revisades amb Pep
+//--------------------------------------------
+
+
+Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/welcome', [WelcomeController::class, 'index']);
+
+Route::resource('ofertas', OfertasController::class);
+Route::resource('ofempresa', OfEmpreController::class)->middleware(['auth', 'role:3']);
+Route::get('ofempresa/{ofempresa}/candidatures', [OfEmpreController::class, 'candidatures'])->name('ofempresa.candidatures')->middleware(['auth', 'role:3']);
+
+Route::get('ofempresa/{ofempresa}/candidatures/{candidatura}/curriculum', [OfEmpreController::class, 'curriculum'])->name('ofempresa.curriculum')->middleware(['auth', 'role:3']);
+Route::get('ofempresa/{ofempresa}/candidatures/{candidatura}/presentacio', [OfEmpreController::class,  'presentacio'])->name('ofempresa.presentacio')->middleware(['auth', 'role:3']);
+Route::get('ofempresa/{ofempresa}/candidatures/seleccionar', [OfEmpreController::class, 'seleccionar'])->name('ofempresa.seleccionar')->middleware(['auth', 'role:3']);
+Route::post('ofempresa/notificar', [OfEmpreController::class, 'notificar'])->name('ofempresa.notificar')->middleware(['auth', 'role:3']);
+
+Route::resource('curriculum', CurriculumController::class)->middleware(['auth', 'role:2']);
+
+Route::resource('presentacio', PresentacioController::class)->middleware(['auth', 'role:2']);
+
+Route::resource('recomenacio', RecController::class)->middleware(['auth', 'role:2']);
+
+Route::resource('candi', CandiController::class)->middleware(['auth', 'role:2']);
 
 
 
+//...........................
 
-
-/**______________________________________ */
-
-
-
-
-
-/**______________________________________ */
-
-Route::resource('/', WelcomeController::class);
-
-
-
-
-
-Route::resource('watch', WatchController::class);
-
-
-Route::get('watch/{id}',[WatchController::class,'show'])->name('watch');
-
-Route::get('candi', [WatchController::class,'create']);
-
-Route::post('store', [WatchController::class,'store'])->name('watch');
-
-Route::get('/search', [WelcomeController::class,'search'])->name('search');
-
+/* Route::get('ofempresa/{ofempresa}/curri', [OfEmpreController::class, 'curri'])->name('ofempresa.curri')->middleware(['auth', 'role:3']);
+Route::get('ofempresa/{ofempresa}/presen', [OfEmpreController::class, 'presentacio'])->name('ofempresa.presen')->middleware(['auth', 'role:3']);
+Route::get('ofempresa/{ofempresa}/email', [OfEmpreController::class, 'sendDemoMail'])->name('ofempresa.email')->middleware(['auth', 'role:3']);
+Route::post('send', [OfEmpreController::class, 'send'])->name('ofempresa.send')->middleware(['auth', 'role:3']); */
 
 
 /**____________________________________________Alumne_______________________________________________________________________*/
@@ -169,102 +140,15 @@ Route::get('/search', [WelcomeController::class,'search'])->name('search');
 Route::resource('perfilAlum', PerfilAlumController::class)->middleware(['auth', 'role:2']);
 
 
-
-Route::get('/perfilAlumne',[PerfilAlumController::class, 'perfilAlumne'])->middleware(['auth', 'role:2']);
-Route::post('/perfilAlum', [PerfilAlumController::class, 'perfilAlum'])->middleware(['auth', 'role:2']);
-
-
-
-
-/**_____________________________________*/
- 
-
-
-
-    Route::get('/curriculums', function () {
-        $curri = Curriculum::all();
-        return view('borsa.curriculums')->with('curri',$curri);
-    });
-
-    Route::get('/newCurri', function () {
-        $curri = Curriculum::all();
-        return view('borsa.newCurri')->with('curri',$curri);
-    });
-    
-  
-
-    Route::post('curriculums',[curriculumController::class,'insertar']);
-    Route::get('curriculums',[LlistaCurriController::class,'index']);
-    Route::post('newCurri', [curriculumController::class,'store'])->name('newCurri');
-    Route::post('store', [curriculumController::class,'store']);
-  
-  
-
-
-
-
-
-
-
 /**_____________________________________*/
 
 
-    Route::get('/presentacio', function () {
-        $pre = Presentacio::all();
-        return view('borsa.presentacio')->with('pre',$pre);
-    });
-    Route::get('/newPre', function () {
-        $pre = Presentacio::all();
-        return view('borsa.newPre')->with('pre',$pre);
-    });
-
-
-
-
-    Route::post('presentacio',[PresentacioController::class,'insertar']);
-    Route::get('presentacio',[LlistaPresenController::class,'index']);
-    Route::post('newPre', [PresentacioController::class,'store'])->name('newPre');
-    Route::post('store', [PresentacioController::class,'store']);
-
-/**_____________________________________*/
-
-
-
-
-
-Route::get('/recomenacio', function () {
-    $rec = Recomanacio::all();
-    return view('borsa.recomenacio')->with('rec',$rec);
-});
-Route::get('/newrec', function () {
-    $rec = Recomanacio::all();
-    return view('borsa.newrec')->with('rec',$rec);
-});
-
-
-
-
-Route::post('recomenacio',[RecController::class,'insertar']);
-Route::get('recomenacio',[LlistaRecController::class,'index']);
-Route::post('newrec', [RecController::class,'store'])->name('newrec');
-Route::post('store', [RecController::class,'store']);
-
-
+Route::get('/search', [WelcomeController::class,'search'])->name('search');
 
 /*____________________________________* */
 
 
 
-Route::get('/MySolicitud', function () {
-    $oferta = Oferta::all();
-    return view('borsa.MySolicitud')->with('of',$oferta);
-});
-
-/*-------------------------------------------------- */
-
-
-
-/*------------------------------------ */
 
 
  
@@ -276,9 +160,12 @@ Route::get('/MySolicitud', function () {
 
 
 /*-------------------------------------------------- */
+Route::get('/MySolicitud', function () {
+    $oferta = Oferta::all();
+    return view('borsa.MySolicitud')->with('of',$oferta);
+});
 
 Route::resource('MySolicitud', OfAlumController::class);
-
 
 
 
@@ -318,11 +205,13 @@ Route::get('/politic',function(){
 
 
 
+Route::get('/search', [WelcomeController::class, 'index']);
+Route::get('/ajax-autocomplete-search', [WelcomeController::class, 'selectSearch']);
+
+/**--------------- */
+
 
 Route::resource('profile', PerfilController::class);
-
-
-
 
 
 Route::get('email', [AuthController::class, 'email'])->name('email');
@@ -334,3 +223,36 @@ Route::post('cambiar', [AuthController::class, 'cambiar'])->name('cambiar');
 Route::get('borsa/{user}/perfilAlumn',[UsersController::class,'editAvatar'])->middleware('auth')->name('borsa.perfilAlumn');
 
 Route::post('users/{user}/update_avatar',[UsersController::class,'updateAvatar'])->middleware('auth')->name('users.update_avatar');
+
+
+
+Route::get('/curri.index', function () {
+    $curris = Curriculum::all();
+    return view('/curri.index')->with('curris',$curris);
+});
+Route::get('/curri.create', function () {
+    $curris = Curriculum::all();
+    return view('curri.create')->with('curri',$curris);
+});
+
+
+
+Route::get('/pre.index', function () {
+    $pres = Presentacio::all();
+    return view('pre.index')->with('pres',$pres);
+});
+Route::get('/pre.create', function () {
+    $pres = Presentacio::all();
+    return view('pre.create')->with('pres',$pres);
+});
+
+
+Route::get('/rec.index', function () {
+    $recs = Recomanacio::all();
+    return view('rec.index')->with('recs',$recs);
+});
+Route::get('/rec.create', function () {
+    $recs = Recomanacio::all();
+    return view('rec.create')->with('recs',$recs);
+});
+

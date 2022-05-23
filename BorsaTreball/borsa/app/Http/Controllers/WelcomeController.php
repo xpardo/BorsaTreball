@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Pagination\Paginator;
 use App\Models\User;
 use App\Models\Empresa;
 use App\Models\Alumne;
+use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Oferta;
@@ -24,14 +26,44 @@ class WelcomeController extends Controller
      */
     public function index(Request $request)
     {
+        //.............................................
+        //Busqueda
+        //.............................................
+
+        $texto=trim($request->get('texto'));
+        $oferta=DB::table('ofertas') 
+        
+            -> select('id', 'name', 'cicle', 'sala', 'h', 'desc', 'tipus', 'user', 'empre')
+            ->where('name','LIKE', '%'.$texto.'%')
+            ->orWhere('cicle','LIKE', '%'.$texto.'%')
+            ->paginate(10);
+        //.............................................
         
         return view("welcome",[
-            "oferta" => Oferta::all()
-        ]);
+            "ofertas" => Oferta::all(),
+            "texto"
+        ] );
+
+    
 
         
 
     }
+
+       
+    public function selectSearch(Request $request){
+    
+        $oferta = [];
+
+        if($request->has('q'))
+            $search = $request->q;
+            $oferta =Oferta::select("id", "name")
+                    ->where('name', 'LIKE', "%$search%")
+                    ->get();
+        
+        return response()->json($oferta);
+}
+
 
 
     public function search(Request $request)
@@ -106,5 +138,10 @@ class WelcomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function boot()
+    {
+        Paginator::useBootstrap();
     }
 }

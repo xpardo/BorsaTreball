@@ -16,7 +16,6 @@
             <div id="registrarse">
                 <h3><strong>registrar-se</strong></h3>
 
-       
                 <form method="POST" action="{{ route('registreEmpre') }} "  enctype="multipart/form-data">
                     @csrf 
                     <p>Dades d'acces personal <i class="bi bi-person"></i></p>
@@ -44,6 +43,7 @@
                         </div>
                     </div>
 
+
                     <div class="contenedor-input">
 
                         <div class="contenedor-input">
@@ -57,8 +57,9 @@
                         </div>
 
                         <div class="contenedor-input">
-                            <label  for="password">{{__('Password') }}</label><br><br>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror"  id="password" name="password" value="{{old('password')}}" require autocomplete="new-password" autofocus>
+                            <label  for="password">{{__('Password') }} </label><br><br>
+                            <b style="color:#808080">(8 charater, primera lletra en gran i numeros)</b><br><br>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Example1234"  id="password" name="password" value="{{old('password')}}" require autocomplete="new-password" autofocus>
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -67,8 +68,6 @@
                             @enderror
                         </div>
 
-
-                        
 
                         <div class="contenedor-input">
                             <label for="password_confirmation">{{__('Repetir password')}}</label><br><br>
@@ -130,20 +129,11 @@
                         </div>
                     </div>
 
-
-
-
-
-
-
-
-
-
-
                     <div class="d-grid mx-auto">
                         <button type="submit" class="btn btn-success btn-block">{{__('Registrar-se')}}</button>
                     </div>
 
+>
                     <br>
                  
                         <b>

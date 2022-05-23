@@ -20,17 +20,44 @@ class SearchController extends Searchable
     public function index(Request $request)
     {
 
-        $name = $request->get('buscarpor');
-        $buscar = $request->get('buscarpor');
-        $cicle = $request->get('buscarporcicle');
-        $tipus = $request->get('buscarportipus');
+        return view('welcome');
+
+       /*  $buscar = $request->get('buscarpor');
+
+        $tipo = $request->get('tipo');
 
        
-        $oferta = Oferta::buscarpor($name)->buscarporcicle($cicle, $buscar)->buscarportipus($tipus,$buscar)->paginate(19); 
+
+        $oferta = Oferta::buscarpor($tipo, $buscar)->paginate(5);
      
 
-        return view("welcome",compact('oferta'));
+        return view("home",compact('oferta'));
+ */
+
+
     }
+    
+    public function selectSearch(Request $request){
+    
+            $oferta = [];
+
+            if($request->has('q'))
+                $search = $request->q;
+                $oferta =Oferta::select("id", "name")
+                        ->where('name', 'LIKE', "%$search%")
+                        ->get();
+            
+            return response()->json($oferta);
+    }
+
+
+    public function buscador(Request $request){
+        $oferta    =   Oferta::where("name",'like',$request->texto."%")->take(10)->get();
+        return view("ofertas.pagina",compact("ofertas"));        
+    } 
+
+
+
 
 
 }

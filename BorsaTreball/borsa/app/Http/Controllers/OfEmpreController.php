@@ -5,10 +5,18 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\User;
 use App\Models\Empresa;
+use App\Models\Presentacio;
+use App\Models\Curriculum;
+use DB;
+use App\Mail\SendMail;
+
+use App\Models\Alumne;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Oferta;
 use Illuminate\Http\Request;
+use App\Models\Candidat;
 
 
 class OfEmpreController extends Controller
@@ -28,16 +36,16 @@ class OfEmpreController extends Controller
         
    
         $usuarioEmail = auth()->user()->email;
-        $ofertas = Oferta::where('user', $usuarioEmail)->paginate(10);
+        $ofempresas = Oferta::where('user', $usuarioEmail)->paginate(10);
 
-        return view('borsa.MyOferta',[
-            "ofertas" => $ofertas
+        return view('ofempresa.index',[
+            "ofertas" => $ofempresas
         ]);
 
-       
+      
+
     }
 
-    
 
     /**
      * Show the form for creating a new resource.
@@ -47,11 +55,7 @@ class OfEmpreController extends Controller
     public function create()
     {
 
-        return view('borsa.CreateOfert');
-        return redirect('borsa.MyOferta');
-
-      
-       
+        return view('ofempresa.create');
     }
 
 
@@ -66,56 +70,48 @@ class OfEmpreController extends Controller
     {   
       
 
-        $ofertas = new Oferta();
-        $ofertas->name = $request->name;
-        $ofertas->cicle = $request->cicle;
-        $ofertas->tipus = $request->tipus;
-        $ofertas->sala = $request->sala;
-        $ofertas->h = $request->h;
-        $ofertas->desc = $request->desc;
-        $ofertas->privat = $request->privat;
-        $ofertas->empre = auth()->user()->empre;
-        $ofertas->user = auth()->user()->email;
-        $ofertas->save();
+        $ofempresa = new Oferta();
+        $ofempresa->name = $request->name;
+        $ofempresa->cicle = $request->cicle;
+        $ofempresa->tipus = $request->tipus;
+        $ofempresa->sala = $request->sala;
+        $ofempresa->h = $request->h;
+        $ofempresa->desc = $request->desc;
+        $ofempresa->empre = auth()->user()->empre;
+        $ofempresa->user = auth()->user()->email;
+        $ofempresa->save();
 
-        $ofertas = Oferta::create($request->all());
+        $ofempresa = Oferta::create($request->all());
 
-        return redirect('MyOferta'); 
-         
+        return view('ofempresa.show', [
+            'oferta' => $ofempresa
+        ])->with("Has creat correctament l'oferta");
         
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Oferta  $oferta
+     * @param  \App\Models\Oferta  $ofempresa
      * @return \Illuminate\Http\Response
      */
-    public function show(Oferta $ofertas,$id)
+    public function show(Oferta $ofempresa) //abans abia Oferta oferta
     {
-
-
-
-        return view('borsa.showOfert', [
-            'ofertas' => Oferta::findOrFail($id)
+        return view('ofempresa.show', [
+            'oferta' => $ofempresa
         ]);
-     
- 
-
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Oferta  $oferta
+     * @param  \App\Models\Oferta  $ofempresa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Oferta $ofertas, $id)
+    public function edit(Oferta $ofempresa)
     {
-       
-
-        return view('borsa.editOfert', [
-            'ofertas' => Oferta::findOrFail($id)
+        return view('ofempresa.edit', [
+            'oferta' => $ofempresa
         ]);
     }
 
@@ -123,63 +119,110 @@ class OfEmpreController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Oferta  $oferta
+     * @param  \App\Models\Oferta  $ofempresa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Oferta $ofertas ,$id)
+    public function update(Request $request, Oferta $ofempresa)
     {
-  
-      
-
-        $ofertas = Oferta::find($id);
-        $ofertas->name = $request->name;
-        $ofertas->cicle = $request->cicle;
-        $ofertas->tipus = $request->tipus;
-        $ofertas->sala = $request->sala;
-        $ofertas->h = $request->h;
-        $ofertas->desc = $request->desc;
-        $ofertas->privat = $request->privat;
-        $ofertas->empre = auth()->user()->empre;
-        $ofertas->user = auth()->user()->email;
-        $ofertas->save();
-        return redirect()->route('MyOferta')
-        ->with('success','Company Has Been updated successfully');
+        $ofempresa->name = $request->name;
+        $ofempresa->cicle = $request->cicle;
+        $ofempresa->tipus = $request->tipus;
+        $ofempresa->sala = $request->sala;
+        $ofempresa->h = $request->h;
+        $ofempresa->desc = $request->desc;
+        $ofempresa->empre = auth()->user()->empre;
+        $ofempresa->user = auth()->user()->email;
+        $ofempresa->save();
+        return redirect()->route('ofempresa.show',$ofempresa)
+            ->with('success',"sa editat correctament");
  
 
     }
-
-
-
-
-
-
-
-
-
-
-        
-
-    
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Oferta  $oferta
+     * @param  \App\Models\Oferta  $ofempresa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Oferta $ofertas , $id)
+    public function destroy(Oferta $ofempresa)
     {
-        
-
-
-        $ofertas->delete();
-        return redirect()->route('MyOferta')
-        ->with('success','Company has been deleted successfully');
-
-
- 
-
+        $ofempresa->delete();
+        return redirect()->with('ofempresa.index')
+            ->with('success', "oferta {$id} sa elminatat correctament.");
     }
 
+
+    //.........................
+    ///candidatures
+    //.........................
+
+    public function candidatures(Oferta $ofempresa) 
+    {
+        $candis = Candidat::where('id_ofert', $ofempresa->id)->paginate(10);
+
+        return view('ofempresa.candidatures.candidatures',[
+            "candis" => $candis
+        ]);
+    }
+
+     //.........................
+    ///curriculums 
+    //.........................
+
+    public function curriculum(Curriculum $curri) 
+    {
+        $pathToFile = public_path() . '/storage/curri/' . $curri->filepath;
+        return response()->download($pathToFile);           
+    }
+
+    public function presentacio(Presentacio $pre) 
+    {
+
+        $pathToFile = public_path() . '/storage/pre/' . $pre->filepath;
+        return response()->download($pathToFile);           
+    }
+        // TODO enviar fitxer   
+    
+
+
+    // formulari correu
+    public function seleccionar( Candidat $candis , $id){
+       
+
+        /*  return view('ofempresa.email',[
+             "candis" => $ofempresa
+         ]); */
+         return view('ofempresa.candidatures.seleccionar', [
+             'candis' => Candidat::findOrFail($id)
+         ]); 
+ 
+ 
+     }
+ 
+    // enviar correu
+    public function notificar(Request $request, Oferta $ofempresa)
+    {
+        $this->validate($request, [
+            'name'     =>  'required',
+            'email'  =>  'required|email',
+            'message' =>  'required'
+            ]);
+            
+        $data = array(
+            'name'      =>  $request->input('name'),
+            'message'   =>   $request->input('message')
+        );
+
+        $email = $request->input('email');
+
+        Mail::to($email)->send(new SendMail($data));
+
+        return back()->with('success', "s'ha enviat exitosament !");
+ 
+    }
+
+   
+ 
 
 }

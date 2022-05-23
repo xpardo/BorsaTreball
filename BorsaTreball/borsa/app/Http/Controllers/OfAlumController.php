@@ -39,8 +39,8 @@ class OfAlumController extends Controller
         $usuario = auth()->user()->name;
         $candi = Candidat::where('user', $usuario)->paginate(10);
 
-        return view('borsa.MySolicitud',[
-            "candi" => $candi
+        return view('candidatures.index',[
+            "candis" => $candi
         ]);
 
        
@@ -108,8 +108,17 @@ class OfAlumController extends Controller
      * @param  \App\Models\Oferta  $oferta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Oferta $oferta)
+      /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Candidat  $candi
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Candidat $candi)
     {
-        //
+        $candi->delete();
+        return redirect()->with('candidatures.index')
+            ->with('success', "oferta {$id} sa elminatat correctament.");
     }
+
 }
