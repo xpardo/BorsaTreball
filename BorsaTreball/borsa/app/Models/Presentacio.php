@@ -9,14 +9,13 @@ class Presentacio extends Model
 {
     //use HasFactory;
 
-    protected $table = 'presentacions';
-    protected $primaryKey= 'id_doc';
+    use HasFactory;
 
-    public $timestamps=false;
-    protected $fillable= [
-        'name',
-        'pdf',
-        'user',
-    ];
+   public $timestamps=false;
+   protected $fillable= [
+       'name',
+       'filepath',
+       'user_id',
+   ];
 
 }

@@ -8,14 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Recomanacio extends Model
 {
    //use HasFactory;
-
-   protected $table = 'recomenacio';
-   protected $primaryKey= 'id_doc';
-
    public $timestamps=false;
    protected $fillable= [
        'name',
-       'pdf',
-       'user',
+       'filepath',
+       'user_id',
    ];
+
 }

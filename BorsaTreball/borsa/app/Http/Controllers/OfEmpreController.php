@@ -9,6 +9,7 @@ use App\Models\Presentacio;
 use App\Models\Curriculum;
 use DB;
 use App\Mail\SendMail;
+
 use App\Models\Alumne;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
@@ -45,9 +46,6 @@ class OfEmpreController extends Controller
 
     }
 
-   
-
-    
 
     /**
      * Show the form for creating a new resource.
@@ -163,7 +161,7 @@ class OfEmpreController extends Controller
     {
         $candis = Candidat::where('id_ofert', $ofempresa->id)->paginate(10);
 
-        return view('ofempresa.candidatures',[
+        return view('ofempresa.candidatures.candidatures',[
             "candis" => $candis
         ]);
     }
@@ -172,26 +170,38 @@ class OfEmpreController extends Controller
     ///curriculums 
     //.........................
 
-   
-    
-    public function sendDemoMail( Candidat $candis , $id){
-       
-
-       /*  return view('ofempresa.email',[
-            "candis" => $ofempresa
-        ]); */
-        return view('ofempresa.email', [
-            'candis' => Candidat::findOrFail($id)
-        ]); 
-
-
+    public function curriculum(Curriculum $curri) 
+    {
+        $pathToFile = public_path() . '/storage/curri/' . $curri->filepath;
+        return response()->download($pathToFile);           
     }
 
-   
+    public function presentacio(Presentacio $pre) 
+    {
 
+        $pathToFile = public_path() . '/storage/pre/' . $pre->filepath;
+        return response()->download($pathToFile);           
+    }
+        // TODO enviar fitxer   
     
 
-    public function send(Request $request, Oferta $ofempresa)
+
+    // formulari correu
+    public function seleccionar( Candidat $candis , $id){
+       
+
+        /*  return view('ofempresa.email',[
+             "candis" => $ofempresa
+         ]); */
+         return view('ofempresa.candidatures.seleccionar', [
+             'candis' => Candidat::findOrFail($id)
+         ]); 
+ 
+ 
+     }
+ 
+    // enviar correu
+    public function notificar(Request $request, Oferta $ofempresa)
     {
         $this->validate($request, [
             'name'     =>  'required',
@@ -200,45 +210,19 @@ class OfEmpreController extends Controller
             ]);
             
         $data = array(
-                'name'      =>  $request->input('name'),
-                'message'   =>   $request->input('message')
-            );
+            'name'      =>  $request->input('name'),
+            'message'   =>   $request->input('message')
+        );
 
-            $email = $request->input('email');
+        $email = $request->input('email');
 
         Mail::to($email)->send(new SendMail($data));
 
         return back()->with('success', "s'ha enviat exitosament !");
-
+ 
     }
 
-    
-
-    public function curri(Curriculum $curri) 
-    {
-
-
-        $curri = Curriculum::where('user', $curri)->paginate(5);
-
-        return view('ofempresa.curri',[
-            "curri" => $curri,
-
-        ]);
-        
-    }
-
-    public function presentacio(Presentacio $pre) 
-    {
-
-
-        $pre = Presentacio::where('user', $pre)->paginate(5);
-
-        return view('ofempresa.presen',[
-            "pre" => $pre,
-
-        ]);
-        
-    }
-
+   
+ 
 
 }

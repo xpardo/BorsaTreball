@@ -59,9 +59,12 @@ class CandiController extends Controller
         $candi->genere = auth()->user()->genere;
         $candi->telefon = auth()->user()->telefon;
         $candi->neixement = auth()->user()->neixement;
-        $candi->empre = $request->empre;
+        $candi->estat = auth()->user()->estat;
+        $candi->fet = auth()->user()->fet;
+        $candi->treballat = auth()->user()->treballat;
+        $candi->empre = $request->empres;
         $candi->id_ofert = $request->oferta_id;
- 
+
         
         $candi->save();
 
@@ -113,14 +116,16 @@ class CandiController extends Controller
         //
     }
 
-    /**
+       /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Candidat  $candi
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Candidat $candi)
     {
-        //
+        $candi->delete();
+        return redirect()->with('candidatures.index')
+            ->with('success', "oferta {$id} sa elminatat correctament.");
     }
 }

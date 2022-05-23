@@ -7,16 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Curriculum extends Model
 {
-    //use HasFactory;
-
-   protected $table = 'curriculums';
-   protected $primaryKey= 'id_doc';
+   use HasFactory;
 
    public $timestamps=false;
    protected $fillable= [
        'name',
-       'pdf',
-       'id_alumne',
-       'user'
+       'filepath',
+       'user_id',
    ];
 }
