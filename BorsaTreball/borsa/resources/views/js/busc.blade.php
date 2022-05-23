@@ -4,10 +4,14 @@
 $("#search").easyAutocomplete({
    url: function(search) {
 <<<<<<< HEAD
+<<<<<<< HEAD
        return "{{route('search')}}?search=" + search;
 =======
        return "{{url('.search')}}?search=" + search;
 >>>>>>> devel
+=======
+       return "{{url('.search')}}?search=" + search;
+>>>>>>> b8c6b7fa48cb2aeafd93f9f90dd39f539ac19c78
    },
  
    getValue: "name"
@@ -21,7 +25,10 @@ $("#search").easyAutocomplete({
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b8c6b7fa48cb2aeafd93f9f90dd39f539ac19c78
 window.addEventListener('load', function(){
     document.getElementById("search").addEventListener('keyup',()=>{
         if((document.getElementById('search').value.length)>=1)
@@ -54,7 +61,10 @@ $('.search').select2({
     });
 
 
+<<<<<<< HEAD
 >>>>>>> devel
+=======
+>>>>>>> b8c6b7fa48cb2aeafd93f9f90dd39f539ac19c78
 
 
 </script>

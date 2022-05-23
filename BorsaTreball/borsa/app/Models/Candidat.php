@@ -25,10 +25,8 @@ class Candidat extends Model
         
 
 
-
         
     ];
-
 
 
 
@@ -37,6 +35,5 @@ class Candidat extends Model
 
         return $this->hasMany(candidats::class,'id_ofert','id');
     }
-
 
 }
