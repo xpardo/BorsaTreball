@@ -18,7 +18,7 @@
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('perfilAlum') }} ">  <i class="fa fa-duotone fa-user">Perfil</i></a>
+                    <a class="nav-link" href="{{ route('perfilAlum.index') }} ">  <i class="fa fa-duotone fa-user">Perfil</i></a>
                 </li>
 
                 <li class="nav-item active">

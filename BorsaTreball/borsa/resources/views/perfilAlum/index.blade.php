@@ -10,8 +10,14 @@
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
 
-
+                       
                             <table class="table table-striped table-info">
+
+                                <b><a  title="Editar" class="btn btn-warning"  href="{{ route('perfilAlum.edit' ) }}">
+                                    <i class="fas fa-edit"></i>
+                                    </a></b>
+                                <br><br>
+
                                 <tbody >
                                     <tr>
                                         <td><b><strong>Nom</strong></b></td>
@@ -53,7 +59,7 @@
                                         <td><strong>Estat o  treballat</strong></td>
                                         <td> {{ Auth::user()->treballat }}</td>
                                     </tr>
-                                    
+                                  
                                     
                                 </tbody>
                             </table>

@@ -16,6 +16,7 @@
                      
                                 <th><center>NOM</center></th>
                                 <th><center>VISUALITZAR CARTA DE PRESENTACIÓ</center></th>
+                                <th><center></center></th>
                             </thead>
                             <tbody>
                                 @foreach($pres as $p)
@@ -23,6 +24,16 @@
                            
                                         <td><center>{{$p->name}}</center></td>
                                         <td><center><a class="offset-1 col-5" href="/storage/pre/{{$p->filepath}}" target="blank_">👁️</a></center></td>
+                                        <td>
+                                            <center>
+                                                <form id="form" method="POST" action="{{ route('presentacio.destroy', $p) }}">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button id="destroy" type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">🗑️</button>
+                                                </form>
+                                                @include('js/modal')
+                                            </center>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

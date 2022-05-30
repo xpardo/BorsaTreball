@@ -9,7 +9,7 @@
                 
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">       
-                    <form    action="{{ url('curriculum') }}" method="POST" enctype="multipart/form-data">
+                    <form    action="{{ route('curriculum.index') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="name">nom</label>

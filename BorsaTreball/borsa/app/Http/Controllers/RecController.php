@@ -47,20 +47,20 @@ class RecController extends Controller
 
         if($request->hasFile('pdf')){
 
-            $rec = new  Recomanacio;
+            $recs = new  Recomanacio;
             
-            $rec->name = $request->name;
-            $rec->user_id = auth()->user()->id;
+            $recs->name = $request->name;
+            $recs->user_id = auth()->user()->id;
             $archivo  = $request -> file('pdf'); 
             $archivo -> move(public_path().'/storage/rec/',$archivo->getClientOriginalName());
            
-            $rec -> filepath = $archivo ->getClientOriginalName();
-            $rec -> save();
+            $recs -> filepath = $archivo ->getClientOriginalName();
+            $recs -> save();
 
             return back()
                     ->with('success','rec has uploaded to the database.')
-                    ->with('rec', 'recomendacio Agregada!')
-                    ->with('pdf', $rec);
+                    ->with('recs', 'recomendacio Agregada!')
+                    ->with('pdf', $recs);
                 
            
         }
@@ -68,7 +68,30 @@ class RecController extends Controller
         return redirect('rec.index');
      }
 
+
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Recomanacio  $pres
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Recomanacio $recs)
+    {
+       
+        $id = $recs->id;
+        // Eliminar fitxer del disc 
+        \Storage::disk('public')->delete($recs->filepath);
+        \Log::debug("Local storage OK");
+        // Eliminar registre de BD
+        $recs->delete();
+        \Log::debug("DB storage OK");
+        // Patró PRG amb missatge d'èxit
+        return redirect()->route("recomenacio.index")
+            ->with('success', "recs {$id} succesfully deleted.");
     }
+
+
+}
 
 
 

@@ -75,10 +75,8 @@
                                 <option value="Altre"> Altre </option>
                             </select>
                         </div>
-
-
-
                     </div>
+                    
                     <div class="contenedor-input">
                         <label for="telefon">{{__('telefón/móbil')}}<i class="bi bi-telephone"></i></label><br><br>
                         <input type="text" name="telefon" class="form-control @error('telefon') is-invalid @enderror"  id="telefon"  value="{{old('telefon')}}"  autocomplete="telefon" autofocus>

@@ -14,6 +14,8 @@ use App\Http\Controllers\BorsaController;
 
 use App\Http\Controllers\OfEmpreController;
 
+
+
 use App\Http\Controllers\OfAlumController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\editEmpreController;
@@ -138,6 +140,8 @@ Route::post('send', [OfEmpreController::class, 'send'])->name('ofempresa.send')-
 
 
 Route::resource('perfilAlum', PerfilAlumController::class)->middleware(['auth', 'role:2']);
+Route::get('perfilAlum.edit', [PerfilAlumController::class, 'edit'])->name('perfilAlum.edit')->middleware(['auth', 'role:2']);
+Route::get('perfilAlum.update', [PerfilAlumController::class, 'update'])->name('perfilAlum.update')->middleware(['auth', 'role:2']);
 
 
 /**_____________________________________*/
@@ -220,9 +224,9 @@ Route::get('clave/{token}', [AuthController::class, 'clave'])->name('clave');
 Route::post('cambiar', [AuthController::class, 'cambiar'])->name('cambiar');
 
 
-Route::get('borsa/{user}/perfilAlumn',[UsersController::class,'editAvatar'])->middleware('auth')->name('borsa.perfilAlumn');
 
-Route::post('users/{user}/update_avatar',[UsersController::class,'updateAvatar'])->middleware('auth')->name('users.update_avatar');
+
+
 
 
 

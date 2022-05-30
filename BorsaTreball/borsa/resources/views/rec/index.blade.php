@@ -16,6 +16,7 @@
                          
                                 <th><center>NOM</center></th>
                                 <th><center>VISUALITZAR CARTA DE RECOMENDACIÓ</center></th>
+                                <th><center></center></th>
                             </thead>
                             <tbody>
                                 @foreach($recs as $r)
@@ -23,7 +24,16 @@
                                                    
                                         <td><center>{{$r->name}}</center></td>
                                         <td><center><a class="offset-1 col-5" href="/storage/rec/{{$r->filepath}}" target="blank_">👁️</a></center></td>                                
-                                        
+                                        <td>
+                                            <center>
+                                                <form id="form" method="POST" action="{{ route('recomenacio.destroy', $r) }}">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button id="destroy" type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">🗑️</button>
+                                                </form>
+                                                @include('js/modal')
+                                            </center>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

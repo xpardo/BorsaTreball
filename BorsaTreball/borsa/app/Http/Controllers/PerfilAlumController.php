@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Alumne;
 use App\Models\Oferta;
 use Illuminate\Http\Request;
+use App\Http\Requests;
+
 use Illuminate\Auth\SessionGuard;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 
 class PerfilAlumController extends Controller
 {
@@ -19,17 +24,12 @@ class PerfilAlumController extends Controller
      */
     public function index()
     {
-        return view("borsa.perfilAlum",[
+        $id = auth()->user()->id;
+        return view("perfilAlum.index ",[
             "alumne" => Alumne::all()
         ]);
     }
 
-
-    public function perfilAlumne(){
-        return view('perfilAlum');
-     }
- 
- 
 
 
     public function perfilAlum(Request $request){
@@ -48,7 +48,7 @@ class PerfilAlumController extends Controller
             'treballat' => 'required',
            
        
-        ]); return view('perfilAlum', $validated);
+        ]); return view('perfilAlum.index ', $validated);
     }
 
 
@@ -72,44 +72,61 @@ class PerfilAlumController extends Controller
      */
     public function create()
     {
-        //
+     
+
     }
 
-    /**
+      /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function store(Request $Alumne)
+    {   
+      
 
+        
+    }
     
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Alumne  $alumnes
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user, Alumne $alumne)
     {
-        //
+
+        $user = User::find(Auth::User()->id);
+        $alumne = Alumne::find(Auth::User()->id);
+        if(empty($user)){
+     
+            return redirect()->back();
+        }
+        return view('perfilAlum.edit')->with('user', $user);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Alumne  $alumnes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function update(Request $request){
+        $user = User::find(Auth::User()->id);
+        $alumne = Alumne::find(Auth::User()->id);
+        if(empty($user)){
+          
+           return redirect()->back();
+        }
+        $user->fill($request->all());
+        $user->save();
+       
+        return redirect(route('perfilAlum.index'));
+     }
 
     /**
      * Remove the specified resource from storage.

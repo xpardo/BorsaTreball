@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers;
 use App\Models\Presentacio;
 use Illuminate\Http\Request;
@@ -12,10 +11,8 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Route;
 use App\Models\Oferta;
-
-
-
 
 
 class PresentacioController extends Controller
@@ -33,7 +30,7 @@ class PresentacioController extends Controller
 
     public function create(Request $request)
     {
-        return view('pre.create');
+        return view('presentacio.index');
     }
     
     public function store(Request $request)
@@ -46,26 +43,52 @@ class PresentacioController extends Controller
 
         if($request->hasFile('pdf')){
 
-            $pre = new  Presentacio;
+            $pres = new  Presentacio;
             
-            $pre->name = $request->name;
-            $pre->user_id = auth()->user()->id;
+            $pres->name = $request->name;
+            $pres->user_id = auth()->user()->id;
             $archivo  = $request -> file('pdf'); 
             $archivo -> move(public_path().'/storage/pre/',$archivo->getClientOriginalName());
            
-            $pre -> filepath = $archivo ->getClientOriginalName();
-            $pre -> save();
+            $pres -> filepath = $archivo ->getClientOriginalName();
+            $pres -> save();
 
             return back()
                     ->with('success','pre has uploaded to the database.')
                     ->with('pre', 'cursiculum Agregada!')
-                    ->with('pdf', $pre);
+                    ->with('pdf', $pres);
                 
            
         }
 
-        return redirect('pre.index');
+        return redirect('presentacio.index');
      }
+
+
+
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Presentacio  $pres
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Presentacio $pres)
+    {
+       
+
+
+        $id = $pres->id;
+        // Eliminar fitxer del disc 
+        \Storage::disk('public')->delete($pres->filepath);
+        \Log::debug("Local storage OK");
+        // Eliminar registre de BD
+        $pres->delete();
+        \Log::debug("DB storage OK");
+        // Patró PRG amb missatge d'èxit
+        return redirect()->route("presentacio.index")
+            ->with('success', "pres {$id} succesfully deleted.");
+    }
+
 
      
 
