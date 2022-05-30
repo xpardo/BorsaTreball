@@ -24,7 +24,6 @@
                                                
                                                         <tr>
                                                       
-                                                        <td scope="col"><center>Id_ofert</center></td>
                                                         <td scope="col"><center>Empresa</center></td>   
                                                         <td scope="col"><center></center></td>  
                                                         </tr>
@@ -34,7 +33,7 @@
                                                         
                                                         <tr>
                                                             
-                                                            <td><center>{{ $candi->id_ofert }}</center></td>
+                                               
                                                             <td><center>{{ $candi->empre }}</center></td>
 
                                                            
