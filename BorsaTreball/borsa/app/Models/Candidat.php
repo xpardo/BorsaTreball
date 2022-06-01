@@ -14,18 +14,13 @@ class Candidat extends Model
 
     protected $fillable = [
         'id_ofert',
+        'empre',
+        'name',
         'user',
-
-        'name' ,
-        'empre' ,
         'neixement' , 
         'genere' ,
         'email' ,
-        'telefon' ,
-        
-
-
-        
+        'telefon' ,      
     ];
 
 

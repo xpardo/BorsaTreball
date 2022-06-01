@@ -28,7 +28,7 @@ class SearchController extends Searchable
 
        
 
-        $oferta = Oferta::buscarpor($tipo, $buscar)->paginate(5);
+        $oferta = Oferta::buscarpor($tipo, $buscar);
      
 
         return view("home",compact('oferta'));

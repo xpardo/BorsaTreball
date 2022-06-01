@@ -22,8 +22,8 @@ class CandiController extends Controller
     {
         //
 
-        $usuarioEmail = auth()->user()->email;
-        $candis = Candidat::where('user', $usuarioEmail)->paginate(10);
+        $usuari = auth()->user()->name;
+        $candis = Candidat::where('user', $usuari)->paginate(100);
 
         return view('candidatures.index',[
             "candis" => $candis
@@ -44,11 +44,12 @@ class CandiController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly crEmpresaeated resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $candi = new Candidat();
@@ -62,18 +63,21 @@ class CandiController extends Controller
         $candi->estat = auth()->user()->estat;
         $candi->fet = auth()->user()->fet;
         $candi->treballat = auth()->user()->treballat;
+        
+
         $candi->empre = $request->empres;
+        $candi->name = $request->names;
         $candi->id_ofert = $request->oferta_id;
 
         
-        $candi->save();
-
+        $ok=$candi->save();
+        
         if ($ok) {
-            return redirect('candidatures.index')
-                ->with("T'has inscrit correctament");
+            return redirect()->route('candi.index')
+                ->with('success',"T'has inscrit correctament");
         } else {
-            return redirect('ofertas.show', $request->oferta_id)
-                ->with("ha agut algun problema");
+            return redirect()->route('ofertas.show', $request->oferta_id)
+                ->with('error',"ha agut algun problema");
         }
     }
 
@@ -83,11 +87,13 @@ class CandiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Candidat $candi ,$id_ofert)
+    public function show(Candidat $candi)
     {
-        return view('candidatures.show', [
-            'candi' => Candidat::findOrFail($id_ofert)
-        ]); 
+      
+
+        return view('perfilAlum.show', [
+            'oferta' => $candi
+        ]);
 
      
     }
@@ -116,12 +122,12 @@ class CandiController extends Controller
         //
     }
 
-       /**
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Candidat  $candi
      * @return \Illuminate\Http\Response
-     */
+    */
     public function destroy(Candidat $candi)
     {
         $candi->delete();

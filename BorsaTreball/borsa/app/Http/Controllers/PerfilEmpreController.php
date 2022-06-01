@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Empresa;
 use App\Models\Oferta;
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use Illuminate\Auth\SessionGuard;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class PerfilEmpreController extends Controller
 {
@@ -19,17 +22,12 @@ class PerfilEmpreController extends Controller
      */
     public function index()
     {
-        return view("borsa.perfilEmpre",[
+        $id = auth()->user()->id;
+        return view("perfilEmpre.index",[
             "empresa" => Empresa::all()
         ]);
     }
-
-
-    public function perfilEmpresa(){
-        return view('perfilEmpre');
-     }
- 
- 
+    
 
 
     public function perfilEmpre(Request $request){
@@ -54,7 +52,7 @@ class PerfilEmpreController extends Controller
      */
     public function create()
     {
-        //
+   
     }
 
     /**
@@ -66,6 +64,8 @@ class PerfilEmpreController extends Controller
     public function store(Request $request)
     {
         //
+       
+        
     }
 
     /**
@@ -77,32 +77,48 @@ class PerfilEmpreController extends Controller
     public function show(Empresa $empresa)
     {
         //
+        return view('perfilEmpre',compact('alumne'));
 
-        return view('perfilEmpre',compact('empresa'));
     }
 
-    /**
+    
+        /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Empresa  $empresa
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user, Empresa $empresa)
     {
-        //
+
+        $user = User::find(Auth::User()->id);
+        $empresa = Empresa::find(Auth::User()->id);
+        if(empty($user)){
+     
+            return redirect()->back();
+        }
+        return view('perfilEmpre.edit')->with('user', $user);
     }
 
-    /**
+     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Empresa  $empresa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function update(Request $request){
+        $user = User::find(Auth::User()->id);
+        $empresa = Empresa::find(Auth::User()->id);
+        if(empty($user)){
+          
+           return redirect()->back();
+        }
+        $user->fill($request->all());
+        $user->save();
+       
+        return redirect(route('perfilEmpre.index'));
+     }
 
     /**
      * Remove the specified resource from storage.

@@ -86,8 +86,10 @@ Route::get('mail/test', [MailController::class, 'test'])->middleware(['auth']);
 /*_____________________________________________Empresa____________________________________________________________________*/
 
 
-Route::resource('perfilEmpre', PerfilEmpreController::class)->middleware(['auth', 'role:3']);;
+Route::resource('perfilEmpre', PerfilEmpreController::class)->middleware(['auth', 'role:3']);
 
+Route::get('perfilEmpre.edit', [PerfilEmpreController::class, 'edit'])->name('perfilEmpre.edit')->middleware(['auth', 'role:3']);
+Route::get('perfilEmpre.update', [PerfilEmpreController::class, 'update'])->name('perfilEmpre.update')->middleware(['auth', 'role:3']);
 
 
 
@@ -157,19 +159,6 @@ Route::get('/search', [WelcomeController::class,'search'])->name('search');
 
  
 
-
-
-
-
-
-
-/*-------------------------------------------------- */
-Route::get('/MySolicitud', function () {
-    $oferta = Oferta::all();
-    return view('borsa.MySolicitud')->with('of',$oferta);
-});
-
-Route::resource('MySolicitud', OfAlumController::class);
 
 
 

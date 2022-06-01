@@ -36,14 +36,14 @@ class OfAlumController extends Controller
     {
         
    
-        $usuario = auth()->user()->name;
+        /* $usuario = auth()->user()->name;
         $candi = Candidat::where('user', $usuario)->paginate(10);
 
         return view('candidatures.index',[
             "candis" => $candi
         ]);
 
-       
+        */
     }
 
 
@@ -114,11 +114,11 @@ class OfAlumController extends Controller
      * @param  \App\Models\Candidat  $candi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Candidat $candi)
+ /*    public function destroy(Candidat $candi)
     {
         $candi->delete();
         return redirect()->with('candidatures.index')
             ->with('success', "oferta {$id} sa elminatat correctament.");
     }
-
+ */
 }

@@ -23,7 +23,7 @@
                                                     <thead>
                                                
                                                         <tr>
-                                                        <td scope="col"><center>ID</center></td>
+                                                     
                                                             <td scope="col"><center>titol</center></td><!------la meva oferta------->
                                                             <td scope="col"><center>cicle</center></td>
                                                             <td scope="col"><center>tipus</center></td>
@@ -38,7 +38,7 @@
                                                         @foreach ($ofertas as $oferta)
                                                         
                                                         <tr>
-                                                            <td><center>{{ $oferta->id }}</center></td>
+                                                        
                                                             <td><center>{{ $oferta->name }}</center></td>
                                                             <td><center>{{ $oferta->cicle }}</center></td>
                                                             <td><center>{{ $oferta->tipus }}</center></td>

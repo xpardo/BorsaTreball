@@ -9,7 +9,6 @@ use App\Models\Alumne;
 use App\Models\Oferta;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-
 use Illuminate\Auth\SessionGuard;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -58,11 +57,13 @@ class PerfilAlumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Alumne $alumne)
+    public function show(Oferta $perfilAlum)
     {
         //
 
-        return view('perfilAlum',compact('alumne'));
+        return view('perfilAlum.show', [
+            'oferta' => $perfilAlum
+        ]);
     }
 
     /**

@@ -12,7 +12,7 @@
                             <div class="row ">
                      
                                     <br>
-                             
+                                   
                                    
                                            
                                                 <table class="table">
@@ -21,7 +21,7 @@
                                                
                                                         <tr>
                                                          
-                                                             <td><div class="card-header">{{ __('Candidats' )  }}</div></td>
+                                                        <td scope="col"><center>Nom Oferta</center></td>  
                                                             <td scope="col"><center>Nom</center></td>  
                                                             <td scope="col"><center>Neixement</center></td>  
                                                             <td scope="col"><center>Genere</center></td>  
@@ -39,7 +39,7 @@
                                                         @foreach ($candis as $candi)
                                                    
                                                         <tr>
-                                                        <td><center>{{ $candi->id_ofert }}</center></td>
+                                                            <td><center>{{ $candi->name }}</center></td>
                                                             <td><center>{{ $candi->user }}</center></td>
                                                             <td><center>{{ $candi->neixement }}</center></td>
                                                             <td><center>{{ $candi->genere }}</center></td>
@@ -77,7 +77,7 @@
             </div> 
  
 
-          <br><br><br><br><br><br>
+          <br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 @include('estil/perfil')
 

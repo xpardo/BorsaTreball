@@ -59,7 +59,7 @@
                                         <td><strong>Estat o  treballat</strong></td>
                                         <td> {{ Auth::user()->treballat }}</td>
                                     </tr>
-                                  
+                                   
                                     
                                 </tbody>
                             </table>

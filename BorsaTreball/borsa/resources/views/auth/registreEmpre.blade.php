@@ -58,7 +58,7 @@
 
                         <div class="contenedor-input">
                             <label  for="password">{{__('Password') }} </label><br><br>
-                            <b style="color:#808080">(8 charater, primera lletra en gran i numeros)</b><br><br>
+                            <b style="color:#808080">(8 charater, primera lletra en majuscules i numeros)</b><br><br>
                             <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Example1234"  id="password" name="password" value="{{old('password')}}" require autocomplete="new-password" autofocus>
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
