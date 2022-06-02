@@ -43,7 +43,10 @@
 
                                             <form id="form" method="POST" action="{{ route('candi.store') }}">
                                                 @csrf
+                                                <!--agafar el id, nom i empre de la taula--->
                                                 <input type="hidden" name="oferta_id" value="{{$oferta->id}}" />
+                                                <input type="hidden" name="empre" value="{{$oferta->empre}}" />
+                                                <input type="hidden" name="name" value="{{$oferta->name}}" />
                                                 <button id="mybutton" type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal">Inscripció</button>
                                             </form>
 

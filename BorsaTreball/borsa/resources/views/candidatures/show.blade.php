@@ -14,7 +14,7 @@
                                 <thead>
                             
                                     <tr>
-                                    <td scope="col"><center>id_ofert</center></td>
+                          
                                     <td scope="col"><center>name</center></td>
                                     <td scope="col"><center>email</center></td>
                                     <td scope="col"><center>genere</center></td>
@@ -25,7 +25,7 @@
                                 <tbody>
 
                                     <tr>
-                                    <td><center>{{ $candi->id_ofert }}</center></td>
+                                
                                         <td><center>{{ $candi->user }}</center></td>
                                         <td><center>{{ $candi->email }}</center></td>
                                         <td><center>{{ $candi->genere }}</center></td>

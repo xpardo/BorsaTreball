@@ -39,7 +39,7 @@
                                                             
                                                             <td><center>{{ $candi->id_ofert }}</center></td>
                                                             <td><center>{{ $candi->empre }}</center></td>
-                                                            <td><center>{{ $candi->oferta }}</center></td>
+                                                            <td><center>{{ $candi->name }}</center></td>
                                                             <td> <center> <a title="View" href="{{ route('perfilAlum.show', $candi) }}">
                                                                     <h1 class="btn btn-dark">
                                                                         <i class="bi bi-eye-fill"></i>
