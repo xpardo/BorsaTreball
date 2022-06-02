@@ -117,11 +117,15 @@
                                         @csrf
                                     </form>
                                 
-                           
-                                    <!-- <a class="dropdown-item" href="{{ url('profile') }} " >{{ __('perfil') }}</a> -->
-                                    <a class="dropdown-item" href="{{ route('perfilAlum.index') }} " >{{ __('perfil alumne') }}</a>
-                                    <a class="dropdown-item" href="{{ url('perfilEmpre') }} " >{{ __('perfil empresa') }}</a>
                                     
+                                    <!-- <a class="dropdown-item" href="{{ url('profile') }} " >{{ __('perfil') }}</a> -->
+                                    @if(@Auth::user()->role_id==2)
+                                    <a class="dropdown-item" href="{{ route('perfilAlum.index') }} " >{{ __('perfil alumne') }}</a>
+                                    
+                                    @endif
+                                    @if(@Auth::user()->role_id==2)
+                                    <a class="dropdown-item" href="{{ url('perfilEmpre') }} " >{{ __('perfil empresa') }}</a>
+                                    @endif
                                 </div>
 
                                

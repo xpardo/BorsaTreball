@@ -16,6 +16,7 @@ class Candidat extends Model
         'id_ofert',
         'empre',
         'name',
+        'h',
         'user',
         'neixement' , 
         'genere' ,

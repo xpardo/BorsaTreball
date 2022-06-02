@@ -9,9 +9,12 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
+use App\Models\Role;
 class User extends Authenticatable
 {
+    use HasRoles;
     use HasApiTokens; 
     use HasFactory;
     /*use HasProfilePhoto;*/
@@ -42,6 +45,8 @@ class User extends Authenticatable
         'role_id',
         
     ];
+
+ 
 
     /**
      * The attributes that should be hidden for serialization.

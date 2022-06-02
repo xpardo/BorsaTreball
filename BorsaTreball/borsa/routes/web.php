@@ -14,6 +14,7 @@ use App\Http\Controllers\BorsaController;
 
 use App\Http\Controllers\OfEmpreController;
 
+use Spatie\Permission\Traits\HasRoles;
 
 
 use App\Http\Controllers\OfAlumController;

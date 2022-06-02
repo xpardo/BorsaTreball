@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                           
+            <center><h1>Borsa de treball </h1></center>
 
 
                             <div class="p-6 bg-white border-b border-gray-200">
@@ -220,12 +220,14 @@
                     </div>
                 </div>
                 
-
+            
+                      
+                
 <!------------------------------------------------------------------------------------------------------>
 
                             <div class="p-6 bg-white border-b border-gray-200">
-                                 
-
+                            
+                                <center><h2>Ofertas de treball</h2></center>
                                 <div class="p-6 bg-white border-b border-gray-200">
 
                                     <table  class="table">
@@ -275,26 +277,22 @@
           
               
           
- 
+                        @guest
 
                 <div class="p-6 bg-white border-b border-gray-200">
                    
-                        <!---camp editable---->
-                        
-                       <center><h1>Borsa de treball </h1></center>
+                       
   
                     <!---camp editable---->
                     <div class="p-6 bg-white border-b border-gray-200">
 
-                        <label>La Borsa de Treball és un servei que ofereix 
-                        l’Institut Joaquim mir  als seus alumnes i exalumnes per facilitar la inserció laboral i 
-                        potenciar les relacions de l’institut amb les institucions i empreses de l’entorn.</label>
+                        <center><h1>Registra't a la nostra borsa</label></h1>
                        <br>
                     
                     </div> 
               
 
-
+                  
             
                  
                        <!-------container----->
@@ -334,6 +332,7 @@
                         </div>
                
                     </div>
+                    @endguest
                 </div>
 
             </div>
@@ -345,7 +344,7 @@
 
 
         
-   
+   <br><br>
 
  
 

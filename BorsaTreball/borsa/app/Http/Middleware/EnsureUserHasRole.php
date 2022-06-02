@@ -19,7 +19,7 @@ class EnsureUserHasRole
     {
         if ($request->user()->role_id != $role) {
             $url = $request->url();
-            return redirect('home')
+            return redirect('welcome')
                 ->with('error', "Access denied to {$url}");
         }
 

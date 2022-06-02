@@ -159,7 +159,7 @@ class OfEmpreController extends Controller
 
     public function candidatures(Oferta $ofempresa) 
     {
-        $candis = Candidat::where('id_ofert', $ofempresa->id)->paginate(10);
+        $candis = Candidat::where('id_ofert', $ofempresa->id)->paginate(100);
 
         return view('ofempresa.candidatures.candidatures',[
             "candis" => $candis

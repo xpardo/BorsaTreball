@@ -70,7 +70,7 @@ Route::middleware('guest')->group(function () {
 
 
 Route::middleware('guest')->group(function () {
-    Route::get('registreAlumne', [RegisterAlumController::class, 'create'])->name('registreAlumne');
+    Route::get('registreAlumne',[RegisterAlumController::class, 'create'])->name('registreAlumne');
 
     Route::post('registreAlumne', [RegisterAlumController::class, 'store']);
 

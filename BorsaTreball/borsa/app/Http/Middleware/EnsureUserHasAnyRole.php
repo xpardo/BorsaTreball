@@ -21,7 +21,7 @@ class EnsureUserHasAnyRole
             return $next($request);
         } else {
             $url = $request->url();
-            return redirect('home')
+            return redirect('welcome')
                 ->with('error', "Access denied to {$url}");
         }
     }
