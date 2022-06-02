@@ -63,10 +63,10 @@ class CandiController extends Controller
         $candi->estat = auth()->user()->estat;
         $candi->fet = auth()->user()->fet;
         $candi->treballat = auth()->user()->treballat;
-        
+    
 
-        $candi->empre = $request->empres;
-        $candi->name = $request->names;
+        $candi->empre = $request->empre;
+        $candi->name = $request->name;
         $candi->id_ofert = $request->oferta_id;
 
         

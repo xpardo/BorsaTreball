@@ -13,8 +13,7 @@
                             <div class="row justify-content-center">
                             
                                     <div class="card">
-                                    
-                            
+                                   
                                     <br>
                                         <div class="card-header">{{ __('oferta Actuals') }}</div>
                                       
@@ -29,7 +28,9 @@
                                                         <td scope="col"><center>Oferta</center></td>   
                                                         <td scope="col"><center>Veure Oferta</center></td>  
                                                         <td scope="col"><center></center></td>  
+
                                                         </tr>
+                                                        
                                                     </thead>
                                                     <tbody>
                                                         @foreach ($candis as $candi)

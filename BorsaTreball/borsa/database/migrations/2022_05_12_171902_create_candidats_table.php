@@ -19,6 +19,7 @@ class CreateCandidatsTable extends Migration
             $table->string('inscriurem');
             $table->unsignedBigInteger('id_ofert') ;
             $table->foreign('id_ofert')->references('id')->on('ofertas')->onUpdate('cascade')->onDelete('set null');
+            
             $table->timestamps();
         });
 
