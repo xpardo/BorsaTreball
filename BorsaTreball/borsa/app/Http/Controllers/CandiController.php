@@ -66,6 +66,7 @@ class CandiController extends Controller
         $candi->empre = $request->empre;
         $candi->name = $request->name;
         $candi->h = $request->h;
+        $candi->sala = $request->sala;
         $candi->id_ofert = $request->oferta_id;
 
         

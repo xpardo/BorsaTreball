@@ -48,6 +48,7 @@
                                                 <input type="hidden" name="empre" value="{{$oferta->empre}}" />
                                                 <input type="hidden" name="name" value="{{$oferta->name}}" />
                                                 <input type="hidden" name="h" value="{{$oferta->h}}" />
+                                                <input type="hidden" name="sala" value="{{$oferta->sala}}" />
                                                 <button id="mybutton" type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal">Inscripció</button>
                                             </form>
 

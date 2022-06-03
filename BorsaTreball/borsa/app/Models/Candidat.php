@@ -17,6 +17,7 @@ class Candidat extends Model
         'empre',
         'name',
         'h',
+        'sala',
         'user',
         'neixement' , 
         'genere' ,

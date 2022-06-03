@@ -123,7 +123,7 @@
                                     <a class="dropdown-item" href="{{ route('perfilAlum.index') }} " >{{ __('perfil alumne') }}</a>
                                     
                                     @endif
-                                    @if(@Auth::user()->role_id==2)
+                                    @if(@Auth::user()->role_id==3)
                                     <a class="dropdown-item" href="{{ url('perfilEmpre') }} " >{{ __('perfil empresa') }}</a>
                                     @endif
                                 </div>

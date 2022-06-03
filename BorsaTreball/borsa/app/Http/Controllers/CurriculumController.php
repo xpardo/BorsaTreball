@@ -60,7 +60,7 @@ class CurriculumController extends Controller
            
         }
 
-        return redirect('curriculum.index');
+        return redirect('curri.index');
      }
 
 
@@ -84,7 +84,7 @@ class CurriculumController extends Controller
         $curris->delete();
         \Log::debug("DB storage OK");
         // Patró PRG amb missatge d'èxit
-        return redirect()->route("curriculum.index")
+        return redirect()->route("curri.index")
             ->with('success', "curris {$id} succesfully deleted.");
     }
 
