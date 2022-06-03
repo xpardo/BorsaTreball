@@ -230,7 +230,7 @@
                                 <center><h2>Ofertas de treball</h2></center>
                                 <div class="p-6 bg-white border-b border-gray-200">
 
-                                    <table  class="table">
+                                    <table class="table table-striped ">
                                     
                                         <thead class="table-primary">
 

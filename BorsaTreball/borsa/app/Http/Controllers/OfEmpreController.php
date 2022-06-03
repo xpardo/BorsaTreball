@@ -162,6 +162,7 @@ class OfEmpreController extends Controller
         $candis = Candidat::where('id_ofert', $ofempresa->id)->paginate(100);
 
         return view('ofempresa.candidatures.candidatures',[
+            'ofempresa' => $ofempresa,
             "candis" => $candis
         ]);
     }
@@ -170,21 +171,20 @@ class OfEmpreController extends Controller
     ///curriculums 
     //.........................
 
-    public function curriculum(Curriculum $curri) 
+    public function curriculum(Oferta $ofempresa, Candidat $candidat) 
     {
+        $curri = Curriculum::where(["user_id" => $candidat->user_id])->first();
         $pathToFile = public_path() . '/storage/curri/' . $curri->filepath;
-        return response()->download($pathToFile);           
+        return response()->download($pathToFile);   
     }
 
-    public function presentacio(Presentacio $pre) 
+    public function presentacio(Oferta $ofempresa, Candidat $candidat)
     {
-
+        
+        $pre = Presentacio::where(["user_id" => $candidat->user_id])->first();
         $pathToFile = public_path() . '/storage/pre/' . $pre->filepath;
         return response()->download($pathToFile);           
     }
-        // TODO enviar fitxer   
-    
-
 
     // formulari correu
     public function seleccionar( Candidat $candis , $id){

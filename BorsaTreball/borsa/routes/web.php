@@ -110,12 +110,19 @@ Route::get('/welcome', [WelcomeController::class, 'index']);
 Route::resource('ofertas', OfertasController::class);
 Route::resource('ofempresa', OfEmpreController::class)->middleware(['auth', 'role:3']);
 Route::get('ofempresa/{ofempresa}/candidatures', [OfEmpreController::class, 'candidatures'])->name('ofempresa.candidatures')->middleware(['auth', 'role:3']);
+//--------------------------------------------
+// candidatures empresa
+//--------------------------------------------
+Route::get('ofempresa/{ofempresa}/candidatures/{candidat}/curriculum', [OfEmpreController::class,'curriculum'])->name('ofempresa.curriculum')->middleware(['auth', 'role:3']);
+Route::get('ofempresa/{ofempresa}/candidatures/{candidat}/presentacio', [OfEmpreController::class,  'presentacio'])->name('ofempresa.presentacio')->middleware(['auth', 'role:3']);
+Route::get('ofempresa/{ofempresa}/candidatures/{candidat}/seleccionar', [OfEmpreController::class, 'seleccionar'])->name('ofempresa.seleccionar')->middleware(['auth', 'role:3']);
 
-Route::get('ofempresa/{ofempresa}/candidatures/{candidatura}/curriculum', [OfEmpreController::class, 'curriculum'])->name('ofempresa.curriculum')->middleware(['auth', 'role:3']);
-Route::get('ofempresa/{ofempresa}/candidatures/{candidatura}/presentacio', [OfEmpreController::class,  'presentacio'])->name('ofempresa.presentacio')->middleware(['auth', 'role:3']);
-Route::get('ofempresa/{ofempresa}/candidatures/seleccionar', [OfEmpreController::class, 'seleccionar'])->name('ofempresa.seleccionar')->middleware(['auth', 'role:3']);
 Route::post('ofempresa/notificar', [OfEmpreController::class, 'notificar'])->name('ofempresa.notificar')->middleware(['auth', 'role:3']);
 
+
+//--------------------------------------------
+// Alumne
+//--------------------------------------------
 Route::resource('curriculum', CurriculumController::class)->middleware(['auth', 'role:2']);
 
 Route::resource('presentacio', PresentacioController::class)->middleware(['auth', 'role:2']);

@@ -121,11 +121,11 @@
                                     
                                     <!-- <a class="dropdown-item" href="{{ url('profile') }} " >{{ __('perfil') }}</a> -->
                                     @if(@Auth::user()->role_id==2)
-                                    <a class="dropdown-item" href="{{ route('perfilAlum.index') }} " ><i class="fa fa-duotone fa-user"></i>{{ __('alumne') }}</a>
+                                    <a class="dropdown-item" href="{{ route('perfilAlum.index') }} " ><i class="fa fa-duotone fa-user"></i>{{ __('Perfil Alumne') }}</a>
                                     
                                     @endif
                                     @if(@Auth::user()->role_id==3)
-                                    <a class="dropdown-item" href="{{ url('perfilEmpre') }} " ><i class="fa fa-duotone fa-user"></i>{{ __('empresa') }}</a>
+                                    <a class="dropdown-item" href="{{ url('perfilEmpre') }} " ><i class="fa fa-duotone fa-user"></i>{{ __('Perfil Empresa') }}</a>
                                     @endif
                                 </div>
 

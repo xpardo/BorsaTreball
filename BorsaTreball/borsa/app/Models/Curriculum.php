@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Curriculum extends Model
 {
-   use HasFactory;
-
+   use HasFactory ;
+   public  $table = 'curriculums';
    public $timestamps=false;
    protected $fillable= [
        'name',

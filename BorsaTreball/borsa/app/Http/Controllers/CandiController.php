@@ -55,6 +55,7 @@ class CandiController extends Controller
         $candi = new Candidat();
  
   
+        $candi->user_id = auth()->user()->id;
         $candi->user = auth()->user()->name;
         $candi->cognom = auth()->user()->cognom;
         $candi->email = auth()->user()->email;

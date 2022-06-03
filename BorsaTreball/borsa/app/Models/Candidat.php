@@ -14,18 +14,7 @@ class Candidat extends Model
 
     protected $fillable = [
         'id_ofert',
-        'empre',
-        'name',
-        'h',
-        'sala',
-        'desc',
-        'user',
-        'cognom',
-        'neixement' , 
-        'genere' ,
-        'email' ,
-        'telefon' ,  
-    
+        'user_id',
     ];
 
 
@@ -33,7 +22,7 @@ class Candidat extends Model
 
     public function candidats(){
 
-        return $this->hasMany(candidats::class,'id_ofert','id');
+        return $this->hasMany(candidats::class,'id_ofert','id','user_id');
     }
 
 }

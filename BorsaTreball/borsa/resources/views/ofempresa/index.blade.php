@@ -20,15 +20,15 @@
                                       
                                             <div class="card-body">
                                                 <table class="table table-striped">
-                                                    <thead>
+                                                <thead class="table-dark">
                                                
                                                         <tr>
                                                      
-                                                            <td scope="col"><center>titol</center></td><!------la meva oferta------->
-                                                            <td scope="col"><center>cicle</center></td>
-                                                            <td scope="col"><center>tipus</center></td>
+                                                            <td scope="col"><center>Nom Oferta</center></td><!------la meva oferta------->
+                                                            <td scope="col"><center>Cicle</center></td>
+                                                            <td scope="col"><center>Tipus</center></td>
                                                             <td scope="col"><center>Creat</center></td>
-                                                            <td scope="col"><center>candidatures</center></td>
+                                                            <td scope="col"><center>Candidatures</center></td>
                                                             <td scope="col"><center>___________________</center></td>
                                            
                                                         
