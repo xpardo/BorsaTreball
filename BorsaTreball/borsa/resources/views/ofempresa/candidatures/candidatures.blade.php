@@ -43,8 +43,8 @@
                                         <td><center>{{ $candi->estat }}</center></td>
                                         <td><center>{{ $candi->fet }}</center></td>
                                         <td><center>{{ $candi->treballat }}</center></td>
-                                        <td><center><a class="btn btn-dark" href="/storage/curri/{{$candi->filepath}}" target="blank_"> <i class="fas fa-sticky-note"></i></a></center></td>
-                                        <td><center><a class="btn btn-dark" href="/storage/pre/{{$candi->filepath}}" target="blank_"><i class="fas fa-envelope"></i></a></center></td>
+                                        <td><center><a class="btn btn-dark" href="/storage/curri/" target="blank_"> <i class="fas fa-sticky-note"></i></a></center></td>
+                                        <td><center><a class="btn btn-dark" href="/storage/pre/" target="blank_"><i class="fas fa-envelope"></i></a></center></td>
 
 
                                         <td>

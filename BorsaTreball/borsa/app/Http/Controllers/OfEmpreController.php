@@ -148,8 +148,8 @@ class OfEmpreController extends Controller
     public function destroy(Oferta $ofempresa)
     {
         $ofempresa->delete();
-        return redirect()->with('ofempresa.index')
-            ->with('success', "oferta {$id} sa elminatat correctament.");
+        return redirect('ofempresa')
+            ->with('success', "oferta sa elminatat correctament.");
     }
 
 

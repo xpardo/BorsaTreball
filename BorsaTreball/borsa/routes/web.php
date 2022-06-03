@@ -37,13 +37,10 @@ use App\User;
 use App\Http\Controllers\UsersController;
 
 use App\Http\Controllers\CurriculumController;
-use App\Http\Controllers\LlistaCurriController;
 
 use App\Http\Controllers\PresentacioController;
-use App\Http\Controllers\LlistaPresenController;
 
 use App\Http\Controllers\RecController;
-use App\Http\Controllers\LlistaRecController;
 
 use App\Http\Controllers\WelcomeController;
 
@@ -220,33 +217,5 @@ Route::post('cambiar', [AuthController::class, 'cambiar'])->name('cambiar');
 
 
 
-Route::get('/curri.index', function () {
-    $curris = Curriculum::all();
-    return view('/curri.index')->with('curris',$curris);
-});
-Route::get('/curri.create', function () {
-    $curris = Curriculum::all();
-    return view('curri.create')->with('curri',$curris);
-});
 
-
-
-Route::get('/pre.index', function () {
-    $pres = Presentacio::all();
-    return view('pre.index')->with('pres',$pres);
-});
-Route::get('/pre.create', function () {
-    $pres = Presentacio::all();
-    return view('pre.create')->with('pres',$pres);
-});
-
-
-Route::get('/rec.index', function () {
-    $recs = Recomanacio::all();
-    return view('rec.index')->with('recs',$recs);
-});
-Route::get('/rec.create', function () {
-    $recs = Recomanacio::all();
-    return view('rec.create')->with('recs',$recs);
-});
 

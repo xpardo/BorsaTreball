@@ -30,7 +30,7 @@ class PresentacioController extends Controller
 
     public function create(Request $request)
     {
-        return view('presentacio.index');
+        return view('pre.index');
     }
     
     public function store(Request $request)
@@ -53,7 +53,7 @@ class PresentacioController extends Controller
             $pres -> filepath = $archivo ->getClientOriginalName();
             $pres -> save();
 
-            return back()
+            return redirect('pre.index')
                     ->with('success','pre has uploaded to the database.')
                     ->with('pre', 'cursiculum Agregada!')
                     ->with('pdf', $pres);
@@ -61,7 +61,7 @@ class PresentacioController extends Controller
            
         }
 
-        return redirect('presentacio.index');
+      
      }
 
 
@@ -69,24 +69,16 @@ class PresentacioController extends Controller
         /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Presentacio  $pres
+     * @param  \App\Models\Presentacio  $presentacio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Presentacio $pres)
+    public function destroy(Presentacio $presentacio)
     {
        
-
-
-        $id = $pres->id;
-        // Eliminar fitxer del disc 
-        \Storage::disk('public')->delete($pres->filepath);
-        \Log::debug("Local storage OK");
-        // Eliminar registre de BD
-        $pres->delete();
-        \Log::debug("DB storage OK");
-        // Patró PRG amb missatge d'èxit
-        return redirect()->route("presentacio.index")
-            ->with('success', "pres {$id} succesfully deleted.");
+        $presentacio->delete();
+    
+        return redirect('pre.index')
+        ->with('success','categori delete successfully');
     }
 
 

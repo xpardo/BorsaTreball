@@ -13,10 +13,14 @@ use App\Http\Controllers\Auth\RegisterEmpreController;
 use App\Http\Controllers\Auth\RegisterAlumController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\AlumController;
-
 use App\Http\Controllers\Auth\EmpreController;
-
-
+use App\Http\Controllers\PresentacioController;
+use App\Http\Controllers\CurriculumController;
+use App\Http\Controllers\RecController;
+use App\Models\Curriculum;
+use App\Models\Presentacio;
+use App\Models\Recomanacio;
+use App\Models\Oferta;
 
 
 
@@ -109,3 +113,34 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
+
+
+
+Route::get('/curri.index', function () {
+    $curris = Curriculum::all();
+    return view('/curri.index')->with('curris',$curris);
+});
+Route::get('/curri.create', function () {
+    $curris = Curriculum::all();
+    return view('curri.create')->with('curri',$curris);
+});
+
+Route::get('/pre.index', function () {
+    $pres = Presentacio::all();
+    return view('pre.index')->with('pres',$pres);
+});
+Route::get('/pre.create', function () {
+    $pres = Presentacio::all();
+    return view('pre.create')->with('pres',$pres);
+});
+
+
+Route::get('/rec.index', function () {
+    $recs = Recomanacio::all();
+    return view('rec.index')->with('recs',$recs);
+});
+Route::get('/rec.create', function () {
+    $recs = Recomanacio::all();
+    return view('rec.create')->with('recs',$recs);
+});
+

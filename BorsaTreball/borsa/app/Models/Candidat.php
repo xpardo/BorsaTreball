@@ -18,11 +18,14 @@ class Candidat extends Model
         'name',
         'h',
         'sala',
+        'desc',
         'user',
+        'cognom',
         'neixement' , 
         'genere' ,
         'email' ,
-        'telefon' ,      
+        'telefon' ,  
+    
     ];
 
 

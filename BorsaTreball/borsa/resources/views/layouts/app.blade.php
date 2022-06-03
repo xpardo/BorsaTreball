@@ -110,6 +110,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
+                                                     <i class="fas fa-door-open"></i>
                                         {{ __('Logout') }}
                                     </a>
 
@@ -120,11 +121,11 @@
                                     
                                     <!-- <a class="dropdown-item" href="{{ url('profile') }} " >{{ __('perfil') }}</a> -->
                                     @if(@Auth::user()->role_id==2)
-                                    <a class="dropdown-item" href="{{ route('perfilAlum.index') }} " >{{ __('perfil alumne') }}</a>
+                                    <a class="dropdown-item" href="{{ route('perfilAlum.index') }} " ><i class="fa fa-duotone fa-user"></i>{{ __('alumne') }}</a>
                                     
                                     @endif
                                     @if(@Auth::user()->role_id==3)
-                                    <a class="dropdown-item" href="{{ url('perfilEmpre') }} " >{{ __('perfil empresa') }}</a>
+                                    <a class="dropdown-item" href="{{ url('perfilEmpre') }} " ><i class="fa fa-duotone fa-user"></i>{{ __('empresa') }}</a>
                                     @endif
                                 </div>
 

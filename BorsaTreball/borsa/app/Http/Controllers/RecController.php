@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Recomanacio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Routing\Redirector;
 use DB;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -12,11 +13,6 @@ use App\Models\Oferta;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
-
-
-
-
 
 
 class RecController extends Controller
@@ -29,6 +25,8 @@ class RecController extends Controller
         return view('rec.index',[
             "recs" => $recs,
         ]);
+
+        
        
     }
 
@@ -57,7 +55,7 @@ class RecController extends Controller
             $recs -> filepath = $archivo ->getClientOriginalName();
             $recs -> save();
 
-            return back()
+            return redirect('rec.index')
                     ->with('success','rec has uploaded to the database.')
                     ->with('recs', 'recomendacio Agregada!')
                     ->with('pdf', $recs);
@@ -65,7 +63,6 @@ class RecController extends Controller
            
         }
 
-        return redirect('rec.index');
      }
 
 
@@ -75,19 +72,14 @@ class RecController extends Controller
      * @param  \App\Models\Recomanacio  $pres
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recomanacio $recs)
+    public function destroy(Recomanacio $recomenacio)
     {
        
-        $id = $recs->id;
-        // Eliminar fitxer del disc 
-        \Storage::disk('public')->delete($recs->filepath);
-        \Log::debug("Local storage OK");
-        // Eliminar registre de BD
-        $recs->delete();
-        \Log::debug("DB storage OK");
-        // Patró PRG amb missatge d'èxit
-        return redirect()->route("recomenacio.index")
-            ->with('success', "recs {$id} succesfully deleted.");
+    
+        $recomenacio->delete();
+    
+        return redirect('rec.index')
+        ->with('success','categori delete successfully');
     }
 
 

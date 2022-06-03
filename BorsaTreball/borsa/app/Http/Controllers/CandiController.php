@@ -56,6 +56,7 @@ class CandiController extends Controller
  
   
         $candi->user = auth()->user()->name;
+        $candi->cognom = auth()->user()->cognom;
         $candi->email = auth()->user()->email;
         $candi->genere = auth()->user()->genere;
         $candi->telefon = auth()->user()->telefon;
@@ -63,10 +64,13 @@ class CandiController extends Controller
         $candi->estat = auth()->user()->estat;
         $candi->fet = auth()->user()->fet;
         $candi->treballat = auth()->user()->treballat;
+
         $candi->empre = $request->empre;
         $candi->name = $request->name;
         $candi->h = $request->h;
         $candi->sala = $request->sala;
+        $candi->desc = $request->desc;
+        
         $candi->id_ofert = $request->oferta_id;
 
         
@@ -131,7 +135,7 @@ class CandiController extends Controller
     public function destroy(Candidat $candi)
     {
         $candi->delete();
-        return redirect()->with('candidatures.index')
-            ->with('success', "oferta {$id} sa elminatat correctament.");
+        return redirect('candi')
+            ->with('success', "oferta  sa elminatat correctament.");
     }
 }

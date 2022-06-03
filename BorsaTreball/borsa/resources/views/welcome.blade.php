@@ -29,7 +29,7 @@
 
                                                             <div class="form-row">
                                                                 <div class="col-sm-4 ">
-                                                                    <input  name="texto" class="form-control mr-sm-2" type="text" id="search" 
+                                                                    <input  name="text" class="form-control mr-sm-2" type="text" id="search" 
                                                                                     placeholder="Search" aria-label="Search"/>
                                                                     
                                                                     <input type="submit" class="btn btn-primary" value="Buscar">

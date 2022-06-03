@@ -6,15 +6,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header" >{{ __('Oferta') . " " . $oferta -> id}}</div>
+                    <div class="card-header" >{{ __('Oferta') . " " . $oferta -> name}}</div>
                         <div class="card-body">
               
                                 <table class="table table-striped table-info">
                                     <tbody >
                                         <tr>
-                                            <td><b><strong>id</strong></b></td>
-                                            <td><a>{{ $oferta->id }}</a></td>
-                                        </tr> <tr>
                                             <td><strong>Tipos</strong></td>
                                             <td>{{ $oferta->tipus }}</td>
                                         </tr>
@@ -22,10 +19,7 @@
                                             <td><strong>Cicle</strong></td>
                                             <td>{{ $oferta->cicle }}</td>
                                         </tr>
-                                        <tr>
-                                            <td><strong>Titól</strong></td>
-                                            <td>{{ $oferta->name }}</td>
-                                        </tr>
+                                      
                                         <tr>
                                             <td><strong>horari</strong></td>
                                             <td>{{ $oferta->h }}</td>

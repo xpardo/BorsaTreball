@@ -52,7 +52,7 @@ class CurriculumController extends Controller
             $curris -> filepath = $archivo ->getClientOriginalName();
             $curris -> save();
 
-            return back()
+            return redirect('curri.index')
                     ->with('success','curri has uploaded to the database.')
                     ->with('curri', 'cursiculum Agregada!')
                     ->with('pdf', $curris);
@@ -60,7 +60,7 @@ class CurriculumController extends Controller
            
         }
 
-        return redirect('curri.index');
+       
      }
 
 
@@ -68,24 +68,15 @@ class CurriculumController extends Controller
       /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Curriculum  $curris
+     * @param  \App\Models\Curriculum  $curriculum
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Curriculum $curris)
+    public function destroy(Curriculum $curriculum)
     {
-       
-
-
-        $id = $curris->id;
-        // Eliminar fitxer del disc 
-        \Storage::disk('public')->delete($curris->filepath);
-        \Log::debug("Local storage OK");
-        // Eliminar registre de BD
-        $curris->delete();
-        \Log::debug("DB storage OK");
-        // Patró PRG amb missatge d'èxit
-        return redirect()->route("curri.index")
-            ->with('success', "curris {$id} succesfully deleted.");
+        $curriculum->delete();
+    
+        return redirect('curri.index')
+        ->with('success','categori delete successfully');
     }
 
 
