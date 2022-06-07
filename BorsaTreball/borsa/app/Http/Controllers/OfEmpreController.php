@@ -180,7 +180,7 @@ class OfEmpreController extends Controller
         }else{
 
             return redirect()->route('ofempresa.candidatures', $ofempresa->id)
-                ->with('error',"Aquest candidat no te curriculum");
+                ->with('error',"Aquest candidat no té curriculum");
         }
     }
 
@@ -193,7 +193,7 @@ class OfEmpreController extends Controller
             return response()->download($pathToFile);    
         }else{
             return redirect()->route('ofempresa.candidatures', $ofempresa->id)
-                ->with('error',"Aquest candidat no te carta de presentació");
+                ->with('error',"Aquest candidat no té carta de presentació");
           
         }       
     }
