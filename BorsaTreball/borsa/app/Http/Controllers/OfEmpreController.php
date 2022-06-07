@@ -173,15 +173,21 @@ class OfEmpreController extends Controller
 
     public function curriculum(Oferta $ofempresa, Candidat $candidat) 
     {
-        $curri = Curriculum::where(["user_id" => $candidat->user_id])->first();
-        $pathToFile = public_path() . '/storage/curri/' . $curri->filepath;
-        return response()->download($pathToFile);   
+        $ok=$curri = Curriculum::where(["user_id" => $candidat->user_id])->firstOrFail();
+        if ($ok) {
+            $pathToFile = public_path() . '/storage/curri/' . $curri->filepath;
+            return response()->download($pathToFile);   
+        }else{
+          
+            return view('ofempresa.candidatures.candidatures', $request->ofempresa)
+            ->with('error',"Aquest candidat no te curriculum");
+        }
     }
 
     public function presentacio(Oferta $ofempresa, Candidat $candidat)
     {
         
-        $pre = Presentacio::where(["user_id" => $candidat->user_id])->first();
+        $pre = Presentacio::where(["user_id" => $candidat->user_id])->firstOrFail();
         $pathToFile = public_path() . '/storage/pre/' . $pre->filepath;
         return response()->download($pathToFile);           
     }

@@ -85,7 +85,7 @@ class PerfilAlumController extends Controller
      */
     public function store(Request $Alumne)
     {   
-      
+       
 
         
     }
