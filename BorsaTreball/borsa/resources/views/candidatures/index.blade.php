@@ -15,7 +15,7 @@
                                     <div class="card">
                                    
                                     <br>
-                                        <div class="card-header">{{ __('oferta Actuals') }}</div>
+                                        <div class="card-header" style="border-radius:15px;">{{ __('oferta Actuals') }}</div>
                                       
                                             <div class="card-body">
                                                 <table class="table">
@@ -27,7 +27,7 @@
                                                         <td scope="col"><center>Empresa</center></td> 
                                                         <td scope="col"><center>Oferta</center></td>   
                                                         <td scope="col"><center>Veure Oferta</center></td>  
-                                                        <td scope="col"><center></center></td>  
+                                                        <td scope="col"><center>Eliminar</center></td>  
 
                                                         </tr>
                                                         
@@ -48,7 +48,7 @@
                                                             </td>
                                                             <td> 
                                                                 
-                                                        
+                                                        <center>
                                                                 <form id="form" method="POST" action="{{ route('candi.destroy', $candi) }}">
                                                                     @csrf
                                                                     @method("DELETE")
@@ -56,7 +56,7 @@
                                                                     @include('js/modal')
                                                                 </form>
                                                                                                                 <!-- Modal -->
-                                                                    
+                                                        </center>  
                                                             </td>
                                                             
                                                         </tr>
@@ -74,7 +74,7 @@
                 </div> 
             </div> 
  
-            <br><br>   <br><br>  <br><br>  <br><br>  <br>
+            <br>
           
 
 @include('estil/perfil')

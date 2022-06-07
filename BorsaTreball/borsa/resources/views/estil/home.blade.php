@@ -66,4 +66,22 @@
 table, th, td {
     border:1px solid black;
 }
+
+
+
+/**buton */
+
+a:hover {
+  background-color: #54CBF7;
+}
+
+button:hover{
+    background-color: #54CBF7;
+}
+
+
+a.ex2:hover, a.ex2:active {font-size: 150%;}
+
 </style>
+
+

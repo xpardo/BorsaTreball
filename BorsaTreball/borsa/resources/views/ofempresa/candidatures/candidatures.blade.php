@@ -6,19 +6,23 @@
         <div class="py-12">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class=" bg-white border-b border-gray-200">
-                    <div class="container ">
-                    <div class="card-header"><center>{{ __('Candidats') }}</center></div>
+                    <div class="container " >
+                   
+
+                    @include('flash')   
+                    <div class="card-header" style="border-radius:15px;"><center>{{ __('Candidats') }}</center></div>
                        <br>
-                       
-                       @include('flash')   
-                            <table class="table table-striped">
+                    <div class="card-header"  style=" border-radius:15px; background:#224653; color:#FFFFFF;" ><center><FONT SIZE=4><b>{{ __('Oferta:') . " "  }}</b>{{$ofempresa -> name}}</FONT></center></div>
+                 
+                      <br>
+                            <table class="table table-striped" >
                             
                                 <thead class="table-dark">
                                                
                             
                                     <tr>
                                         
-                                    <td scope="col"><center>Nom Oferta</center></td>  
+                            
                                         <td scope="col"><center>Nom</center></td>
                                         <td scope="col"><center>Cognom</center></td>    
                                         <td scope="col"><center>Neixement</center></td>  
@@ -37,7 +41,7 @@
                                     @foreach ($candis as $candi)
                                 
                                     <tr>
-                                        <td scope="col"><center>{{ $candi->name }}</center></td>
+                                        
                                         <td scope="col"><center>{{ $candi->user }}</center></td>
                                         <td scope="col"><center>{{ $candi->cognom }}</center></td>
                                         <td scope="col"><center>{{ $candi->neixement }}</center></td>

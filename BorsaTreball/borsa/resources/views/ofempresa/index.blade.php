@@ -11,12 +11,12 @@
                         <div class="container">
                             <div class="row justify-content-center">
                             
-                                    <div class="card">
+                                    <div class="card"  style="border-radius:15px;">
                                  <br>
-                                    <td><a  class="btn btn-primary" href="{{ route('ofempresa.create')}}">➕ Crear oferta </a></td>
-                                 
+                                    <td><a  class="btn btn-primary" href="{{ route('ofempresa.create')}}"  style="border-radius:15px;">➕ Crear oferta </a></td>
+
                                     <br>
-                                        <div class="card-header">{{ __('oferta Actuals') }}</div>
+                                        <div class="card-header"  style="border-radius:15px;"><center>{{ __('oferta Actuals') }}</center></div>
                                       
                                             <div class="card-body">
                                                 <table class="table table-striped">
@@ -84,7 +84,7 @@
                 </div> 
             </div> 
  
-            <br><br><br><br> <br><br> <br>
+            
           
 
 @include('estil/perfil')

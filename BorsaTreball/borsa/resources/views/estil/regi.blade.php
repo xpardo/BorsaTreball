@@ -209,6 +209,14 @@
         cursor: pointer;
         font-size: 18px;
     }
+
+
+a:hover {
+  background-color: #54CBF7;
+}
+button:hover{
+    background-color: #54CBF7;
+}
 </style>
 
 

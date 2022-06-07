@@ -146,9 +146,10 @@ Route::resource('candi', CandiController::class)->middleware(['auth', 'role:2'])
 /* Route::get('ofempresa/{ofempresa}/curri', [OfEmpreController::class, 'curri'])->name('ofempresa.curri')->middleware(['auth', 'role:3']);
 Route::get('ofempresa/{ofempresa}/presen', [OfEmpreController::class, 'presentacio'])->name('ofempresa.presen')->middleware(['auth', 'role:3']);
 Route::get('ofempresa/{ofempresa}/email', [OfEmpreController::class, 'sendDemoMail'])->name('ofempresa.email')->middleware(['auth', 'role:3']);
-Route::post('send', [OfEmpreController::class, 'send'])->name('ofempresa.send')->middleware(['auth', 'role:3']); */
+Route::post('send', [OfEmpreController::class, 'send'])->name('ofempresa.send')->middleware(['auth', 'role:3']); 
+Route::get('ofempresa/{ofempresa}/candidatures/seleccionar', [OfEmpreController::class, 'seleccionar'])->name('ofempresa.seleccionar')->middleware(['auth', 'role:3']);
 
-
+ */
 /**____________________________________________Alumne_______________________________________________________________________*/
 
 
@@ -158,6 +159,7 @@ Route::resource('perfilAlum', PerfilAlumController::class)->middleware(['auth', 
 Route::get('perfilAlum.edit', [PerfilAlumController::class, 'edit'])->name('perfilAlum.edit')->middleware(['auth', 'role:2']);
 Route::get('perfilAlum.update', [PerfilAlumController::class, 'update'])->name('perfilAlum.update')->middleware(['auth', 'role:2']);
 
+ 
 
 /**_____________________________________*/
 

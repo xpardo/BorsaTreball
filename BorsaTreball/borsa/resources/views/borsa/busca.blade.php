@@ -9,14 +9,20 @@
                                 <div class="col-sm ">
                             
                                     <div class="dropdown">
-                                        <center>
-                                            <div class="input-group rounded">
-                                            <center>
-                                                <input type="search" class="form-control rounded" id="search" name="buscarpor" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                                                <h2><i class="bi bi-search"></i></h2>
-                                            </center>
-                                            </div>
-                                        </center>
+                                    <form class="form-linie" action="{{route('home')}}" method="get">
+                                                
+
+                                                <div class="form-row">
+                                                    <div class="col-sm-4 ">
+                                                        <input  name="text" class="form-control mr-sm-2" type="text" id="search" 
+                                                                        placeholder="Search" aria-label="Search"/>
+                                                        
+                                                        <input type="submit" class="btn btn-primary" value="Buscar">
+                                                    </div>
+
+                                                </div>
+
+                                        </form>
                                       
                                         <div class="dropdown">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" 
@@ -147,7 +153,7 @@
                                                         </li>
                                                     
                                                
-                                            </div>
+                                            </div> -->
                                         
                                         
                                     
@@ -181,10 +187,6 @@
                                         </div>
 
                                     </div>
-                                    
-                                      
-                                 </div>
-                              
                             </fieldset></center>
 
                         

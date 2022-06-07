@@ -12,7 +12,7 @@
                         <div class="p-6 bg-white border-b border-gray-200">
 
                             <div class="container"> 
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#dialogo1"><b><FONT SIZE=5><i class="fas fa-info-circle"></i>Informació important</FONT></b></button>
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#dialogo1" style="border-radius:15px;"><b><FONT SIZE=5><i class="fas fa-info-circle"></i>Informació important</FONT></b></button>
 
                                 <div class="modal fade" id="dialogo1">
                                     <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -45,7 +45,7 @@
                              </div>
                         </div> 
 
-
+                        @include('flash')   
 
 
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -53,7 +53,7 @@
 
                      <table class="table table-striped table-info">
 
-                                <b><a  title="Editar" class="btn btn-warning"  href="{{ route('perfilAlum.edit' ) }}">
+                                <b><a  title="Editar" class="btn btn-warning"  href="{{ route('perfilAlum.edit' ) }}" style="border-radius:15px;">
                                 <FONT SIZE=5> <i class="fas fa-edit"></i></FONT>
                                     </a></b>
                                 <br><br>
