@@ -110,6 +110,14 @@ Route::get('/welcome', [WelcomeController::class, 'index']);
 Route::resource('ofertas', OfertasController::class);
 Route::resource('ofempresa', OfEmpreController::class)->middleware(['auth', 'role:3']);
 Route::get('ofempresa/{ofempresa}/candidatures', [OfEmpreController::class, 'candidatures'])->name('ofempresa.candidatures')->middleware(['auth', 'role:3']);
+
+Route::get('ofempresa.candidatures', function (Request $request) {
+    $message = "Aquest candidat no te curriculum";
+    Log::info($message);
+    $request->session()->flash('error', $message);
+    return view('ofempresa.candidatures');
+ });
+ 
 //--------------------------------------------
 // candidatures empresa
 //--------------------------------------------

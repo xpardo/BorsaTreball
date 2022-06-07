@@ -1,6 +1,6 @@
 @extends('layouts.app')
  
- @section('content')
+@section('content')
 @include('borsa.header')
 @include('borsa.menuEmpre')
         <div class="py-12">
@@ -10,7 +10,7 @@
                     <div class="card-header"><center>{{ __('Candidats') }}</center></div>
                        <br>
                        
-                                           
+                       @include('flash')   
                             <table class="table table-striped">
                             
                                 <thead class="table-dark">
@@ -47,6 +47,7 @@
                                         <td scope="col"><center>{{ $candi->estat }}</center></td>
                                         <td scope="col"><center>{{ $candi->fet }}</center></td>
                                         <td scope="col"><center>{{ $candi->treballat }}</center></td>
+
                                         <td scope="col"><center><a class="btn btn-dark" href="{{ Route('ofempresa.curriculum', [$ofempresa, $candi])}}" target="blank_"> <i class="fas fa-sticky-note"></i></a></center></td>
                                         <td scope="col"><center><a class="btn btn-dark" href="{{ Route('ofempresa.presentacio', [$ofempresa, $candi])}}" target="blank_"><i class="fas fa-envelope"></i></a></center></td>
 
@@ -77,7 +78,7 @@
         </div> 
   
 
-          <br><br><br><br><br><br>
+        <br><br><br><br><br><br>
 
 @include('estil/perfil')
 

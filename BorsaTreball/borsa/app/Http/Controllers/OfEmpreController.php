@@ -167,29 +167,35 @@ class OfEmpreController extends Controller
         ]);
     }
 
-     //.........................
+    //.........................
     ///curriculums 
     //.........................
 
     public function curriculum(Oferta $ofempresa, Candidat $candidat) 
     {
-        $ok=$curri = Curriculum::where(["user_id" => $candidat->user_id])->firstOrFail();
-        if ($ok) {
+        $curri = Curriculum::where(["user_id" => $candidat->user_id])->first();
+        if ($curri) {
             $pathToFile = public_path() . '/storage/curri/' . $curri->filepath;
             return response()->download($pathToFile);   
         }else{
-          
-            return view('ofempresa.candidatures.candidatures', $request->ofempresa)
-            ->with('error',"Aquest candidat no te curriculum");
+
+            return redirect()->route('ofempresa.candidatures', $ofempresa->id)
+                ->with('error',"Aquest candidat no te curriculum");
         }
     }
 
     public function presentacio(Oferta $ofempresa, Candidat $candidat)
     {
         
-        $pre = Presentacio::where(["user_id" => $candidat->user_id])->firstOrFail();
-        $pathToFile = public_path() . '/storage/pre/' . $pre->filepath;
-        return response()->download($pathToFile);           
+        $pre = Presentacio::where(["user_id" => $candidat->user_id])->first();
+        if ($pre) {
+            $pathToFile = public_path() . '/storage/pre/' . $pre->filepath;
+            return response()->download($pathToFile);    
+        }else{
+            return redirect()->route('ofempresa.candidatures', $ofempresa->id)
+                ->with('error',"Aquest candidat no te carta de presentació");
+          
+        }       
     }
 
     // formulari correu
