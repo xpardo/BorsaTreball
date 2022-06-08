@@ -71,9 +71,7 @@
                                 </tbody>
 
                                 
-                            </table>
-                                 
-                                
+                            </table>  
                             
                         </div>
                     </div>
@@ -82,7 +80,7 @@
         </div> 
   
 
-        <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
 
 @include('estil/perfil')
 
