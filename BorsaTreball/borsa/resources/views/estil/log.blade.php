@@ -153,4 +153,20 @@
         border-radius: 10px;
         box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
     }
+
+
+
+
+i {
+  box-shadow: inset 0 0 0 0 #54b3d6;
+  color: #54b3d6;
+  padding: 0 .25rem;
+  margin: 0 -.25rem;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+i:hover {
+  color: #fff;
+  box-shadow: inset 200px 0 0 0 #54b3d6;;
+}
+
 </style>

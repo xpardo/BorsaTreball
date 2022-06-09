@@ -78,5 +78,32 @@ input[type=submit] {
     background: #888;
     border: 1px solid black;
 }
-    
+
+/** */
+.card-header{
+
+background: #cce6ff;
+}
+
+
+/**buttons */
+
+
+
+i {
+  box-shadow: inset 0 0 0 0 #54b3d6;
+  color: #54b3d6;
+  padding: 0 .25rem;
+  margin: 0 -.25rem;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+i:hover {
+  color: #fff;
+  box-shadow: inset 200px 0 0 0 #54b3d6;;
+}
+
+
+
+
+
 </style>

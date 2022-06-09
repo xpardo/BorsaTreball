@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\Oferta;
 use App\Models\Empresa;
-
+use Illuminate\Auth\SessionGuard;
 
 class RegisterEmpreController extends Controller
 {
@@ -36,8 +37,12 @@ class RegisterEmpreController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'cognom' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'empre' => ['required', 'string', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'telefon' => ['required', 'string', 'max:255'],
+            'poblacio' => ['required', 'string', 'max:255'],
         ]);
 
 

@@ -9,14 +9,17 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
+use App\Models\Role;
 class User extends Authenticatable
 {
+    use HasRoles;
     use HasApiTokens; 
     use HasFactory;
-    use HasProfilePhoto;
+    /*use HasProfilePhoto;*/
     use Notifiable;
-    use TwoFactorAuthenticatable;
+    /*use TwoFactorAuthenticatable;*/
 
     /**
      * The attributes that are mass assignable.
@@ -25,11 +28,25 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'cognom',
+        'neixement',
+        'empre',
+        'cp',
+        'genere',
         'email',
+        'telefon',
+        'poblacio',
+        'estat',
+        'fet',
+        'treballat',
         'password',
         'tipo_usuario',
+        'imagen',
         'role_id',
+        
     ];
+
+ 
 
     /**
      * The attributes that should be hidden for serialization.

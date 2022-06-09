@@ -1,15 +1,15 @@
 <h1>Cambiar contraseña</h1>
 <p>
-    Has recibido este mensaje porque has solicitado cambiar la contraseña de tu <strong>CMS Laravel</strong>.
+Heu rebut aquest missatge perquè heu sol·licitat canviar la contrasenya del vostre <strong>CMS Laravel</strong>.
 </p>
 <p>
-    Para cambiar la contraseña,  haz <a href="{{ route('clave', $token) }}">CLIC AQUÍ</a> o copia y pega el siguiente enlace en el navegador:
+Per canviar la contrasenya, fes<a href="{{ route('clave', $token) }}">CLIC AQUÍ</a> o copia y pega el siguient enllaç en el navegador:
 </p>
 <p>
     {{ route('clave', $token) }}
 </p>
 <p>
-    Un saludo
+    Un salud
 </p>
 <p>
     <strong>CMS Laravel</strong>

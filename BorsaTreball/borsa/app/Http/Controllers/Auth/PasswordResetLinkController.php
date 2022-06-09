@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Auth\SessionGuard;
+use App\Models\Oferta;
 
 class PasswordResetLinkController extends Controller
 {

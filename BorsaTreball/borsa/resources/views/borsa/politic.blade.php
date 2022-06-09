@@ -5,37 +5,7 @@
   @include('borsa.header')
 
 
-  <nav class="navbar navbar-expand-lg navbar-light m-2"  style="background-color: #bcdefd;">
-    
-         
-                           
-            <div class="col-12 col-md-3">
-
-
-
-            </div>
-        <!--Menu-->
-            <div class="lletres">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                
-                    <ul class="navbar-nav mr-auto">
-
-                            <li class="nav-item active">
-                                <a class="nav-link btn btn-secondary btn-block"  href="{{url('/')}}" style="color: #fff; ">  <i class="fa fa-duotone fa-user">Home</i></a>
-                            </li>
-
-                      
-                            
-                        
-                    </ul>
-
-                </div>
-             </div>
-
-    </button>
-
-    </nav>
-
+  
  
   
  
@@ -75,10 +45,7 @@
  
         
 
+    @include('estil/home')    
 
- 
-
-@include('estil/home')    
-@include('borsa.footer')
 
 @endsection

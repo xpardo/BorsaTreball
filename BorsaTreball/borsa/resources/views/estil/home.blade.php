@@ -66,4 +66,35 @@
 table, th, td {
     border:1px solid black;
 }
+
+
+
+/**buton */
+/* 
+a:hover {
+  background-color: #54CBF7;
+}
+
+button:hover{
+    background-color: #54CBF7;
+}
+
+
+a.ex2:hover, a.ex2:active {font-size: 150%;} */
+
+
+i {
+  box-shadow: inset 0 0 0 0 #000000;
+  color: #000000;
+  padding: 0 .25rem;
+  margin: 0 -.25rem;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+i:hover {
+  color: #000000;
+  box-shadow: inset 200px 0 0 0 #000000;;
+}
+
 </style>
+
+

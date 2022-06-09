@@ -20,12 +20,17 @@ class Alumne extends Model
         'genere',
         'cp' ,
         'email' ,
+        'password', 
         'telefon',
         'poblacio',
         'estat',
         'fet',
         'treballat',
         'role_id',
+        
+        
+
+        
     ];
 
         /**
@@ -48,4 +53,8 @@ class Alumne extends Model
      protected $casts = [
         'email_verified_at' => 'datetime',
     ]; 
+
+
+
+
 }

@@ -4,8 +4,7 @@
 
 
    
- 
-    
+    @include('borsa.header')
 
 
     <div class="contenedor-formularios">
@@ -17,7 +16,7 @@
 
             <!-- Registrar-se -->
             <div id="registrarse">
-                <h1>Registrar-se</h1>
+                <h1>registrar-se</h1>
 
                
                 <form action="{{ route('registreAlumne') }}" method="POST" enctype="multipart/form-data"> 
@@ -71,17 +70,15 @@
                             <label for="genere" class="col-3">{{__('Genere')}} </label><br><br>
                             <select name="genere" class="form-control @error('genere') is-invalid @enderror" id="genere" autofocus>
                                 <option value="0"> </option>
-                                <option value="1"> Home  </option>
-                                <option value="2"> Dona  </option>
-                                <option value="3"> Altre </option>
+                                <option value="Home"> Home  </option>
+                                <option value="Dona"> Dona  </option>
+                                <option value="Altre"> Altre </option>
                             </select>
                         </div>
-
-
-
                     </div>
+                    
                     <div class="contenedor-input">
-                        <label for="telefon">{{__('telefón/movil')}}<i class="bi bi-telephone"></i></label><br><br>
+                        <label for="telefon">{{__('telefón/móbil')}}<i class="bi bi-telephone"></i></label><br><br>
                         <input type="text" name="telefon" class="form-control @error('telefon') is-invalid @enderror"  id="telefon"  value="{{old('telefon')}}"  autocomplete="telefon" autofocus>
                         @error('telefon')
                             <span class="invalid-feedback" role="alert">
@@ -110,8 +107,10 @@
                         @enderror
                     </div>
                     <div class="contenedor-input">
-                        <label  for="password">{{__('Password') }}</label><br><br>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror"  id="password" name="password" require autocomplete="new-password">
+                        <label  for="password">{{__('Password') }} </label> <br><br> 
+                        <b style="color:#808080">(8 charater, primera lletra en majuscules i numeros)</b>
+                        <br><br>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Example1234" id="password" name="password" require autocomplete="new-password">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -130,35 +129,35 @@
 
                 
 
-                            <div class="from-group form-row offset-9 col-3">
+                            <div class="from-group form-row offset-1 col-10">
 
-                                <label>{{__('Estas en practiques ?')}}</label><br><br>
+                            <p><b><label>{{__('Estas en practiques ?')}}</label></b><p><br>
+                       
+                                <label for="estatSi" class="form-check-label m-2"> {{__('Si')}} </label>
+                                <input type="checkbox" name="estat"  class="form-check-input @error('estat') is-invalid @enderror"
+                                 id="estatSi" value="Si" {{ old('estat')== 'Si' ? 'checked' : '' }}>
 
-                                <label for="estasSi" class="form-check-label"> {{__('Si')}} </label>
-                                <input type="checkbox" name="estat"   class="form-check-input @error('estas') is-invalid @enderror"
-                                 id="estasSi" value="Si" {{ old('estat')== 'Si' ? 'checked' : '' }}>
+                                <br>
 
-                                <br><br>
-
-                                <label for="estasNo" class="form-check-label"> {{__('No')}} </label>
-                                <input type="checkbox"  name="estas"  class="form-check-input @error('estas') is-invalid @enderror"
-                                id="estasNo" value="No" {{ old('estas')== 'No' ? 'checked' : '' }}>
+                                <label for="estatNo" class="form-check-label m-2"> {{__('No')}} </label>
+                                <input type="checkbox"  name="estat"  class="form-check-input @error('estat') is-invalid @enderror"
+                                id="estatNo" value="No" {{ old('estat')== 'No' ? 'checked' : '' }}>
 
                             </div>
 
                             <br>
                             
-                            <div class="from-group form-row offset-9 col-3">
+                            <div class="from-group form-row offset-1 col-10">
 
-                                <label>{{__('Has fet practiques abans ?')}}</label><br><br>
+                            <p><b><label>{{__('Has fet practiques abans ?')}}</label></b><p><br>
 
-                                <label for="fetSi" class="form-check-label"> {{__('Si')}} </label>
+                                <label for="fetSi" class="form-check-label m-2"> {{__('Si')}} </label>
                                 <input type="checkbox"  name="fet"  class="form-check-input @error('fet') is-invalid @enderror"
                                 id="fetSi" value="Si" {{ old('fet')== 'Si' ? 'checked' : '' }}>
 
-                                <br><br>
+                                <br>
 
-                                <label for="fetNo" class="form-check-label"> {{__('No')}} </label>
+                                <label for="fetNo" class="form-check-label m-2"> {{__('No')}} </label>
                                 <input type="checkbox"  name="fet"  class="form-check-input @error('fet') is-invalid @enderror"
                                 id="fetNo" value="No" {{ old('fet')== 'No' ? 'checked' : '' }}>
 
@@ -166,41 +165,65 @@
 
                             <br>
                           
-                            <div class="from-group form-row offset-9 col-3">
+                            <div class="from-group form-row offset-1 col-10">
 
-                                <label>{{__('Estas o has treballat ?')}}</label><br><br>
-
-                                <label for="treballatSi" class="form-check-label">{{__('Si')}} </label>
-                                <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
-                                id="treballatSi" value="Si" {{ old('treballat')== 'Si' ? 'checked' : '' }}>
-
-                                <br><br>
-
-                                <label for="treballatNo" class="form-check-label"> {{__('No')}} </label>
-                                <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
-                                id="treballatNo" value="No" {{ old('treballat')== 'No' ? 'checked' : '' }}>
+                                <p><b><label>{{__('Estas o has treballat ?')}}</label></b><p>
+                                    <br>
+                                
+                                    <label for="treballatSi" class="form-check-label m-2">{{__('Si')}} </label>
+                                    <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
+                                    id="treballatSi" value="Si" {{ old('treballat')== 'Si' ? 'checked' : '' }}>
+                      
+                                    <br>
+                                    <label for="treballatNo" class="form-check-label m-2 "> {{__('No')}} </label>
+                                    <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
+                                    id="treballatNo" value="No" {{ old('treballat')== 'No' ? 'checked' : '' }}>
+                                
 
                             </div>
                    
 
                         </div>
 
+                        <div class="form-group row">
+                        <label for="captcha" class="col-md-4 col-form-label text-md-right">Captcha</label>
+                        <div class="col-md-6 captcha">
+                            <span>{!! captcha_img() !!}</span>
+                            <button type="button" class="btn btn-danger" class="reload" id="reload">
+                            &#x21bb;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="captcha" class="col-md-4 col-form-label text-md-right">Enter Captcha</label>
+                        <div class="col-md-6">
+                            <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+                        </div>
+                    </div>
+
+
+
+
+
+
+
                         
                         <div class="d-grid mx-auto">
                             <button type="submit" class="btn btn-success btn-block">{{__('Registrar-se')}}</button>
                         </div>
-                            <p>
+                        <br>
+                            <b>
                                 <a class="inf ">
                                     Pots especificar als cicles i posar  curriculums,
                                     cartas de presentacio i carrtas de recomendació en el perfil
                                 </a>
-                            </p>
-                            <p>
-                                <a  href="{{url('/')}}"><u>home</u></a>
-                            </p>
-                            <p>
-                                <a  href="{{url('login')}}"><u>Login</u></a>
-                            </p>
+                            </b>
+                         
+                            <b>
+                                <center>
+                                    <a  href="{{url('login')}}"><u>Login</u></a>
+                                </center>
+                            </b>
                  
                 </form>
         
@@ -208,8 +231,25 @@
         </div>
     </div>
 
+@push('scripts')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $('#reload').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: 'reload-captcha',
+            success: function (data) {
+                $(".captcha span").html(data.captcha);
+            }
+        });
+    });
+</script>
+@endpush
+  
 
-    @include('borsa.footer')
+
+
+
 
 
 

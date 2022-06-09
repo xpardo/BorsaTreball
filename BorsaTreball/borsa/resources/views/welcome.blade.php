@@ -1,38 +1,113 @@
-
 @extends('layouts.app')
- @section('content')
-    @include('borsa.header')
+    @section('content')
+        @include('borsa.header')
+         
 
 
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                @include('borsa.busca')
+            <center><h1>Borsa de treball </h1></center>
+
+
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <div class="container-1 m-12">
+
+                            <div class="box">
+
+                            
+                            
+                                <div class="dropdown">
+                                        
+                                        
+                                    
+                                      
+                                 </div>
+                           
+
+                        
+                         </div>
+
+                       
+
+                    </div>
+                </div>
+                
+            
+                      
+                
+<!------------------------------------------------------------------------------------------------------>
+
+                            <div class="p-6 bg-white border-b border-gray-200">
+                            
+                                <div class="card-header btn-warning" style="border-radius:15px; background:#54CBF7"><FONT SIZE=5><center>{{ __('OFERTES DE FEINA') }}</FONT></center></div>
+
+                                <div class="p-6 bg-white border-b border-gray-200">
+
+                                    <table class="table table-striped table-dark">
+                                    
+                                        <thead class="table-primary">
+
+                                            <tr>
+                                                <th scope="col"><center>TIPUS</center></th>
+                                                <th scope="col"><center>EMPRESA</center></th>
+                                                <th scope="col"><center>TITOL</center></th>
+                                                <th scope="col"><center>ESTUDIS ALS QUE VA DIRIGIDA</center></th>
+                                                <th scope="col"></th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($ofertas as $oferta)
+                                                <tr>
+                                                    <td><center>{{ $oferta->tipus }}</center></td>
+                                                    <td><center>{{ $oferta->empre }}</center></td>
+                                                    <td><center>{{ $oferta->name }}</center></td>
+                                                    <td><center>{{ $oferta->cicle }}</center></td>
+                                  
+                                                    <td>
+                                                        <center>
+                                                            <b>
+                                                                <a   title="View" href="{{ route('ofertas.show', $oferta) }}">
+                                                                    <h1 class="btn btn-light">
+                                                                        <i class="bi bi-eye-fill"></i>
+                                                                    </h1>
+                                                                </a>
+                                                            </b>
+                                                        </center>
+                                                    </td>
+                                                    
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                           
+                                    </table>
+
+                                </div>
+
+                            </div>
+                        </div>
 
           
               
           
- 
+                        @guest
 
                 <div class="p-6 bg-white border-b border-gray-200">
                    
-                        <!---camp editable---->
-                        <a style="color: #ff0000;"> hi ha de ser editable</a>
-                        <h1>Borsa de treball </h1>
+                       
   
                     <!---camp editable---->
                     <div class="p-6 bg-white border-b border-gray-200">
-                    <a style="color: #ff0000;">hi ha de ser editable</a>
-                        <label>La Borsa de Treball és un servei que ofereix 
-                        l’Institut Joaquim mir  als seus alumnes i exalumnes per facilitar la inserció laboral i 
-                        potenciar les relacions de l’institut amb les institucions i empreses de l’entorn.</label>
+
+                        <center><h1>Registra't a la nostra borsa</label></h1>
                        <br>
                     
                     </div> 
               
 
-
+                  
             
                  
                        <!-------container----->
@@ -72,14 +147,19 @@
                         </div>
                
                     </div>
+                    @endguest
                 </div>
 
             </div>
+        </div>
+
+</div>
+
 
 
 
         
-   @include('borsa.footer')
+
 
  
 

@@ -23,15 +23,11 @@ class RoleSeeder extends Seeder
         ],[
    
             'id' => 2,
-            'name' => 'basic',
+            'name' => 'alumne',
         ],[
             
             'id' => 3,
-            'name' => 'tech',
-        ],[
-           
-            'id' => 4,
-            'name' => 'coord' 
+            'name' => 'empresa',
         ]]);
     }
 }

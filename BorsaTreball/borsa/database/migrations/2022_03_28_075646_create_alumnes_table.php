@@ -32,6 +32,7 @@ class CreateAlumnesTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->role_id(2);
+       
         });
     }
 
