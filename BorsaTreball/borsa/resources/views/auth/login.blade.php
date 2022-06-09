@@ -45,9 +45,17 @@
                         <div class="contenedor-input">
                             <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+<<<<<<< HEAD
 
                                 <label class="form-check-label  col-5 " for="remember">
                                     {{ __("Recorda'm") }}
+=======
+
+                                <label class="form-check-label  col-5 " for="remember">
+
+                                    {{ __("Recorda'm") }}
+
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
                                 </label>
                                 
                                

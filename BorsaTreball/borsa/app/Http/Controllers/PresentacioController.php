@@ -1,5 +1,9 @@
 <?php
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
 namespace App\Http\Controllers;
 use App\Models\Presentacio;
 use Illuminate\Http\Request;
@@ -11,10 +15,19 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Route;
 use App\Models\Oferta;
 
 
+=======
+use App\Models\Oferta;
+
+
+
+
+
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
 class PresentacioController extends Controller
 {
     public function index(Request $request)
@@ -30,7 +43,11 @@ class PresentacioController extends Controller
 
     public function create(Request $request)
     {
+<<<<<<< HEAD
         return view('pre.index');
+=======
+        return view('pre.create');
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
     }
     
     public function store(Request $request)
@@ -43,6 +60,7 @@ class PresentacioController extends Controller
 
         if($request->hasFile('pdf')){
 
+<<<<<<< HEAD
             $pres = new  Presentacio;
             
             $pres->name = $request->name;
@@ -57,10 +75,27 @@ class PresentacioController extends Controller
                     ->with('success','pre has uploaded to the database.')
                     ->with('pre', 'cursiculum Agregada!')
                     ->with('pdf', $pres);
+=======
+            $pre = new  Presentacio;
+            
+            $pre->name = $request->name;
+            $pre->user_id = auth()->user()->id;
+            $archivo  = $request -> file('pdf'); 
+            $archivo -> move(public_path().'/storage/pre/',$archivo->getClientOriginalName());
+           
+            $pre -> filepath = $archivo ->getClientOriginalName();
+            $pre -> save();
+
+            return back()
+                    ->with('success','pre has uploaded to the database.')
+                    ->with('pre', 'cursiculum Agregada!')
+                    ->with('pdf', $pre);
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
                 
            
         }
 
+<<<<<<< HEAD
       
      }
 
@@ -82,6 +117,11 @@ class PresentacioController extends Controller
     }
 
 
+=======
+        return redirect('pre.index');
+     }
+
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
      
 
 }

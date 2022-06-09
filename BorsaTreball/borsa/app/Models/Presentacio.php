@@ -18,4 +18,8 @@ class Presentacio extends Model
        'user_id',
    ];
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
 }

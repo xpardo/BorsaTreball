@@ -36,14 +36,22 @@ class OfAlumController extends Controller
     {
         
    
+<<<<<<< HEAD
         /* $usuario = auth()->user()->name;
+=======
+        $usuario = auth()->user()->name;
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
         $candi = Candidat::where('user', $usuario)->paginate(10);
 
         return view('candidatures.index',[
             "candis" => $candi
         ]);
 
+<<<<<<< HEAD
         */
+=======
+       
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
     }
 
 
@@ -114,11 +122,19 @@ class OfAlumController extends Controller
      * @param  \App\Models\Candidat  $candi
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
  /*    public function destroy(Candidat $candi)
+=======
+    public function destroy(Candidat $candi)
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
     {
         $candi->delete();
         return redirect()->with('candidatures.index')
             ->with('success', "oferta {$id} sa elminatat correctament.");
     }
+<<<<<<< HEAD
  */
+=======
+
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
 }

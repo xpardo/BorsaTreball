@@ -11,6 +11,7 @@
                         <div class="container">
                             <div class="row justify-content-center">
                             
+<<<<<<< HEAD
                                     <div class="card"  style="border-radius:15px;">
                                  <br>
                                     <td><a  class="btn btn-primary" href="{{ route('ofempresa.create')}}"  style="border-radius:15px;">➕ Crear oferta </a></td>
@@ -29,6 +30,26 @@
                                                             <td scope="col"><center>Tipus</center></td>
                                                             <td scope="col"><center>Creat</center></td>
                                                             <td scope="col"><center>Candidatures</center></td>
+=======
+                                    <div class="card">
+                                 <br>
+                                    <td><a  class="btn btn-primary" href="{{ route('ofempresa.create')}}">➕ Crear oferta </a></td>
+                                 
+                                    <br>
+                                        <div class="card-header">{{ __('oferta Actuals') }}</div>
+                                      
+                                            <div class="card-body">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                               
+                                                        <tr>
+                                                        <td scope="col"><center>ID</center></td>
+                                                            <td scope="col"><center>titol</center></td><!------la meva oferta------->
+                                                            <td scope="col"><center>cicle</center></td>
+                                                            <td scope="col"><center>tipus</center></td>
+                                                            <td scope="col"><center>Creat</center></td>
+                                                            <td scope="col"><center>candidatures</center></td>
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
                                                             <td scope="col"><center>___________________</center></td>
                                            
                                                         
@@ -38,7 +59,11 @@
                                                         @foreach ($ofertas as $oferta)
                                                         
                                                         <tr>
+<<<<<<< HEAD
                                                         
+=======
+                                                            <td><center>{{ $oferta->id }}</center></td>
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
                                                             <td><center>{{ $oferta->name }}</center></td>
                                                             <td><center>{{ $oferta->cicle }}</center></td>
                                                             <td><center>{{ $oferta->tipus }}</center></td>
@@ -84,7 +109,11 @@
                 </div> 
             </div> 
  
+<<<<<<< HEAD
             
+=======
+            <br><br><br><br> <br><br> <br>
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
           
 
 @include('estil/perfil')

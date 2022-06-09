@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Recomanacio extends Model
 {
    //use HasFactory;
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
    public $timestamps=false;
    protected $fillable= [
        'name',
@@ -15,4 +19,8 @@ class Recomanacio extends Model
        'user_id',
    ];
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
 }

@@ -22,8 +22,13 @@ class CandiController extends Controller
     {
         //
 
+<<<<<<< HEAD
         $usuari = auth()->user()->name;
         $candis = Candidat::where('user', $usuari)->paginate(100);
+=======
+        $usuarioEmail = auth()->user()->email;
+        $candis = Candidat::where('user', $usuarioEmail)->paginate(10);
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
 
         return view('candidatures.index',[
             "candis" => $candis
@@ -44,20 +49,31 @@ class CandiController extends Controller
     }
 
     /**
+<<<<<<< HEAD
      * Store a newly crEmpresaeated resource in storage.
+=======
+     * Store a newly created resource in storage.
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
 
+=======
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
     public function store(Request $request)
     {
         $candi = new Candidat();
  
   
+<<<<<<< HEAD
         $candi->user_id = auth()->user()->id;
         $candi->user = auth()->user()->name;
         $candi->cognom = auth()->user()->cognom;
+=======
+        $candi->user = auth()->user()->name;
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
         $candi->email = auth()->user()->email;
         $candi->genere = auth()->user()->genere;
         $candi->telefon = auth()->user()->telefon;
@@ -65,6 +81,7 @@ class CandiController extends Controller
         $candi->estat = auth()->user()->estat;
         $candi->fet = auth()->user()->fet;
         $candi->treballat = auth()->user()->treballat;
+<<<<<<< HEAD
 
         $candi->empre = $request->empre;
         $candi->name = $request->name;
@@ -85,6 +102,20 @@ class CandiController extends Controller
         } else {
             return redirect()->route('ofertas.show', $request->oferta_id)
                 ->with('error',"ha agut algun problema");
+=======
+        $candi->empre = $request->empres;
+        $candi->id_ofert = $request->oferta_id;
+
+        
+        $candi->save();
+
+        if ($ok) {
+            return redirect('candidatures.index')
+                ->with("T'has inscrit correctament");
+        } else {
+            return redirect('ofertas.show', $request->oferta_id)
+                ->with("ha agut algun problema");
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
         }
     }
 
@@ -94,6 +125,7 @@ class CandiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function show(Candidat $candi)
     {
       
@@ -101,6 +133,13 @@ class CandiController extends Controller
         return view('perfilAlum.show', [
             'oferta' => $candi
         ]);
+=======
+    public function show(Candidat $candi ,$id_ofert)
+    {
+        return view('candidatures.show', [
+            'candi' => Candidat::findOrFail($id_ofert)
+        ]); 
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
 
      
     }
@@ -129,16 +168,29 @@ class CandiController extends Controller
         //
     }
 
+<<<<<<< HEAD
     /**
+=======
+       /**
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Candidat  $candi
      * @return \Illuminate\Http\Response
+<<<<<<< HEAD
     */
     public function destroy(Candidat $candi)
     {
         $candi->delete();
         return redirect('candi')
             ->with('success', "oferta  sa elminatat correctament.");
+=======
+     */
+    public function destroy(Candidat $candi)
+    {
+        $candi->delete();
+        return redirect()->with('candidatures.index')
+            ->with('success', "oferta {$id} sa elminatat correctament.");
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
     }
 }

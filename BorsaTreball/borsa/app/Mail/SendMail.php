@@ -30,6 +30,12 @@ class SendMail extends Mailable
      */
     public function build()
     {
+<<<<<<< HEAD
         return $this->view('mails.ofempresa');
+=======
+
+        return $this->view('ofempresa.menssage');
+
+>>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
     }
 }
