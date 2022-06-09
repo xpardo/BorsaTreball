@@ -41,11 +41,7 @@ class User extends Authenticatable
         'treballat',
         'password',
         'tipo_usuario',
-<<<<<<< HEAD
         'imagen',
-=======
-        'image',
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
         'role_id',
         
     ];

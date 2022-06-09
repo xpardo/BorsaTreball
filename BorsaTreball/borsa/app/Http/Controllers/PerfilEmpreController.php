@@ -8,14 +8,10 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Empresa;
 use App\Models\Oferta;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 use App\Http\Requests;
 use Illuminate\Auth\SessionGuard;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-=======
-use Illuminate\Auth\SessionGuard;
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
 
 class PerfilEmpreController extends Controller
 {
@@ -26,26 +22,12 @@ class PerfilEmpreController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
         $id = auth()->user()->id;
         return view("perfilEmpre.index",[
             "empresa" => Empresa::all()
         ]);
     }
     
-=======
-        return view("borsa.perfilEmpre",[
-            "empresa" => Empresa::all()
-        ]);
-    }
-
-
-    public function perfilEmpresa(){
-        return view('perfilEmpre');
-     }
- 
- 
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
 
 
     public function perfilEmpre(Request $request){
@@ -70,11 +52,7 @@ class PerfilEmpreController extends Controller
      */
     public function create()
     {
-<<<<<<< HEAD
    
-=======
-        //
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
     }
 
     /**
@@ -86,11 +64,8 @@ class PerfilEmpreController extends Controller
     public function store(Request $request)
     {
         //
-<<<<<<< HEAD
        
         
-=======
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
     }
 
     /**
@@ -102,7 +77,6 @@ class PerfilEmpreController extends Controller
     public function show(Empresa $empresa)
     {
         //
-<<<<<<< HEAD
         return view('perfilEmpre',compact('alumne'));
 
     }
@@ -145,34 +119,6 @@ class PerfilEmpreController extends Controller
        
         return redirect(route('perfilEmpre.index'));
      }
-=======
-
-        return view('perfilEmpre',compact('empresa'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
 
     /**
      * Remove the specified resource from storage.

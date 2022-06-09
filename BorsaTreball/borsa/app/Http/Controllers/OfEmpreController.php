@@ -9,10 +9,6 @@ use App\Models\Presentacio;
 use App\Models\Curriculum;
 use DB;
 use App\Mail\SendMail;
-<<<<<<< HEAD
-=======
-
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
 use App\Models\Alumne;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
@@ -39,11 +35,7 @@ class OfEmpreController extends Controller
         
    
         $usuarioEmail = auth()->user()->email;
-<<<<<<< HEAD
         $ofempresas = Oferta::where('user', $usuarioEmail)->paginate(100);
-=======
-        $ofempresas = Oferta::where('user', $usuarioEmail)->paginate(10);
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
 
         return view('ofempresa.index',[
             "ofertas" => $ofempresas
@@ -155,7 +147,6 @@ class OfEmpreController extends Controller
     public function destroy(Oferta $ofempresa)
     {
         $ofempresa->delete();
-<<<<<<< HEAD
         return redirect('ofempresa')
             ->with('success', "oferta sa elminatat correctament.");
     }
@@ -242,82 +233,6 @@ class OfEmpreController extends Controller
  
     }
 
-=======
-        return redirect()->with('ofempresa.index')
-            ->with('success', "oferta {$id} sa elminatat correctament.");
-    }
-
-
-    //.........................
-    ///candidatures
-    //.........................
-
-    public function candidatures(Oferta $ofempresa) 
-    {
-        $candis = Candidat::where('id_ofert', $ofempresa->id)->paginate(10);
-
-        return view('ofempresa.candidatures.candidatures',[
-            "candis" => $candis
-        ]);
-    }
-
-     //.........................
-    ///curriculums 
-    //.........................
-
-    public function curriculum(Curriculum $curri) 
-    {
-        $pathToFile = public_path() . '/storage/curri/' . $curri->filepath;
-        return response()->download($pathToFile);           
-    }
-
-    public function presentacio(Presentacio $pre) 
-    {
-
-        $pathToFile = public_path() . '/storage/pre/' . $pre->filepath;
-        return response()->download($pathToFile);           
-    }
-        // TODO enviar fitxer   
-    
-
-
-    // formulari correu
-    public function seleccionar( Candidat $candis , $id){
-       
-
-        /*  return view('ofempresa.email',[
-             "candis" => $ofempresa
-         ]); */
-         return view('ofempresa.candidatures.seleccionar', [
-             'candis' => Candidat::findOrFail($id)
-         ]); 
- 
- 
-     }
- 
-    // enviar correu
-    public function notificar(Request $request, Oferta $ofempresa)
-    {
-        $this->validate($request, [
-            'name'     =>  'required',
-            'email'  =>  'required|email',
-            'message' =>  'required'
-            ]);
-            
-        $data = array(
-            'name'      =>  $request->input('name'),
-            'message'   =>   $request->input('message')
-        );
-
-        $email = $request->input('email');
-
-        Mail::to($email)->send(new SendMail($data));
-
-        return back()->with('success', "s'ha enviat exitosament !");
- 
-    }
-
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
    
  
 

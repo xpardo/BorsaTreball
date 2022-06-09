@@ -30,31 +30,18 @@ class WelcomeController extends Controller
         //Busqueda
         //.............................................
 
-<<<<<<< HEAD
         $text=trim($request->get('text'));
         $oferta=DB::table('ofertas') 
         
             -> select('id', 'name', 'cicle', 'sala', 'h', 'desc', 'tipus', 'user', 'empre')
             ->where('name','LIKE', '%'.$text.'%')
             ->orWhere('cicle','LIKE', '%'.$text.'%')
-=======
-        $texto=trim($request->get('texto'));
-        $oferta=DB::table('ofertas') 
-        
-            -> select('id', 'name', 'cicle', 'sala', 'h', 'desc', 'tipus', 'user', 'empre')
-            ->where('name','LIKE', '%'.$texto.'%')
-            ->orWhere('cicle','LIKE', '%'.$texto.'%')
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
             ->paginate(10);
         //.............................................
         
         return view("welcome",[
             "ofertas" => Oferta::all(),
-<<<<<<< HEAD
             "text"
-=======
-            "texto"
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
         ] );
 
     

@@ -8,15 +8,11 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Alumne;
 use App\Models\Oferta;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 use App\Http\Requests;
 use Illuminate\Auth\SessionGuard;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Candidat;
-=======
-use Illuminate\Auth\SessionGuard;
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
 
 class PerfilAlumController extends Controller
 {
@@ -34,15 +30,6 @@ class PerfilAlumController extends Controller
     }
 
 
-<<<<<<< HEAD
-=======
-    public function perfilAlumne(){
-        return view('perfilAlum');
-     }
- 
- 
-
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
 
     public function perfilAlum(Request $request){
        
@@ -60,7 +47,6 @@ class PerfilAlumController extends Controller
             'treballat' => 'required',
            
        
-<<<<<<< HEAD
         ]); return view('perfilAlum.index ', $validated);
     }
 
@@ -78,23 +64,6 @@ class PerfilAlumController extends Controller
         return view('perfilAlum.show', [
             'candi' => $perfilAlum
         ]);
-=======
-        ]); return view('perfilAlum', $validated);
-    }
-
-
-  /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Alumne $alumne)
-    {
-        //
-
-        return view('perfilAlum',compact('alumne'));
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
     }
 
     /**
@@ -108,30 +77,18 @@ class PerfilAlumController extends Controller
 
     }
 
-<<<<<<< HEAD
       /**
-=======
-    /**
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
     public function store(Request $Alumne)
     {   
        
 
         
-=======
-    public function store(Request $request)
-    {
-        //
->>>>>>> ab91e88dcea2f9ac2ff98e6ae8e1584e3f13c53d
     }
-    
-
     
 
     /**
