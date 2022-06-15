@@ -47,7 +47,7 @@ class CurriculumController extends Controller
             $curris->name = $request->name;
             $curris->user_id = auth()->user()->id;
             $archivo  = $request -> file('pdf'); 
-            $archivo -> move(public_path().'/storage/curri/',$archivo->getClientOriginalName());
+            $archivo -> move(public_path().'/curri/',$archivo->getClientOriginalName());
            
             $curris -> filepath = $archivo ->getClientOriginalName();
             $curris -> save();

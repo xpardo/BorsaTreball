@@ -22,11 +22,14 @@
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                @if ($errors->has('name'))
+                                    <span class="text-danger">
+                                        <strong>
+                                            {{ $errors->first('name') }}
+                                            {{ $message }}
+                                        </strong>
                                     </span>
-                                @enderror
+                                @endif
                             </div>
                         </div>
 
@@ -35,12 +38,14 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                @if ($errors->has('email'))
+                                    <span class="text-danger">
+                                        <strong>
+                                            {{ $errors->first('name') }}
+                                            {{ $message }}
+                                        </strong>
                                     </span>
-                                @enderror
+                                @endif
                             </div>
                         </div>
 

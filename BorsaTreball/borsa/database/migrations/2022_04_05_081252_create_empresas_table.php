@@ -23,6 +23,7 @@ class CreateEmpresasTable extends Migration
             $table->string('empre');
             $table->string('telefon');
             $table->string('poblacio');
+            $table->string('imagen')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -25,7 +25,7 @@
                                         <tr>
                                                         
                                             <td><center>{{$c->name}}</center></td>
-                                            <td><center><a class="offset-1 col-5" href="/storage/curri/{{$c->filepath}}" target="blank_">👁️</a></center></td>  
+                                            <td><center><a class="offset-1 col-5" href="./curri/{{$c->filepath}}" target="blank_">👁️</a></center></td>  
 
                                             <td> 
                                                 

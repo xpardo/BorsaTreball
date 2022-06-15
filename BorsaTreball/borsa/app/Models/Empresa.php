@@ -28,6 +28,7 @@ class Empresa extends Model
         'telefon' ,
         'poblacio',
         'password', 
+        'imagen',
         'role_id',
     ];
 

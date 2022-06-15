@@ -48,7 +48,7 @@ class PresentacioController extends Controller
             $pres->name = $request->name;
             $pres->user_id = auth()->user()->id;
             $archivo  = $request -> file('pdf'); 
-            $archivo -> move(public_path().'/storage/pre/',$archivo->getClientOriginalName());
+            $archivo -> move(public_path().'/pre/',$archivo->getClientOriginalName());
            
             $pres -> filepath = $archivo ->getClientOriginalName();
             $pres -> save();

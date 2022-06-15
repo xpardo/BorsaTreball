@@ -174,7 +174,7 @@ class OfEmpreController extends Controller
     {
         $curri = Curriculum::where(["user_id" => $candidat->user_id])->first();
         if ($curri) {
-            $pathToFile = public_path() . '/storage/curri/' . $curri->filepath;
+            $pathToFile = public_path() . '/curri/' . $curri->filepath;
             return response()->download($pathToFile);   
         }else{
 
@@ -188,7 +188,7 @@ class OfEmpreController extends Controller
         
         $pre = Presentacio::where(["user_id" => $candidat->user_id])->first();
         if ($pre) {
-            $pathToFile = public_path() . '/storage/pre/' . $pre->filepath;
+            $pathToFile = public_path() . '/pre/' . $pre->filepath;
             return response()->download($pathToFile);    
         }else{
             return redirect()->route('ofempresa.candidatures', $ofempresa->id)

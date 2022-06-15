@@ -91,6 +91,8 @@ class RegisterAlumController extends Controller
 
 
         ]);    
+        $user->assignRole('alumne');
+
        
 
 

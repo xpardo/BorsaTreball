@@ -26,7 +26,7 @@
                                     <tr>
                            
                                         <td><center>{{$p->name}}</center></td>
-                                        <td><center><a class="offset-1 col-5" href="/storage/pre/{{$p->filepath}}" target="blank_">👁️</a></center></td>
+                                        <td><center><a class="offset-1 col-5" href="./pre/{{$p->filepath}}" target="blank_">👁️</a></center></td>
                                         <td>
                                             <center>
                                                 <form id="form" method="POST" action="{{ route('presentacio.destroy', $p) }}">

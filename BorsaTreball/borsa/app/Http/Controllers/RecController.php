@@ -50,7 +50,7 @@ class RecController extends Controller
             $recs->name = $request->name;
             $recs->user_id = auth()->user()->id;
             $archivo  = $request -> file('pdf'); 
-            $archivo -> move(public_path().'/storage/rec/',$archivo->getClientOriginalName());
+            $archivo -> move(public_path().'/rec/',$archivo->getClientOriginalName());
            
             $recs -> filepath = $archivo ->getClientOriginalName();
             $recs -> save();
