@@ -13,7 +13,7 @@
                         @csrf
 
                         <div class="contenedor-input">
-                            <label for="email" >{{ __('Email Address') }}</label></br></br>
+                            <label for="email" >{{ __('Email ') }}</label></br></br>
                             
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 

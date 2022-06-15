@@ -44,7 +44,7 @@
                 <div class="ins ">
                     <div id="text-32 " class="widget top-bar-widget large-4 columns widget_text ">
                         <div class="textwidget"><b><strong>Informació Important:</strong></b>
-                        <br><a style="color:#FFFFFF;"  href="{{url('condi')}}"><u>Tèrmit i condicions</a></u><br>
+                        <br><a style="color:#FFFFFF;"  href="{{url('condi')}}"><u>Termes i condicions</a></u><br>
                             <br><a style="color:#FFFFFF;"  href="{{url('politic')}}"><u>Política de privacitat</a></u><br>
                         </div>
                     </div>

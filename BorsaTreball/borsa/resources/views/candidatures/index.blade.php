@@ -15,7 +15,7 @@
                                     <div class="card">
                                    
                                     <br>
-                                        <div class="card-header" style="border-radius:15px;">{{ __('oferta Actuals') }}</div>
+                                        <div class="card-header" style="border-radius:15px;">{{ __('Oferta Actuals') }}</div>
                                       
                                             <div class="card-body">
                                                 <table class="table">

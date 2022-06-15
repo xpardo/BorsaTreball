@@ -9,7 +9,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="card-header" style="border-radius:15px;">{{ __('Carta Recomendació') }}</div>
+                    <div class="card-header" style="border-radius:15px;">{{ __('Carta Recomanació') }}</div>
 <br>
                         <p><b><a class="btn btn-primary" href="{{ route('recomenacio.create') }}" role="button">➕</a></b> </p>
                        
@@ -17,7 +17,7 @@
                             <thead>
                          
                                 <th><center>NOM</center></th>
-                                <th><center>VISUALITZAR CARTA DE RECOMENDACIÓ</center></th>
+                                <th><center>VISUALITZAR CARTA DE RECOMANACIÓ</center></th>
                                 <th><center></center></th>
                             </thead>
                             <tbody>

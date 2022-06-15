@@ -67,7 +67,7 @@
                     <div class="contenedor-input">
 
                         <div class="from-group form-row">
-                            <label for="genere" class="col-3">{{__('Genere')}} </label><br><br>
+                            <label for="genere" class="col-3">{{__('Génere')}} </label><br><br>
                             <select name="genere" class="form-control @error('genere') is-invalid @enderror" id="genere" autofocus>
                                 <option value="0"> </option>
                                 <option value="Home"> Home  </option>
@@ -78,7 +78,7 @@
                     </div>
                     
                     <div class="contenedor-input">
-                        <label for="telefon">{{__('telefón/móbil')}}<i class="bi bi-telephone"></i></label><br><br>
+                        <label for="telefon">{{__('teléfon/móbil')}}<i class="bi bi-telephone"></i></label><br><br>
                         <input type="text" name="telefon" class="form-control @error('telefon') is-invalid @enderror"  id="telefon"  value="{{old('telefon')}}"  autocomplete="telefon" autofocus>
                         @error('telefon')
                             <span class="invalid-feedback" role="alert">
@@ -108,7 +108,7 @@
                     </div>
                     <div class="contenedor-input">
                         <label  for="password">{{__('Password') }} </label> <br><br> 
-                        <b style="color:#808080">(8 charater, primera lletra en majuscules i numeros)</b>
+                        <b style="color:#808080">(8 carácters, primera lletra en majúscules i dígits)</b>
                         <br><br>
                         <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Example1234" id="password" name="password" require autocomplete="new-password">
                         @error('password')
@@ -131,9 +131,9 @@
 
                             <div class="from-group form-row offset-1 col-10">
 
-                            <p><b><label>{{__('Estas en practiques ?')}}</label></b><p><br>
+                            <p><b><label>{{__('Estás en práctiques ?')}}</label></b><p><br>
                        
-                                <label for="estatSi" class="form-check-label m-2"> {{__('Si')}} </label>
+                                <label for="estatSi" class="form-check-label m-2"> {{__('Sí')}} </label>
                                 <input type="checkbox" name="estat"  class="form-check-input @error('estat') is-invalid @enderror"
                                  id="estatSi" value="Si" {{ old('estat')== 'Si' ? 'checked' : '' }}>
 
@@ -149,9 +149,9 @@
                             
                             <div class="from-group form-row offset-1 col-10">
 
-                            <p><b><label>{{__('Has fet practiques abans ?')}}</label></b><p><br>
+                            <p><b><label>{{__('Has fet práctiques abans ?')}}</label></b><p><br>
 
-                                <label for="fetSi" class="form-check-label m-2"> {{__('Si')}} </label>
+                                <label for="fetSi" class="form-check-label m-2"> {{__('Sí')}} </label>
                                 <input type="checkbox"  name="fet"  class="form-check-input @error('fet') is-invalid @enderror"
                                 id="fetSi" value="Si" {{ old('fet')== 'Si' ? 'checked' : '' }}>
 
@@ -167,10 +167,10 @@
                           
                             <div class="from-group form-row offset-1 col-10">
 
-                                <p><b><label>{{__('Estas o has treballat ?')}}</label></b><p>
+                                <p><b><label>{{__('Estás o has treballat ?')}}</label></b><p>
                                     <br>
                                 
-                                    <label for="treballatSi" class="form-check-label m-2">{{__('Si')}} </label>
+                                    <label for="treballatSi" class="form-check-label m-2">{{__('Sí')}} </label>
                                     <input type="checkbox"  name="treballat"  class="form-check-input @error('treballat') is-invalid @enderror"
                                     id="treballatSi" value="Si" {{ old('treballat')== 'Si' ? 'checked' : '' }}>
                       

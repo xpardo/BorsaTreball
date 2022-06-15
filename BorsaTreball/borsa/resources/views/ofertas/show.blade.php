@@ -22,9 +22,9 @@
                                             <p> {{ $oferta->tipus }} </p>
                                             <b><strong>Cicle formatiu</strong></b>
                                             <p> {{ $oferta->cicle }} </p>
-                                            <b><strong>Name</strong></b>
+                                            <b><strong>Títol</strong></b>
                                             <p> {{ $oferta->name }} </p>
-                                            <b><strong>Empre</strong></b>
+                                            <b><strong>Empresa</strong></b>
                                             <p> {{ $oferta->empre }} </p>
                                             <b><strong>Horari</strong></b>
                                             <p> {{ $oferta->h }} </p>

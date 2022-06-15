@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Oferta;
 use Illuminate\Http\Request;
-use Spatie\Searchable\Search;
+
 class WelcomeController extends Controller
 {
 
@@ -30,18 +30,12 @@ class WelcomeController extends Controller
         //Busqueda
         //.............................................
 
-        $text=trim($request->get('text'));
-        $oferta=DB::table('ofertas') 
-        
-            -> select('id', 'name', 'cicle', 'sala', 'h', 'desc', 'tipus', 'user', 'empre')
-            ->where('name','LIKE', '%'.$text.'%')
-            ->orWhere('cicle','LIKE', '%'.$text.'%')
-            ->paginate(10);
+       
         //.............................................
         
         return view("welcome",[
             "ofertas" => Oferta::all(),
-            "text"
+          
         ] );
 
     
@@ -49,29 +43,6 @@ class WelcomeController extends Controller
         
 
     }
-
-       
-    public function selectSearch(Request $request){
-    
-        $oferta = [];
-
-        if($request->has('q'))
-            $search = $request->q;
-            $oferta =Oferta::select("id", "name")
-                    ->where('name', 'LIKE', "%$search%")
-                    ->get();
-        
-        return response()->json($oferta);
-}
-
-
-
-    public function search(Request $request)
-    {
-        $oferta = Oferta::where('name', 'LIKE', '%'.$request->search.'%')->get();
-        return \response()->json($oferta);
-    }
-
 
     /**
      * Show the form for creating a new resource.

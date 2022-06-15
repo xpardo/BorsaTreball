@@ -26,9 +26,8 @@
                                     
                                         <!-- cuerpo del diálogo -->
                                         <div class="modal-body">
-                                            Et recomanem que col·loquis un currículum i una carta de presentació per tindre
-                                            oportunitat que tens per a fer una bona impressió durant la teva cerca d'ocupació 
-                                            i així facilitis a l'empresa
+                                       <center> Et recomanem que col·loquis un currículum i una carta de presentació <br> per tindre major
+                                        èxit en la sol·licitud de feina</center>
                                         </div>
                                     
                                         <!-- pie del diálogo -->

@@ -21,7 +21,7 @@
                                 <div class="dropdown">
                                         
                                         
-                                    
+                                @include('flash')   
                                       
                                  </div>
                            
@@ -154,14 +154,34 @@
         </div>
 
 </div>
+<div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <?php 
+                    if(isset($_REQUEST['politica-cookies'])){
+                        $caducitat = time() + (60 * 60 * 24 * 365);
+                        setcookie('politica', '1' ,$caducitat);
+                    }
+
+                    ?>
+                    <div>
+                        <?php if (!isset($_REQUEST['politica-cookies'])&& !isset($_COOKIE['politica'])): ?>
+                            <div class="cookies">
+                                <h2>Cookies</h2>
+                                <p>Acceptes les nostres galetes?</p>
+                                <a href="?polirica-cookies=1"> Aceptar </a>
+                            <div>
+                        <?php endif ?>
+                    </div>
 
 
 
 
-        
 
+                    </div>
+        </div>
 
- 
+</div></div>
 
 @include('estil/home')    
 

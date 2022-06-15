@@ -40,7 +40,7 @@
                                         {{ csrf_field() }}
 
                                         <div class="form-group">
-                                        <div class="card-header" >{{ __('Candidatura Nº') . " " . $candis -> id}}</div>
+                                      <!--   <div class="card-header" >{{ __('Candidatura Nº') . " " . $candis -> id}}</div> -->
                     
                                       
                                         </div>
@@ -54,7 +54,7 @@
                                             <input type="text" name="email" class="form-control" value="{{ $candis->email }}" />
                                         </div>
                                         <div class="form-group">
-                                            <label>Missatgea</label>
+                                            <label>Missatge</label>
                                             <textarea name="message" class="form-control" cols="20" rows="4"v >                          
                                                 Has sigut seleccionat/da per la nostra empresa: ( {{ Auth::user()->empre }} )
                                                 Posat amb contacte amb nosaltres ( {{ Auth::user()->email }} )

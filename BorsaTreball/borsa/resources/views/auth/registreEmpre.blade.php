@@ -18,7 +18,7 @@
 
                 <form method="POST" action="{{ route('registreEmpre') }} "  enctype="multipart/form-data">
                     @csrf 
-                    <p>Dades d'acces personal <i class="bi bi-person"></i></p>
+                    <p>Dades d'accés personal <i class="bi bi-person"></i></p>
                     <div class="fila-arriba">
                         <div class="contenedor-input">
 
@@ -58,7 +58,7 @@
 
                         <div class="contenedor-input">
                             <label  for="password">{{__('Password') }} </label><br><br>
-                            <b style="color:#808080">(8 charater, primera lletra en majuscules i numeros)</b><br><br>
+                            <b style="color:#808080">(8 carácters, primera lletra en majúscules i dígits)</b><br><br>
                             <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Example1234"  id="password" name="password" value="{{old('password')}}" require autocomplete="new-password" autofocus>
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -81,7 +81,7 @@
 
                     <div class="contenedor-input">
 
-                        <label for="empre">{{__('Nom de la empresa')}}</label><br><br>
+                        <label for="empre">{{__('Nom de l'empresa')}}</label><br><br>
                         <input type="text" name="empre" class="form-control @error('empre') is-invalid @enderror" id="empre" value="{{old('empre')}}" required autocomplete="empre" autofocus>
                         @error('empre')
                             <span class="invalid-feedback" role="alert">
@@ -91,7 +91,7 @@
                     </div>
 
                     <div class="contenedor-input">
-                    <label for="telefon">telefón/mòbil<i class="bi bi-telephone"></i></label><br><br>
+                    <label for="telefon">telédfon/mòbil<i class="bi bi-telephone"></i></label><br><br>
                         <input type="text" name="telefon" class="form-control @error('telefon') is-invalid @enderror" id="telefon" value="{{old('telefon')}}" autocomplete="telefon" autofocus>
                         @error('telefon')
                             <span class="invalid-feedback" role="alert">

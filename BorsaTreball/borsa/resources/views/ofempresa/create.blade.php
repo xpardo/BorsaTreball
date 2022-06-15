@@ -23,7 +23,7 @@
                                 <div class="dropdown">
 
                                     <div class="from-group form-row">
-                                        <label for="cicle" class="col-3" >{{__('Cicle')}} </label><br><br>
+                                        <label for="cicle" class="col-3" required>{{__('Cicle')}} </label><br><br>
                                         <select name="cicle" class="form-control @error('cicle') is-invalid @enderror" style="border-radius:15px;" id="cicle" autofocus>
                                             <option value="0"> </option>
                                             <option value=" Grau Mitjà Sistemes Microinformàtics i Xarxes "> Grau Mitjà Sistemes Microinformàtics i Xarxes  </option>
@@ -50,13 +50,13 @@
                                     
                                     <b class="col-md-1"> Tipus :</b>
                                         <div class="form-check form-check-inline ">
-                                            <label for="tipusPractiques" class="form-check-label"> {{__('Practiques')}} </label>
+                                            <label for="tipusPractiques" class="form-check-label"> {{__('pràctiques')}} </label>
                                             <input  style="border-radius:15px;"type="checkbox" name="tipus"   class="form-check-input @error('gender') is-invalid @enderror"
                                                 id="tipusPractiques" value="Practiques" {{ old('tipus')== 'Practiques' ? 'checked' : '' }}>
                                         </div>
                                         <div class="form-check form-check-inline">
 
-                                            <label for="tipusQuedarse" class="form-check-label"> {{__('Practiques amb opció de quedarse')}}</label>
+                                            <label for="tipusQuedarse" class="form-check-label"> {{__('pràctiques amb opció de quedar-se')}}</label>
                                             <input  style="border-radius:15px;" type="checkbox"  name="tipus"  class="form-check-input @error('gender') is-invalid @enderror"
                                             id="tipusQuedarse" value="Quedarse" {{ old('tipus')== 'Quedarse' ? 'checked' : '' }}>
                                         </div>
@@ -64,7 +64,7 @@
 
                                             <label for="tipusTreballar" class="form-check-label"> {{__('Treballar')}}</label>
                                             <input style="border-radius:15px;" type="checkbox"  name="tipus"  class="form-check-input @error('gender') is-invalid @enderror"
-                                            id="tipusTreballar" value="Treballar" {{ old('tipus')== 'Treballar' ? 'checked' : '' }}>
+                                            id="tipusTreballar" value="Treballar" {{ old('tipus')== 'Treballar' ? 'checked' : '' }} checked>
                                         </div>
 
                               
@@ -72,17 +72,17 @@
                                     <br><br>
                                     
                                         <label  for="name" class="col-10">Titol: </label>
-                                        <input style="border-radius:15px;" type="text" id="name" name="name">
+                                        <input style="border-radius:15px;" type="text" id="name" name="name" required>
                                     <br><br>
                                         <label  for="sala" class="col-10">Salari: </label>
-                                        <input style="border-radius:15px;" type="num" id="sala" name="sala" placeholder="€">
+                                        <input style="border-radius:15px;" type="num" id="sala" name="sala" placeholder="€" value="0" required>
                                     <br><br>
                                         <label for="h"  class="col-10">Horari:</label>
-                                        <input style="border-radius:15px;" type="text" id="h" name="h" placeholder="00:00-00:00 00:00-00:0">
+                                        <input style="border-radius:15px;" type="text" id="h" name="h" placeholder="00:00-00:00 00:00-00:0" value="0:00" required>
                                     <br><br>
                                     <div class="contenedor-input">
                                         <label for="desc" class="col-10">Descripció:</label>
-                                        <textarea style="border-radius:15px;"  name="desc" rows="10" cols="50"></textarea><br><br>
+                                        <textarea style="border-radius:15px;"  name="desc" rows="10" cols="50" value="descripcio" required></textarea><br><br>
                                     </div>
 
 

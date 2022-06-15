@@ -69,9 +69,20 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
- 
+
 
 Route::get('/dashboard', [WelcomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
+
+
+
+Route::get('/dashboard', function (Request $request) {
+    $message = 'Loading welcome page';
+    Log::info($message);
+    $request->session()->flash('info', $message);
+    return view('welcome');
+ });
+
+
 
 require __DIR__.'/auth.php';
 // ...
